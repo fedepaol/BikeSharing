@@ -9,7 +9,10 @@ import java.util.List;
 public interface MainView {
     void updateMyLocation(Location l);
     void centerMapToLocation(Location l);
-    void drawStations(List<Station> stations);
-    void displayStationList(List<Station> stations);
+    void drawStationsOnMap(List<Station> stations);
+    void displayStationList(List<Station> stations, Location current);
     void hideStationList();
+
+    void stopUpdating();
+    void startUpdating();
 }

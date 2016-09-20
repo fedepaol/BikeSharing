@@ -36,17 +36,27 @@ public class MainFragment extends Fragment implements MainView {
     }
 
     @Override
-    public void drawStations(List<Station> stations) {
+    public void drawStationsOnMap(List<Station> stations) {
 
     }
 
     @Override
-    public void displayStationList(List<Station> stations) {
+    public void displayStationList(List<Station> stations, Location current) {
 
     }
 
     @Override
     public void hideStationList() {
+
+    }
+
+    @Override
+    public void stopUpdating() {
+
+    }
+
+    @Override
+    public void startUpdating() {
 
     }
 }
