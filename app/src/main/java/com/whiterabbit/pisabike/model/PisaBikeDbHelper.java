@@ -42,6 +42,10 @@ public class PisaBikeDbHelper {
         mDb.close();
     }
 
+    public DbHelper getDbHelper() {
+        return mDbHelper;
+    }
+
     public static final String ROW_ID = "_id";
 
     

@@ -68,4 +68,6 @@ public class ApplicationModule {
         return sqlBrite.wrapDatabaseHelper(helper.getDbHelper(),
                                             schedulers.provideBackgroundScheduler());
     }
+
+
 }

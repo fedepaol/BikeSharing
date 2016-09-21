@@ -17,13 +17,12 @@
 package com.whiterabbit.pisabike.screens.main;
 
 
-
-import com.squareup.sqlbrite.SqlBrite;
-
-import javax.inject.Singleton;
+import com.whiterabbit.pisabike.model.BikesProvider;
+import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 
 @Module
 public class MainModule {
@@ -38,8 +37,10 @@ public class MainModule {
     }
 
     @Provides
-    public MainPresenter provideMainPresenter(MainView v){
-        return new MainPresenterImpl(v);
+    public MainPresenter provideMainPresenter(MainView v,
+                                              SchedulersProvider schedulersProvider,
+                                              BikesProvider bikesProvider,
+                                              ReactiveLocationProvider locationProvider   ){
+        return new MainPresenterImpl(v, schedulersProvider, bikesProvider, locationProvider);
     }
-
 }

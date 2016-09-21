@@ -49,7 +49,6 @@ public class MainPresenterImpl implements MainPresenter {
         mSchedulersProvider = schedulersProvider;
         mLocationProvider = locationProvider;
         mBikesProvider = bikesProvider;
-
     }
 
     @Override
