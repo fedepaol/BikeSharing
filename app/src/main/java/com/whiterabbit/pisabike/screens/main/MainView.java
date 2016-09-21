@@ -12,7 +12,9 @@ public interface MainView {
     void drawStationsOnMap(List<Station> stations);
     void displayStationList(List<Station> stations, Location current);
     void hideStationList();
-
+    void displayStationDetail(Station detail, Location current);
+    void hideStationDetail();
     void stopUpdating();
     void startUpdating();
+    void getMap();
 }

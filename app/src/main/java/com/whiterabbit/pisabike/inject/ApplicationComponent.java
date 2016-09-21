@@ -7,6 +7,7 @@ package com.whiterabbit.pisabike.inject;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.squareup.sqlbrite.BriteDatabase;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
@@ -26,6 +27,7 @@ public interface ApplicationComponent {
     ReactiveLocationProvider getReactiveLocationProvider();
     Context getContext();
     SchedulersProvider getSchedulers();
+    BriteDatabase getBriteDatabase();
 }
 
 

@@ -1,5 +1,6 @@
 package com.whiterabbit.pisabike.screens.main;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -11,5 +12,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (getFragmentManager().findFragmentById(R.id.main_activity_frame) == null) {
+            Fragment f = MainFragment.createInstance();
+            getSupportFragmentManager().beginTransaction().add(R.id.main_activity_frame, f)
+                    .commit();
+        }
     }
 }

@@ -58,10 +58,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onResume() {
-        mSubscription = new CompositeSubscription();
-        mSubscription.add(subscribeStations());
-        mSubscription.add(checkLocation());
-        askForUpdate();
+        mView.getMap();
     }
 
     private Subscription subscribeStations() {
@@ -115,5 +112,13 @@ public class MainPresenterImpl implements MainPresenter {
         if (myLocation != null) {
             mView.centerMapToLocation(myLocation);
         }
+    }
+
+    @Override
+    public void onMapReady() {
+        mSubscription = new CompositeSubscription();
+        mSubscription.add(subscribeStations());
+        mSubscription.add(checkLocation());
+        askForUpdate();
     }
 }
