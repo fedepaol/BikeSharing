@@ -61,7 +61,7 @@ public class Station {
         contentValues.put(PisaBikeDbHelper.STATION_AVAILABLE_COLUMN, available);
         contentValues.put(PisaBikeDbHelper.STATION_FREE_COLUMN, free);
         contentValues.put(PisaBikeDbHelper.STATION_BROKEN_COLUMN, broken);
-        contentValues.put(PisaBikeDbHelper.STATION_LASTUPDATE_COLUMN, lastUpdate.getTime());
+        contentValues.put(PisaBikeDbHelper.STATION_LASTUPDATE_COLUMN, 0); // lastUpdate.getTime());
         contentValues.put(PisaBikeDbHelper.STATION_FAVORITE_COLUMN, favourite);
         return contentValues;
     }

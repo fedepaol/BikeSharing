@@ -1,8 +1,11 @@
 package com.whiterabbit.pisabike.screens.main;
 
+import android.Manifest;
+import android.content.Context;
 import android.location.Location;
 
 import com.google.android.gms.location.LocationRequest;
+import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.model.BikesProvider;
 import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
@@ -39,21 +42,28 @@ public class MainPresenterImpl implements MainPresenter {
     private List<Station> mStations;
     private CompositeSubscription mSubscription;
     private Location myLocation;
+    private Location pisaLocation = new Location("FAKE");
+    private RxPermissions mPermissions;
     BikesProvider mBikesProvider;
 
     public MainPresenterImpl(MainView view,
                              SchedulersProvider schedulersProvider,
                              BikesProvider bikesProvider,
-                             ReactiveLocationProvider locationProvider) {
+                             ReactiveLocationProvider locationProvider,
+                             RxPermissions permissions) {
         mView = view;
         mSchedulersProvider = schedulersProvider;
         mLocationProvider = locationProvider;
         mBikesProvider = bikesProvider;
+        mPermissions = permissions;
+        pisaLocation.setLatitude(23.0);
+        pisaLocation.setLongitude(24.0);
     }
 
     @Override
     public void onPause() {
-        mSubscription.unsubscribe();
+        if (mSubscription != null)
+            mSubscription.unsubscribe();
     }
 
     @Override
@@ -61,15 +71,17 @@ public class MainPresenterImpl implements MainPresenter {
         mView.getMap();
     }
 
-    private Subscription subscribeStations() {
+    private Subscription subscribeStations(boolean hasLocation) {
         LocationRequest request = LocationRequest.create() //standard GMS LocationRequest
                 .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
                 .setNumUpdates(1)
                 .setInterval(100);
+        final Observable<Location> locationObservable =
+                                        mLocationProvider.getUpdatedLocation(request).first()
+                                        .compose(o -> hasLocation? o : Observable.just(pisaLocation));
 
-        return Observable.zip(mBikesProvider.getStationsObservables(),
-                       mLocationProvider.getUpdatedLocation(request),
-                StationsLocation::new)
+        return Observable.zip(mBikesProvider.getStationsObservables(), locationObservable,
+                                        StationsLocation::new)
                 .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                 .subscribe(s -> this.onStationsChanged(s.getStations(), s.getLocation()));
@@ -117,8 +129,16 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void onMapReady() {
         mSubscription = new CompositeSubscription();
-        mSubscription.add(subscribeStations());
-        mSubscription.add(checkLocation());
+        mPermissions.request(Manifest.permission.ACCESS_COARSE_LOCATION).subscribe(
+                granted -> {
+                    if (granted) {
+                        mSubscription.add(checkLocation());
+                    }
+                    mSubscription.add(subscribeStations(granted));
+                }
+        );
+
         askForUpdate();
+        mView.centerCity();
     }
 }

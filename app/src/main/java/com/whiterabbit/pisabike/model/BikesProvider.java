@@ -8,6 +8,7 @@ import com.squareup.sqlbrite.SqlBrite;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -23,11 +24,8 @@ public class BikesProvider {
     @Inject SchedulersProvider mSchedulersProvider;
     @Inject BikeRestClient mBikeClient;
 
-
     @Inject
-    public BikesProvider(BriteDatabase brite,
-                         SchedulersProvider schedulersProvider,
-                         BikeRestClient bikeClient) {
+    public BikesProvider() {
 
     }
 
@@ -39,12 +37,17 @@ public class BikesProvider {
                 .observeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .subscribe(l -> {
                     BriteDatabase.Transaction t = mBrite.newTransaction();
-                    mBrite.delete(PisaBikeDbHelper.STATION_TABLE, null);
-                    for (Station s : l) {
-                        mBrite.insert(PisaBikeDbHelper.STATION_TABLE, s.getContentValues());
+                    try {
+                        mBrite.delete(PisaBikeDbHelper.STATION_TABLE, null);
+                        for (Station s : l) {
+                            mBrite.insert(PisaBikeDbHelper.STATION_TABLE, s.getContentValues());
+                        }
+
+                        requestSubject.onCompleted();
+                        t.markSuccessful();
+                    } finally {
+                        t.end();
                     }
-                    t.markSuccessful();
-                    requestSubject.onCompleted();
                 }, requestSubject::onError);
 
         return requestSubject;
@@ -60,16 +63,15 @@ public class BikesProvider {
 
     public Observable<List<Station>> getStationsObservables() {
         Observable<SqlBrite.Query> users = mBrite.createQuery(PisaBikeDbHelper.STATION_TABLE, "SELECT * " +
-                "FROM STATION_TABLE");
+                "FROM Station");
         return users.map(q -> {
             Cursor cursor = q.run();
-            Station s[] = new Station[cursor.getCount()];
+            List<Station> s = new ArrayList<>(cursor.getCount());
             int i = 0;
             while (cursor.moveToNext()) {
-                s[i++] = new Station(cursor);
+                s.add(new Station(cursor));
             }
             return s;
-        }).flatMap(Observable::from)
-                .toList();
+        });
     }
 }

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.squareup.sqlbrite.BriteDatabase;
+import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
@@ -28,6 +29,7 @@ public interface ApplicationComponent {
     Context getContext();
     SchedulersProvider getSchedulers();
     BriteDatabase getBriteDatabase();
+    RxPermissions getPermissions();
 }
 
 

@@ -17,6 +17,7 @@
 package com.whiterabbit.pisabike.screens.main;
 
 
+import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.model.BikesProvider;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 
@@ -40,7 +41,9 @@ public class MainModule {
     public MainPresenter provideMainPresenter(MainView v,
                                               SchedulersProvider schedulersProvider,
                                               BikesProvider bikesProvider,
-                                              ReactiveLocationProvider locationProvider   ){
-        return new MainPresenterImpl(v, schedulersProvider, bikesProvider, locationProvider);
+                                              ReactiveLocationProvider locationProvider,
+                                              RxPermissions permissions){
+        return new MainPresenterImpl(v, schedulersProvider, bikesProvider,
+                                     locationProvider, permissions);
     }
 }

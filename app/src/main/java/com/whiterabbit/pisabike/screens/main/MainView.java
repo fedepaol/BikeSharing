@@ -17,4 +17,5 @@ public interface MainView {
     void stopUpdating();
     void startUpdating();
     void getMap();
+    void centerCity();
 }

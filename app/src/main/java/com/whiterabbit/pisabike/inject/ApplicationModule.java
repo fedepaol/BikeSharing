@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
+import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.model.PisaBikeDbHelper;
@@ -69,5 +70,9 @@ public class ApplicationModule {
                                             schedulers.provideBackgroundScheduler());
     }
 
-
+    @Provides
+    @Singleton
+    RxPermissions provideRxPermissions(Context c) {
+        return RxPermissions.getInstance(c);
+    }
 }
