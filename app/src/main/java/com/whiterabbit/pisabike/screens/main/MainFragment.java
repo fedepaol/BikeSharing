@@ -3,6 +3,7 @@ package com.whiterabbit.pisabike.screens.main;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,11 +14,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -30,9 +35,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainFragment extends Fragment implements MainView, OnMapReadyCallback {
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
+public class MainFragment extends Fragment implements MainView, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
 
     @Inject
@@ -40,7 +49,8 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Inject
     Context mContext;
 
-    MapFragment mMapFragment;
+    @Bind(R.id.main_map)
+    MapView mMapView;
 
     private GoogleMap mGoogleMap;
     private HashMap<String, Station> stationsMap = new HashMap<String, Station>();
@@ -61,14 +71,14 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View res = inflater.inflate(R.layout.main_fragment, container, false);
         ButterKnife.bind(this, res);
+        mMapView.onCreate(savedInstanceState);
         return res;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mMapFragment = (MapFragment) getActivity().getFragmentManager()
-                                     .findFragmentById(R.id. main_map);
+
 
         PisaBikeApplication app = (PisaBikeApplication) getActivity().getApplication();
         DaggerMainComponent.builder()
@@ -80,6 +90,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void onResume() {
         super.onResume();
+        mMapView.onResume();
         mPresenter.onResume();
     }
 
@@ -87,11 +98,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onPause() {
         super.onPause();
         mPresenter.onPause();
-    }
-
-    @Override
-    public void updateMyLocation(Location l) {
-
+        mMapView.onPause();
     }
 
     @Override
@@ -112,7 +119,9 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     private void addMarker(GoogleMap map, double lat, double lon,
                            Station s) {
-        Marker m = map.addMarker(new MarkerOptions().position(new LatLng(lat, lon)));
+        Bitmap b = MapMarkerFactory.getMapMarker(s.getAvailable(), s.getFree() + s.getAvailable(), mContext);
+        Marker m = map.addMarker(new MarkerOptions().position(new LatLng(lat, lon))
+                .icon(BitmapDescriptorFactory.fromBitmap(b)));
         stationsMap.put(m.getId(), s);
     }
 
@@ -151,7 +160,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         if (mGoogleMap != null) {
             mPresenter.onMapReady();
         } else {
-            mMapFragment.getMapAsync(this);
+            mMapView.getMapAsync(this);
         }
     }
 
@@ -159,16 +168,55 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
         mPresenter.onMapReady();
+        mGoogleMap.setOnMarkerClickListener(this);
+
+
     }
 
     @Override
     public void centerCity() {
-        CameraUpdate center=
+        CameraUpdate center =
                 CameraUpdateFactory.newLatLng(new LatLng(43.7228,
                         10.4017));
-        CameraUpdate zoom=CameraUpdateFactory.zoomTo(15);
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
 
         mGoogleMap.moveCamera(center);
         mGoogleMap.animateCamera(zoom);
+    }
+
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        Station s = stationsMap.get(marker.getId());
+        mPresenter.onStationClicked(s);
+        return true;
+    }
+
+    @Override
+    public void enableMyLocation() {
+        if (ActivityCompat.checkSelfPermission(mContext, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(mContext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+             return;
+        }
+        mGoogleMap.setMyLocationEnabled(true);
+        mGoogleMap.getUiSettings().setMyLocationButtonEnabled(false);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mMapView.onDestroy();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mMapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mMapView.onLowMemory();
     }
 }

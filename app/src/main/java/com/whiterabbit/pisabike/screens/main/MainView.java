@@ -7,7 +7,6 @@ import com.whiterabbit.pisabike.model.Station;
 import java.util.List;
 
 public interface MainView {
-    void updateMyLocation(Location l);
     void centerMapToLocation(Location l);
     void drawStationsOnMap(List<Station> stations);
     void displayStationList(List<Station> stations, Location current);
@@ -18,4 +17,5 @@ public interface MainView {
     void startUpdating();
     void getMap();
     void centerCity();
+    void enableMyLocation();
 }

@@ -45,6 +45,7 @@ public class MainPresenterImpl implements MainPresenter {
     private Location pisaLocation = new Location("FAKE");
     private RxPermissions mPermissions;
     BikesProvider mBikesProvider;
+    private boolean hasPermission;
 
     public MainPresenterImpl(MainView view,
                              SchedulersProvider schedulersProvider,
@@ -92,8 +93,6 @@ public class MainPresenterImpl implements MainPresenter {
                 .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
                 .setInterval(2000);
         return mLocationProvider.getUpdatedLocation(request)
-                .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
-                .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                 .subscribe(this::onLocationChanged);
     }
 
@@ -116,7 +115,6 @@ public class MainPresenterImpl implements MainPresenter {
 
     private void onLocationChanged(Location l) {
         myLocation = l;
-        mView.updateMyLocation(l);
     }
 
     @Override
@@ -129,16 +127,29 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void onMapReady() {
         mSubscription = new CompositeSubscription();
-        mPermissions.request(Manifest.permission.ACCESS_COARSE_LOCATION).subscribe(
+        mPermissions.request(Manifest.permission.ACCESS_COARSE_LOCATION,
+                             Manifest.permission.ACCESS_FINE_LOCATION).subscribe(
                 granted -> {
+                    hasPermission = granted;
                     if (granted) {
                         mSubscription.add(checkLocation());
+                        mView.enableMyLocation();
                     }
-                    mSubscription.add(subscribeStations(granted));
+                    mSubscription.add(subscribeStations(false));
                 }
         );
 
         askForUpdate();
         mView.centerCity();
+    }
+
+    @Override
+    public void onStationClicked(Station s) {
+        // TODO
+    }
+
+    @Override
+    public boolean hasLocationPermission() {
+        return false;
     }
 }
