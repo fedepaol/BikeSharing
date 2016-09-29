@@ -145,7 +145,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onStationClicked(Station s) {
-        // TODO
+        mView.displayStationDetail(s, myLocation);
     }
 
     @Override

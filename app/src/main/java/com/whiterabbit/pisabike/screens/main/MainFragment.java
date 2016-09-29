@@ -1,27 +1,27 @@
 package com.whiterabbit.pisabike.screens.main;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.LocationSource;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -52,8 +52,26 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Bind(R.id.main_map)
     MapView mMapView;
 
+    @Bind(R.id.main_detail_sheet)
+    View mBottomSheet;
+
+    @Bind(R.id.main_detail_name)
+    TextView mDetailName;
+
+    @Bind(R.id.main_detail_address)
+    TextView mAddress;
+
+    @Bind(R.id.main_detail_distance)
+    TextView mDistance;
+
+    @Bind(R.id.main_detail_bikes)
+    TextView mBikes;
+
+    BottomSheetBehavior bottomSheetBehavior;
+
     private GoogleMap mGoogleMap;
     private HashMap<String, Station> stationsMap = new HashMap<String, Station>();
+    private HashMap<String, Marker> markerMap = new HashMap<>();
 
     public static MainFragment createInstance() {
         MainFragment res = new MainFragment();
@@ -85,6 +103,9 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
                 .applicationComponent(app.getComponent())
                 .mainModule(app.getMainModule(this))
                 .build().inject(this);
+
+        bottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
 
     @Override
@@ -120,9 +141,18 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     private void addMarker(GoogleMap map, double lat, double lon,
                            Station s) {
         Bitmap b = MapMarkerFactory.getMapMarker(s.getAvailable(), s.getFree() + s.getAvailable(), mContext);
-        Marker m = map.addMarker(new MarkerOptions().position(new LatLng(lat, lon))
-                .icon(BitmapDescriptorFactory.fromBitmap(b)));
-        stationsMap.put(m.getId(), s);
+
+        Marker m = markerMap.get(s.getName());
+        LatLng pos = new LatLng(lat, lon);
+        BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(b);
+        if (m == null) {
+            m = map.addMarker(new MarkerOptions().position(pos).icon(icon));
+            stationsMap.put(m.getId(), s);
+            markerMap.put(s.getName(), m);
+        } else {
+            m.setPosition(pos);
+            m.setIcon(icon);
+        }
     }
 
     @Override
@@ -137,12 +167,16 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Override
     public void displayStationDetail(Station detail, Location current) {
-
+        mDetailName.setText(detail.getName());
+        mAddress.setText(detail.getAddress());
+        mDistance.setText("250 m");
+        mBikes.setText(String.format("%d - %d", detail.getAvailable(), detail.getFree() + detail.getAvailable()));
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
     @Override
     public void hideStationDetail() {
-
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
 
     @Override
@@ -169,8 +203,6 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         mGoogleMap = googleMap;
         mPresenter.onMapReady();
         mGoogleMap.setOnMarkerClickListener(this);
-
-
     }
 
     @Override
