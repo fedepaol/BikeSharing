@@ -152,4 +152,9 @@ public class MainPresenterImpl implements MainPresenter {
     public boolean hasLocationPermission() {
         return false;
     }
+
+    @Override
+    public void onCameraMoved() {
+        mView.hideStationDetail();
+    }
 }

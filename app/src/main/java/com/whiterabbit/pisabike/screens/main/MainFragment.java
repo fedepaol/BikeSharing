@@ -41,7 +41,7 @@ import butterknife.ButterKnife;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class MainFragment extends Fragment implements MainView, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MainFragment extends Fragment implements MainView, OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnCameraMoveListener {
 
 
     @Inject
@@ -89,12 +89,14 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View res = inflater.inflate(R.layout.main_fragment, container, false);
         ButterKnife.bind(this, res);
-        mMapView.onCreate(savedInstanceState);
         return res;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        final Bundle mapViewSavedInstanceState = savedInstanceState != null ?
+                                                    savedInstanceState.getBundle("mapViewSaveState") : null;
+        mMapView.onCreate(mapViewSavedInstanceState);
         super.onViewCreated(view, savedInstanceState);
 
 
@@ -203,6 +205,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         mGoogleMap = googleMap;
         mPresenter.onMapReady();
         mGoogleMap.setOnMarkerClickListener(this);
+        mGoogleMap.setOnCameraMoveListener(this);
     }
 
     @Override
@@ -242,13 +245,20 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        final Bundle mapViewSaveState = new Bundle(outState);
+        mMapView.onSaveInstanceState(mapViewSaveState);
+        outState.putBundle("mapViewSaveState", mapViewSaveState);
         super.onSaveInstanceState(outState);
-        mMapView.onSaveInstanceState(outState);
     }
 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
         mMapView.onLowMemory();
+    }
+
+    @Override
+    public void onCameraMove() {
+        mPresenter.onCameraMoved();
     }
 }

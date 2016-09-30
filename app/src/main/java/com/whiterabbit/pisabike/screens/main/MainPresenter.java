@@ -11,4 +11,5 @@ public interface MainPresenter {
     void onStationClicked(Station s);
 
     boolean hasLocationPermission();
+    void onCameraMoved();
 }
