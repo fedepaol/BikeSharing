@@ -142,7 +142,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     private void addMarker(GoogleMap map, double lat, double lon,
                            Station s) {
-        Bitmap b = MapMarkerFactory.getMapMarker(s.getAvailable(), s.getFree() + s.getAvailable(), mContext);
+        Bitmap b = MapMarkerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
 
         Marker m = markerMap.get(s.getName());
         LatLng pos = new LatLng(lat, lon);
@@ -172,8 +172,23 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         mDetailName.setText(detail.getName());
         mAddress.setText(detail.getAddress());
         mDistance.setText("250 m");
-        mBikes.setText(String.format("%d - %d", detail.getAvailable(), detail.getFree() + detail.getAvailable()));
+        mBikes.setText(String.format("%d - %d", detail.getAvailable(), detail.getSpaces()));
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+    }
+
+    @Override
+    public void highLightStation(Station s) {
+        Marker m = markerMap.get(s.getName());
+        Bitmap b = MapMarkerFactory.getSelectedMapMarker(s.getFree(), s.getSpaces(), mContext);
+        m.setIcon(BitmapDescriptorFactory.fromBitmap(b));
+    }
+
+    @Override
+    public void unHighLightStation(Station s) {
+        Marker m = markerMap.get(s.getName());
+        Bitmap b = MapMarkerFactory.getNotSelectedMapMarker(s.getFree(), s.getSpaces(), mContext);
+        m.setIcon(BitmapDescriptorFactory.fromBitmap(b));
+
     }
 
     @Override

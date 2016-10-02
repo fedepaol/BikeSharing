@@ -46,6 +46,7 @@ public class MainPresenterImpl implements MainPresenter {
     private RxPermissions mPermissions;
     BikesProvider mBikesProvider;
     private boolean hasPermission;
+    private Station mSelectedStation;
 
     public MainPresenterImpl(MainView view,
                              SchedulersProvider schedulersProvider,
@@ -146,6 +147,11 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void onStationClicked(Station s) {
         mView.displayStationDetail(s, myLocation);
+        mView.highLightStation(s);
+        if (mSelectedStation != null && s != mSelectedStation) {
+            mView.unHighLightStation(mSelectedStation);
+        }
+        mSelectedStation = s;
     }
 
     @Override
@@ -156,5 +162,9 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void onCameraMoved() {
         mView.hideStationDetail();
+        if (mSelectedStation != null) {
+            mView.unHighLightStation(mSelectedStation);
+            mSelectedStation = null;
+        }
     }
 }

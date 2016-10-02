@@ -18,4 +18,8 @@ public interface MainView {
     void getMap();
     void centerCity();
     void enableMyLocation();
+
+    void highLightStation(Station s);
+
+    void unHighLightStation(Station s);
 }

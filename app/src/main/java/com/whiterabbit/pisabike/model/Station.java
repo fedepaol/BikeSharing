@@ -129,4 +129,17 @@ public class Station {
     public void setBroken(long broken) {
         this.broken = broken;
     }
+
+    public long getSpaces() {
+        return available + free;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof Station && ((Station) object).getName().equals(getName())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

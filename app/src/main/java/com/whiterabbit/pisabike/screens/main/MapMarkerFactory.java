@@ -16,11 +16,14 @@ import com.whiterabbit.pisabike.R;
 
 
 public class MapMarkerFactory {
-    public static Bitmap getMapMarker(long freeBikes, long allBikes, Context context) {
+    public static Bitmap getMapMarker(long freeBikes, long allBikes, Context context, boolean selected) {
         Resources resources = context.getResources();
         float scale = resources.getDisplayMetrics().density;
 
-        Bitmap originalBitmap = BitmapFactory.decodeResource(resources, R.drawable.marker);
+
+        Bitmap originalBitmap = selected ?
+                BitmapFactory.decodeResource(resources, R.drawable.marker_selcted) :
+                BitmapFactory.decodeResource(resources, R.drawable.marker);
         Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
         int width = (int) (36 * scale);
         int height = width;
@@ -59,6 +62,14 @@ public class MapMarkerFactory {
         }
 
         return bitmap;
-
     }
+
+    public static Bitmap getSelectedMapMarker(long freeBikes, long allBikes, Context context) {
+        return getMapMarker(freeBikes, allBikes, context, true);
+    }
+
+    public static Bitmap getNotSelectedMapMarker(long freeBikes, long allBikes, Context context) {
+        return getMapMarker(freeBikes, allBikes, context, false);
+    }
+
 }
