@@ -30,6 +30,8 @@ import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.model.Station;
 
+import org.w3c.dom.Text;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -67,6 +69,9 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Bind(R.id.main_detail_bikes)
     TextView mBikes;
+
+    @Bind(R.id.main_detail_bikes_empty)
+    TextView mEmptyBikes;
 
     BottomSheetBehavior bottomSheetBehavior;
 
@@ -126,10 +131,9 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     }
 
     @Override
-    public void centerMapToLocation(Location l) {
+    public void centerMapToLocation(LatLng l) {
         CameraUpdate center =
-                CameraUpdateFactory.newLatLng(new LatLng(l.getLatitude(),
-                        l.getLongitude()));
+                CameraUpdateFactory.newLatLng(l);
         mGoogleMap.animateCamera(center);
     }
 
@@ -175,21 +179,22 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         mDetailName.setText(detail.getName());
         mAddress.setText(detail.getAddress());
         mDistance.setText("250 m");
-        mBikes.setText(String.format("%d - %d", detail.getAvailable(), detail.getSpaces()));
+        mBikes.setText(String.valueOf(detail.getAvailable()));
+        mEmptyBikes.setText(String.valueOf(detail.getFree()));
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
     @Override
     public void highLightStation(Station s) {
         Marker m = markerMap.get(s.getName());
-        Bitmap b = MapMarkerFactory.getSelectedMapMarker(s.getFree(), s.getSpaces(), mContext);
+        Bitmap b = MapMarkerFactory.getSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
         m.setIcon(BitmapDescriptorFactory.fromBitmap(b));
     }
 
     @Override
     public void unHighLightStation(Station s) {
         Marker m = markerMap.get(s.getName());
-        Bitmap b = MapMarkerFactory.getNotSelectedMapMarker(s.getFree(), s.getSpaces(), mContext);
+        Bitmap b = MapMarkerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
         m.setIcon(BitmapDescriptorFactory.fromBitmap(b));
 
     }
@@ -205,6 +210,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     }
 
     @Override
+    
     public void startUpdating() {
 
     }

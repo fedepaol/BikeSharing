@@ -2,12 +2,13 @@ package com.whiterabbit.pisabike.screens.main;
 
 import android.location.Location;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.whiterabbit.pisabike.model.Station;
 
 import java.util.List;
 
 public interface MainView {
-    void centerMapToLocation(Location l);
+    void centerMapToLocation(LatLng l);
     void drawStationsOnMap(List<Station> stations);
     void displayStationList(List<Station> stations, Location current);
     void hideStationList();

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.location.Location;
 
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.maps.model.LatLng;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.model.BikesProvider;
 import com.whiterabbit.pisabike.model.Station;
@@ -119,13 +120,6 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void centerPressed() {
-        if (myLocation != null) {
-            mView.centerMapToLocation(myLocation);
-        }
-    }
-
-    @Override
     public void onMapReady() {
         mSubscription = new CompositeSubscription();
         mPermissions.request(Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -146,6 +140,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onStationClicked(Station s) {
+        mView.centerMapToLocation(new LatLng(s.getLatitude(), s.getLongitude()));
         mView.displayStationDetail(s, myLocation);
         mView.highLightStation(s);
         if (mSelectedStation != null && s != mSelectedStation) {
@@ -171,7 +166,8 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void onCenterLocationClicked() {
         if (myLocation != null) {
-            mView.centerMapToLocation(myLocation);
+            mView.centerMapToLocation(new LatLng(myLocation.getLatitude(),
+                                                 myLocation.getLongitude()));
         }
     }
 }

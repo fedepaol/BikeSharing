@@ -15,32 +15,8 @@
         app:behavior_hideable="true"
         app:layout_behavior="@string/bottom_sheet_behavior"
         android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:gravity="center"
-        android:orientation="vertical"
-        >
+    <include layout="@layout/main_bottom_sheet" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/main_detail_name"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/main_detail_address"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/main_detail_distance"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/main_detail_bikes"/>
-
-    </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
@@ -48,6 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_anchor="@+id/main_detail_sheet"
+        app:layout_anchorGravity="top|end"
         android:src="@drawable/ic_my_location_black_24px" />
 </android.support.design.widget.CoordinatorLayout>
