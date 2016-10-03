@@ -37,6 +37,7 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
@@ -126,7 +127,10 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Override
     public void centerMapToLocation(Location l) {
-
+        CameraUpdate center =
+                CameraUpdateFactory.newLatLng(new LatLng(l.getLatitude(),
+                        l.getLongitude()));
+        mGoogleMap.animateCamera(center);
     }
 
     @Override
@@ -136,8 +140,6 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         for (Station s : stations) {
             addMarker(mGoogleMap, s.getLatitude(), s.getLongitude(), s);
         }
-
-        mGoogleMap.setInfoWindowAdapter(new PopupAdapter(getActivity().getLayoutInflater(), stationsMap));
     }
 
     private void addMarker(GoogleMap map, double lat, double lon,
@@ -149,12 +151,13 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(b);
         if (m == null) {
             m = map.addMarker(new MarkerOptions().position(pos).icon(icon));
-            stationsMap.put(m.getId(), s);
             markerMap.put(s.getName(), m);
+            Log.d("MAP", "Adding " + s.getName());
         } else {
-            m.setPosition(pos);
             m.setIcon(icon);
+            Log.d("MAP", "Updating " + s.getName());
         }
+        stationsMap.put(m.getId(), s);
     }
 
     @Override
@@ -275,5 +278,10 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void onCameraMove() {
         mPresenter.onCameraMoved();
+    }
+
+    @OnClick(R.id.fab)
+    public void onCenterLocationClicked() {
+        mPresenter.onCenterLocationClicked();
     }
 }

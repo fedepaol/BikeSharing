@@ -12,4 +12,6 @@ public interface MainPresenter {
 
     boolean hasLocationPermission();
     void onCameraMoved();
+
+    void onCenterLocationClicked();
 }

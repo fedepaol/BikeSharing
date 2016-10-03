@@ -167,4 +167,11 @@ public class MainPresenterImpl implements MainPresenter {
             mSelectedStation = null;
         }
     }
+
+    @Override
+    public void onCenterLocationClicked() {
+        if (myLocation != null) {
+            mView.centerMapToLocation(myLocation);
+        }
+    }
 }

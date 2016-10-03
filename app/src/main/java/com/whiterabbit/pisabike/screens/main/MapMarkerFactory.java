@@ -24,6 +24,7 @@ public class MapMarkerFactory {
         Bitmap originalBitmap = selected ?
                 BitmapFactory.decodeResource(resources, R.drawable.marker_selcted) :
                 BitmapFactory.decodeResource(resources, R.drawable.marker);
+
         Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
         int width = (int) (36 * scale);
         int height = width;
