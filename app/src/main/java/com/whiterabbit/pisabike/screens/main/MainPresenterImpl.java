@@ -140,7 +140,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onStationClicked(Station s) {
-        mView.centerMapToLocation(new LatLng(s.getLatitude(), s.getLongitude()));
+        // mView.centerMapToLocation(new LatLng(s.getLatitude(), s.getLongitude()));
         mView.displayStationDetail(s, myLocation);
         mView.highLightStation(s);
         if (mSelectedStation != null && s != mSelectedStation) {

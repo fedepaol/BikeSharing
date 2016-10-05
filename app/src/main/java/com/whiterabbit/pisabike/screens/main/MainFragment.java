@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -73,6 +74,12 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Bind(R.id.main_detail_bikes_empty)
     TextView mEmptyBikes;
 
+    @Bind(R.id.fab)
+    FloatingActionButton mFab;
+
+    @Bind(R.id.main_directions_fab)
+    FloatingActionButton mDirectionsFab;
+
     BottomSheetBehavior bottomSheetBehavior;
 
     private GoogleMap mGoogleMap;
@@ -114,6 +121,29 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
         bottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        mDirectionsFab.setScaleX(0);
+        mDirectionsFab.setScaleY(0);
+
+        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                if (BottomSheetBehavior.STATE_EXPANDED == newState) {
+                    mFab.setEnabled(false);
+                    mDirectionsFab.animate().scaleX(1).scaleY(1).setDuration(300).start();
+                } else if (BottomSheetBehavior.STATE_HIDDEN == newState) {
+                    mFab.animate().scaleX(1).scaleY(1).setDuration(300).start();
+                    mFab.setEnabled(true);
+                } else if (BottomSheetBehavior.STATE_SETTLING == newState) {
+                    mDirectionsFab.animate().scaleX(0).scaleY(0).setDuration(200).start();
+                    mFab.animate().scaleX(0).scaleY(0).setDuration(200).start();
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
     }
 
     @Override
@@ -156,10 +186,8 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         if (m == null) {
             m = map.addMarker(new MarkerOptions().position(pos).icon(icon));
             markerMap.put(s.getName(), m);
-            Log.d("MAP", "Adding " + s.getName());
         } else {
             m.setIcon(icon);
-            Log.d("MAP", "Updating " + s.getName());
         }
         stationsMap.put(m.getId(), s);
     }
@@ -210,7 +238,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     }
 
     @Override
-    
+
     public void startUpdating() {
 
     }
