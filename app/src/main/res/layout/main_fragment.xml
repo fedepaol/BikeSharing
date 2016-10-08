@@ -38,5 +38,11 @@
         app:layout_anchorGravity="top|end"
         android:src="@drawable/ic_directions_walk_white_24px" />
 
+    <com.whiterabbit.pisabike.screens.main.ProgressView
+        android:id="@+id/main_progress"
+        android:layout_margin="@dimen/margin_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 </android.support.design.widget.CoordinatorLayout>

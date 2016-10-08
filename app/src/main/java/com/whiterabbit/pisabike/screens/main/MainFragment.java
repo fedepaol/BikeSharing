@@ -13,6 +13,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -47,7 +50,6 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class MainFragment extends Fragment implements MainView, OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnCameraMoveListener {
 
-
     @Inject
     MainPresenter mPresenter;
     @Inject
@@ -80,6 +82,9 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Bind(R.id.main_directions_fab)
     FloatingActionButton mDirectionsFab;
 
+    @Bind(R.id.main_progress)
+    ProgressView mProgress;
+
     BottomSheetBehavior bottomSheetBehavior;
 
     private GoogleMap mGoogleMap;
@@ -95,6 +100,21 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.main_action_reload) {
+            mPresenter.onReloadAsked();
+            return true;
+        }
+        return false;
     }
 
     @Nullable
@@ -234,12 +254,13 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Override
     public void stopUpdating() {
-
+        mProgress.setDone(getString(R.string.main_done));
     }
 
     @Override
 
     public void startUpdating() {
+        mProgress.setUpdating(getString(R.string.main_updating));
 
     }
 

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">PisaBike</string>
     <string name="main_popup_bikes_message" formatted="false">%d / %d bikes available</string>
+    <string name="main_updating">Updating..</string>
+    <string name="main_done">Done!</string>
+    <string name="action_reload">Reload</string>
 
 </resources>

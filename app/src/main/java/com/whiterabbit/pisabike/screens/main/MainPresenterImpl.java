@@ -170,4 +170,10 @@ public class MainPresenterImpl implements MainPresenter {
                                                  myLocation.getLongitude()));
         }
     }
+
+    @Override
+    public void onReloadAsked() {
+        askForUpdate();
+        mView.hideStationDetail();
+    }
 }

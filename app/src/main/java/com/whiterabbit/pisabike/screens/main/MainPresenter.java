@@ -12,4 +12,7 @@ public interface MainPresenter {
     void onCameraMoved();
 
     void onCenterLocationClicked();
+
+    void onReloadAsked();
+
 }
