@@ -169,6 +169,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void onResume() {
         super.onResume();
+        markerMap.clear();
         mMapView.onResume();
         mPresenter.onResume();
     }
@@ -338,5 +339,10 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @OnClick(R.id.fab)
     public void onCenterLocationClicked() {
         mPresenter.onCenterLocationClicked();
+    }
+
+    @Override
+    public void stopUpdatingError() {
+        mProgress.setError(getString(R.string.main_update_error));
     }
 }

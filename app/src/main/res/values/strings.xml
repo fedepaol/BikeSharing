@@ -4,5 +4,6 @@
     <string name="main_updating">Updating..</string>
     <string name="main_done">Done!</string>
     <string name="action_reload">Reload</string>
+    <string name="main_update_error">Error updating</string>
 
 </resources>

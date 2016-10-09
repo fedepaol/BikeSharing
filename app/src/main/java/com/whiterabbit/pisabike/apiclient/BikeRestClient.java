@@ -47,7 +47,7 @@ public class BikeRestClient {
 
 
         mClient = new Retrofit.Builder()
-                              .baseUrl("http://45.62.248.225:8000/")
+                              .baseUrl("http://146.185.160.162:8000/")
                               .client(okClient)
                               .addConverterFactory(GsonConverterFactory.create(getGSon()))
                               .addCallAdapterFactory(RxJavaCallAdapterFactory.create())

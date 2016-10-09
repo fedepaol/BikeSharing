@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -51,7 +52,6 @@ public class ProgressView extends LinearLayout {
         mMessage.setText(message);
         mIcon.setVisibility(VISIBLE);
         mIconDone.setVisibility(GONE);
-        mIcon.setImageResource(R.drawable.ic_autorenew_white_24px);
         ValueAnimator rotation = ObjectAnimator.ofFloat(mIcon, "rotation", 0, 180);
         rotation.setRepeatCount(ValueAnimator.INFINITE);
         rotation.setDuration(800);
@@ -60,17 +60,29 @@ public class ProgressView extends LinearLayout {
     }
 
     public void setDone(String message) {
-        mIsProgress = false;
-        mIcon.setImageResource(R.drawable.ic_done_white_24px);
-        mMessage.setText(message);
-        mIcon.setVisibility(GONE);
-        mIconDone.setVisibility(VISIBLE);
-        animate().scaleX(0).scaleY(0).setDuration(600);
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            mIsProgress = false;
+            mMessage.setText(message);
+            mIcon.setVisibility(GONE);
+            mIconDone.setVisibility(VISIBLE);
+
+            new Handler().postDelayed( () -> {
+                animate().scaleX(0).scaleY(0).setDuration(600);}, 1000);
+        }, 1000);
     }
 
-    public void setError() {
+    public void setError(String error) {
         mIsProgress = false;
+        mIcon.setImageResource(R.drawable.ic_done_white_24px);
+        mMessage.setText(error);
+        mIcon.setVisibility(GONE);
+        mIconDone.setVisibility(VISIBLE);
 
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            animate().scaleX(0).scaleY(0).setDuration(600);
+        }, 1000);
     }
 
 

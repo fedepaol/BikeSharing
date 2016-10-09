@@ -23,4 +23,6 @@ public interface MainView {
     void highLightStation(Station s);
 
     void unHighLightStation(Station s);
+
+    void stopUpdatingError();
 }

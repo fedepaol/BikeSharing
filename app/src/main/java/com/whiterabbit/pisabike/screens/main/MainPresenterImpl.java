@@ -104,7 +104,7 @@ public class MainPresenterImpl implements MainPresenter {
                 mBikesProvider.updateBikes().subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
                       .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                       .subscribe(s -> {},
-                                 e -> mView.stopUpdating(),
+                                 e -> mView.stopUpdatingError(),
                                  () -> mView.stopUpdating());
         mSubscription.add(sub);
     }
