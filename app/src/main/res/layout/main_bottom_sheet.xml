@@ -42,7 +42,7 @@
 
             <TextView
                 style="@style/DetailInfoItem"
-                android:drawableTop="@drawable/ic_directions_black_24px"
+                android:drawableTop="@drawable/ic_directions_black_36px"
                 tools:text="250 m"
                 android:id="@+id/main_detail_distance"/>
             </LinearLayout>

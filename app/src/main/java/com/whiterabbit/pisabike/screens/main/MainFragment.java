@@ -172,6 +172,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onResume() {
         super.onResume();
         markerMap.clear();
+        mGoogleMap.
         mMapView.onResume();
         mPresenter.onResume();
     }
