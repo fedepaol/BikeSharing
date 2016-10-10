@@ -1,9 +1,11 @@
 package com.whiterabbit.pisabike.screens.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -223,11 +225,18 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     }
 
+    private float getDistance(Station from, Location l) {
+        Location stationLocation = new Location("point A");
+        stationLocation.setLatitude(from.getLatitude());
+        stationLocation.setLongitude(from.getLongitude());
+        return l.distanceTo(stationLocation) / 1000;
+    }
+
     @Override
     public void displayStationDetail(Station detail, Location current) {
         mDetailName.setText(detail.getName());
         mAddress.setText(detail.getAddress());
-        mDistance.setText("250 m");
+        mDistance.setText(String.format("%.1f km", getDistance(detail, current)));
         mBikes.setText(String.valueOf(detail.getAvailable()));
         mEmptyBikes.setText(String.valueOf(detail.getFree()));
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
@@ -344,5 +353,17 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void stopUpdatingError() {
         mProgress.setError(getString(R.string.main_update_error));
+    }
+
+    @OnClick(R.id.main_directions_fab)
+    public void onNavigateClicked() {
+        mPresenter.onNavigateClicked();
+    }
+
+    @Override
+    public void navigateTo(Station s) {
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("google.navigation:q=%f, %f",
+                                                            s.getLatitude(), s.getLongitude())));
+        startActivity(i);
     }
 }

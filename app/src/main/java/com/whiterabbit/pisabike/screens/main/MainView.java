@@ -25,4 +25,6 @@ public interface MainView {
     void unHighLightStation(Station s);
 
     void stopUpdatingError();
+
+    void navigateTo(Station s);
 }

@@ -15,4 +15,5 @@ public interface MainPresenter {
 
     void onReloadAsked();
 
+    void onNavigateClicked();
 }

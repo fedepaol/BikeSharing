@@ -45,8 +45,6 @@ public class ProgressView extends LinearLayout {
         mHandler = new Handler();
     }
 
-
-
     public void setUpdating(String message) {
         animate().scaleX(0).scaleY(0).setDuration(0);
 

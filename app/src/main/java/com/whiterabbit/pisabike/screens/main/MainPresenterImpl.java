@@ -176,4 +176,9 @@ public class MainPresenterImpl implements MainPresenter {
         askForUpdate();
         mView.hideStationDetail();
     }
+
+    @Override
+    public void onNavigateClicked() {
+        mView.navigateTo(mSelectedStation);
+    }
 }
