@@ -39,4 +39,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/update_view_icon_done"
             app:srcCompat="@drawable/ic_done_white_24px"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/update_view_icon_error"
+            app:srcCompat="@drawable/ic_report_problem_white_24px"/>
 </FrameLayout>
