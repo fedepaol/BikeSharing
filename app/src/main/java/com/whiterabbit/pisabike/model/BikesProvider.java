@@ -36,18 +36,19 @@ public class BikesProvider {
                 .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .observeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .subscribe(l -> {
-                    BriteDatabase.Transaction t = mBrite.newTransaction();
+                        BriteDatabase.Transaction t = mBrite.newTransaction();
                     try {
                         mBrite.delete(PisaBikeDbHelper.STATION_TABLE, null);
                         for (Station s : l) {
                             mBrite.insert(PisaBikeDbHelper.STATION_TABLE, s.getContentValues());
                         }
 
-                        requestSubject.onCompleted();
                         t.markSuccessful();
                     } finally {
                         t.end();
                     }
+
+                    requestSubject.onCompleted();
                 }, requestSubject::onError);
 
         return requestSubject;

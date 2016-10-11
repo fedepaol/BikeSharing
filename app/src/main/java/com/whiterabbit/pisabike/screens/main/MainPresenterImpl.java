@@ -19,23 +19,6 @@ import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 public class MainPresenterImpl implements MainPresenter {
-    private static class StationsLocation {
-        private List<Station> stations;
-        private Location location;
-
-        public StationsLocation(List<Station> stations, Location location) {
-            this.stations = stations;
-            this.location = location;
-        }
-
-        public List<Station> getStations() {
-            return stations;
-        }
-
-        public Location getLocation() {
-            return location;
-        }
-    }
 
     private MainView mView;
     private SchedulersProvider mSchedulersProvider;
@@ -75,25 +58,18 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     private Subscription subscribeStations(boolean hasLocation) {
-        LocationRequest request = LocationRequest.create() //standard GMS LocationRequest
-                .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
-                .setNumUpdates(1)
-                .setInterval(100);
-        final Observable<Location> locationObservable =
-                                        mLocationProvider.getUpdatedLocation(request).first()
-                                        .compose(o -> hasLocation? o : Observable.just(pisaLocation));
 
-        return Observable.zip(mBikesProvider.getStationsObservables(), locationObservable,
-                                        StationsLocation::new)
+        return mBikesProvider.getStationsObservables()
                 .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .observeOn(mSchedulersProvider.provideMainThreadScheduler())
-                .subscribe(s -> this.onStationsChanged(s.getStations(), s.getLocation()));
+                .subscribe(s -> this.onStationsChanged(s));
     }
 
     private Subscription checkLocation() {
         LocationRequest request = LocationRequest.create() //standard GMS LocationRequest
                 .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
-                .setInterval(2000);
+                .setNumUpdates(10)
+                .setInterval(200);
         return mLocationProvider.getUpdatedLocation(request)
                 .subscribe(this::onLocationChanged);
     }
@@ -109,9 +85,8 @@ public class MainPresenterImpl implements MainPresenter {
         mSubscription.add(sub);
     }
 
-    private void onStationsChanged(List<Station> stations, Location l) {
+    private void onStationsChanged(List<Station> stations) {
         mStations = stations;
-        myLocation = l;
         mView.drawStationsOnMap(mStations);
     }
 
