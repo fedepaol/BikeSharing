@@ -101,7 +101,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
+        //setRetainInstance(true);
         setHasOptionsMenu(true);
     }
 
@@ -129,10 +129,11 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         final Bundle mapViewSavedInstanceState = savedInstanceState != null ?
                                                     savedInstanceState.getBundle("mapViewSaveState") : null;
         mMapView.onCreate(mapViewSavedInstanceState);
-        super.onViewCreated(view, savedInstanceState);
 
 
         PisaBikeApplication app = (PisaBikeApplication) getActivity().getApplication();
@@ -145,12 +146,14 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         mDirectionsFab.setScaleX(0);
         mDirectionsFab.setScaleY(0);
+        mDirectionsFab.setEnabled(false);
 
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 if (BottomSheetBehavior.STATE_EXPANDED == newState) {
                     mFab.setEnabled(false);
+                    mDirectionsFab.setEnabled(true);
                     mDirectionsFab.animate().scaleX(1).scaleY(1).setDuration(300).start();
                 } else if (BottomSheetBehavior.STATE_HIDDEN == newState) {
                     mFab.animate().scaleX(1).scaleY(1).setDuration(300).start();
@@ -172,7 +175,6 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onResume() {
         super.onResume();
         markerMap.clear();
-        mGoogleMap.
         mMapView.onResume();
         mPresenter.onResume();
     }
@@ -193,8 +195,6 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Override
     public void drawStationsOnMap(List<Station> stations) {
-        stationsMap.clear();
-
         for (Station s : stations) {
             addMarker(mGoogleMap, s.getLatitude(), s.getLongitude(), s);
         }
@@ -363,8 +363,9 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Override
     public void navigateTo(Station s) {
-        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("google.navigation:q=%f, %f",
-                                                            s.getLatitude(), s.getLongitude())));
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("google.navigation:q=%f,%f",
+                                                            s.getLongitude(),
+                                                            s.getLatitude())));
         startActivity(i);
     }
 }
