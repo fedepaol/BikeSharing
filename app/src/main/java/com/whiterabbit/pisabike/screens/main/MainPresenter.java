@@ -1,12 +1,10 @@
 package com.whiterabbit.pisabike.screens.main;
 
-import com.whiterabbit.pisabike.model.Station;
-
 public interface MainPresenter {
     void onPause();
     void onResume();
     void onMapReady();
-    void onStationClicked(Station s);
+    void onStationClicked(String stationName);
 
     boolean hasLocationPermission();
     void onCameraMoved();

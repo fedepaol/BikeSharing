@@ -1,20 +1,21 @@
 package com.whiterabbit.pisabike.screens.main;
 
 import android.Manifest;
-import android.content.Context;
 import android.location.Location;
 
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.model.LatLng;
 import com.tbruyelle.rxpermissions.RxPermissions;
+import com.whiterabbit.pisabike.Constants;
 import com.whiterabbit.pisabike.model.BikesProvider;
 import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
-import rx.Observable;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
@@ -23,7 +24,7 @@ public class MainPresenterImpl implements MainPresenter {
     private MainView mView;
     private SchedulersProvider mSchedulersProvider;
     private ReactiveLocationProvider mLocationProvider;
-    private List<Station> mStations;
+    private Map<String, Station> mStations;
     private CompositeSubscription mSubscription;
     private Location myLocation;
     private Location pisaLocation = new Location("FAKE");
@@ -44,6 +45,7 @@ public class MainPresenterImpl implements MainPresenter {
         mPermissions = permissions;
         pisaLocation.setLatitude(23.0);
         pisaLocation.setLongitude(24.0);
+        mStations = new HashMap<>();
     }
 
     @Override
@@ -68,8 +70,13 @@ public class MainPresenterImpl implements MainPresenter {
     private Subscription checkLocation() {
         LocationRequest request = LocationRequest.create() //standard GMS LocationRequest
                 .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
-                .setNumUpdates(10)
-                .setInterval(200);
+                .setInterval(2000);
+
+        Location pisaLocation = new Location("point A");
+        pisaLocation.setLatitude(Constants.MY_LATITUDE);
+        pisaLocation.setLongitude(Constants.MY_LONGITUDE);
+
+
         return mLocationProvider.getUpdatedLocation(request)
                 .subscribe(this::onLocationChanged);
     }
@@ -86,8 +93,17 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     private void onStationsChanged(List<Station> stations) {
-        mStations = stations;
-        mView.drawStationsOnMap(mStations);
+        for (Station s : stations) {
+            Station s1 = mStations.get(s.getName());
+            if (s1 == null) {
+                mStations.put(s.getName(), s);
+            } else {
+                s1.setAvailable(s.getAvailable());
+                s1.setBroken(s.getBroken());
+                s1.setFree(s.getFree());
+            }
+        }
+        mView.drawStationsOnMap(stations);
     }
 
     private void onLocationChanged(Location l) {
@@ -110,12 +126,12 @@ public class MainPresenterImpl implements MainPresenter {
         );
 
         askForUpdate();
-        mView.centerCity();
+        mView.centerCity(Constants.MY_LATITUDE, Constants.MY_LONGITUDE);
     }
 
     @Override
-    public void onStationClicked(Station s) {
-        // mView.centerMapToLocation(new LatLng(s.getLatitude(), s.getLongitude()));
+    public void onStationClicked(String stationName) {
+        Station s = mStations.get(stationName);
         mView.displayStationDetail(s, myLocation);
         mView.highLightStation(s);
         if (mSelectedStation != null && s != mSelectedStation) {

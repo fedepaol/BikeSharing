@@ -2,12 +2,14 @@ package com.whiterabbit.pisabike;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
 import com.facebook.stetho.Stetho;
 import com.whiterabbit.pisabike.inject.ApplicationComponent;
 import com.whiterabbit.pisabike.inject.ApplicationModule;
 import com.whiterabbit.pisabike.inject.DaggerApplicationComponent;
 import com.whiterabbit.pisabike.screens.main.MainModule;
 import com.whiterabbit.pisabike.screens.main.MainView;
+import io.fabric.sdk.android.Fabric;
 
 public class PisaBikeApplication extends Application {
     private ApplicationComponent mComponent;
@@ -15,6 +17,7 @@ public class PisaBikeApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         initComponent();
         Stetho.initializeWithDefaults(this);
     }

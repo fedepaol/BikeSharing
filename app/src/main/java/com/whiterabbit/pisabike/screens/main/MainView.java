@@ -17,7 +17,7 @@ public interface MainView {
     void stopUpdating();
     void startUpdating();
     void getMap();
-    void centerCity();
+    void centerCity(float lat, float lon);
     void enableMyLocation();
 
     void highLightStation(Station s);

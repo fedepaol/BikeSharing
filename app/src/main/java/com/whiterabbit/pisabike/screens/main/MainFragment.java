@@ -13,7 +13,6 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,10 +35,11 @@ import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.model.Station;
 
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -90,8 +90,8 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     BottomSheetBehavior bottomSheetBehavior;
 
     private GoogleMap mGoogleMap;
-    private HashMap<String, Station> stationsMap = new HashMap<String, Station>();
-    private HashMap<String, Marker> markerMap = new HashMap<>();
+    private Map<String, String> markerToStationsMap = new HashMap<>();
+    private HashMap<String, Marker> stationToMarkerMap = new HashMap<>();
 
     public static MainFragment createInstance() {
         MainFragment res = new MainFragment();
@@ -135,7 +135,6 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
                                                     savedInstanceState.getBundle("mapViewSaveState") : null;
         mMapView.onCreate(mapViewSavedInstanceState);
 
-
         PisaBikeApplication app = (PisaBikeApplication) getActivity().getApplication();
         DaggerMainComponent.builder()
                 .applicationComponent(app.getComponent())
@@ -158,6 +157,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
                 } else if (BottomSheetBehavior.STATE_HIDDEN == newState) {
                     mFab.animate().scaleX(1).scaleY(1).setDuration(300).start();
                     mFab.setEnabled(true);
+                    mDirectionsFab.setEnabled(false);
                 } else if (BottomSheetBehavior.STATE_SETTLING == newState) {
                     mDirectionsFab.animate().scaleX(0).scaleY(0).setDuration(200).start();
                     mFab.animate().scaleX(0).scaleY(0).setDuration(200).start();
@@ -174,7 +174,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void onResume() {
         super.onResume();
-        markerMap.clear();
+        stationToMarkerMap.clear();
         mMapView.onResume();
         mPresenter.onResume();
     }
@@ -204,16 +204,16 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
                            Station s) {
         Bitmap b = MapMarkerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
 
-        Marker m = markerMap.get(s.getName());
+        Marker m = stationToMarkerMap.get(s.getName());
         LatLng pos = new LatLng(lat, lon);
         BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(b);
         if (m == null) {
             m = map.addMarker(new MarkerOptions().position(pos).icon(icon));
-            markerMap.put(s.getName(), m);
+            stationToMarkerMap.put(s.getName(), m);
         } else {
             m.setIcon(icon);
         }
-        stationsMap.put(m.getId(), s);
+        markerToStationsMap.put(m.getId(), s.getName());
     }
 
     @Override
@@ -245,17 +245,16 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Override
     public void highLightStation(Station s) {
-        Marker m = markerMap.get(s.getName());
+        Marker m = stationToMarkerMap.get(s.getName());
         Bitmap b = MapMarkerFactory.getSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
         m.setIcon(BitmapDescriptorFactory.fromBitmap(b));
     }
 
     @Override
     public void unHighLightStation(Station s) {
-        Marker m = markerMap.get(s.getName());
+        Marker m = stationToMarkerMap.get(s.getName());
         Bitmap b = MapMarkerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
         m.setIcon(BitmapDescriptorFactory.fromBitmap(b));
-
     }
 
     @Override
@@ -272,7 +271,6 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     public void startUpdating() {
         mProgress.setUpdating(getString(R.string.main_updating));
-
     }
 
     @Override
@@ -288,15 +286,16 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
         mPresenter.onMapReady();
+        mGoogleMap.clear();
         mGoogleMap.setOnMarkerClickListener(this);
         mGoogleMap.setOnCameraMoveListener(this);
     }
 
     @Override
-    public void centerCity() {
+    public void centerCity(float lat, float lon) {
         CameraUpdate center =
-                CameraUpdateFactory.newLatLng(new LatLng(43.7228,
-                        10.4017));
+                CameraUpdateFactory.newLatLng(new LatLng(lat,
+                                                         lon));
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
 
         mGoogleMap.moveCamera(center);
@@ -306,8 +305,8 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        Station s = stationsMap.get(marker.getId());
-        mPresenter.onStationClicked(s);
+        String stationName = markerToStationsMap.get(marker.getId());
+        mPresenter.onStationClicked(stationName);
         return true;
     }
 
@@ -363,9 +362,11 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Override
     public void navigateTo(Station s) {
-        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("google.navigation:q=%f,%f",
-                                                            s.getLongitude(),
-                                                            s.getLatitude())));
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format(
+                                                            Locale.US,
+                                                            "google.navigation:q=%f,%f",
+                s.getLatitude(),
+                s.getLongitude())));
         startActivity(i);
     }
 }
