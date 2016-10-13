@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.model.Station;
+import com.whiterabbit.pisabike.ui.MapMarkerFactory;
 
 
 import java.util.HashMap;
@@ -56,6 +57,8 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     MainPresenter mPresenter;
     @Inject
     Context mContext;
+    @Inject
+    MapMarkerFactory markerFactory;
 
     @Bind(R.id.main_map)
     MapView mMapView;
@@ -101,7 +104,6 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setRetainInstance(true);
         setHasOptionsMenu(true);
     }
 
@@ -175,6 +177,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onResume() {
         super.onResume();
         stationToMarkerMap.clear();
+        markerToStationsMap.clear();
         mMapView.onResume();
         mPresenter.onResume();
     }
@@ -202,7 +205,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     private void addMarker(GoogleMap map, double lat, double lon,
                            Station s) {
-        Bitmap b = MapMarkerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
+        Bitmap b = markerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
 
         Marker m = stationToMarkerMap.get(s.getName());
         LatLng pos = new LatLng(lat, lon);
@@ -246,14 +249,14 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void highLightStation(Station s) {
         Marker m = stationToMarkerMap.get(s.getName());
-        Bitmap b = MapMarkerFactory.getSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
+        Bitmap b = markerFactory.getSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
         m.setIcon(BitmapDescriptorFactory.fromBitmap(b));
     }
 
     @Override
     public void unHighLightStation(Station s) {
         Marker m = stationToMarkerMap.get(s.getName());
-        Bitmap b = MapMarkerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
+        Bitmap b = markerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
         m.setIcon(BitmapDescriptorFactory.fromBitmap(b));
     }
 
@@ -363,7 +366,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void navigateTo(Station s) {
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format(
                                                             Locale.US,
-                                                            "google.navigation:q=%f,%f",
+                                                            "google.navigation:q=%f,%f&mode=w",
                 s.getLatitude(),
                 s.getLongitude())));
         startActivity(i);

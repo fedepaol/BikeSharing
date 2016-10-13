@@ -12,6 +12,7 @@ import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
+import com.whiterabbit.pisabike.ui.MapMarkerFactory;
 
 import javax.inject.Singleton;
 
@@ -30,6 +31,7 @@ public interface ApplicationComponent {
     SchedulersProvider getSchedulers();
     BriteDatabase getBriteDatabase();
     RxPermissions getPermissions();
+    MapMarkerFactory getMarkerFactory();
 }
 
 

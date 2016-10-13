@@ -13,6 +13,7 @@ import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.model.PisaBikeDbHelper;
 import com.whiterabbit.pisabike.schedule.RealSchedulersProvider;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
+import com.whiterabbit.pisabike.ui.MapMarkerFactory;
 
 import javax.inject.Singleton;
 
@@ -74,5 +75,11 @@ public class ApplicationModule {
     @Singleton
     RxPermissions provideRxPermissions(Context c) {
         return RxPermissions.getInstance(c);
+    }
+
+    @Provides
+    @Singleton
+    MapMarkerFactory providerMarkerFactory() {
+        return new MapMarkerFactory();
     }
 }

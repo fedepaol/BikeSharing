@@ -1,4 +1,4 @@
-package com.whiterabbit.pisabike.screens.main;
+package com.whiterabbit.pisabike.ui;
 
 
 import android.content.Context;
@@ -11,12 +11,35 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
+import android.support.v4.util.LruCache;
 
 import com.whiterabbit.pisabike.R;
 
 
 public class MapMarkerFactory {
-    public static Bitmap getMapMarker(long freeBikes, long allBikes, Context context, boolean selected) {
+    private LruCache<String, Bitmap> mMemoryCache;
+
+    public MapMarkerFactory() {
+        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+        final int cacheSize = maxMemory / 8;
+        mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
+            @Override
+            protected int sizeOf(String key, Bitmap bitmap) {
+
+                return bitmap.getByteCount() / 1024;
+            }
+        };
+    }
+
+    public Bitmap getMapMarker(long freeBikes, long allBikes, Context context, boolean selected) {
+        String cacheKey = String.valueOf(freeBikes) + "|" + String.valueOf(allBikes)
+                                                    + (selected ? "Y" : "N");
+
+        Bitmap res = mMemoryCache.get(cacheKey);
+        if (res != null) {
+            return res;
+        }
+
         Resources resources = context.getResources();
         float scale = resources.getDisplayMetrics().density;
 
@@ -62,14 +85,16 @@ public class MapMarkerFactory {
                             90, 360 * ratio, false, arcPaint);
         }
 
+        mMemoryCache.put(cacheKey, bitmap);
+
         return bitmap;
     }
 
-    public static Bitmap getSelectedMapMarker(long freeBikes, long allBikes, Context context) {
+    public Bitmap getSelectedMapMarker(long freeBikes, long allBikes, Context context) {
         return getMapMarker(freeBikes, allBikes, context, true);
     }
 
-    public static Bitmap getNotSelectedMapMarker(long freeBikes, long allBikes, Context context) {
+    public Bitmap getNotSelectedMapMarker(long freeBikes, long allBikes, Context context) {
         return getMapMarker(freeBikes, allBikes, context, false);
     }
 
