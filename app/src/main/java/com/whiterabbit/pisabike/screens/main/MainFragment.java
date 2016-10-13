@@ -286,13 +286,12 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
         mPresenter.onMapReady();
-        mGoogleMap.clear();
         mGoogleMap.setOnMarkerClickListener(this);
         mGoogleMap.setOnCameraMoveListener(this);
     }
 
     @Override
-    public void centerCity(float lat, float lon) {
+    public void centerCity(double lat, double lon) {
         CameraUpdate center =
                 CameraUpdateFactory.newLatLng(new LatLng(lat,
                                                          lon));

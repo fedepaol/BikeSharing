@@ -14,6 +14,7 @@ import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 import rx.Subscription;
@@ -72,13 +73,23 @@ public class MainPresenterImpl implements MainPresenter {
                 .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
                 .setInterval(2000);
 
-        Location pisaLocation = new Location("point A");
-        pisaLocation.setLatitude(Constants.MY_LATITUDE);
-        pisaLocation.setLongitude(Constants.MY_LONGITUDE);
-
-
         return mLocationProvider.getUpdatedLocation(request)
                 .subscribe(this::onLocationChanged);
+    }
+
+    private Subscription centerLocation() {
+        LocationRequest request = LocationRequest.create() //standard GMS LocationRequest
+                .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
+                .setInterval(200)
+                .setNumUpdates(1);
+
+        return mLocationProvider.getUpdatedLocation(request)
+                .timeout(4, TimeUnit.SECONDS)
+                .first()
+                .observeOn(mSchedulersProvider.provideMainThreadScheduler())
+                .subscribe(l -> mView.centerCity(l.getLatitude(), l.getLongitude()),
+                           e -> mView.centerCity(Constants.MY_LATITUDE, Constants.MY_LONGITUDE));
+
     }
 
     private void askForUpdate() {
@@ -119,14 +130,16 @@ public class MainPresenterImpl implements MainPresenter {
                     hasPermission = granted;
                     if (granted) {
                         mSubscription.add(checkLocation());
+                        mSubscription.add(centerLocation());
                         mView.enableMyLocation();
+                    } else {
+                        mView.centerCity(Constants.MY_LATITUDE, Constants.MY_LONGITUDE);
                     }
                     mSubscription.add(subscribeStations(false));
                 }
         );
 
         askForUpdate();
-        mView.centerCity(Constants.MY_LATITUDE, Constants.MY_LONGITUDE);
     }
 
     @Override
