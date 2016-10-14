@@ -20,6 +20,7 @@ package com.whiterabbit.pisabike.screens.main;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.model.BikesProvider;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
+import com.whiterabbit.pisabike.storage.PrefsStorage;
 
 import dagger.Module;
 import dagger.Provides;
@@ -42,8 +43,9 @@ public class MainModule {
                                               SchedulersProvider schedulersProvider,
                                               BikesProvider bikesProvider,
                                               ReactiveLocationProvider locationProvider,
-                                              RxPermissions permissions){
+                                              RxPermissions permissions,
+                                              PrefsStorage storage){
         return new MainPresenterImpl(v, schedulersProvider, bikesProvider,
-                                     locationProvider, permissions);
+                                     locationProvider, permissions, storage);
     }
 }

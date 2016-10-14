@@ -11,6 +11,7 @@ import com.whiterabbit.pisabike.Constants;
 import com.whiterabbit.pisabike.model.BikesProvider;
 import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
+import com.whiterabbit.pisabike.storage.PrefsStorage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,12 +36,14 @@ public class MainPresenterImpl implements MainPresenter {
     BikesProvider mBikesProvider;
     private boolean hasPermission;
     private Station mSelectedStation;
+    private PrefsStorage mStorage;
 
     public MainPresenterImpl(MainView view,
                              SchedulersProvider schedulersProvider,
                              BikesProvider bikesProvider,
                              ReactiveLocationProvider locationProvider,
-                             RxPermissions permissions) {
+                             RxPermissions permissions,
+                             PrefsStorage storage) {
         mView = view;
         mSchedulersProvider = schedulersProvider;
         mLocationProvider = locationProvider;
@@ -49,6 +52,7 @@ public class MainPresenterImpl implements MainPresenter {
         pisaLocation.setLatitude(23.0);
         pisaLocation.setLongitude(24.0);
         mStations = new HashMap<>();
+        mStorage = storage;
     }
 
     @Override
@@ -103,11 +107,22 @@ public class MainPresenterImpl implements MainPresenter {
         mView.startUpdating();
         final Subscription sub =
                 mBikesProvider.updateBikes().subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
-                      .observeOn(mSchedulersProvider.provideMainThreadScheduler())
-                      .subscribe(s -> {},
-                                 e -> mView.stopUpdatingError(),
-                                 () -> mView.stopUpdating());
+                        .observeOn(mSchedulersProvider.provideMainThreadScheduler())
+                        .subscribe(s -> {
+                                },
+                                e -> mView.stopUpdatingError(),
+                                () -> mView.stopUpdating());
         mSubscription.add(sub);
+        mView.stopUpdating();
+        long now = System.currentTimeMillis() / 1000;
+        mStorage.setLastUpdate(now);
+    }
+
+    private void askForUpdateIfNeeded() {
+        long now = System.currentTimeMillis() / 1000;
+        if (mStorage.getLastUpdate() + 60 > now) {
+            askForUpdate();
+        }
     }
 
     private void onStationsChanged(List<Station> stations) {
@@ -146,7 +161,7 @@ public class MainPresenterImpl implements MainPresenter {
                 }
         );
 
-        askForUpdate();
+        askForUpdateIfNeeded();
     }
 
     @Override

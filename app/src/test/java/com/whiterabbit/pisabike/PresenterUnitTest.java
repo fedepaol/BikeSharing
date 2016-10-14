@@ -6,6 +6,7 @@ import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.screens.main.MainPresenter;
 import com.whiterabbit.pisabike.screens.main.MainPresenterImpl;
 import com.whiterabbit.pisabike.screens.main.MainView;
+import com.whiterabbit.pisabike.storage.PrefsStorage;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +24,7 @@ public class PresenterUnitTest {
     BikesProvider mockBikesProvider;
     ReactiveLocationProvider mockLocation;
     RxPermissions mockPermissions;
+    PrefsStorage mockStorage;
 
     @Before
     public void setup() {
@@ -30,7 +32,9 @@ public class PresenterUnitTest {
                 new FakeSchedulersProvider(),
                 mockBikesProvider,
                 mockLocation,
-                mockPermissions);
+                mockPermissions,
+                mockStorage
+                );
     }
 
     @Test
