@@ -176,8 +176,6 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void onResume() {
         super.onResume();
-        /*stationToMarkerMap.clear();
-        markerToStationsMap.clear();*/
         mMapView.onResume();
         mPresenter.onResume();
     }
@@ -279,7 +277,6 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void getMap() {
         if (mGoogleMap != null) {
-            //mGoogleMap.clear();
             mPresenter.onMapReady();
         } else {
             mMapView.getMapAsync(this);

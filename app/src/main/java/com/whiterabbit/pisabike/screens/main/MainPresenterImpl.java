@@ -3,6 +3,7 @@ package com.whiterabbit.pisabike.screens.main;
 import android.Manifest;
 import android.location.Location;
 
+import com.google.android.gms.common.data.DataBufferObserver;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.model.LatLng;
 import com.tbruyelle.rxpermissions.RxPermissions;
@@ -17,6 +18,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
+import rx.Observable;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
@@ -73,7 +75,12 @@ public class MainPresenterImpl implements MainPresenter {
                 .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
                 .setInterval(2000);
 
-        return mLocationProvider.getUpdatedLocation(request)
+        Location mCityLocation = new Location("LOCAL");
+        mCityLocation.setLatitude(Constants.MY_LATITUDE);
+        mCityLocation.setLongitude(Constants.MY_LONGITUDE);
+
+        return Observable.just(mCityLocation).concatWith(
+                mLocationProvider.getUpdatedLocation(request))
                 .subscribe(this::onLocationChanged);
     }
 
