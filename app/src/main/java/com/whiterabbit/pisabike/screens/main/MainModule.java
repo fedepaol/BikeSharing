@@ -39,13 +39,12 @@ public class MainModule {
     }
 
     @Provides
-    public MainPresenter provideMainPresenter(MainView v,
-                                              SchedulersProvider schedulersProvider,
+    public MainPresenter provideMainPresenter(SchedulersProvider schedulersProvider,
                                               BikesProvider bikesProvider,
                                               ReactiveLocationProvider locationProvider,
                                               RxPermissions permissions,
                                               PrefsStorage storage){
-        return new MainPresenterImpl(v, schedulersProvider, bikesProvider,
+        return new MainPresenterImpl(schedulersProvider, bikesProvider,
                                      locationProvider, permissions, storage);
     }
 }

@@ -3,7 +3,6 @@ package com.whiterabbit.pisabike.screens.main;
 import android.Manifest;
 import android.location.Location;
 
-import com.google.android.gms.common.data.DataBufferObserver;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.model.LatLng;
 import com.tbruyelle.rxpermissions.RxPermissions;
@@ -38,13 +37,11 @@ public class MainPresenterImpl implements MainPresenter {
     private Station mSelectedStation;
     private PrefsStorage mStorage;
 
-    public MainPresenterImpl(MainView view,
-                             SchedulersProvider schedulersProvider,
+    public MainPresenterImpl(SchedulersProvider schedulersProvider,
                              BikesProvider bikesProvider,
                              ReactiveLocationProvider locationProvider,
                              RxPermissions permissions,
                              PrefsStorage storage) {
-        mView = view;
         mSchedulersProvider = schedulersProvider;
         mLocationProvider = locationProvider;
         mBikesProvider = bikesProvider;
@@ -56,13 +53,16 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void onPause() {
+    public void onViewDetached() {
         if (mSubscription != null)
             mSubscription.unsubscribe();
+
+        mView = null;
     }
 
     @Override
-    public void onResume() {
+    public void onViewAttached(MainView view, boolean isNew) {
+        mView = view;
         mView.getMap();
     }
 
@@ -144,18 +144,23 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void onMapReady() {
+    public void onMapReady(boolean mustCenter) {
         mSubscription = new CompositeSubscription();
         mPermissions.request(Manifest.permission.ACCESS_COARSE_LOCATION,
                              Manifest.permission.ACCESS_FINE_LOCATION).subscribe(
                 granted -> {
                     hasPermission = granted;
                     if (granted) {
+                        if (mustCenter) {
+                            mSubscription.add(centerLocation());
+                        }
                         mSubscription.add(checkLocation());
-                        mSubscription.add(centerLocation());
+
                         mView.enableMyLocation();
                     } else {
-                        mView.centerCity(Constants.MY_LATITUDE, Constants.MY_LONGITUDE);
+                        if (mustCenter) {
+                            mView.centerCity(Constants.MY_LATITUDE, Constants.MY_LONGITUDE);
+                        }
                     }
                     mSubscription.add(subscribeStations(false));
                 }

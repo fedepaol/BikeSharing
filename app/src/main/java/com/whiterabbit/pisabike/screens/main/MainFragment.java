@@ -95,6 +95,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     private GoogleMap mGoogleMap;
     private Map<String, String> markerToStationsMap = new HashMap<>();
     private HashMap<String, Marker> stationToMarkerMap = new HashMap<>();
+    private boolean isNew;
 
     public static MainFragment createInstance() {
         MainFragment res = new MainFragment();
@@ -105,6 +106,11 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        PisaBikeApplication app = (PisaBikeApplication) getActivity().getApplication();
+        DaggerMainComponent.builder()
+                .applicationComponent(app.getComponent())
+                .mainModule(app.getMainModule(this))
+                .build().inject(this);
     }
 
     @Override
@@ -132,16 +138,11 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        isNew = (savedInstanceState == null);
 
         final Bundle mapViewSavedInstanceState = savedInstanceState != null ?
                                                     savedInstanceState.getBundle("mapViewSaveState") : null;
         mMapView.onCreate(mapViewSavedInstanceState);
-
-        PisaBikeApplication app = (PisaBikeApplication) getActivity().getApplication();
-        DaggerMainComponent.builder()
-                .applicationComponent(app.getComponent())
-                .mainModule(app.getMainModule(this))
-                .build().inject(this);
 
         bottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
@@ -177,13 +178,13 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onResume() {
         super.onResume();
         mMapView.onResume();
-        mPresenter.onResume();
+        mPresenter.onViewAttached(this, false);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mPresenter.onPause();
+        mPresenter.onViewDetached();
         mMapView.onPause();
     }
 
@@ -277,7 +278,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void getMap() {
         if (mGoogleMap != null) {
-            mPresenter.onMapReady();
+            mPresenter.onMapReady(false);
         } else {
             mMapView.getMapAsync(this);
         }
@@ -286,7 +287,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-        mPresenter.onMapReady();
+        mPresenter.onMapReady(isNew); // centering only if the view is recreated, otherwise leave where it was
         mGoogleMap.setOnMarkerClickListener(this);
         mGoogleMap.setOnCameraMoveListener(this);
     }

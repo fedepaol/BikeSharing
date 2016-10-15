@@ -1,9 +1,9 @@
 package com.whiterabbit.pisabike.screens.main;
 
 public interface MainPresenter {
-    void onPause();
-    void onResume();
-    void onMapReady();
+    void onViewDetached();
+    void onViewAttached(MainView view, boolean isNew);
+    void onMapReady(boolean mustCenter);
     void onStationClicked(String stationName);
 
     boolean hasLocationPermission();
