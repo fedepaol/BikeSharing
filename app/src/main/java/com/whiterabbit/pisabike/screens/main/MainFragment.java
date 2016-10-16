@@ -37,6 +37,7 @@ import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.ui.MapMarkerFactory;
 
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -51,7 +52,10 @@ import butterknife.OnClick;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class MainFragment extends Fragment implements MainView, OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnCameraMoveListener {
+public class MainFragment extends Fragment implements MainView, OnMapReadyCallback,
+                                                      GoogleMap.OnMarkerClickListener,
+                                                      GoogleMap.OnCameraMoveStartedListener,
+                                                      GoogleMap.OnCameraIdleListener {
 
     @Inject
     MainPresenter mPresenter;
@@ -289,7 +293,8 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         mGoogleMap = googleMap;
         mPresenter.onMapReady(isNew); // centering only if the view is recreated, otherwise leave where it was
         mGoogleMap.setOnMarkerClickListener(this);
-        mGoogleMap.setOnCameraMoveListener(this);
+        mGoogleMap.setOnCameraMoveStartedListener(this);
+        mGoogleMap.setOnCameraIdleListener(this);
     }
 
     @Override
@@ -342,8 +347,14 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     }
 
     @Override
-    public void onCameraMove() {
+    public void onCameraMoveStarted(int i) {
         mPresenter.onCameraMoved();
+    }
+
+
+    @Override
+    public void onCameraIdle() {
+        mPresenter.onCameraIdle();
     }
 
     @OnClick(R.id.fab)
@@ -370,4 +381,5 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
                 s.getLongitude())));
         startActivity(i);
     }
+
 }

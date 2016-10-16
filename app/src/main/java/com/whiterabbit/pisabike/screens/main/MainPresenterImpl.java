@@ -36,6 +36,7 @@ public class MainPresenterImpl implements MainPresenter {
     private boolean hasPermission;
     private Station mSelectedStation;
     private PrefsStorage mStorage;
+    private boolean mMovingToMarker;
 
     public MainPresenterImpl(SchedulersProvider schedulersProvider,
                              BikesProvider bikesProvider,
@@ -71,7 +72,7 @@ public class MainPresenterImpl implements MainPresenter {
         return mBikesProvider.getStationsObservables()
                 .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .observeOn(mSchedulersProvider.provideMainThreadScheduler())
-                .subscribe(s -> this.onStationsChanged(s));
+                .subscribe(this::onStationsChanged);
     }
 
     private Subscription checkLocation() {
@@ -174,10 +175,14 @@ public class MainPresenterImpl implements MainPresenter {
         Station s = mStations.get(stationName);
         mView.displayStationDetail(s, myLocation);
         mView.highLightStation(s);
+
         if (mSelectedStation != null && s != mSelectedStation) {
             mView.unHighLightStation(mSelectedStation);
         }
         mSelectedStation = s;
+        mMovingToMarker = true;
+        mView.centerMapToLocation(new LatLng(mSelectedStation.getLatitude(),
+                         mSelectedStation.getLongitude()));
     }
 
     @Override
@@ -187,11 +192,19 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onCameraMoved() {
-        mView.hideStationDetail();
-        if (mSelectedStation != null) {
-            mView.unHighLightStation(mSelectedStation);
-            mSelectedStation = null;
+        if (!mMovingToMarker) {
+            mView.hideStationDetail();
+
+            if (mSelectedStation != null) {
+                mView.unHighLightStation(mSelectedStation);
+                mSelectedStation = null;
+            }
         }
+    }
+
+    @Override
+    public void onCameraIdle() {
+        mMovingToMarker = false;
     }
 
     @Override
