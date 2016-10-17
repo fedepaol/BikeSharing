@@ -1,0 +1,1508 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1"><title>
+	Stazioni
+</title><link rel="stylesheet" type="text/css" /><link href="&lt;%=GetMainStyleSheet()%>" rel="stylesheet" type="text/css" /><link href="css/style.css" media="screen" rel="stylesheet" type="text/css" /><link href="css/slide.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+<style type="text/css">
+    .RadListBox_Outlook .rlbGroup
+{
+    border: 0;
+    background: #FFF;
+}
+.RadListBox_Outlook .rlbGroup .rlbHovered
+{
+	background: #fff;
+}
+.RadListBox_Outlook .rlbGroup .rlbSelected
+{
+	background: #fff;
+}
+</style>    
+    <link rel="stylesheet" type="text/css" /><link href="css/slide.css" media="screen" rel="stylesheet" type="text/css" />
+        <script type="text/javascript">
+        function process(v, k, on) {
+            return alphac(v, k, md5(k), on);
+        }
+    </script>
+<link href="/WebResource.axd?d=-rs-NKwIjxlNH3CNk456R17un9qFIeg_BEjsY0lKlEHp57e9p93SqGBQVAjrcwrqql7yplz7eCg6DRe_7f2O_0LoAbWby6wYXETxFOLh_X42mLXEWe08P-P4-PozZBnBmyddGRg0eKQ7FPY0OvIAFg2&amp;t=633989781480000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=Fu9QRYUP-AC1mZxwVAEmlBzuJMUtEqxJpHl9JCvRYJvEGlu_2l-Yo1mmwkcXr3XFLecyop3so5fkjl6rBgZz0ovfefskmlH5yPcYfZZ-Fpk7xXfPJjQR5ijnbEnLwjhJ0k-hj0qJHJrQonovXkTHOVSibkDInYzgRDR4Yy3XiIk1&amp;t=633989781480000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=CZ6qzZnftPkgPCbyBrx2J0X0emjx35e9Ael1J06B9e3IduqZL2wzP6lvCDcfh8g6N7W-w4uItwh0W8j194eDMxM9Q7Kw65cWAUY-dOGnDc1V_s8_MVHB91DYQyzGtJ-inZROUvKuBz9Lqbw7mfbD4Q2&amp;t=633989781480000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=HuLkXFKbdCaylV1DoHSd-8kICZWVERJK9ThD9JUxNIiTGFxSkZkNZdPU4rrjuUVxYbYWzbpWfzDxNy8h97RuT2MankqhysDI3c2b7PY-fQXv3oJHHR-KfYIg0EwiDjmxQRPex_4NGGv6oFl0Kwkgak_2Dkf0TQNdXzXARR7c0x41&amp;t=633989781480000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=ftBp2xSJxb2DJRS259U05afLAEDLJW9WnPgEWlfdD0dsrHP0jXS2p7qAMp6jdtQpMVD7m2rCVTyqXGcNCLMoN7qZVgIOF6Wg7qZFOgHnQTitOClLg-vSURGWTWWO5OiWpB3z6aKtAFVrGdtq9VpWfw2&amp;t=633989781480000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=RmJbmnZwT5O6wd14rjwnwUa3LspDzOxP0_3LbAJRt3Tnj68-pdgnuvAXSU7HOxs007PgKuwtKCtCefQI8kgfWOyZG4OcK49VXvayuMe2so9qtOIjhhuRUM2v_7yMdofC5HQ6LIlZ82etmKoASJIoFfPutHeaFOxS1UkhDNdbNG81&amp;t=633989781480000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=7O0g9h1WGUUfeldNk0N_lNH9g66nONNt47lem7Gp1EVbajXNKqNPnaW-b00HXyERohprGc5UYtFmH8wneL1u9W05-v5w7fkNchPZm5-DNEUHuHX_7GGbL7GdK0geAYfHptzlHHUCfKhqQyEHkJmSMw2&amp;t=633989781480000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=_aUHB4cvLVboAkWkMwDPvICgr3gnpRZYS6a8ck1oYQaT8BGA-5Js_bpwswqBtKOALDLqW_u4F-WOUw7hoxyseuukArHp5FO7ZNtYk6H_LtItC0DpxYoFaU6PXiFoSbdirQMc1rfUJnBqJ4kFtl-b8p_MUDKzuwnXpIINRtA2vZ01&amp;t=633989781480000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=AdKvWLFkZ9ro4heC7Nh4-qtLMVYvBRxD092DOE5uv30Xb_ev2AMnfPDNeRdRs5IKa9_nb0Y68-eCxBQb_ZZljjgbOfgqg3RmD9RKh0bWCJkImLUoK-XJXq-W9NuyQTKWmMqPn-gghBUVCMpnDObT-g2&amp;t=633989781480000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=xIqOaoOI5Z6hQLsaqAU7KKhRByasRFViydcobZeDwLfMSZIkEpHYmBwII0I2e7Ju_Gp2OY0yXLrq2HecCyYywl6bL_gwbbYHt9PdUc3fM3jbna_E5-mWsLQvg3jSoHHrJ8jI_NlOLubiy5bgIX6m1-gvv-t-TlYQDJTLD52Kk2I1&amp;t=633989781480000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /></head>
+
+
+<script type="text/javascript">
+	    var map;
+	    var sita_x;
+	    var sita_y;
+	    var sita_n;
+	    var sita_p;
+	    var sita_s;
+	    var sita_h;
+	    var sita_o;
+	    var d1 = '|';
+    	var msgDisponibili;
+    	var msgPostiLiberi;
+    	var msgInErrore;
+    	var msgDisponibile;
+    	var msgPostoLibero;
+    	var msgInErroreSingolo;    	
+    	var msgStatoManutenzione;
+    	var msgStatoErrore;
+        var msgStatoInstallazione;
+        var msgStatoDefinizione;            
+        var msgStatoNormale;	
+	    var mapMinX = 1000;
+	    var mapMaxX = 0;
+	    var mapMinY = 1000;
+	    var mapMaxY = 0;
+	    var mapMarkers = new Array();
+	    var varVirtualPath;
+	    var varVirtualGoogle;
+	    var varVotaLaStazione;
+	    var varVotoMedio;
+	    var varVotazioni;
+	    var varVotazione;
+	    var varSu5Con;
+	    
+         function onSelectedIndexChanged(sender, eventArgs)
+            {
+                var item = eventArgs.get_item();
+                pGMapClick(sender.get_value());
+            }
+            
+        function SetDim(o, img){
+            o.height = ScaleH(img,130,130);
+            o.width = ScaleW(img,130,130);
+        }
+        
+        function SetDimL(o, img){
+            o.height = ScaleH(img,80,80);
+            o.width = ScaleW(img,80,80);
+        }
+        
+        function ScaleH(img, width, height)
+        {
+            var object = document.createElement("IMG");
+            object.src = img;
+            
+            var hRatio = object.height/height;
+            var wRatio = object.width/width;
+
+            if (object.width > width && object.height > height)
+            {
+                var ratio = (hRatio>=wRatio ? hRatio:wRatio);
+                object.width = (object.width /ratio);
+                object.height = (object.height /ratio);
+            }
+            else
+            {
+                if (object.width > width)
+                {
+                    object.width = (object.width /wRatio);
+                    object.height = (object.height /wRatio);
+                }
+                else
+                {
+                    if (object.height > height)
+                    {
+                        object.width = (object.width /hRatio);
+                        object.height = (object.height /hRatio);
+                    }
+                }
+            }
+            return object.height;
+        }
+        
+        function ScaleW(img, width, height)
+        {
+            var object = document.createElement("IMG");
+            object.src = img;
+            
+            var hRatio = object.height/height;
+            var wRatio = object.width/width;
+
+            if (object.width > width && object.height > height)
+            {
+                var ratio = (hRatio>=wRatio ? hRatio:wRatio);
+                object.width = (object.width /ratio);
+                object.height = (object.height /ratio);
+            }
+            else
+            {
+                if (object.width > width)
+                {
+                    object.width = (object.width /wRatio);
+                    object.height = (object.height /wRatio);
+                }
+                else
+                {
+                    if (object.height > height)
+                    {
+                        object.width = (object.width /hRatio);
+                        object.height = (object.height /hRatio);
+                    }
+                }
+            }
+            return object.width;
+        }
+</script>
+<body>
+    <form method="post" action="./frmLeStazioni.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="RadScriptManager1_TSM" id="RadScriptManager1_TSM" value="" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTc3MzI1MTIzMQ9kFgICAw9kFhoCAw8PFgIeF0VuYWJsZUFqYXhTa2luUmVuZGVyaW5naGRkAgcPZBYIAgEPFCsAAmRkFgRmDw8WBB4IQ3NzQ2xhc3MFCXJjYkhlYWRlch4EXyFTQgICZGQCAQ8PFgQfAQUJcmNiRm9vdGVyHwICAmRkAgsPD2QWAh4HT25DbGljawUScmV0dXJuIENoZWNrVXNlcigpZAISDw9kFgIfAwUXcmV0dXJuIENoZWNrVXNlckFkbWluKClkAhUPFgIeBFRleHQFBkFjY2VkaWQCCQ9kFhACAQ8PFgIeC05hdmlnYXRlVXJsBQ8uLi9EZWZhdWx0LmFzcHhkZAIDDw8WAh8FBQ8uLi9mcm1Db3NlLmFzcHhkZAIFDw8WAh8FBRUuLi9mcm1MZVN0YXppb25pLmFzcHhkZAIHDw8WAh8FBRMuLi9mcm1BYmJvbmF0aS5hc3B4ZGQCCQ8PFgIfBQUeLi4vZnJtUmVnaXN0cmF6aW9uZVV0ZW50ZS5hc3B4ZGQCCw8PFgIfBQUSLi4vZnJtU3BvbnNvci5hc3B4ZGQCDQ8PFgIfBQUTLi4vZnJtQ29udGF0dGkuYXNweGRkAg8PDxYCHgdWaXNpYmxlaGRkAgsPZBYIZg8WAh4FY2xhc3MFBkJveFRvcGQCAQ8PZBYCHwcFCUJveE1pZGRsZWQCAg8WAh8HBQlCb3hCb3R0b21kAgQPFCsAAg8WBh8EBQRQaXNhHhNjYWNoZWRTZWxlY3RlZFZhbHVlZB8AaGQPFCsAARQrAAIPFgYfBAUEUGlzYR4FVmFsdWUFAzE0NB4IU2VsZWN0ZWRnZGQPFCsBAWYWAQV4VGVsZXJpay5XZWIuVUkuUmFkQ29tYm9Cb3hJdGVtLCBUZWxlcmlrLldlYi5VSSwgVmVyc2lvbj0yMDA5LjMuMTMxNC4zNSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj0xMjFmYWU3ODE2NWJhM2Q0FgZmDw8WBB8BBQlyY2JIZWFkZXIfAgICZGQCAQ8PFgQfAQUJcmNiRm9vdGVyHwICAmRkAgIPDxYGHwQFBFBpc2EfCQUDMTQ0HwpnZGQCDQ8WAh4Dc3JjBRxjc3MvUG9ydGFsXzE3L0xlZnRDb211bmkuaHRtZAIPD2QWBmYPFgIf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AQAAAB8CAoACZBQrAAEPFgQfDRsAAAAAAABuQAEAAAAfAgKAAmQPFCsBGGZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZhYBBXdUZWxlcmlrLldlYi5VSS5SYWRSb3RhdG9ySXRlbSwgVGVsZXJpay5XZWIuVUksIFZlcnNpb249MjAwOS4zLjEzMTQuMzUsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49MTIxZmFlNzgxNjViYTNkNBYwZg8PFgQfDRsAAAAAAABuQAEAAAAfAgKAAmQWDGYPFQIBMDRodHRwOi8vY29tdW5pY2FyZUltYWdlcy50b2Jpa2UuaXQvTnVtZXJpL0NpdHlNb3ZlLzFOZAIBDw8WAh8EBQM5MjJkZAIDDw8WAh8EBQlBZXJvcG9ydG9kZAIFDw8WAh8EBRNQLmxlIEMuIETigJlBc2NhbmlvZGQCBw8PFgIfBAUkMSBiaWNpIGxpYmVyYTxicj45IHBvc3RpIGRpc3BvbmliaWxpZGQCCQ8PFgIfBAUEVHJ1ZWRkAgEPDxYEHw0bAAAAAAAAbkABAAAAHwICgAJkFgxmDxUCATE0aHR0cDovL2NvbXVuaWNhcmVJbWFnZXMudG9iaWtlLml0L051bWVyaS9DaXR5TW92ZS8yTmQCAQ8PFgIfBAUDOTIzZGQCAw8PFgIfBAUNU3RhemlvbmUgRi5TLmRkAgUPDxYCHwQFDlAuenphIFN0YXppb25lZGQCBw8PFgIfBAUmMTQgYmljaSBsaWJlcmU8YnI+MTMgcG9zdGkgZGlzcG9uaWJpbGlkZAIJDw8WAh8EBQRUcnVlZGQCAg8PFgQfDRsAAAAAAABuQAEAAAAfAgKAAmQWDGYPFQIBMjRodHRwOi8vY29tdW5pY2FyZUltYWdlcy50b2Jpa2UuaXQvTnVtZXJpL0NpdHlNb3ZlLzNOZAIBDw8WAh8EBQM5MjRkZAIDDw8WAh8EBRJDb211bmUgUGFsYXp6byBCbHVkZAIFDw8WAh8EBQtWaWEgVG9zZWxsaWRkAgcPDxYCHwQFJTAgYmljaSBsaWJlcmU8YnI+MTUgcG9zdGkgZGlzcG9uaWJpbGlkZAIJDw8WAh8EBQRUcnVlZGQCAw8PFgQfDRsAAAAAAABuQAEAAAAfAgKAAmQWDGYPFQIBMzRodHRwOi8vY29tdW5pY2FyZUltYWdlcy50b2Jpa2UuaXQvTnVtZXJpL0NpdHlNb3ZlLzROZAIBDw8WAh8EBQM5MjVkZAIDDw8WAh8EBRBUZWF0cm8gVHJpYnVuYWxlZGQCBQ8PFgIfBAUMVmlhIFBhbGVzdHJvZGQCBw8PFgIfBAU0NSBiaWNpIGxpYmVyZTxicj42IHBvc3RpIGRpc3BvbmliaWxpPGJyPjEgbm9uIGF0dGl2YWRkAgkPDxYCHwQFBFRydWVkZAIEDw8WBB8NGwAAAAAAAG5AAQAAAB8CAoACZBYMZg8VAgE0NGh0dHA6Ly9jb211bmljYXJlSW1hZ2VzLnRvYmlrZS5pdC9OdW1lcmkvQ2l0eU1vdmUvNU5kAgEPDxYCHwQFAzkyNmRkAgMPDxYCHwQFDUJvcmdvIFN0cmV0dG9kZAIFDw8WAh8EBQtWaWEgT2JlcmRhbmRkAgcPDxYCHwQFJDEgYmljaSBsaWJlcmE8YnI+OCBwb3N0aSBkaXNwb25pYmlsaWRkAgkPDxYCHwQFBFRydWVkZAIFDw8WBB8NGwAAAAAAAG5AAQAAAB8CAoACZBYMZg8VAgE1NGh0dHA6Ly9jb211bmljYXJlSW1hZ2VzLnRvYmlrZS5pdC9OdW1lcmkvQ2l0eU1vdmUvNk5kAgEPDxYCHwQFAzkyN2RkAgMPDxYCHwQFDVBvbG8gTWFyem90dG9kZAIFDw8WAh8EBRBMYXJnbyBQb250ZWNvcnZvZGQCBw8PFgIfBAUlMSBiaWNpIGxpYmVyYTxicj4xMyBwb3N0aSBkaXNwb25pYmlsaWRkAgkPDxYCHwQFBFRydWVkZAIGDw8WBB8NGwAAAAAAAG5AAQAAAB8CAoACZBYMZg8VAgE2NGh0dHA6Ly9jb211bmljYXJlSW1hZ2VzLnRvYmlrZS5pdC9OdW1lcmkvQ2l0eU1vdmUvN05kAgEPDxYCHwQFAzkyOGRkAgMPDxYCHwQFBUR1b21vZGQCBQ8PFgIfBAULUC56emEgTWFuaW5kZAIHDw8WAh8EBSUwIGJpY2kgbGliZXJlPGJyPjIyIHBvc3RpIGRpc3BvbmliaWxpZGQCCQ8PFgIfBAUEVHJ1ZWRkAgcPDxYEHw0bAAAAAAAAbkABAAAAHwICgAJkFgxmDxUCATc0aHR0cDovL2NvbXVuaWNhcmVJbWFnZXMudG9i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L2NvbXVuaWNhcmVJbWFnZXMudG9iaWtlLml0L051bWVyaS9DaXR5TW92ZS8xNk5kAgEPDxYCHwQFBDEzOTBkZAIDDw8WAh8EBQlTb2xmZXJpbm9kZAIFDw8WAh8EBQ9QLnp6YSBTb2xmZXJpbm9kZAIHDw8WAh8EBTQ2IGJpY2kgbGliZXJlPGJyPjMgcG9zdGkgZGlzcG9uaWJpbGk8YnI+MSBub24gYXR0aXZhZGQCCQ8PFgIfBAUEVHJ1ZWRkAhAPDxYEHw0bAAAAAAAAbkABAAAAHwICgAJkFgxmDxUCAjE2NWh0dHA6Ly9jb211bmljYXJlSW1hZ2VzLnRvYmlrZS5pdC9OdW1lcmkvQ2l0eU1vdmUvMTdOZAIBDw8WAh8EBQQxMzkxZGQCAw8PFgIfBAUQU2FuIFJvc3NvcmUgRi5TLmRkAgUPDxYCHwQFDVZpYSBBLiBQaXNhbm9kZAIHDw8WAh8EBTUyIGJpY2kgbGliZXJlPGJyPjEzIHBvc3RpIGRpc3BvbmliaWxpPGJyPjEgbm9uIGF0dGl2YWRkAgkPDxYCHwQFBFRydWVkZAIRDw8WBB8NGwAAAAAAAG5AAQAAAB8CAoACZBYMZg8VAgIxNzVodHRwOi8vY29tdW5pY2FyZUltYWdlcy50b2Jpa2UuaXQvTnVtZXJpL0NpdHlNb3ZlLzE4TmQCAQ8PFgIfBAUEMTM5MmRkAgMPDxYCHwQFCUd1ZXJyYXp6aWRkAgUPDxYCHwQFElAuenphIEQuIEd1ZXJyYXp6aWRkAgcPDxYCHwQFJDggYmljaSBsaWJlcmU8YnI+MiBwb3N0aSBkaXNwb25pYmlsaWRkAgkPDxYCHwQFBFRydWVkZAISDw8WBB8NGwAAAAAAAG5AAQAAAB8CAoACZBYMZg8VAgIxODVodHRwOi8vY29tdW5pY2FyZUltYWdlcy50b2Jpa2UuaXQvTnVtZXJpL0NpdHlNb3ZlLzE5SWQCAQ8PFgIfBAUEMTQ0M2RkAgMPDxYCHwQFTkxpdm9ybmVzZTxicj48c3Ryb25nPjxzcGFuIHN0eWxlPSdjb2xvcjpvcmFuZ2UnOz5Ob24gb3BlcmF0aXZhPC9zcGFuPjwvc3Ryb25nPmRkAgUPDxYCHwQFEFZpYSBDaGlhc3NhdGVsbG9kZAIHDw8WAh8EBSQwIGJpY2kgbGliZXJlPGJyPjAgcG9zdGkgZGlzcG9uaWJpbGlkZAIJDw8WAh8EBQRUcnVlZGQCEw8PFgQfDRsAAAAAAABuQAEAAAAfAgKAAmQWDGYPFQICMTk1aHR0cDovL2NvbXVuaWNhcmVJbWFnZXMudG9iaWtlLml0L051bWVyaS9DaXR5TW92ZS8yMElkAgEPDxYCHwQFBDE0NDRkZAIDDw8WAh8EBU5DYXZhbGllcmk8YnI+PHN0cm9uZz48c3BhbiBzdHlsZT0nY29sb3I6b3JhbmdlJzs+Tm9uIG9wZXJhdGl2YTwvc3Bhbj48L3N0cm9uZz5kZAIFDw8WAh8EBRRWaWEgQ29uc29saSBkZWwgTWFyZWRkAgcPDxYCHwQFJDAgYmljaSBsaWJlcmU8YnI+MCBwb3N0aSBkaXNwb25pYmlsaWRkAgkPDxYCHwQFBFRydWVkZAIUDw8WBB8NGwAAAAAAAG5AAQAAAB8CAoACZBYMZg8VAgIyMDVodHRwOi8vY29tdW5pY2FyZUltYWdlcy50b2Jpa2UuaXQvTnVtZXJpL0NpdHlNb3ZlLzIxTmQCAQ8PFgIfBAUEMTQ0NWRkAgMPDxYCHwQFC00uIExpYmVydGFgZGQCBQ8PFgIfBAUcUC56emEgTWFydGlyaSBkZWxsYSBMaWJlcnRhYGRkAgcPDxYCHwQFJTIgYmljaSBsaWJlcmU8YnI+MTAgcG9zdGkgZGlzcG9uaWJpbGlkZAIJDw8WAh8EBQRUcnVlZGQCFQ8PFgQfDRsAAAAAAABuQAEAAAAfAgKAAmQWDGYPFQICMjE1aHR0cDovL2NvbXVuaWNhcmVJbWFnZXMudG9iaWtlLml0L051bWVyaS9DaXR5TW92ZS8yMk5kAgEPDxYCHwQFBDE0NDZkZAIDDw8WAh8EBQ9HYWxsZXJpYSBHZXJhY2VkZAIFDw8WAh8EBRNWaWEgQ2FybG8gTWF0dGV1Y2NpZGQCBw8PFgIfBAUkNiBiaWNpIGxpYmVyZTxicj42IHBvc3RpIGRpc3BvbmliaWxpZGQCCQ8PFgIfBAUEVHJ1ZWRkAhYPDxYEHw0bAAAAAAAAbkABAAAAHwICgAJkFgxmDxUCAjIyNWh0dHA6Ly9jb211bmljYXJlSW1hZ2VzLnRvYmlrZS5pdC9OdW1lcmkvQ2l0eU1vdmUvMjNOZAIBDw8WAh8EBQQxNDQ3ZGQCAw8PFgIfBAULQy4gTWFyY2hlc2lkZAIFDw8WAh8EBRFWaWEgTS4gVmFsZ2ltaWdsaWRkAgcPDxYCHwQFJDcgYmljaSBsaWJlcmU8YnI+NSBwb3N0aSBkaXNwb25pYmlsaWRkAgkPDxYCHwQFBFRydWVkZAIXDw8WBB8NGwAAAAAAAG5AAQAAAB8CAoACZBYMZg8VAgIyMzVodHRwOi8vY29tdW5pY2FyZUltYWdlcy50b2Jpa2UuaXQvTnVtZXJpL0NpdHlNb3ZlLzI0TmQCAQ8PFgIfBAUEMTQ0OGRkAgMPDxYCHwQFDkNOUi1QcmF0aWNlbGxpZGQCBQ8PFgIfBAUOVmlhIEcuIE1vcnV6emlkZAIHDw8WAh8EBSU0IGJpY2kgbGliZXJlPGJyPjEwIHBvc3RpIGRpc3BvbmliaWxpZGQCCQ8PFgIfBAUEVHJ1ZWRkAhUPZBYMAgEPDxYCHwQFG1ZPVEEgTEEgU1RBWklPTkU6IEFlcm9wb3J0b2RkAgMPDxYEHwkHmpmZmZmZCUAfAGhkZAIJDw8WAh8EBQMzLDJkZAIODw8WAh8EBQ0xNTcgdm90YXppb25pZGQCEg8PFgIfBAUDOTIyZGQCFA8PFgIfBAUBMGRkAhkPFgIeC18hSXRlbUNvdW50AgUWCmYPZBYIAgEPDxYCHwQFCUNhdmFsaWVyaWRkAgMPDxYEHwkHzczMzMzMEEAfAGhkZAIFDw8WAh8EBRVWb3RvIG1lZGlvOiA0LjIgc3UgNSBkZAIHDw8WAh8EBQs3IHZvdGF6aW9uaWRkAgEPZBYIAgEPDxYCHwQFDVBpZXRyYXNhbnRpbmFkZAIDDw8WBB8JB2ZmZmZmZg5AHwBoZGQCBQ8PFgIfBAUVVm90byBtZWRpbzogMy44IHN1IDUgZGQCBw8PFgIfBAUMMTkgdm90YXppb25pZGQCAg9kFggCAQ8PFgIfBAURVml0dG9yaW8gRW1hbnVlbGVkZAIDDw8WBB8JB2ZmZmZmZg5AHwBoZGQCBQ8PFgIfBAUVVm90byBtZWRpbzogMy44IHN1IDUgZGQCBw8PFgIfBAUMMjUgdm90YXppb25pZGQCAw9kFggCAQ8PFgIfBAUJTGl2b3JuZXNlZGQCAw8PFgQfCQdmZmZmZmYOQB8AaGRkAgUPDxYCHwQFFVZvdG8gbWVkaW86IDMuOCBzdSA1IGRkAgcPDxYCHwQFCzQgdm90YXppb25pZGQCBA9kFggCAQ8PFgIfBAUNUG9ydGEgYSBMdWNjYWRkAgMPDxYEHwkHmpmZmZmZDUAfAGhkZAIFDw8WAh8EBRVWb3RvIG1lZGlvOiAzLjcgc3UgNSBkZAIHDw8WAh8EBQwxNyB2b3RhemlvbmlkZAIbDxQrAAIPFgIfAGhkZGQCHQ8PFgIfBmhkFgICAQ9kFgICBA88KwAWAgAPFgIeB0VuYWJsZWRoZA4QFgRmAgECAgIDFgQPZGQPZGQPZGQPZGQPFgRmZmZmFgEFdVRlbGVyaWsuV2ViLlVJLkVkaXRvck1vZHVsZSwgVGVsZXJpay5XZWIuVUksIFZlcnNpb249MjAwOS4zLjEzMTQuMzUsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49MTIxZmFlNzgxNjViYTNkNBYCZg9kFgJmDw8WBB4VU2hvd0NvbnRlbnREdXJpbmdMb2FkaB4ORGVzdHJveU9uQ2xvc2VoZGQCIQ9kFgJmDxYCHwsFH2Nzcy9Qb3J0YWxfMTcvUGFnZXMvRm9vdGVyLmFzcHhkAiYPFCsAAg8WAh8AaGQQFgFmFgEPFg4eBU1vZGFsZx4MUmVsb2FkT25TaG93Zx8RZx8AaB4EU2tpbgUKT2ZmaWNlMjAwNx8QaB4QVmlzaWJsZVN0YXR1c2JhcmhkDxYBZhYBBXJUZWxlcmlrLldlYi5VSS5SYWRXaW5kb3csIFRlbGVyaWsuV2ViLlVJLCBWZXJzaW9uPTIwMDkuMy4xMzE0LjM1LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTEyMWZhZTc4MTY1YmEzZDQWAgIDDw8WDh8SZx8TZx8RZx8AaB8UBQpPZmZpY2UyMDA3HxBoHxVoZGQYBAUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFg4FFVdjSGVhZGVyMSRyZW1lbWJlcm1lMQUVV2NIZWFkZXIxJHJlbWVtYmVybWUyBRJXY1BhbmVsMSRsc3RDb211bmkFFXdjUEdvb2dsZSRsc3RTdGF6aW9uaQUYd2NQR29vZ2xlJHJhZFJvdFN0YXppb25pBQdyYWRWb3RhBRlyZXBlYXRlclRvcCRjdGwwMCRyYWRUb3A1BRlyZXBlYXRlclRvcCRjdGwwMSRyYWRUb3A1BRlyZXBlYXRlclRvcCRjdGwwMiRyYWRUb3A1BRlyZXBlYXRlclRvcCRjdGwwMyRyYWRUb3A1BRlyZXBlYXRlclRvcCRjdGwwNCRyYWRUb3A1BQx0aHVtYlJvdGF0b3IFE3dpbmRvd01hbmFnZXJQb3J0YWwFCXJhZFBvcnRhbAUVd2NQR29vZ2xlJGxzdFN0YXppb25pDxQrAAIFDlNlbGV6aW9uYXJlLi4uBQEwZAUSV2NQYW5lbDEkbHN0Q29tdW5pDxQrAAIFBFBpc2EFAzE0NGQFFFdjSGVhZGVyMSRsc3RQb3J0YWxpDxQrAAJlZWSSTzlp1Udgacd6YiBKeGU2EEwzrKb24C7RU95n59rfNw==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=QoC5R1_R6CmwuvAVL3pRJu3P4bhdpPxd6aOzFaMXcljhlJKzSpQ0rKJ2M79aQJ5WrTpsoe0Q3AkC1T3JnMU9M-10hQCOGiCr45eHQb-ZDsw1&amp;t=635803038500000000" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+        function OpenSetPortal()
+        {
+        var oWnd = radopen('popSceltaPortale.aspx', 'radPortal');
+        oWnd.restore();
+        oWnd.setSize(450, 280);
+        oWnd.set_modal(true);
+        oWnd.center();
+        oWnd.show();
+        return false;
+        }
+        function OnClientClosePortal(oWnd,args)
+        {
+            window.location.href='Default.aspx';
+        }
+//]]>
+</script>
+<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDXH80LrApql9cNeB9zIQYNj9uNneSd2S4&sensor=true' type='text/javascript'></script></script><script>varVirtualGoogle = 'http://comunicareImages.tobike.it/Google'; varVirtualPath = 'http://comunicareImages.tobike.it/Numeri/CityMove'; msgStatoManutenzione = 'In manutenzione'; msgStatoInstallazione = 'In cantiere'; msgStatoDefinizione = 'In fase di definizione'; ; msgStatoNormale = 'In funzione'; msgStatoErrore = 'Non operativa'; msgInErroreSingolare = 'non attiva'; msgInErrore = 'non attive'; msgDisponibili = 'bici libere'; msgPostiLiberi = 'posti disponibili'; msgDisponibile = 'bici libera'; msgPostoLibero = 'posto disponibile'; varVotaLaStazione = 'VOTA LA STAZIONE'; varVotoMedio = 'Voto medio'; varVotazioni = 'votazioni'; varVotazione = 'votazione'; varSu5Con = 'su 5 con';</script>
+<script src="/Telerik.Web.UI.WebResource.axd?_TSM_HiddenField_=RadScriptManager1_TSM&amp;compress=1&amp;_TSM_CombinedScripts_=%3b%3bSystem.Web.Extensions%2c+Version%3d4.0.0.0%2c+Culture%3dneutral%2c+PublicKeyToken%3d31bf3856ad364e35%3ait-IT%3ad28568d3-e53e-4706-928f-3765912b66ca%3aea597d4b%3ab25378d2%3bTelerik.Web.UI%2c+Version%3d2009.3.1314.35%2c+Culture%3dneutral%2c+PublicKeyToken%3d121fae78165ba3d4%3ait-IT%3a603d133a-f943-435d-a80d-57457cc55f4a%3a16e4e7cd%3af7645509%3aed16cbdc%3a24ee1bba%3a1e771326%3aaa288e2d%3a19620875%3a3f6e8f3f%3a628ebdd0%3a874f8ea2%3a33108d14%3abd8f85e4" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F127ECE2" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAArWQxhuOl1GU4WUkC6eHE885QOsT97dybIatEQwRd2ulerL4nIR1mjq5iEvOkJWjTFgnCNwp6RcG4UMf7NHJftm74fIjV6mGRoCo8Z64JmF0vu5B4pKJwSFPnnBCFSd07uvkUaR3Y/7+hKE8kBrW5jIjjIhzY2UNgkTylwaULM0plwrRCVco9yEBgH2XgYqV59exQt8xzX07bsWSpU8PemvOKwcBAexTW2etS8dtH8fZ2AnirghefcyUfGfJ1URQUQ=" />
+</div>
+     <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('RadScriptManager1', 'form1', ['tpContenutoPanel','pContenutoPanel','tpVotaPanel','pVotaPanel','trepeaterTopPanel','repeaterTopPanel','twcPGoogle$lstStazioniPanel','wcPGoogle$lstStazioniPanel','twcPGoogle$radRotStazioniPanel','wcPGoogle$radRotStazioniPanel','tajCheckLoginUserPanel','ajCheckLoginUserPanel','tajCheckLoginAdminPanel','ajCheckLoginAdminPanel','tajLogoutUserPanel','ajLogoutUserPanel','tRadAjaxManager1SU','RadAjaxManager1SU'], ['WcPanel1$lstComuni','WcPanel1_lstComuni','wcPGoogle$radRotStazioni','wcPGoogle_radRotStazioni','wcPGoogle$lstStazioni','wcPGoogle_lstStazioni'], [], 90, '');
+//]]>
+</script>
+
+        <div id="ajLoadingG" class="RadAjax RadAjax_Web20" style="display:none;">
+	<div class="raDiv">
+
+	</div><div class="raColor raTransp">
+
+	</div>
+</div>        
+        <!-- 2009.3.1314.35 --><div id="RadAjaxManager1SU">
+	<span id="RadAjaxManager1" style="display:none;"></span>
+</div>
+    <div>
+        
+
+<link href="css/Portal_17/it-IT.css" rel="stylesheet" type="text/css" />
+<link href="css/Portal_17/Comunicare.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/slide.css" type="text/css" media="screen" />
+<script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
+<script src="js/slide.js" type="text/javascript"></script>
+
+<!--[if lt IE 7]><script type="text/javascript" src="unitpngfix.js"></script><![endif]-->
+<script type="text/javascript">
+    var msgLoginInvalidParameter = '';
+    var msgNoBadge;
+    var msgBadgeExists;
+    var msgInAttesa;
+
+    function CheckUser(){
+        var U = document.getElementById('WcHeader1_txtUSR');
+        var P = document.getElementById('WcHeader1_txtPWD');
+        var R = document.getElementById('WcHeader1_rememberme1');
+
+        if(U.value == '' || P.value == '')
+            alert(msgLoginInvalidParameter);
+        else
+            var panel = $find('ajCheckLoginUser').ajaxRequest(U.value+','+P.value+','+R.checked);   
+	    return false;
+    }
+    
+    function KeyDownHandler1(){
+        if (event.keyCode == 13){
+           CheckUser();
+           return false;
+        }
+    }
+    
+    function CheckUserAdmin(){
+        var U = document.getElementById('WcHeader1_txtUSRA');
+        var P = document.getElementById('WcHeader1_txtPWDA');
+        var R = document.getElementById('WcHeader1_rememberme2');
+        
+        if(U.value == '' || P.value == '')
+            alert(msgLoginInvalidParameter);
+        else
+            var panel = $find('ajCheckLoginAdmin').ajaxRequest(U.value+','+P.value+','+R.checked);   
+	    return false;
+    }    
+    
+    function KeyDownHandler2(){
+        if (event.keyCode == 13){
+           CheckUserAdmin();
+           return false;
+        }
+    }
+     
+    function LogOut(){
+        var panel = $find('ajLogoutUser').ajaxRequest(); 
+    }
+</script>
+
+<table id="wcHeader" cellpadding="0" cellspacing="0">
+	 <tr>
+        <td colspan="3" id="Top"></td>
+     </tr>
+     <tr>
+        <td colspan="3">
+            <div id="Header">
+                <br />
+                <div id="Bandiere">
+                    <div id="it"><a href="ControlTemplate/ChangeLanguage.aspx?Culture=it-IT"><img style="border-style:none;" src="Images/flag_italy.png" alt="Italiano" /></a></div>
+                    <div id="gb"><a href="ControlTemplate/ChangeLanguage.aspx?Culture=en-GB"><img style="border-style:none;" src="Images/flag_great_britain.png" alt="Inglese" /></a></div>
+                    <div id="fr"><a href="ControlTemplate/ChangeLanguage.aspx?Culture=fr-FR"><img style="border-style:none;" src="Images/flag_france.png" alt="Francese" /></a></div>
+                    <div id="me"><a href="ControlTemplate/ChangeLanguage.aspx?Culture=sr-Cyrl-CS"><img style="border-style:none;" src="Images/flag_montenegro.png" alt="Montenegro" /></a></div>
+                </div>
+                <div id="Portali">
+                    <span id="WcHeader1_lblNomeU" class="Nome"></span><br />
+                    
+                </div>                
+            </div>
+        </td>
+     </tr>
+</table>
+<!-- Panel -->
+<div id="toppanel">
+	<div id="panel">
+		<div class="content pippofix">
+			<div class="left" id="SenzaRegistrazione">
+				<h1>Benvenuto!</h1>
+				<h2>Pannello di accesso all'area riservata</h2>		
+				<p class="grey">Da qui potrai avere accesso a tutte le aree destinate agli utenti registrati!</p>
+				<input type="submit" name="WcHeader1$BtnRegistrati" value="Registrati" id="WcHeader1_BtnRegistrati" name="submit" class="bt_register" />
+				</div>
+				
+			<div class="left" id="Centrale">
+				<!-- Login Form -->
+					<h1>Utenti registrati</h1>
+					<label class="grey" for="log">Username:</label>
+					<input name="WcHeader1$txtUSR" type="text" maxlength="80" id="WcHeader1_txtUSR" class="field" onKeyPress="return KeyDownHandler1()" />
+					<label class="grey" for="pwd">Password:</label>
+					<input name="WcHeader1$txtPWD" type="password" maxlength="15" id="WcHeader1_txtPWD" class="field" onKeyPress="return KeyDownHandler1()" />
+	            	<label><input id="WcHeader1_rememberme1" type="checkbox" name="WcHeader1$rememberme1" /> &nbsp;Ricorda</label>
+        			<div class="pippo"></div>
+					<input type="submit" name="WcHeader1$BtnAccessoUtenti" value="Accedi" onclick="return CheckUser();" id="WcHeader1_BtnAccessoUtenti" class="bt_login" />
+					<a class="lost-pwd" href="frmPasswordDimenticata.aspx">Hai perso la password?</a>
+			</div>
+					
+			<div class="left right" id="Right">			
+				<!-- Register Form -->
+					<h1>Amministrazione</h1>
+					<label class="grey" for="log">Username:</label>
+					<input name="WcHeader1$txtUSRA" type="text" maxlength="80" id="WcHeader1_txtUSRA" class="field" onKeyPress="return KeyDownHandler2()" />
+					<label class="grey" for="pwd">Password:</label>
+					<input name="WcHeader1$txtPWDA" type="password" maxlength="15" id="WcHeader1_txtPWDA" class="field" onKeyPress="return KeyDownHandler2()" />
+	            	<label><input id="WcHeader1_rememberme2" type="checkbox" name="WcHeader1$rememberme2" /> &nbsp;Ricorda</label>
+        			<div class="pippo"></div>
+					<input type="submit" name="WcHeader1$BtnAccessoAmministratori" value="Accedi" onclick="return CheckUserAdmin();" id="WcHeader1_BtnAccessoAmministratori" name="submit" class="bt_login" style="width:74px;" />
+					<a class="lost-pwd" href="frmPasswordDimenticata.aspx">Hai perso la password?</a>
+			</div>
+					</div>
+
+	</div> <!-- /login -->	
+    <!-- The tab on top -->	
+	<div class="tab">
+		<ul class="login">
+	    	<li class="left">&nbsp;</li>
+	        <li>Benvenuto!</li>
+			<li class="sep">|</li>
+			<li id="toggle">
+			<a id="open" class="open" href="#">Accedi</a>
+			<a id="close" style="display: none;" class="close" href="#">Chiudi il pannello</a>			
+			</li>
+	    	<li class="right">&nbsp;&nbsp;
+            </li></ul> 
+	</div> <!-- / top -->
+</div> <!--panel -->
+
+
+
+        
+
+<table id="wcTopMenu" cellpadding="0" cellspacing="0" border="0">
+	 <tr>
+        <td id="OmbraDx">&nbsp;</td>
+        <td>
+        <div id="Menu">
+            <ul>
+                <li><a id="WcTopMenu1_L1" href="Default.aspx">Home Page</a></li>
+                <li><a id="WcTopMenu1_L2" href="frmCose.aspx">Cos'è?</a></li>
+                <li><a id="WcTopMenu1_L3" href="frmLeStazioni.aspx">Stazioni</a></li>
+                <li><a id="WcTopMenu1_L4" href="frmAbbonati.aspx">Abbonamenti</a></li>
+                <li><a id="WcTopMenu1_L6" href="frmRegistrazioneUtente.aspx">Registrati</a></li>
+                <li></li>
+                <li><a id="WcTopMenu1_L5" href="frmContatti.aspx">Contatti</a></li>
+             </ul>
+        </div>
+        
+        <div id="WcTopMenu1_MenuRuoloExt">
+	
+        
+</div>        
+        </td>
+        <td id="OmbraSx">&nbsp;</td>
+    </tr>
+</table>
+
+        <table id="Contenitore" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td id="OmbraDx">&nbsp;</td>
+                <td class="RigaUno Togli centrale_bordi" align="left" style="vertical-align:top" >
+                     
+                    <table width="95%" border="0">
+                        <tr style="height:40px">
+                            <td style="width: 352px; vertical-align:top"  >
+                                <div class="BoxTop"><span>Comuni</span></div><div class="BoxMiddle"> 
+                                      <br />                  
+                                    <div id="WcPanel1_lstComuni" class="RadComboBox RadComboBox_Office2007" style="width:100%;display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;">
+	<table cellpadding="0" cellspacing="0" summary="combobox" style="border-width:0;width:100%">
+		<tr>
+			<td class="rcbInputCell rcbInputCellLeft" style="width:100%;"><input name="WcPanel1$lstComuni" type="text" class="rcbInput" id="WcPanel1_lstComuni_Input" value="Pisa" /></td><td class="rcbArrowCell rcbArrowCellRight"><a id="WcPanel1_lstComuni_Arrow" style="overflow: hidden;display: block;position: relative;outline: none;">select</a></td>
+		</tr>
+	</table><div class="rcbSlide" style="z-index:6000;"><div id="WcPanel1_lstComuni_DropDown" class="RadComboBoxDropDown RadComboBoxDropDown_Office2007 " style="display:none;"><div class="rcbScroll rcbWidth" style="height:400px;width:100%;"><ul class="rcbList" style="list-style:none;margin:0;padding:0;zoom:1;"><li class="rcbItem ">Pisa</li></ul></div></div></div><input id="WcPanel1_lstComuni_ClientState" name="WcPanel1_lstComuni_ClientState" type="hidden" />
+</div>
+                                    
+                                
+
+</div><div class="BoxBottom"></div>
+
+                            </td>
+                            <td>                            
+                                <iframe id="LeftComuni" src="css/Portal_17/LeftComuni.htm" frameborder="0" width="100%" height="130px" scrolling="no"></iframe> 
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="ContMap" cellpadding="0" cellspacing="0" border="0">
+                        <tr valign="top">
+                            <td>
+                                    <div class="BoxTopG"><span>Mappa di Google</span></div><div class="BoxMiddleG">
+                                       <table>
+                                            <tr>
+                                                <td style="padding-right:5px; height: 500px;">
+                                                    <a name="GMap"></a>
+                                                    <div id="map" style="width: 100%; min-width:530px; height: 100%; text-align:center">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                       </table>    
+
+                                        
+
+</div><div class="BoxBottomG"></div>
+
+                            </td>
+                            <td>
+                            <div class="BoxTop"><span>Stazioni</span></div><div class="BoxMiddle">
+                                    <div id="wcPGoogle$lstStazioniPanel">
+	<div id="wcPGoogle_lstStazioni" class="RadComboBox RadComboBox_Office2007 ScrollBars" style="width:230px;display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;">
+		<table cellpadding="0" cellspacing="0" summary="combobox" style="border-width:0;width:100%">
+			<tr>
+				<td class="rcbInputCell rcbInputCellLeft" style="width:100%;"><input name="wcPGoogle$lstStazioni" type="text" class="rcbInput" id="wcPGoogle_lstStazioni_Input" value="Selezionare..." /></td><td class="rcbArrowCell rcbArrowCellRight"><a id="wcPGoogle_lstStazioni_Arrow" style="overflow: hidden;display: block;position: relative;outline: none;">select</a></td>
+			</tr>
+		</table><div class="rcbSlide" style="z-index:6000;"><div id="wcPGoogle_lstStazioni_DropDown" class="RadComboBoxDropDown RadComboBoxDropDown_Office2007 " style="display:none;"><div class="rcbScroll rcbWidth" style="height:400px;width:100%;"><ul class="rcbList" style="list-style:none;margin:0;padding:0;zoom:1;"><li class="rcbItem ">Selezionare...</li><li class="rcbItem ">Aeroporto</li><li class="rcbItem ">Stazione F.S.</li><li class="rcbItem ">Comune Palazzo Blu</li><li class="rcbItem ">Teatro Tribunale</li><li class="rcbItem ">Borgo Stretto</li><li class="rcbItem ">Polo Marzotto</li><li class="rcbItem ">Duomo</li><li class="rcbItem ">Pietrasantina</li><li class="rcbItem ">Paparelli</li><li class="rcbItem ">Pratale</li><li class="rcbItem ">Ospedale Cisanello</li><li class="rcbItem ">Sms Biblioteca</li><li class="rcbItem ">Vittorio Emanuele</li><li class="rcbItem ">Palacongressi</li><li class="rcbItem ">Porta a Lucca</li><li class="rcbItem ">Solferino</li><li class="rcbItem ">San Rossore F.S.</li><li class="rcbItem ">Guerrazzi</li><li class="rcbItem ">Livornese</li><li class="rcbItem ">Cavalieri</li><li class="rcbItem ">M. Liberta`</li><li class="rcbItem ">Galleria Gerace</li><li class="rcbItem ">C. Marchesi</li><li class="rcbItem ">CNR-Praticelli</li></ul></div></div></div><input id="wcPGoogle_lstStazioni_ClientState" name="wcPGoogle_lstStazioni_ClientState" type="hidden" />
+	</div>
+</div>
+                                <div id="wcPGoogle$radRotStazioniPanel">
+	<div id="wcPGoogle_radRotStazioni" class="RadRotator RadRotator_Default" style="background-color:Transparent;border-width:0px;height:513px;width:240px;">
+		<div class="rrRelativeWrapper">
+			<div class="rrClipRegion">
+				<ul class="rrItemsList">
+					<li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i0">
+						
+                                        <a href='javascript:pGMapClick(0);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/1N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i0_Laber22" class="Stazione">Aeroporto</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i0_Label2" class="TableComune">P.le C. D’Ascanio</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i0_label23" class="Red">1 bici libera<br>9 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i1">
+						
+                                        <a href='javascript:pGMapClick(1);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/2N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i1_Laber22" class="Stazione">Stazione F.S.</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i1_Label2" class="TableComune">P.zza Stazione</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i1_label23" class="Red">14 bici libere<br>13 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i2">
+						
+                                        <a href='javascript:pGMapClick(2);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/3N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i2_Laber22" class="Stazione">Comune Palazzo Blu</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i2_Label2" class="TableComune">Via Toselli</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i2_label23" class="Red">0 bici libere<br>15 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i3">
+						
+                                        <a href='javascript:pGMapClick(3);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/4N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i3_Laber22" class="Stazione">Teatro Tribunale</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i3_Label2" class="TableComune">Via Palestro</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i3_label23" class="Red">5 bici libere<br>6 posti disponibili<br>1 non attiva</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i4">
+						
+                                        <a href='javascript:pGMapClick(4);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/5N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i4_Laber22" class="Stazione">Borgo Stretto</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i4_Label2" class="TableComune">Via Oberdan</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i4_label23" class="Red">1 bici libera<br>8 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i5">
+						
+                                        <a href='javascript:pGMapClick(5);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/6N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i5_Laber22" class="Stazione">Polo Marzotto</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i5_Label2" class="TableComune">Largo Pontecorvo</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i5_label23" class="Red">1 bici libera<br>13 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i6">
+						
+                                        <a href='javascript:pGMapClick(6);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/7N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i6_Laber22" class="Stazione">Duomo</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i6_Label2" class="TableComune">P.zza Manin</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i6_label23" class="Red">0 bici libere<br>22 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i7">
+						
+                                        <a href='javascript:pGMapClick(7);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/8N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i7_Laber22" class="Stazione">Pietrasantina</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i7_Label2" class="TableComune">Via S. Jacopo</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i7_label23" class="Red">3 bici libere<br>17 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i8">
+						
+                                        <a href='javascript:pGMapClick(8);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/9N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i8_Laber22" class="Stazione">Paparelli</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i8_Label2" class="TableComune">Via Paparelli</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i8_label23" class="Red">15 bici libere<br>14 posti disponibili<br>1 non attiva</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i9">
+						
+                                        <a href='javascript:pGMapClick(9);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/10N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i9_Laber22" class="Stazione">Pratale</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i9_Label2" class="TableComune">Via di Pratale</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i9_label23" class="Red">6 bici libere<br>24 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i10">
+						
+                                        <a href='javascript:pGMapClick(10);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/11N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i10_Laber22" class="Stazione">Ospedale Cisanello</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i10_Label2" class="TableComune">Via Pietro Trivella</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i10_label23" class="Red">11 bici libere<br>3 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i11">
+						
+                                        <a href='javascript:pGMapClick(11);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/12N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i11_Laber22" class="Stazione">Sms Biblioteca</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i11_Label2" class="TableComune">L.go Tibet</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i11_label23" class="Red">6 bici libere<br>6 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i12">
+						
+                                        <a href='javascript:pGMapClick(12);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/13N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i12_Laber22" class="Stazione">Vittorio Emanuele</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i12_Label2" class="TableComune">P.zza V. Emanuele II</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i12_label23" class="Red">10 bici libere<br>5 posti disponibili<br>1 non attiva</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i13">
+						
+                                        <a href='javascript:pGMapClick(13);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/14N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i13_Laber22" class="Stazione">Palacongressi</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i13_Label2" class="TableComune">Via Matteotti</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i13_label23" class="Red">2 bici libere<br>21 posti disponibili<br>1 non attiva</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i14">
+						
+                                        <a href='javascript:pGMapClick(14);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/15N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i14_Laber22" class="Stazione">Porta a Lucca</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i14_Label2" class="TableComune">Via Bianchi</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i14_label23" class="Red">3 bici libere<br>7 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i15">
+						
+                                        <a href='javascript:pGMapClick(15);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/16N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i15_Laber22" class="Stazione">Solferino</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i15_Label2" class="TableComune">P.zza Solferino</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i15_label23" class="Red">6 bici libere<br>3 posti disponibili<br>1 non attiva</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i16">
+						
+                                        <a href='javascript:pGMapClick(16);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/17N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i16_Laber22" class="Stazione">San Rossore F.S.</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i16_Label2" class="TableComune">Via A. Pisano</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i16_label23" class="Red">2 bici libere<br>13 posti disponibili<br>1 non attiva</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i17">
+						
+                                        <a href='javascript:pGMapClick(17);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/18N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i17_Laber22" class="Stazione">Guerrazzi</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i17_Label2" class="TableComune">P.zza D. Guerrazzi</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i17_label23" class="Red">8 bici libere<br>2 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i18">
+						
+                                        <a href='javascript:pGMapClick(18);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/19I.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i18_Laber22" class="Stazione">Livornese<br><strong><span style='color:orange';>Non operativa</span></strong></span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i18_Label2" class="TableComune">Via Chiassatello</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i18_label23" class="Red">0 bici libere<br>0 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i19">
+						
+                                        <a href='javascript:pGMapClick(19);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/20I.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i19_Laber22" class="Stazione">Cavalieri<br><strong><span style='color:orange';>Non operativa</span></strong></span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i19_Label2" class="TableComune">Via Consoli del Mare</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i19_label23" class="Red">0 bici libere<br>0 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i20">
+						
+                                        <a href='javascript:pGMapClick(20);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/21N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i20_Laber22" class="Stazione">M. Liberta`</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i20_Label2" class="TableComune">P.zza Martiri della Liberta`</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i20_label23" class="Red">2 bici libere<br>10 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i21">
+						
+                                        <a href='javascript:pGMapClick(21);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/22N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i21_Laber22" class="Stazione">Galleria Gerace</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i21_Label2" class="TableComune">Via Carlo Matteucci</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i21_label23" class="Red">6 bici libere<br>6 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i22">
+						
+                                        <a href='javascript:pGMapClick(22);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/23N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i22_Laber22" class="Stazione">C. Marchesi</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i22_Label2" class="TableComune">Via M. Valgimigli</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i22_label23" class="Red">7 bici libere<br>5 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li><li class="rrItem" style="width:240px;"><div id="wcPGoogle_radRotStazioni_i23">
+						
+                                        <a href='javascript:pGMapClick(23);'
+                                            style="cursor: pointer;">
+                                            <div style='float: left; padding-left: 35px; padding-bottom: 5px; margin-left: 2px; background-image: url(http://comunicareImages.tobike.it/Numeri/CityMove/24N.gif); background-repeat: no-repeat; background-position: left middle;'>
+                                                
+                                                <span id="wcPGoogle_radRotStazioni_i23_Laber22" class="Stazione">CNR-Praticelli</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i23_Label2" class="TableComune">Via G. Moruzzi</span><br />
+                                                <span id="wcPGoogle_radRotStazioni_i23_label23" class="Red">4 bici libere<br>10 posti disponibili</span>
+                                                
+                                                <br />
+                                                <div id="Divisore">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    
+					</div></li>
+				</ul>
+			</div><a class="rrButton rrButtonUp" href="javascript:void(0);">&nbsp;</a><a class="rrButton rrButtonLeft" href="javascript:void(0);">&nbsp;</a><a class="rrButton rrButtonRight" href="javascript:void(0);">&nbsp;</a><a class="rrButton rrButtonDown" href="javascript:void(0);">&nbsp;</a>
+		</div><input id="wcPGoogle_radRotStazioni_ClientState" name="wcPGoogle_radRotStazioni_ClientState" type="hidden" />
+	</div>
+</div>
+                              
+
+</div><div class="BoxBottom"></div>
+      
+                            </td>                          
+                        </tr>
+                        <tr>
+                            <td style="padding:15px; text-align:justify;">
+                                <span><span id="Label1"></span><br />
+                                </span>
+                            </td>
+                            <td valign="top" align="center">
+                                <div id="pVotaPanel">
+	<div id="pVota">
+		
+                                <table cellpadding="0" cellspacing="0" border="0" align="center">
+                                    <tr>
+                                        <td style="width:100%;" align="center">
+                                            <span id="lblVota">VOTA LA STAZIONE: Aeroporto</span>        
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:100%;" align="center">
+                                            <div id="radVota" class="RadRating RadRating_Default ">
+			<ul class="rrtExact">
+				<li class="rrtSelected"><a href="#" title="1"><span>1</span></a></li><li class="rrtSelected"><a href="#" title="2"><span>2</span></a></li><li class="rrtSelected"><a href="#" title="3"><span>3</span></a></li><li class="rrtSelected"><a href="#" title="4"><span style="width:3px;">4</span></a></li><li><a href="#" title="5"><span>5</span></a></li>
+			</ul><input id="radVota_ClientState" name="radVota_ClientState" type="hidden" />
+		</div>
+                                        </td>
+                                    </tr>       
+                                    <tr>
+                                        <td style="width:100%;" align="center">
+                                            <span id="lblVotiStazione"></span>
+                                        </td>
+                                    </tr>                                                                      
+                                </table>
+                                <span id="Label82">Voto medio</span>: <span id="lblVotoS" class="TitleOrangePic">3,2</span><span id="Label5"></span> <span id="label817">su 5 con</span>
+                                <span id="lblVotiS">157 votazioni</span> <span id="Label6"></span><br />
+                                <span id="lblIDS" style="color:White;">922</span>
+                                <span id="lblN" style="color:White;">0</span>
+                                
+	</div>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <table cellpadding="0" cellspacing="0" style="width:100%; border-top: solid 1px #000">
+                                    <tr>
+                                        <td colspan="5" style="width:100%; text-align:center;">
+                                            <p style="text-align:center; font-weight:bold;"><span id="lblTop">LE STAZIONI TOP 5</span></p> 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <div id="repeaterTopPanel">
+	
+                                                    <div style="width:20%; text-align:center; float:left">
+                                                        <span id="repeaterTop_Label2_0">Cavalieri</span>
+                                                        <br>
+                                                        </br>
+                                                        <div style="margin-left:40px"><div id="repeaterTop_radTop5_0" class="RadRating RadRating_Default " align="center">
+		<ul class="rrtItem">
+			<li class="rrtSelected"><a href="#" title="1"><span>1</span></a></li><li class="rrtSelected"><a href="#" title="2"><span>2</span></a></li><li class="rrtSelected"><a href="#" title="3"><span>3</span></a></li><li class="rrtSelected"><a href="#" title="4"><span>4</span></a></li><li class="rrtSelected"><a href="#" title="5"><span style="width:3px;">5</span></a></li>
+		</ul><input id="repeaterTop_radTop5_0_ClientState" name="repeaterTop_radTop5_0_ClientState" type="hidden" />
+	</div></div>
+                                                        <span id="repeaterTop_Label1_0">Voto medio: 4.2 su 5 </span>
+                                                        <br>
+                                                        </br>
+                                                        <span id="repeaterTop_Label4_0">7 votazioni</span><br /><br />
+                                                    </div>
+                                               
+                                                    <div style="width:20%; text-align:center; float:left">
+                                                        <span id="repeaterTop_Label2_1">Pietrasantina</span>
+                                                        <br>
+                                                        </br>
+                                                        <div style="margin-left:40px"><div id="repeaterTop_radTop5_1" class="RadRating RadRating_Default " align="center">
+		<ul class="rrtItem">
+			<li class="rrtSelected"><a href="#" title="1"><span>1</span></a></li><li class="rrtSelected"><a href="#" title="2"><span>2</span></a></li><li class="rrtSelected"><a href="#" title="3"><span>3</span></a></li><li class="rrtSelected"><a href="#" title="4"><span style="width:14px;">4</span></a></li><li><a href="#" title="5"><span>5</span></a></li>
+		</ul><input id="repeaterTop_radTop5_1_ClientState" name="repeaterTop_radTop5_1_ClientState" type="hidden" />
+	</div></div>
+                                                        <span id="repeaterTop_Label1_1">Voto medio: 3.8 su 5 </span>
+                                                        <br>
+                                                        </br>
+                                                        <span id="repeaterTop_Label4_1">19 votazioni</span><br /><br />
+                                                    </div>
+                                               
+                                                    <div style="width:20%; text-align:center; float:left">
+                                                        <span id="repeaterTop_Label2_2">Vittorio Emanuele</span>
+                                                        <br>
+                                                        </br>
+                                                        <div style="margin-left:40px"><div id="repeaterTop_radTop5_2" class="RadRating RadRating_Default " align="center">
+		<ul class="rrtItem">
+			<li class="rrtSelected"><a href="#" title="1"><span>1</span></a></li><li class="rrtSelected"><a href="#" title="2"><span>2</span></a></li><li class="rrtSelected"><a href="#" title="3"><span>3</span></a></li><li class="rrtSelected"><a href="#" title="4"><span style="width:14px;">4</span></a></li><li><a href="#" title="5"><span>5</span></a></li>
+		</ul><input id="repeaterTop_radTop5_2_ClientState" name="repeaterTop_radTop5_2_ClientState" type="hidden" />
+	</div></div>
+                                                        <span id="repeaterTop_Label1_2">Voto medio: 3.8 su 5 </span>
+                                                        <br>
+                                                        </br>
+                                                        <span id="repeaterTop_Label4_2">25 votazioni</span><br /><br />
+                                                    </div>
+                                               
+                                                    <div style="width:20%; text-align:center; float:left">
+                                                        <span id="repeaterTop_Label2_3">Livornese</span>
+                                                        <br>
+                                                        </br>
+                                                        <div style="margin-left:40px"><div id="repeaterTop_radTop5_3" class="RadRating RadRating_Default " align="center">
+		<ul class="rrtItem">
+			<li class="rrtSelected"><a href="#" title="1"><span>1</span></a></li><li class="rrtSelected"><a href="#" title="2"><span>2</span></a></li><li class="rrtSelected"><a href="#" title="3"><span>3</span></a></li><li class="rrtSelected"><a href="#" title="4"><span style="width:14px;">4</span></a></li><li><a href="#" title="5"><span>5</span></a></li>
+		</ul><input id="repeaterTop_radTop5_3_ClientState" name="repeaterTop_radTop5_3_ClientState" type="hidden" />
+	</div></div>
+                                                        <span id="repeaterTop_Label1_3">Voto medio: 3.8 su 5 </span>
+                                                        <br>
+                                                        </br>
+                                                        <span id="repeaterTop_Label4_3">4 votazioni</span><br /><br />
+                                                    </div>
+                                               
+                                                    <div style="width:20%; text-align:center; float:left">
+                                                        <span id="repeaterTop_Label2_4">Porta a Lucca</span>
+                                                        <br>
+                                                        </br>
+                                                        <div style="margin-left:40px"><div id="repeaterTop_radTop5_4" class="RadRating RadRating_Default " align="center">
+		<ul class="rrtItem">
+			<li class="rrtSelected"><a href="#" title="1"><span>1</span></a></li><li class="rrtSelected"><a href="#" title="2"><span>2</span></a></li><li class="rrtSelected"><a href="#" title="3"><span>3</span></a></li><li class="rrtSelected"><a href="#" title="4"><span style="width:12px;">4</span></a></li><li><a href="#" title="5"><span>5</span></a></li>
+		</ul><input id="repeaterTop_radTop5_4_ClientState" name="repeaterTop_radTop5_4_ClientState" type="hidden" />
+	</div></div>
+                                                        <span id="repeaterTop_Label1_4">Voto medio: 3.7 su 5 </span>
+                                                        <br>
+                                                        </br>
+                                                        <span id="repeaterTop_Label4_4">17 votazioni</span><br /><br />
+                                                    </div>
+                                               
+</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div id="thumbRotator" class="RadRotator RadRotator_Default" style="height:118px;width:580px;">
+	<div class="rrRelativeWrapper">
+		<div class="rrClipRegion">
+			<ul class="rrItemsList">
+
+			</ul>
+		</div><a class="rrButton rrButtonUp" href="javascript:void(0);">&nbsp;</a><a class="rrButton rrButtonLeft" href="javascript:void(0);">&nbsp;</a><a class="rrButton rrButtonRight" href="javascript:void(0);">&nbsp;</a><a class="rrButton rrButtonDown" href="javascript:void(0);">&nbsp;</a>
+	</div><input id="thumbRotator_ClientState" name="thumbRotator_ClientState" type="hidden" />
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                               <div id="pContenutoPanel">
+
+</div>
+                            </td>
+                        </tr>
+                    </table>
+        <script type="text/javascript">
+            var zoomLevel = 0;
+            var varXDefault = 0;
+            var varYDefault = 0;
+            var varZoomDefault = 0;
+
+	        function RefreshMap(ids,voti,voto,x,y,n,s,p,h,z,XComune,YComune,o){
+	            var cx;
+	            var cy;
+                sita_id = ids.split(d1);
+                sita_voti = voti.split(d1);
+                sita_voto = voto.split(d1);
+	            sita_x = x.split(d1);
+	            sita_y = y.split(d1);
+	            sita_n = n.split(d1);
+	            sita_s = s.split(d1);
+	            sita_p = p.split(d1);
+	            sita_h = h.split(d1);
+	            sita_o = o.split(d1);
+            	
+    	        zoomLevel = parseInt(z);
+            	
+	            mapMinX = 1500;
+	            mapMinY = 1500;
+	            mapMaxX = 0;
+	            mapMaxY = 0;
+                var mapObj = document.getElementById("map");
+                var isV3 = true;
+                
+                //V3
+                
+                if (mapObj && isV3){
+                
+                	map = new google.maps.Map(mapObj,
+                	{scrollwheel: true, //unnecessary is true by default, just to check
+                	 disableDoubleClickZoom: false,  //unnecessary is false by default, just to check
+                	 center: new google.maps.LatLng(XComune, YComune),
+                	 zoom: zoomLevel
+                	 // continuous zoom not anymore in V3 should be performed by browser if supported
+                	 // see http://code.google.com/p/gmaps-api-issues/issues/detail?id=2079#c8 
+                	 // GSmallMapControl doesn't exist anymore in V3
+                	 // if needed it's possible to add panControl zoomControl attribute
+                	});
+                	
+                	for (var k=0;k<sita_n.length;k++){
+                	    pAddStaz(sita_id[k], sita_voti[k], sita_voto[k], sita_o[k]-1, sita_x[k], sita_y[k], sita_n[k], sita_s[k], sita_p[k], sita_h[k]);
+		            }
+                
+                }
+                
+                
+                //V2
+                if (!isV3){
+	                if (GBrowserIsCompatible() && mapObj) {
+		                map = new GMap2(mapObj);
+		                map.enableScrollWheelZoom();
+		                map.enableDoubleClickZoom();
+		                map.enableContinuousZoom();
+		                map.addControl(new GSmallMapControl());
+		                map.setCenter(new GLatLng( 0,0 ), zoomLevel);
+
+		                for (var k=0;k<sita_n.length;k++){
+		                    pAddStaz(sita_id[k], sita_voti[k], sita_voto[k], sita_o[k]-1, sita_x[k], sita_y[k], sita_n[k], sita_s[k], sita_p[k], sita_h[k]);
+		                }
+
+		                //cx = mapMinX+((mapMaxX-mapMinX)/2);
+		                //cy = mapMinY+((mapMaxY-mapMinY)/2);
+            		    
+		                //map.setCenter(new GLatLng( cx, cy ),zoomLevel);
+
+		                map.setCenter(new GLatLng(XComune, YComune), zoomLevel);
+	                }
+	            }	    
+	        }
+        	
+	        function pAddStaz(id,voti,voto,n,x,y,name,biciStr,posizione,statoS) {
+	            var biciTot;
+	            var biciOn;
+	            var biciOff;
+	            var biciErr;
+                var htmlErr;
+	            var htmlStaz;
+	            var p;
+	            var isV3 = true;
+	            var sImagePath;
+	            var infowindow;
+
+	            var rnbIco;
+	            
+	            if (!isV3){
+	            
+	                rnbIco = new GIcon();
+	            
+	            }
+
+	            var rnbIcoV3 = { url: '', size: new google.maps.Size(20, 32),
+	                origin: new google.maps.Point(0, 0),
+	                anchor: new google.maps.Point(0, 32)
+	            }; //V3 new image
+
+		        biciTot = biciOn = biciOff = biciErr = 0;
+		        for (var k=0;k<biciStr.length;k++){
+			        biciTot += (biciStr.substr(k,1)!="x" && biciStr.substr(k,1)!="X")? 1 : 0;
+			        biciOn  += (biciStr.substr(k,1)=="4")? 1 : 0;
+			        biciOff += (biciStr.substr(k,1)=="0")? 1 : 0;
+			        biciErr += (biciStr.substr(k,1)=="5" || biciStr.substr(k,1)=="1" || biciStr.substr(k,1)=="2")? 1 : 0;
+		        }
+		        
+		        if(biciErr==0)
+		            htmlErr = '';
+		        else{
+		            if(biciErr==1)
+		                htmlErr = ' / ' + biciErr + ' ' + msgInErroreSingolare;
+		            else
+		                htmlErr = ' / ' + biciErr + ' ' + msgInErrore;
+		        }
+//	            biciErr = biciTot;
+//	            biciOn = 0;
+	            switch(parseInt(statoS)){
+	                case 0:
+	                    htmlStaz = '<strong><span style="color:green;">' + msgStatoNormale + '</span></strong><br>';
+	                    break;	            
+	                case 1:
+	                    htmlStaz = '<strong><span style="color:red;">' + msgStatoManutenzione + '</span></strong><br>';
+	                    break;
+	                case 2:
+	                    htmlStaz = '<strong><span style="color:red;">' + msgStatoErrore + '</span></strong><br>';
+	                    break;
+	                case 3:
+	                    htmlStaz = '<strong><span style="color:red;">' + msgStatoInstallazione + '</span></strong><br>';
+	                    break;
+	                case 4:
+	                    htmlStaz = '<strong><span style="color:red;">' + msgStatoDefinizione + '</span></strong><br>';
+	                    break;		                    
+	            }
+
+		        x = parseFloat(x);
+		        y = parseFloat(y);
+        		
+		        mapMinX = (x<mapMinX)? x : mapMinX;
+		        mapMaxX = (x>mapMaxX)? x : mapMaxX;
+		        mapMinY = (y<mapMinY)? y : mapMinY;
+		        mapMaxY = (y>mapMaxY)? y : mapMaxY;
+		        p = (n+1)+'';
+		        
+		        switch(parseInt(statoS)){
+		            case 0: //normale
+		            	if (isV3)
+		        			sImagePath = varVirtualPath+"/"+p+"N.gif";
+		            	else
+		            		rnbIco.image = varVirtualPath+"/"+p+"N.gif";
+		                break;
+		            case 1: //manutenzione
+		            	if (isV3)
+		        			sImagePath = varVirtualPath+"/"+p+"R.gif";
+		        		else		            
+	                		rnbIco.image = varVirtualPath+"/"+p+"R.gif";
+		                break;
+		            case 2: //fuori servizio
+		            	if (isV3)
+	            			sImagePath = varVirtualPath+"/"+p+"I.gif";
+		            	else
+		    		 		rnbIco.image = varVirtualPath+"/"+p+"I.gif";
+		                break;
+		            case 3: //installazione
+		            	if (isV3)
+		            		sImagePath = varVirtualPath+"/"+p+"E.gif";
+		            	else
+		            		rnbIco.image = varVirtualPath+"/"+p+"E.gif";
+		                break;
+		            case 4: //definizione
+		            	if (isV3)
+		            		sImagePath = varVirtualPath+"/"+p+"M.gif";
+		            	else
+		                	rnbIco.image = varVirtualPath+"/"+p+"M.gif";
+		                break;		                
+		            default:
+		                break;
+		        }
+	            
+                if (isV3){
+                
+                	rnbIcoV3.url = sImagePath;
+                	rnbIcoV3.size = new google.maps.Size(25,25);
+                	rnbIcoV3.anchor = new google.maps.Point(1,1);
+                	infowindow = new google.maps.InfoWindow();
+                	
+                	/*rnbIcoV3 = new google.maps.MarkerImage({url:sImagePath,size:new google.maps.Size(25,25),
+                                                            origin: new google.maps.Point(0,0), 
+                                                            anchor: new google.maps.Point(1,1)}); //V3 new image */
+                	
+                	//alert('stop');
+                	
+                	//infoWindowAchor doesn't exist anymore defined this way
+                
+                	mrkPosition = new google.maps.LatLng(x,y);
+                
+                	mapMarkers[n] = new google.maps.Marker({
+                		position: mrkPosition,
+                		map: map,
+                		icon: rnbIcoV3
+                	});
+                
+                }
+                else{
+                
+            		rnbIco.iconSize = new GSize(25, 25);
+	            	rnbIco.iconAnchor = new GPoint(1, 1);
+	            	rnbIco.infoWindowAnchor = new GPoint(30, 5);
+	            
+		        	mapMarkers[n] = new GMarker( new GLatLng(x,y) ,rnbIco);
+
+                }
+                
+                
+		        var html = htmlStaz +
+		                   '<strong>'+ name +'</strong><br> ' +
+		                   posizione +
+		                   '<span class="RedBold">'+biciOn+' ' + (biciOn==1?msgDisponibile:msgDisponibili)+ ' / '+(biciTot-biciOn-biciErr)+' '+ ((biciTot-biciOn-biciErr)==1?msgPostoLibero:msgPostiLiberi) + htmlErr + '</span><br>'
+				           '<span class="RedBold"></span></br></br>';
+
+		        for (var k=0;k<(biciTot-biciErr);k++){
+			        html += '<img src="'+varVirtualGoogle+'/bici_'+((k<biciOn)?1:0)+'.gif"> '+((k%8==7)?"</br>":"");
+		        }
+
+		        for (var k=0;k<biciErr;k++){
+			        html += '<img src="'+varVirtualGoogle+'/bici_2.gif" height="15px" border="1px"> '+((k%8==7)?"</br>":"");
+		        }
+
+		        if(voti==1)
+		            html += '</br><strong>' + varVotoMedio + ': '+voto+' '+varSu5Con+' '+voti+' '+varVotazione +'</strong></br>&nbsp;';
+		        else
+		            html += '</br><strong>' + varVotoMedio + ': '+voto+' '+varSu5Con+' '+voti+' ' +varVotazioni+'</strong></br>&nbsp;';
+		        
+		        if (isV3){
+		        
+		        	google.maps.event.addListener( mapMarkers[n] , "click", function() {SetVoto(id,name,voti,voto,n); infowindow.setContent(html); infowindow.open(map,mapMarkers[n]); map.setCenter(new google.maps.LatLng(x, y));});
+		        	//map.addOverlay( mapMarkers[n] );
+
+		        }
+		        else{
+		        
+		        	GEvent.addListener( mapMarkers[n] , "click", function() {SetVoto(id,name,voti,voto,n); mapMarkers[n].openInfoWindowHtml(html); map.setCenter(new GLatLng( x, y ),map.getZoom());} );
+		        	map.addOverlay( mapMarkers[n] );
+		        }
+	        }
+
+
+	        function pUpdateStaz(id,voti,voto,n,x,y,name,biciStr,posizione,statoS) {
+	            var biciTot;
+	            var biciOn;
+	            var biciErr;
+                var htmlErr;
+	            var htmlStaz;
+	            var p;
+	            var isV3 = true;
+	            var infowindow = new google.maps.InfoWindow({ content: '' });
+
+		        biciTot = biciOn = biciErr = 0;
+		        for (var k=0;k<biciStr.length;k++){
+			        biciTot += (biciStr.substr(k,1)!="x" && biciStr.substr(k,1)!="X")? 1 : 0;
+			        biciOn  += (biciStr.substr(k,1)=="4")? 1 : 0;
+			        biciErr += (biciStr.substr(k,1)=="5" || biciStr.substr(k,1)=="1" || biciStr.substr(k,1)=="2")? 1 : 0;
+		        }
+        		
+		        if(biciErr==0)
+		            htmlErr = '';
+		        else{
+		            if(biciErr==1)
+		                htmlErr = ' / ' + biciErr + ' ' + msgInErroreSingolare;
+		            else
+		                htmlErr = ' / ' + biciErr + ' ' + msgInErrore;
+		        }
+		        if(parseInt(statoS)==0)
+		            htmlStaz = '';
+		        else{
+		            switch(parseInt(statoS)){
+	                    case 0:
+	                        htmlStaz = '<strong><span style="color:green;">' + msgStatoNormale + '</span></strong><br>';
+	                        break;			            
+		                case 1: //manutenzione
+		                    htmlStaz = '<strong><span style="color:red;">' + msgStatoManutenzione + '</span></strong><br>';
+		                    break;
+		                case 2: //fuori servizio
+		                    htmlStaz = '<strong><span style="color:red;">' + msgStatoErrore + '</span></strong><br>';
+		                    break;
+		                case 3: //installazione
+		                    htmlStaz = '<strong><span style="color:red;">' + msgStatoInstallazione + '</span></strong><br>';
+		                    break;
+		                case 4: //definizione
+		                    htmlStaz = '<strong><span style="color:red;">' + msgStatoDefinizione + '</span></strong><br>';
+		                    break;
+		                default:
+		                    break;
+		            }
+		        }
+    	        var html = htmlStaz +
+		                   '<strong>'+ name +'</strong><br> ' +
+		                   '<strong>'+ posizione +'</strong>: <br>' +
+		                   '<span class="RedBold">'+biciOn+' ' + (biciOn==1?msgDisponibile:msgDisponibili)+ ' / '+(biciTot-biciOn-biciErr)+' '+ ((biciTot-biciOn-biciErr)==1?msgPostoLibero:msgPostiLiberi) + htmlErr + '</span><br>'
+				           '<span class="RedBold"></span><br><br>';
+        				   
+		        for (var k=0;k<(biciTot-biciErr);k++){
+			        html += '<img src="'+varVirtualGoogle+'/bici_'+((k<biciOn)?1:0)+'.gif" vspace=2> '+((k%8==7)?"<br>":"");
+		        }
+		        for (var k=0;k<biciErr;k++){
+			        html += '<img src="'+varVirtualGoogle+'/bici_2.gif" vspace=2> '+((k%8==7)?"<br>":"");
+		        }
+		        if(voti==1)
+		            html += '<br><strong>' + varVotoMedio + ': '+voto.substring(0,3)+' '+varSu5Con+' '+voti+' ' + varVotazione + '</strong><br>&nbsp;';
+		        else
+		            html += '<br><strong>' + varVotoMedio + ': '+voto.substring(0,3)+' '+varSu5Con+' '+voti+' '+varVotazioni+'</strong><br>&nbsp;';
+
+		        if (isV3) {
+		        	infowindow.setContent(html); 
+		        	infowindow.open(map,mapMarkers[n]);
+		        }
+		        else
+		        	mapMarkers[n].openInfoWindowHtml(html);
+	        }
+
+	        function pGMapClick(n){
+	            var isV3 = true;
+	            if (isV3) {
+	         	google.maps.event.trigger(mapMarkers[n], 'click');
+	        }
+	        else
+		        GEvent.trigger( mapMarkers[n], "click");
+	        }
+
+     </script>
+    	        
+            <script type="text/javascript">
+                function SetVoto(id,name,voti,voto,n){
+                    var R = $find("radVota");
+                    var L = document.getElementById('lblVota');
+                    
+                    voto = voto.replace(',','.');
+                    document.getElementById('lblIDS').innerHTML = id;
+                    document.getElementById('lblVotiS').innerHTML = voti;
+                    document.getElementById('lblVotoS').innerHTML = voto.substring(0,3);
+                    document.getElementById('lblN').innerHTML = n;
+                    R.set_value(parseFloat(voto));
+                    L.innerHTML = varVotaLaStazione + ': ' + name;
+                    return false;
+                }
+                
+                function OnClientRated(sender, args)
+                {
+                      var s = document.getElementById('lblIDS').innerHTML + '|' + document.getElementById('lblVotiS').innerHTML + '|' + document.getElementById('lblVotoS').innerHTML + '|' + document.getElementById('lblN').innerHTML;
+                      RadAjaxManager1.ajaxRequest(s);
+                      return false;
+                }        
+                
+                function SetNewVoto(voti, voto, n){
+                    document.getElementById('lblVotiS').innerHTML = voti;
+                    document.getElementById('lblVotoS').innerHTML = voto.substring(0,3);
+                    pUpdateStaz(sita_id[n], voti, voto, n, sita_x[n], sita_y[n], sita_n[n], sita_s[n], sita_p[n], sita_h[n] );
+                    var R = $find("radVota");
+                }	        
+	        </script>        
+    	    
+            </td>
+            <td id="OmbraSx">
+                &nbsp;
+            </td>
+            </tr>
+        </table>
+    <iframe id="WcFooter1_FrameFooter" class="FrameFooter" allowtransparency="true" src="css/Portal_17/Pages/Footer.aspx" frameborder="0" scrolling="no"></iframe>
+
+    </div>
+    <div id="ajCheckLoginUserPanel">
+	<div id="ajCheckLoginUser">
+
+	</div>
+</div><div id="ajCheckLoginAdminPanel">
+	<div id="ajCheckLoginAdmin">
+
+	</div>
+</div><div id="ajLogoutUserPanel">
+	<div id="ajLogoutUser">
+
+	</div>
+</div><div id="windowManagerPortal" style="display:none;">
+	<div id="windowManagerPortal_alerttemplate" style="display:none;">
+		<div class="rwDialogPopup radalert">			
+			<div class="rwDialogText">
+			{1}				
+			</div>
+			
+			<div>
+				<a  onclick="$find('{0}').close();"
+				class="rwPopupButton" href="javascript:void(0);">
+					<span class="rwOuterSpan">
+						<span class="rwInnerSpan">##LOC[OK]##</span>
+					</span>
+				</a>				
+			</div>
+		</div>
+		</div><div id="windowManagerPortal_prompttemplate" style="display:none;">
+		 <div class="rwDialogPopup radprompt">			
+			    <div class="rwDialogText">
+			    {1}				
+			    </div>		
+			    <div>
+				    <script type="text/javascript">
+				    function RadWindowprompt_detectenter(id, ev, input)
+				    {							
+					    if (!ev) ev = window.event;                
+					    if (ev.keyCode == 13)
+					    {															        
+					        var but = input.parentNode.parentNode.getElementsByTagName("A")[0];					        
+					        if (but)
+						    {							
+							    if (but.click) but.click();
+							    else if (but.onclick)
+							    {
+							        but.focus(); var click = but.onclick; but.onclick = null; if (click) click.call(but);							 
+							    }
+						    }
+					       return false;
+					    } 
+					    else return true;
+				    }	 
+				    </script>
+				    <input  onkeydown="return RadWindowprompt_detectenter('{0}', event, this);" type="text"  class="rwDialogInput" value="{2}" />
+			    </div>
+			    <div>
+				    <a onclick="$find('{0}').close(this.parentNode.parentNode.getElementsByTagName('input')[0].value);"				
+					    class="rwPopupButton" href="javascript:void(0);" ><span class="rwOuterSpan"><span class="rwInnerSpan">##LOC[OK]##</span></span></a>
+				    <a onclick="$find('{0}').close(null);" class="rwPopupButton"  href="javascript:void(0);"><span class="rwOuterSpan"><span class="rwInnerSpan">##LOC[Cancel]##</span></span></a>
+			    </div>
+		    </div>				       
+		</div><div id="windowManagerPortal_confirmtemplate" style="display:none;">
+		<div class="rwDialogPopup radconfirm">			
+			<div class="rwDialogText">
+			{1}				
+			</div>						
+			<div>
+				<a onclick="$find('{0}').close(true);"  class="rwPopupButton" href="javascript:void(0);" ><span class="rwOuterSpan"><span class="rwInnerSpan">##LOC[OK]##</span></span></a>
+				<a onclick="$find('{0}').close(false);" class="rwPopupButton"  href="javascript:void(0);"><span class="rwOuterSpan"><span class="rwInnerSpan">##LOC[Cancel]##</span></span></a>
+			</div>
+		</div>		
+		</div><div id="radPortal" style="display:none;">
+		<div id="radPortal_C">
+
+		</div><input id="radPortal_ClientState" name="radPortal_ClientState" type="hidden" />
+	</div><input id="windowManagerPortal_ClientState" name="windowManagerPortal_ClientState" type="hidden" />
+</div>
+<script>msgLoginInvalidParameter = 'Prego, inserire uno username e una password';msgShortPassword = 'Password troppo breve. Deve essere di almeno 5 caratteri';msgDifferentPassword = 'La password non corrisponde con quella ridigitata';</script><script>document.getElementById('open').href='#';</script>
+<script type="text/javascript">
+//<![CDATA[
+Telerik.Web.UI.RadRating._preInitialize("radVota","0");Telerik.Web.UI.RadRating._preInitialize("repeaterTop_radTop5_0","0");Telerik.Web.UI.RadRating._preInitialize("repeaterTop_radTop5_1","0");Telerik.Web.UI.RadRating._preInitialize("repeaterTop_radTop5_2","0");Telerik.Web.UI.RadRating._preInitialize("repeaterTop_radTop5_3","0");Telerik.Web.UI.RadRating._preInitialize("repeaterTop_radTop5_4","0");setTimeout(function(){RefreshMap('922|923|924|925|926|927|928|929|930|931|932|933|934|935|1116|1390|1391|1392|1443|1444|1445|1446|1447|1448','157|41|28|21|83|81|50|19|28|45|13|23|25|26|17|5|15|3|4|7|6|5|4|3','3,2|2,6|2,3|3,5|2,3|1,9|2,3|3,8|3,3|2,5|3,5|3,2|3,8|3,2|3,7|3,1|3,4|2,0|3,8|4,2|1,6|3,5|3,1|3,0','43.69889689157878|43.708474729164045|43.715540542144296|43.7163945097564|43.71850756685601|43.71978699640267|43.72288113973688|43.729021341163644|43.724455713221055|43.721251521991505|43.706835077467|43.70658035883312|43.71017025126551|43.71001320663703|43.724249448743706|43.71569279104801|43.722220128128825|43.71035298602386|43.708118345328074|43.719862256627756|43.719864417699746|43.71081663441501|43.7149988319841|43.71937664670127','10.4007026553154|10.399020910263062|10.400466620922089|10.405159145593643|10.402157753705978|10.407198965549469|10.39179127129023|10.392712354660034|10.410447120666504|10.420242547988892|10.440119425023681|10.419128279762276|10.398750007152557|10.410232543945312|10.402196310659065|10.395006805557273|10.388224964309757|10.405330168647765|10.384021881753597|10.40019726309049|10.403020969311456|10.420468790351833|10.419548502516136|10.423707704299204','Aeroporto:|Stazione F.S.:|Comune Palazzo Blu:|Teatro Tribunale:|Borgo Stretto:|Polo Marzotto:|Duomo:|Pietrasantina:|Paparelli:|Pratale:|Ospedale Cisanello:|Sms Biblioteca:|Vittorio Emanuele:|Palacongressi:|Porta a Lucca:|Solferino:|San Rossore F.S.:|Guerrazzi:|Livornese:|Cavalieri:|M. Liberta`:|Galleria Gerace:|C. Marchesi:|CNR-Praticelli:','0000040000xxxxxxxxxxxxxxxxxxxx|00040004x4440040440044444400xx|x000000000000000xxxxxxxxxxxxxx|040404010440xxxxxxxxxxxxxxxxxx|0x0000400xxxxxxxxxxxxxxxxxx0xx|40000000000x00xxxxxxxxxxxx0xxx|0000000000000000000000xxxxxxxx|xxxxxxxxx040000000440000x00000|140444404404444000400400400004|040000000044044000000004000000|04444044404444xxxxxxxxxxxxxxxx|000000444444xxxxxxxxxxxxxxxxxx|4444001404044440xxxxxxxxxxxxxx|400400050000000000000000xxxxxx|0044004000xxxxxxxxxxxxxxxxxxxx|4010044444xxxxxxxxxxxxxxxxxxxx|0400000010000400xxxxxxxxxxxxxx|4444404044xxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|000000000404xxxxxxxxxxxxxxxxxx|044444000400xxxxxxxxxxxxxxxxxx|400044044044xxxxxxxxxxxxxxxxxx|00404040000040xxxxxxxxxxxxxxxx','<strong>P.le C. D’Ascanio:<strong></br> |P.zza Stazione:|Via Toselli:|Via Palestro:|Via Oberdan:|Largo Pontecorvo:|P.zza Manin:|Via S. Jacopo:|Via Paparelli:|Via di Pratale:|Via Pietro Trivella:|L.go Tibet:|P.zza V. Emanuele II:|Via Matteotti:|Via Bianchi:|P.zza Solferino:|Via A. Pisano:|P.zza D. Guerrazzi:|Via Chiassatello:|Via Consoli del Mare:|P.zza Martiri della Liberta`:|Via Carlo Matteucci:|Via M. Valgimigli:|Via G. Moruzzi:','0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|2|2|0|0|0|0','14','43.7228386','10.4016888','1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24')}, 0);setTimeout(function(){RefreshMap('922|923|924|925|926|927|928|929|930|931|932|933|934|935|1116|1390|1391|1392|1443|1444|1445|1446|1447|1448','157|41|28|21|83|81|50|19|28|45|13|23|25|26|17|5|15|3|4|7|6|5|4|3','3,2|2,6|2,3|3,5|2,3|1,9|2,3|3,8|3,3|2,5|3,5|3,2|3,8|3,2|3,7|3,1|3,4|2,0|3,8|4,2|1,6|3,5|3,1|3,0','43.69889689157878|43.708474729164045|43.715540542144296|43.7163945097564|43.71850756685601|43.71978699640267|43.72288113973688|43.729021341163644|43.724455713221055|43.721251521991505|43.706835077467|43.70658035883312|43.71017025126551|43.71001320663703|43.724249448743706|43.71569279104801|43.722220128128825|43.71035298602386|43.708118345328074|43.719862256627756|43.719864417699746|43.71081663441501|43.7149988319841|43.71937664670127','10.4007026553154|10.399020910263062|10.400466620922089|10.405159145593643|10.402157753705978|10.407198965549469|10.39179127129023|10.392712354660034|10.410447120666504|10.420242547988892|10.440119425023681|10.419128279762276|10.398750007152557|10.410232543945312|10.402196310659065|10.395006805557273|10.388224964309757|10.405330168647765|10.384021881753597|10.40019726309049|10.403020969311456|10.420468790351833|10.419548502516136|10.423707704299204','Aeroporto:|Stazione F.S.:|Comune Palazzo Blu:|Teatro Tribunale:|Borgo Stretto:|Polo Marzotto:|Duomo:|Pietrasantina:|Paparelli:|Pratale:|Ospedale Cisanello:|Sms Biblioteca:|Vittorio Emanuele:|Palacongressi:|Porta a Lucca:|Solferino:|San Rossore F.S.:|Guerrazzi:|Livornese:|Cavalieri:|M. Liberta`:|Galleria Gerace:|C. Marchesi:|CNR-Praticelli:','0000040000xxxxxxxxxxxxxxxxxxxx|00040004x4440040440044444400xx|x000000000000000xxxxxxxxxxxxxx|040404010440xxxxxxxxxxxxxxxxxx|0x0000400xxxxxxxxxxxxxxxxxx0xx|40000000000x00xxxxxxxxxxxx0xxx|0000000000000000000000xxxxxxxx|xxxxxxxxx040000000440000x00000|140444404404444000400400400004|040000000044044000000004000000|04444044404444xxxxxxxxxxxxxxxx|000000444444xxxxxxxxxxxxxxxxxx|4444001404044440xxxxxxxxxxxxxx|400400050000000000000000xxxxxx|0044004000xxxxxxxxxxxxxxxxxxxx|4010044444xxxxxxxxxxxxxxxxxxxx|0400000010000400xxxxxxxxxxxxxx|4444404044xxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|000000000404xxxxxxxxxxxxxxxxxx|044444000400xxxxxxxxxxxxxxxxxx|400044044044xxxxxxxxxxxxxxxxxx|00404040000040xxxxxxxxxxxxxxxx','<strong>P.le C. D’Ascanio:<strong></br> |P.zza Stazione:|Via Toselli:|Via Palestro:|Via Oberdan:|Largo Pontecorvo:|P.zza Manin:|Via S. Jacopo:|Via Paparelli:|Via di Pratale:|Via Pietro Trivella:|L.go Tibet:|P.zza V. Emanuele II:|Via Matteotti:|Via Bianchi:|P.zza Solferino:|Via A. Pisano:|P.zza D. Guerrazzi:|Via Chiassatello:|Via Consoli del Mare:|P.zza Martiri della Liberta`:|Via Carlo Matteucci:|Via M. Valgimigli:|Via G. Moruzzi:','0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|2|2|0|0|0|0','13','43.7228386','10.4016888','1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24')}, 0);Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadAjaxLoadingPanel, {"initialDelayTime":0,"isSticky":false,"minDisplayTime":0,"skin":"Web20","transparency":0,"uniqueID":"ajLoadingG","zIndex":90000}, null, null, $get("ajLoadingG"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadAjaxManager, {"_updatePanels":"","ajaxSettings":[{InitControlID : "WcPanel1_lstComuni",UpdatedControls : [{ControlID:"pContenuto",PanelID:"ajLoadingG"},{ControlID:"pVota",PanelID:"ajLoadingG"},{ControlID:"repeaterTop",PanelID:"ajLoadingG"},{ControlID:"wcPGoogle_lstStazioni",PanelID:"ajLoadingG"},{ControlID:"wcPGoogle_radRotStazioni",PanelID:"ajLoadingG"}]},{InitControlID : "wcPGoogle_radRotStazioni",UpdatedControls : [{ControlID:"wcPGoogle_radRotStazioni",PanelID:"ajLoadingG"}]},{InitControlID : "wcPGoogle_lstStazioni",UpdatedControls : [{ControlID:"wcPGoogle_radRotStazioni",PanelID:"ajLoadingG"}]},{InitControlID : "pVota",UpdatedControls : [{ControlID:"RadAjaxManager1",PanelID:""},{ControlID:"",PanelID:"ajLoadingG"}]}],"clientEvents":{OnRequestStart:"",OnResponseEnd:""},"defaultLoadingPanelID":"","enableAJAX":true,"enableHistory":false,"links":[],"styles":[],"uniqueID":"RadAjaxManager1","updatePanelsRenderMode":0}, null, null, $get("RadAjaxManager1"));
+});
+
+WebForm_InitCallback();Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadComboBox, {"_dropDownWidth":0,"_maxHeight":400,"_postBackReference":"__doPostBack(\u0027WcPanel1$lstComuni\u0027,\u0027arguments\u0027)","_skin":"Office2007","_text":"Pisa","_uniqueId":"WcPanel1$lstComuni","_value":"144","clientStateFieldID":"WcPanel1_lstComuni_ClientState","collapseAnimation":"{\"duration\":450}","expandAnimation":"{\"duration\":450}","itemData":[{"value":"144","selected":true}],"markFirstMatch":true,"selectedIndex":0}, null, null, $get("WcPanel1_lstComuni"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadComboBox, {"_dropDownWidth":0,"_maxHeight":400,"_postBackReference":"__doPostBack(\u0027wcPGoogle$lstStazioni\u0027,\u0027arguments\u0027)","_skin":"Office2007","_text":"Selezionare...","_uniqueId":"wcPGoogle$lstStazioni","_value":"0","clientStateFieldID":"wcPGoogle_lstStazioni_ClientState","collapseAnimation":"{\"duration\":450}","expandAnimation":"{\"duration\":450}","itemData":[{"value":"0","selected":true},{"value":"0"},{"value":"1"},{"value":"2"},{"value":"3"},{"value":"4"},{"value":"5"},{"value":"6"},{"value":"7"},{"value":"8"},{"value":"9"},{"value":"10"},{"value":"11"},{"value":"12"},{"value":"13"},{"value":"14"},{"value":"15"},{"value":"16"},{"value":"17"},{"value":"18"},{"value":"19"},{"value":"20"},{"value":"21"},{"value":"22"},{"value":"23"}],"markFirstMatch":true,"selectedIndex":0}, null, null, $get("wcPGoogle_lstStazioni"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadRotator, {"clientStateFieldID":"wcPGoogle_radRotStazioni_ClientState","items":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"rotatorType":2,"scrollDirection":12,"scrollDuration":2000,"skin":"Default"}, null, null, $get("wcPGoogle_radRotStazioni"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadRating, {"_preInitializeComplete":true,"_uniqueID":"radVota","clientStateFieldID":"radVota_ClientState","precision":2,"value":3.2}, {"rated":OnClientRated}, null, $get("radVota"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadRating, {"_preInitializeComplete":true,"_uniqueID":"repeaterTop$ctl00$radTop5","clientStateFieldID":"repeaterTop_radTop5_0_ClientState","readOnly":true,"value":4.2}, null, null, $get("repeaterTop_radTop5_0"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadRating, {"_preInitializeComplete":true,"_uniqueID":"repeaterTop$ctl01$radTop5","clientStateFieldID":"repeaterTop_radTop5_1_ClientState","readOnly":true,"value":3.8}, null, null, $get("repeaterTop_radTop5_1"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadRating, {"_preInitializeComplete":true,"_uniqueID":"repeaterTop$ctl02$radTop5","clientStateFieldID":"repeaterTop_radTop5_2_ClientState","readOnly":true,"value":3.8}, null, null, $get("repeaterTop_radTop5_2"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadRating, {"_preInitializeComplete":true,"_uniqueID":"repeaterTop$ctl03$radTop5","clientStateFieldID":"repeaterTop_radTop5_3_ClientState","readOnly":true,"value":3.8}, null, null, $get("repeaterTop_radTop5_3"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadRating, {"_preInitializeComplete":true,"_uniqueID":"repeaterTop$ctl04$radTop5","clientStateFieldID":"repeaterTop_radTop5_4_ClientState","readOnly":true,"value":3.7}, null, null, $get("repeaterTop_radTop5_4"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadRotator, {"clientStateFieldID":"thumbRotator_ClientState","controlButtons":{"UpButtonID":"","DownButtonID":"","LeftButtonID":"img_left","RightButtonID":"img_right","OnClientButtonClick":"","OnClientButtonOver":"","OnClientButtonOut":""},"items":[],"scrollDirection":1,"scrollDuration":600,"skin":"Default"}, null, null, $get("thumbRotator"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadAjaxPanel, {"clientEvents":{OnRequestStart:"",OnResponseEnd:""},"enableAJAX":true,"enableHistory":false,"links":[],"loadingPanelID":"","styles":[],"uniqueID":"ajCheckLoginUser"}, null, null, $get("ajCheckLoginUser"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadAjaxPanel, {"clientEvents":{OnRequestStart:"",OnResponseEnd:""},"enableAJAX":true,"enableHistory":false,"links":[],"loadingPanelID":"","styles":[],"uniqueID":"ajCheckLoginAdmin"}, null, null, $get("ajCheckLoginAdmin"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadAjaxPanel, {"clientEvents":{OnRequestStart:"",OnResponseEnd:""},"enableAJAX":true,"enableHistory":false,"links":[],"loadingPanelID":"","styles":[],"uniqueID":"ajLogoutUser"}, null, null, $get("ajLogoutUser"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadWindow, {"_dockMode":false,"behaviors":0,"clientStateFieldID":"radPortal_ClientState","destroyOnClose":true,"formID":"form1","height":"180px","iconUrl":"","left":"","minimizeIconUrl":"","modal":true,"name":"radPortal","reloadOnShow":true,"showContentDuringLoad":false,"skin":"Office2007","top":"","visibleStatusbar":false,"width":"450px"}, {"close":OnClientClosePortal}, null, $get("radPortal"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadWindowManager, {"behaviors":4,"clientStateFieldID":"windowManagerPortal_ClientState","destroyOnClose":true,"formID":"form1","iconUrl":"","left":"","minimizeIconUrl":"","modal":true,"name":"windowManagerPortal","reloadOnShow":true,"showContentDuringLoad":false,"skin":"Office2007","top":"","visibleStatusbar":false,"windowControls":"['radPortal']"}, null, {"child":"radPortal"}, $get("windowManagerPortal"));
+});
+//]]>
+</script>
+</form>
+</body>
+</html>        
+

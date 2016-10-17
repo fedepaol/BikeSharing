@@ -6,6 +6,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
+import com.whiterabbit.pisabike.apiclient.LocalBikeClient;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import rx.subjects.BehaviorSubject;
 public class BikesProvider {
     @Inject BriteDatabase mBrite;
     @Inject SchedulersProvider mSchedulersProvider;
-    @Inject BikeRestClient mBikeClient;
+    @Inject LocalBikeClient mBikeClient;
 
     @Inject
     public BikesProvider() {

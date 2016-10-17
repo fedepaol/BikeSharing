@@ -57,8 +57,6 @@ public class MainPresenterImpl implements MainPresenter {
     public void onViewDetached() {
         if (mSubscription != null)
             mSubscription.unsubscribe();
-
-        mView = null;
     }
 
     @Override

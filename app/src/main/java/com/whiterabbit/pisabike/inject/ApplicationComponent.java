@@ -11,6 +11,7 @@ import com.squareup.sqlbrite.BriteDatabase;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
+import com.whiterabbit.pisabike.apiclient.LocalBikeClient;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.storage.PrefsStorage;
 import com.whiterabbit.pisabike.ui.MapMarkerFactory;
@@ -26,7 +27,7 @@ public interface ApplicationComponent {
     void inject(PisaBikeApplication app);
 
     SharedPreferences getSharedPrefs();
-    BikeRestClient getBikeClient();
+    LocalBikeClient getBikeClient();
     ReactiveLocationProvider getReactiveLocationProvider();
     Context getContext();
     SchedulersProvider getSchedulers();

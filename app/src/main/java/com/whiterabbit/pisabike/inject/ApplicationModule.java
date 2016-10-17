@@ -10,6 +10,7 @@ import com.squareup.sqlbrite.SqlBrite;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
+import com.whiterabbit.pisabike.apiclient.LocalBikeClient;
 import com.whiterabbit.pisabike.model.PisaBikeDbHelper;
 import com.whiterabbit.pisabike.schedule.RealSchedulersProvider;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
@@ -41,8 +42,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    BikeRestClient provideBikeClient() {
-        return new BikeRestClient();
+    LocalBikeClient provideBikeClient() {
+        return new LocalBikeClient();
     }
 
     @Provides
