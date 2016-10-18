@@ -16,4 +16,6 @@ public interface MainPresenter {
     void onNavigateClicked();
 
     void onCameraIdle();
+
+    boolean onBackPressed();
 }

@@ -19,4 +19,14 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        MainFragment main = (MainFragment) (getSupportFragmentManager().findFragmentById(R.id.main_activity_frame));
+        if (main != null && main.onBackPressed()) {
+            return;
+        }
+
+        super.onBackPressed();
+    }
 }

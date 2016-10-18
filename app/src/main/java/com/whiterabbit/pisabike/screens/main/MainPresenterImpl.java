@@ -102,6 +102,10 @@ public class MainPresenterImpl implements MainPresenter {
 
     }
 
+    private long getNowSeconds() {
+        return System.currentTimeMillis() / 1000;
+    }
+
     private void askForUpdate() {
         mView.startUpdating();
         final Subscription sub =
@@ -113,13 +117,11 @@ public class MainPresenterImpl implements MainPresenter {
                                 () -> mView.stopUpdating());
         mSubscription.add(sub);
         mView.stopUpdating();
-        long now = System.currentTimeMillis() / 1000;
-        mStorage.setLastUpdate(now);
+        mStorage.setLastUpdate(getNowSeconds());
     }
 
     private void askForUpdateIfNeeded() {
-        long now = System.currentTimeMillis() / 1000;
-        if (mStorage.getLastUpdate() + 60 > now) {
+        if (mStorage.getLastUpdate() + 60 < getNowSeconds()) {
             askForUpdate();
         }
     }
@@ -188,15 +190,18 @@ public class MainPresenterImpl implements MainPresenter {
         return false;
     }
 
+    private void disableDetail() {
+        if (mSelectedStation != null) {
+            mView.hideStationDetail();
+            mView.unHighLightStation(mSelectedStation);
+            mSelectedStation = null;
+        }
+    }
+
     @Override
     public void onCameraMoved() {
         if (!mMovingToMarker) {
-            mView.hideStationDetail();
-
-            if (mSelectedStation != null) {
-                mView.unHighLightStation(mSelectedStation);
-                mSelectedStation = null;
-            }
+            disableDetail();
         }
     }
 
@@ -222,5 +227,14 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void onNavigateClicked() {
         mView.navigateTo(mSelectedStation);
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        if (mSelectedStation != null) {
+            disableDetail();
+            return true;
+        }
+        return false;
     }
 }

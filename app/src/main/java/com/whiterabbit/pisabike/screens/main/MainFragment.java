@@ -382,4 +382,8 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         startActivity(i);
     }
 
+    public boolean onBackPressed() {
+        return mPresenter.onBackPressed();
+    }
+
 }
