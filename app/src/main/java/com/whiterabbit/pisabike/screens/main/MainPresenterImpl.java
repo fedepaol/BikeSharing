@@ -46,11 +46,9 @@ public class MainPresenterImpl implements MainPresenter {
     private ReactiveLocationProvider mLocationProvider;
     private Map<String, Station> mStations;
     private CompositeSubscription mSubscription;
-    private Location myLocation;
-    private Location pisaLocation = new Location("FAKE");
+    private Location mMyLocation;
     private RxPermissions mPermissions;
-    BikesProvider mBikesProvider;
-    private boolean hasPermission;
+    private BikesProvider mBikesProvider;
     private Station mSelectedStation;
     private PrefsStorage mStorage;
     private boolean mMovingToMarker;
@@ -64,8 +62,6 @@ public class MainPresenterImpl implements MainPresenter {
         mLocationProvider = locationProvider;
         mBikesProvider = bikesProvider;
         mPermissions = permissions;
-        pisaLocation.setLatitude(23.0);
-        pisaLocation.setLongitude(24.0);
         mStations = new HashMap<>();
         mStorage = storage;
     }
@@ -158,7 +154,7 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     private void onLocationChanged(Location l) {
-        myLocation = l;
+        mMyLocation = l;
     }
 
     @Override
@@ -167,7 +163,6 @@ public class MainPresenterImpl implements MainPresenter {
         mPermissions.request(Manifest.permission.ACCESS_COARSE_LOCATION,
                              Manifest.permission.ACCESS_FINE_LOCATION).subscribe(
                 granted -> {
-                    hasPermission = granted;
                     if (granted) {
                         if (mustCenter) {
                             mSubscription.add(centerLocation());
@@ -190,7 +185,7 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void onStationClicked(String stationName) {
         Station s = mStations.get(stationName);
-        mView.displayStationDetail(s, myLocation);
+        mView.displayStationDetail(s, mMyLocation);
         mView.highLightStation(s);
 
         if (mSelectedStation != null && s != mSelectedStation) {
@@ -229,9 +224,9 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onCenterLocationClicked() {
-        if (myLocation != null) {
-            mView.centerMapToLocation(new LatLng(myLocation.getLatitude(),
-                                                 myLocation.getLongitude()));
+        if (mMyLocation != null) {
+            mView.centerMapToLocation(new LatLng(mMyLocation.getLatitude(),
+                                                 mMyLocation.getLongitude()));
         }
     }
 

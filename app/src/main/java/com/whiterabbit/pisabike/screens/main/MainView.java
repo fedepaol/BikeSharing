@@ -27,8 +27,6 @@ import java.util.List;
 public interface MainView {
     void centerMapToLocation(LatLng l);
     void drawStationsOnMap(List<Station> stations);
-    void displayStationList(List<Station> stations, Location current);
-    void hideStationList();
     void displayStationDetail(Station detail, Location current);
     void hideStationDetail();
     void stopUpdating();
@@ -36,12 +34,8 @@ public interface MainView {
     void getMap();
     void centerCity(double lat, double lon);
     void enableMyLocation();
-
     void highLightStation(Station s);
-
     void unHighLightStation(Station s);
-
     void stopUpdatingError();
-
     void navigateTo(Station s);
 }

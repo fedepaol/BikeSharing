@@ -111,7 +111,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Bind(R.id.main_progress)
     ProgressView mProgress;
 
-    BottomSheetBehavior bottomSheetBehavior;
+    BottomSheetBehavior mBottomSheetBehavior;
 
     private GoogleMap mGoogleMap;
     private Map<String, String> markerToStationsMap = new HashMap<>();
@@ -134,20 +134,6 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
                 .build().inject(this);
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.main_action_reload) {
-            mPresenter.onReloadAsked();
-            return true;
-        }
-        return false;
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -165,13 +151,13 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
                                                     savedInstanceState.getBundle("mapViewSaveState") : null;
         mMapView.onCreate(mapViewSavedInstanceState);
 
-        bottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        mBottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         mDirectionsFab.setScaleX(0);
         mDirectionsFab.setScaleY(0);
         mDirectionsFab.setEnabled(false);
 
-        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+        mBottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 if (BottomSheetBehavior.STATE_EXPANDED == newState) {
@@ -210,6 +196,20 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.main_action_reload) {
+            mPresenter.onReloadAsked();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public void centerMapToLocation(LatLng l) {
         CameraUpdate center =
                 CameraUpdateFactory.newLatLng(l);
@@ -239,16 +239,6 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         markerToStationsMap.put(m.getId(), s.getName());
     }
 
-    @Override
-    public void displayStationList(List<Station> stations, Location current) {
-
-    }
-
-    @Override
-    public void hideStationList() {
-
-    }
-
     private float getDistance(Station from, Location l) {
         Location stationLocation = new Location("point A");
         stationLocation.setLatitude(from.getLatitude());
@@ -263,7 +253,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         mDistance.setText(String.format("%.1f km", getDistance(detail, current)));
         mBikes.setText(String.valueOf(detail.getAvailable()));
         mEmptyBikes.setText(String.valueOf(detail.getFree()));
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
     @Override
@@ -282,7 +272,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
 
     @Override
     public void hideStationDetail() {
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
 
     @Override
@@ -344,6 +334,35 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     }
 
     @Override
+    public void stopUpdatingError() {
+        mProgress.setError(getString(R.string.main_update_error));
+    }
+
+    @Override
+    public void navigateTo(Station s) {
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format(
+                                                            Locale.US,
+                                                            "google.navigation:q=%f,%f&mode=w",
+                s.getLatitude(),
+                s.getLongitude())));
+        startActivity(i);
+    }
+
+    @OnClick(R.id.fab)
+    public void onCenterLocationClicked() {
+        mPresenter.onCenterLocationClicked();
+    }
+
+    @OnClick(R.id.main_directions_fab)
+    public void onNavigateClicked() {
+        mPresenter.onNavigateClicked();
+    }
+
+    public boolean onBackPressed() {
+        return mPresenter.onBackPressed();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         mMapView.onDestroy();
@@ -367,40 +386,10 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onCameraMoveStarted(int i) {
         mPresenter.onCameraMoved();
     }
-
-
+    
     @Override
     public void onCameraIdle() {
         mPresenter.onCameraIdle();
-    }
-
-    @OnClick(R.id.fab)
-    public void onCenterLocationClicked() {
-        mPresenter.onCenterLocationClicked();
-    }
-
-    @Override
-    public void stopUpdatingError() {
-        mProgress.setError(getString(R.string.main_update_error));
-    }
-
-    @OnClick(R.id.main_directions_fab)
-    public void onNavigateClicked() {
-        mPresenter.onNavigateClicked();
-    }
-
-    @Override
-    public void navigateTo(Station s) {
-        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format(
-                                                            Locale.US,
-                                                            "google.navigation:q=%f,%f&mode=w",
-                s.getLatitude(),
-                s.getLongitude())));
-        startActivity(i);
-    }
-
-    public boolean onBackPressed() {
-        return mPresenter.onBackPressed();
     }
 
 }
