@@ -57,6 +57,15 @@ public class HtmlBikeClient {
         return count;
     }
 
+    private String getCleanAddress(String toClean) {
+        if (toClean.endsWith(":")) {
+            toClean = toClean.substring(0, toClean.length() - 1);
+        }
+
+        toClean = toClean.replace("<strong>", "").replace("</br>", "");
+        return toClean;
+    }
+
     List<Station> parseStations(String s) {
         String[] values = s.split("','");
         String[] latitudes = values[3].split("\\|");
@@ -73,9 +82,9 @@ public class HtmlBikeClient {
             if (names[i].endsWith(":")) {
                 names[i] = names[i].substring(0, names[i].length() - 1);
             }
-            if (addresses[i].endsWith(":")) {
-                addresses[i] = addresses[i].substring(0, addresses[i].length() - 1);
-            }
+
+            addresses[i] = getCleanAddress(addresses[i]);
+
             Station station = new Station(names[i], "PISA", Double.valueOf(latitudes[i]),
                     Double.valueOf(longitudes[i]),
                     addresses[i],
