@@ -58,7 +58,7 @@
             android:value="@integer/google_play_services_version"/>
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="49c23db69768dd1702543178c848c9fc5b351fe6" />
+            android:value="@keys/fabric_key" />
     </application>
 
 </manifest>
