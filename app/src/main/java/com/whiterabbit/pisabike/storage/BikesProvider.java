@@ -21,7 +21,7 @@ import android.database.Cursor;
 
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
-import com.whiterabbit.pisabike.apiclient.LocalBikeClient;
+import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
 import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 
@@ -36,7 +36,8 @@ import rx.subjects.BehaviorSubject;
 public class BikesProvider {
     @Inject BriteDatabase mBrite;
     @Inject SchedulersProvider mSchedulersProvider;
-    @Inject LocalBikeClient mBikeClient;
+    @Inject
+    HtmlBikeClient mBikeClient;
 
     @Inject
     public BikesProvider() {

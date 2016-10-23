@@ -30,11 +30,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 import rx.Observable;
 
-public class LocalBikeClient {
+public class HtmlBikeClient {
     private static final String URL = "http://www.ciclopi.eu/frmLeStazioni.aspx";
     private OkHttpClient mClient;
 
-    public LocalBikeClient() {
+    public HtmlBikeClient() {
         mClient = new OkHttpClient();
     }
 

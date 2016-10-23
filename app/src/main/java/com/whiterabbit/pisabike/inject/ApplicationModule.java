@@ -25,7 +25,7 @@ import android.preference.PreferenceManager;
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
 import com.tbruyelle.rxpermissions.RxPermissions;
-import com.whiterabbit.pisabike.apiclient.LocalBikeClient;
+import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
 import com.whiterabbit.pisabike.storage.PisaBikeDbHelper;
 import com.whiterabbit.pisabike.schedule.RealSchedulersProvider;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
@@ -57,8 +57,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    LocalBikeClient provideBikeClient() {
-        return new LocalBikeClient();
+    HtmlBikeClient provideBikeClient() {
+        return new HtmlBikeClient();
     }
 
     @Provides

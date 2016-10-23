@@ -18,7 +18,7 @@
 package com.whiterabbit.pisabike;
 
 
-import com.whiterabbit.pisabike.apiclient.LocalBikeClient;
+import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
 import com.whiterabbit.pisabike.model.Station;
 
 import org.apache.maven.artifact.ant.shaded.FileUtils;
@@ -31,7 +31,7 @@ import java.net.URL;
 import java.util.List;
 
 public class ParseTest {
-    LocalBikeClient mClient;
+    HtmlBikeClient mClient;
 
     private static File getFileFromPath(Object obj, String fileName) {
         ClassLoader classLoader = obj.getClass().getClassLoader();
@@ -41,7 +41,7 @@ public class ParseTest {
 
     @Before
     public void setup() {
-        mClient = new LocalBikeClient();
+        mClient = new HtmlBikeClient();
     }
 
     @Test
