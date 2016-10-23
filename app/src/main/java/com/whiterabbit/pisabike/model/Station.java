@@ -21,6 +21,8 @@ package com.whiterabbit.pisabike.model;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import com.whiterabbit.pisabike.storage.PisaBikeDbHelper;
+
 import java.util.Date;
 
 public class Station {

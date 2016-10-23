@@ -19,7 +19,7 @@ package com.whiterabbit.pisabike.screens.main;
 
 
 import com.tbruyelle.rxpermissions.RxPermissions;
-import com.whiterabbit.pisabike.model.BikesProvider;
+import com.whiterabbit.pisabike.storage.BikesProvider;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.storage.PrefsStorage;
 

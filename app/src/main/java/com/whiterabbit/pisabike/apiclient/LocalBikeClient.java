@@ -18,8 +18,6 @@
 package com.whiterabbit.pisabike.apiclient;
 
 
-import android.location.Location;
-
 import com.whiterabbit.pisabike.model.Station;
 
 import java.io.IOException;

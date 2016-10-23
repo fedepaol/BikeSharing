@@ -18,7 +18,7 @@
 /**********************************************************************************************************************************************************************
 ****** AUTO GENERATED FILE BY ANDROID SQLITE HELPER SCRIPT BY FEDERICO PAOLINELLI. ANY CHANGE WILL BE WIPED OUT IF THE SCRIPT IS PROCESSED AGAIN. *******
 **********************************************************************************************************************************************************************/
-package com.whiterabbit.pisabike.model;
+package com.whiterabbit.pisabike.storage;
 
 import android.content.ContentValues;
 import android.content.Context;

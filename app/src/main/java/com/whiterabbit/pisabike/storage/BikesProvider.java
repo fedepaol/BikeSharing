@@ -15,26 +15,22 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.model;
+package com.whiterabbit.pisabike.storage;
 
 import android.database.Cursor;
 
-import com.google.android.gms.location.LocationRequest;
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
-import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.apiclient.LocalBikeClient;
+import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 import rx.Observable;
-import rx.Subscription;
-import rx.schedulers.Schedulers;
 import rx.subjects.BehaviorSubject;
 
 public class BikesProvider {

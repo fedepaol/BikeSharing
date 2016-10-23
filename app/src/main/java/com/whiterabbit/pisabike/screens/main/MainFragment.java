@@ -386,7 +386,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     public void onCameraMoveStarted(int i) {
         mPresenter.onCameraMoved();
     }
-    
+
     @Override
     public void onCameraIdle() {
         mPresenter.onCameraIdle();

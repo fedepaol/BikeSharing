@@ -17,6 +17,7 @@
   -->
 
 <resources>
-    <string name="maps_api_key">AIzaSyBXm0Au0LyXDuI1IciKmQmz1l6MaIsR7fM</string>
+    <string name="maps_api_key">AIzaSyAb1Nb5ALTW2D81D8lp8t40yDsuJGTpWkE</string>
+    <string name="maps_api_key_dbg">AIzaSyBXm0Au0LyXDuI1IciKmQmz1l6MaIsR7fM</string>
 </resources>
 
