@@ -19,6 +19,7 @@ package com.whiterabbit.pisabike.screens.main;
 
 import android.Manifest;
 import android.location.Location;
+import android.os.Bundle;
 
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.model.LatLng;
@@ -52,6 +53,7 @@ public class MainPresenterImpl implements MainPresenter {
     private Station mSelectedStation;
     private PrefsStorage mStorage;
     private boolean mMovingToMarker;
+    private boolean mViewCentered;
 
     public MainPresenterImpl(SchedulersProvider schedulersProvider,
                              BikesProvider bikesProvider,
@@ -100,6 +102,11 @@ public class MainPresenterImpl implements MainPresenter {
                 .subscribe(this::onLocationChanged);
     }
 
+    private void askToCenter(double latitude, double longitude) {
+        mViewCentered = true;
+        mView.centerCity(latitude, longitude);
+    }
+
     private Subscription centerLocation() {
         LocationRequest request = LocationRequest.create() //standard GMS LocationRequest
                 .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
@@ -107,11 +114,11 @@ public class MainPresenterImpl implements MainPresenter {
                 .setNumUpdates(1);
 
         return mLocationProvider.getUpdatedLocation(request)
-                .timeout(4, TimeUnit.SECONDS)
+                .timeout(2, TimeUnit.SECONDS)
                 .first()
                 .observeOn(mSchedulersProvider.provideMainThreadScheduler())
-                .subscribe(l -> mView.centerCity(l.getLatitude(), l.getLongitude()),
-                           e -> mView.centerCity(Constants.MY_LATITUDE, Constants.MY_LONGITUDE));
+                .subscribe(l -> askToCenter(l.getLatitude(), l.getLongitude()),
+                           e -> askToCenter(Constants.MY_LATITUDE, Constants.MY_LONGITUDE));
 
     }
 
@@ -158,21 +165,21 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void onMapReady(boolean mustCenter) {
+    public void onMapReady() {
         mSubscription = new CompositeSubscription();
         mPermissions.request(Manifest.permission.ACCESS_COARSE_LOCATION,
                              Manifest.permission.ACCESS_FINE_LOCATION).subscribe(
                 granted -> {
                     if (granted) {
-                        if (mustCenter) {
+                        if (!mViewCentered) {
                             mSubscription.add(centerLocation());
                         }
                         mSubscription.add(checkLocation());
 
                         mView.enableMyLocation();
                     } else {
-                        if (mustCenter) {
-                            mView.centerCity(Constants.MY_LATITUDE, Constants.MY_LONGITUDE);
+                        if (!mViewCentered) {
+                            askToCenter(Constants.MY_LATITUDE, Constants.MY_LONGITUDE);
                         }
                     }
                     mSubscription.add(subscribeStations(false));
@@ -248,5 +255,17 @@ public class MainPresenterImpl implements MainPresenter {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("MAP_CENTERED", mViewCentered);
+    }
+
+    @Override
+    public void onStateRestored(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            mViewCentered = savedInstanceState.getBoolean("MAP_CENTERED", false);
+        }
     }
 }

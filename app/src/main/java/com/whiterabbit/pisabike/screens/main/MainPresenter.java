@@ -17,10 +17,12 @@
 
 package com.whiterabbit.pisabike.screens.main;
 
+import android.os.Bundle;
+
 public interface MainPresenter {
     void onViewDetached();
     void onViewAttached(MainView view, boolean isNew);
-    void onMapReady(boolean mustCenter);
+    void onMapReady();
     void onStationClicked(String stationName);
 
     boolean hasLocationPermission();
@@ -35,4 +37,8 @@ public interface MainPresenter {
     void onCameraIdle();
 
     boolean onBackPressed();
+
+    void onSaveInstanceState(Bundle outState);
+
+    void onStateRestored(Bundle savedInstanceState);
 }

@@ -289,7 +289,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void getMap() {
         if (mGoogleMap != null) {
-            mPresenter.onMapReady(false);
+            mPresenter.onMapReady();
         } else {
             mMapView.getMapAsync(this);
         }
@@ -298,7 +298,7 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-        mPresenter.onMapReady(isNew); // centering only if the view is recreated, otherwise leave where it was
+        mPresenter.onMapReady(); // centering only if the view is recreated, otherwise leave where it was
         mGoogleMap.setOnMarkerClickListener(this);
         mGoogleMap.setOnCameraMoveStartedListener(this);
         mGoogleMap.setOnCameraIdleListener(this);
@@ -373,7 +373,14 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         final Bundle mapViewSaveState = new Bundle(outState);
         mMapView.onSaveInstanceState(mapViewSaveState);
         outState.putBundle("mapViewSaveState", mapViewSaveState);
+        mPresenter.onSaveInstanceState(outState);
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        mPresenter.onStateRestored(savedInstanceState);
+        super.onViewStateRestored(savedInstanceState);
     }
 
     @Override
