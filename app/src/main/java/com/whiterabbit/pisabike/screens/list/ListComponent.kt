@@ -15,23 +15,23 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.screens.splash;
+package com.whiterabbit.pisabike.screens.list
+
+/**
+ * Created by fedepaol on 28/06/15.
+ */
 
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import com.whiterabbit.pisabike.inject.ActivityScope
+import com.whiterabbit.pisabike.inject.ApplicationComponent
+import com.whiterabbit.pisabike.screens.main.MainFragment
+import com.whiterabbit.pisabike.screens.main.MainModule
 
-import com.whiterabbit.pisabike.screens.maincontainer.MainActivity;
+import dagger.Component
 
-public class SplashActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
+@ActivityScope
+@Component(modules = arrayOf(MainModule::class), dependencies = arrayOf(ApplicationComponent::class))
+interface ListComponent {
+    fun inject(f: StationsListFragment)
 }
+

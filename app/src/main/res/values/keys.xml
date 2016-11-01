@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2016 Federico Paolinelli.
   ~
@@ -16,13 +17,8 @@
   -->
 
 <resources>
-    <string name="app_name">PisaBike</string>
-    <string name="main_popup_bikes_message" formatted="false">%d / %d bikes available</string>
-    <string name="main_updating">Updating..</string>
-    <string name="main_done">Done!</string>
-    <string name="action_reload">Reload</string>
-    <string name="main_update_error">Error updating</string>
-    <string name="map">Map</string>
-    <string name="stations_list">Stations</string>
-
+    <string name="maps_api_key">AIzaSyAb1Nb5ALTW2D81D8lp8t40yDsuJGTpWkE</string>
+    <string name="maps_api_key_dbg">AIzaSyBXm0Au0LyXDuI1IciKmQmz1l6MaIsR7fM</string>
+    <string name="fabric_key">49c23db69768dd1702543178c848c9fc5b351fe6</string>
 </resources>
+
