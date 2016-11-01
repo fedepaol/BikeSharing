@@ -20,7 +20,6 @@ package com.whiterabbit.pisabike;
 import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
-import com.facebook.stetho.Stetho;
 import com.whiterabbit.pisabike.inject.ApplicationComponent;
 import com.whiterabbit.pisabike.inject.ApplicationModule;
 import com.whiterabbit.pisabike.inject.DaggerApplicationComponent;
@@ -36,7 +35,6 @@ public class PisaBikeApplication extends Application {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
         initComponent();
-        Stetho.initializeWithDefaults(this);
     }
 
     ApplicationModule getApplicationModule() {
