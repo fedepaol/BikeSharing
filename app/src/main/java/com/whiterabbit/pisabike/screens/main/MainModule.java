@@ -18,14 +18,8 @@
 package com.whiterabbit.pisabike.screens.main;
 
 
-import com.tbruyelle.rxpermissions.RxPermissions;
-import com.whiterabbit.pisabike.storage.BikesProvider;
-import com.whiterabbit.pisabike.schedule.SchedulersProvider;
-import com.whiterabbit.pisabike.storage.PrefsStorage;
-
 import dagger.Module;
 import dagger.Provides;
-import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 
 @Module
 public class MainModule {
@@ -40,12 +34,7 @@ public class MainModule {
     }
 
     @Provides
-    public MainPresenter provideMainPresenter(SchedulersProvider schedulersProvider,
-                                              BikesProvider bikesProvider,
-                                              ReactiveLocationProvider locationProvider,
-                                              RxPermissions permissions,
-                                              PrefsStorage storage){
-        return new MainPresenterImpl(schedulersProvider, bikesProvider,
-                                     locationProvider, permissions, storage);
+    public MainPresenter provideMainPresenter(){
+        return new MainPresenterImpl();
     }
 }

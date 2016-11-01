@@ -15,22 +15,23 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.screens.main;
+package com.whiterabbit.pisabike.screens.list
 
 /**
  * Created by fedepaol on 28/06/15.
  */
 
 
-import com.whiterabbit.pisabike.inject.ActivityScope;
-import com.whiterabbit.pisabike.inject.ApplicationComponent;
+import com.whiterabbit.pisabike.inject.ActivityScope
+import com.whiterabbit.pisabike.inject.ApplicationComponent
+import com.whiterabbit.pisabike.screens.map.MapFragment
+import com.whiterabbit.pisabike.screens.map.MapModule
 
-import dagger.Component;
+import dagger.Component
 
 @ActivityScope
-@Component(modules = {MainModule.class},
-           dependencies = {ApplicationComponent.class})
-public interface MainComponent {
-    void inject(MainActivity m);
+@Component(modules = arrayOf(MapModule::class), dependencies = arrayOf(ApplicationComponent::class))
+interface StationsListComponent {
+    fun inject(f: StationsListFragment)
 }
 

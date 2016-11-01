@@ -15,21 +15,30 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.screens.maincontainer;
+package com.whiterabbit.pisabike.screens.main;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
-import com.whiterabbit.pisabike.screens.main.MainFragment;
+import com.whiterabbit.pisabike.screens.map.MapFragment;
 
 import javax.inject.Inject;
 
-public class MainActivity extends AppCompatActivity implements MainContainerView {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class MainActivity extends AppCompatActivity implements MainView, BottomNavigationView.OnNavigationItemSelectedListener {
     @Inject
-    MainContainerPresenter mPresenter;
+    MainPresenter mPresenter;
+
+    @Bind(R.id.bottom_navigation)
+    BottomNavigationView mBottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,26 +47,29 @@ public class MainActivity extends AppCompatActivity implements MainContainerView
 
         PisaBikeApplication app = (PisaBikeApplication) getApplication();
 
-        DaggerMainContainerComponent.builder()
+        DaggerMainComponent.builder()
                 .applicationComponent(app.getComponent())
-                .mainContainerModule(new MainContainerModule(this))
+                .mainModule(new MainModule(this))
                 .build().inject(this);
+
+        ButterKnife.bind(this);
+        mBottomNavigation.setOnNavigationItemSelectedListener(this);
 
     }
 
     @Override
     public void onBackPressed() {
-        MainFragment main = (MainFragment) (getSupportFragmentManager().findFragmentById(R.id.main_activity_frame));
-        if (main != null && main.onBackPressed()) {
+        if (mPresenter.onBackPressed()) {
             return;
         }
+
         super.onBackPressed();
     }
 
     @Override
     public void displayMap() {
         if (getSupportFragmentManager().findFragmentById(R.id.main_activity_frame) == null) {
-            Fragment f = MainFragment.createInstance();
+            Fragment f = MapFragment.createInstance();
             getSupportFragmentManager().beginTransaction().replace(R.id.main_activity_frame, f)
                     .commit();
         }
@@ -69,8 +81,13 @@ public class MainActivity extends AppCompatActivity implements MainContainerView
     }
 
     @Override
-    public void sendBackPressedToMap() {
+    public boolean sendBackPressedToMap() {
+        MapFragment main = (MapFragment) (getSupportFragmentManager().findFragmentById(R.id.main_activity_frame));
+        if (main != null && main.onBackPressed()) {
+            return true;
+        }
 
+        return false;
     }
 
     @Override
@@ -95,5 +112,18 @@ public class MainActivity extends AppCompatActivity implements MainContainerView
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         mPresenter.onRestoreState(savedInstanceState);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_map:
+                mPresenter.onMapSelectedFromMenu();
+                break;
+            case R.id.action_list:
+                mPresenter.onListSelectedFromMenu();
+                break;
+        }
+        return false;
     }
 }

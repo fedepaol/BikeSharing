@@ -15,23 +15,30 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.screens.list
+package com.whiterabbit.pisabike.screens.map;
 
-/**
- * Created by fedepaol on 28/06/15.
- */
+import android.os.Bundle;
 
+public interface MapPresenter {
+    void onViewDetached();
+    void onViewAttached(MapView view, boolean isNew);
+    void onMapReady();
+    void onStationClicked(String stationName);
 
-import com.whiterabbit.pisabike.inject.ActivityScope
-import com.whiterabbit.pisabike.inject.ApplicationComponent
-import com.whiterabbit.pisabike.screens.main.MainFragment
-import com.whiterabbit.pisabike.screens.main.MainModule
+    boolean hasLocationPermission();
+    void onCameraMoved();
 
-import dagger.Component
+    void onCenterLocationClicked();
 
-@ActivityScope
-@Component(modules = arrayOf(MainModule::class), dependencies = arrayOf(ApplicationComponent::class))
-interface ListComponent {
-    fun inject(f: StationsListFragment)
+    void onReloadAsked();
+
+    void onNavigateClicked();
+
+    void onCameraIdle();
+
+    boolean onBackPressed();
+
+    void onSaveInstanceState(Bundle outState);
+
+    void onStateRestored(Bundle savedInstanceState);
 }
-

@@ -42,5 +42,7 @@ public class PrefsStorage {
     public long getLastUpdate() {
         return mPreferences.getLong(LAST_UPDATE_ID, 0);
     }
+
+
 }
 

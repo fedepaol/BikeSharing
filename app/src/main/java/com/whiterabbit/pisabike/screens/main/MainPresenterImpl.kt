@@ -1,10 +1,10 @@
-package com.whiterabbit.pisabike.screens.maincontainer
+package com.whiterabbit.pisabike.screens.main
 
 import android.os.Bundle
 
-class MainContainerPresenterImpl() : MainContainerPresenter {
+class MainPresenterImpl() : MainPresenter {
     var STATE_KEY = "ContainerState"
-    var view : MainContainerView? = null
+    var view : MainView? = null
 
     enum class State {
         MAP, LIST
@@ -12,12 +12,11 @@ class MainContainerPresenterImpl() : MainContainerPresenter {
 
     var state = State.MAP
 
-    override fun onViewAttached(mainView: MainContainerView?) {
+    override fun onViewAttached(mainView: MainView?) {
         view = mainView
         when (state) {
             State.MAP -> view?.displayMap()
             State.LIST -> view?.displayList()
-
         }
     }
 
@@ -26,17 +25,23 @@ class MainContainerPresenterImpl() : MainContainerPresenter {
     }
 
     override fun onMapSelectedFromMenu() {
+        if (state == State.MAP)
+            return
         view?.displayMap()
         state = State.MAP
     }
 
-    override fun onBackPressed() {
+    override fun onBackPressed() : Boolean {
         if (state == State.MAP) {
-            view?.sendBackPressedToMap()
+            return view?.sendBackPressedToMap() ?: false
         }
+
+        return false
     }
 
     override fun onListSelectedFromMenu() {
+        if (state == State.LIST)
+            return
         view?.displayList()
         state = State.LIST
     }

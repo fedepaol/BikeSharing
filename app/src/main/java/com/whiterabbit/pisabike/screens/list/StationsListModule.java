@@ -15,35 +15,33 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.screens.maincontainer;
+package com.whiterabbit.pisabike.screens.list;
 
 
-import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.screens.main.MainPresenter;
 import com.whiterabbit.pisabike.screens.main.MainPresenterImpl;
 import com.whiterabbit.pisabike.screens.main.MainView;
 import com.whiterabbit.pisabike.storage.BikesProvider;
-import com.whiterabbit.pisabike.storage.PrefsStorage;
 
 import dagger.Module;
 import dagger.Provides;
-import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 
 @Module
-public class MainContainerModule {
-    private MainContainerView mView;
-    public MainContainerModule(MainContainerView view) {
+public class StationsListModule {
+    private StationsListView mView;
+    public StationsListModule(StationsListView view) {
         mView = view;
     }
 
     @Provides
-    public MainContainerView provideMainView() {
+    public StationsListView provideView() {
         return mView;
     }
 
     @Provides
-    public MainContainerPresenter provideMainPresenter(){
-        return new MainContainerPresenterImpl();
+    public StationsListPresenter providePresenter(BikesProvider bikesProvider,
+                                                  SchedulersProvider schedulers){
+        return new StationsListPresenterImpl(bikesProvider, schedulers);
     }
 }

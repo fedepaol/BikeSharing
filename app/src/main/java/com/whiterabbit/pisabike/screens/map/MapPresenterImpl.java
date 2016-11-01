@@ -15,7 +15,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.screens.main;
+package com.whiterabbit.pisabike.screens.map;
 
 import android.Manifest;
 import android.location.Location;
@@ -40,9 +40,9 @@ import rx.Observable;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
-public class MainPresenterImpl implements MainPresenter {
+public class MapPresenterImpl implements MapPresenter {
 
-    private MainView mView;
+    private MapView mView;
     private SchedulersProvider mSchedulersProvider;
     private ReactiveLocationProvider mLocationProvider;
     private Map<String, Station> mStations;
@@ -55,11 +55,11 @@ public class MainPresenterImpl implements MainPresenter {
     private boolean mMovingToMarker;
     private boolean mViewCentered;
 
-    public MainPresenterImpl(SchedulersProvider schedulersProvider,
-                             BikesProvider bikesProvider,
-                             ReactiveLocationProvider locationProvider,
-                             RxPermissions permissions,
-                             PrefsStorage storage) {
+    public MapPresenterImpl(SchedulersProvider schedulersProvider,
+                            BikesProvider bikesProvider,
+                            ReactiveLocationProvider locationProvider,
+                            RxPermissions permissions,
+                            PrefsStorage storage) {
         mSchedulersProvider = schedulersProvider;
         mLocationProvider = locationProvider;
         mBikesProvider = bikesProvider;
@@ -75,7 +75,7 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void onViewAttached(MainView view, boolean isNew) {
+    public void onViewAttached(MapView view, boolean isNew) {
         mView = view;
         mView.getMap();
     }

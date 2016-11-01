@@ -15,7 +15,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.screens.maincontainer;
+package com.whiterabbit.pisabike.screens.map;
 
 /**
  * Created by fedepaol on 28/06/15.
@@ -24,14 +24,13 @@ package com.whiterabbit.pisabike.screens.maincontainer;
 
 import com.whiterabbit.pisabike.inject.ActivityScope;
 import com.whiterabbit.pisabike.inject.ApplicationComponent;
-import com.whiterabbit.pisabike.screens.main.MainFragment;
 
 import dagger.Component;
 
 @ActivityScope
-@Component(modules = {MainContainerModule.class},
+@Component(modules = {MapModule.class},
            dependencies = {ApplicationComponent.class})
-public interface MainContainerComponent {
-    void inject(MainActivity m);
+public interface MapComponent {
+    void inject(MapFragment f);
 }
 

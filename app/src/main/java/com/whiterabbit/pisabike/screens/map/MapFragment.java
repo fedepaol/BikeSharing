@@ -15,7 +15,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.screens.main;
+package com.whiterabbit.pisabike.screens.map;
 
 import android.content.Context;
 import android.content.Intent;
@@ -41,7 +41,6 @@ import android.widget.TextView;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -69,20 +68,20 @@ import butterknife.OnClick;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class MainFragment extends Fragment implements MainView, OnMapReadyCallback,
+public class MapFragment extends Fragment implements MapView, OnMapReadyCallback,
                                                       GoogleMap.OnMarkerClickListener,
                                                       GoogleMap.OnCameraMoveStartedListener,
                                                       GoogleMap.OnCameraIdleListener {
 
     @Inject
-    MainPresenter mPresenter;
+    MapPresenter mPresenter;
     @Inject
     Context mContext;
     @Inject
     MapMarkerFactory markerFactory;
 
     @Bind(R.id.main_map)
-    MapView mMapView;
+    com.google.android.gms.maps.MapView mMapView;
 
     @Bind(R.id.main_detail_sheet)
     View mBottomSheet;
@@ -118,8 +117,8 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
     private HashMap<String, Marker> stationToMarkerMap = new HashMap<>();
     private boolean isNew;
 
-    public static MainFragment createInstance() {
-        MainFragment res = new MainFragment();
+    public static MapFragment createInstance() {
+        MapFragment res = new MapFragment();
         return res;
     }
 
@@ -128,9 +127,9 @@ public class MainFragment extends Fragment implements MainView, OnMapReadyCallba
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         PisaBikeApplication app = (PisaBikeApplication) getActivity().getApplication();
-        DaggerMainComponent.builder()
+        DaggerMapComponent.builder()
                 .applicationComponent(app.getComponent())
-                .mainModule(app.getMainModule(this))
+                .mapModule(app.getMainModule(this))
                 .build().inject(this);
     }
 

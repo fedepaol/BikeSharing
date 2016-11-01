@@ -15,7 +15,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.screens.main;
+package com.whiterabbit.pisabike.screens.map;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;

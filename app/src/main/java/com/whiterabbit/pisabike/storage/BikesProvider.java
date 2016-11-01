@@ -69,14 +69,6 @@ public class BikesProvider {
         return requestSubject;
     }
 
-    /*
-    public Subscription subscribeServerUpdates() {
-        Observable<List<Station>> o =
-                Observable.interval(3, TimeUnit.MINUTES).startWith(0L)
-                        .flatMap(i -> mBikeClient.getStations());
-        return updateServerSubscription(o);
-    }*/
-
     public Observable<List<Station>> getStationsObservables() {
         Observable<SqlBrite.Query> users = mBrite.createQuery(PisaBikeDbHelper.STATION_TABLE, "SELECT * " +
                 "FROM Station");

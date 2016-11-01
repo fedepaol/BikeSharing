@@ -15,22 +15,27 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.screens.main;
+package com.whiterabbit.pisabike.screens.map;
 
-/**
- * Created by fedepaol on 28/06/15.
- */
+import android.location.Location;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.whiterabbit.pisabike.model.Station;
 
-import com.whiterabbit.pisabike.inject.ActivityScope;
-import com.whiterabbit.pisabike.inject.ApplicationComponent;
+import java.util.List;
 
-import dagger.Component;
-
-@ActivityScope
-@Component(modules = {MainModule.class},
-           dependencies = {ApplicationComponent.class})
-public interface MainComponent {
-    void inject(MainActivity m);
+public interface MapView {
+    void centerMapToLocation(LatLng l);
+    void drawStationsOnMap(List<Station> stations);
+    void displayStationDetail(Station detail, Location current);
+    void hideStationDetail();
+    void stopUpdating();
+    void startUpdating();
+    void getMap();
+    void centerCity(double lat, double lon);
+    void enableMyLocation();
+    void highLightStation(Station s);
+    void unHighLightStation(Station s);
+    void stopUpdatingError();
+    void navigateTo(Station s);
 }
-
