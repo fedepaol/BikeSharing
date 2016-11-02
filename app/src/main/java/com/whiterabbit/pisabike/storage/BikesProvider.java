@@ -36,15 +36,23 @@ import rx.subjects.BehaviorSubject;
 public class BikesProvider {
     @Inject BriteDatabase mBrite;
     @Inject SchedulersProvider mSchedulersProvider;
-    @Inject
-    HtmlBikeClient mBikeClient;
+    @Inject HtmlBikeClient mBikeClient;
+    @Inject PrefsStorage mPrefsStorage;
 
     @Inject
     public BikesProvider() {
 
     }
 
+    private long getNowSeconds() {
+        return System.currentTimeMillis() / 1000;
+    }
+
     public Observable<Void> updateBikes() {
+        if (mPrefsStorage.getLastUpdate() + 60 < getNowSeconds()) {
+            return Observable.just(null);
+        }
+
         BehaviorSubject<Void> requestSubject = BehaviorSubject.create();
 
         mBikeClient.getStations()
@@ -57,7 +65,7 @@ public class BikesProvider {
                         for (Station s : l) {
                             mBrite.insert(PisaBikeDbHelper.STATION_TABLE, s.getContentValues());
                         }
-
+                        mPrefsStorage.setLastUpdate(getNowSeconds());
                         t.markSuccessful();
                     } finally {
                         t.end();

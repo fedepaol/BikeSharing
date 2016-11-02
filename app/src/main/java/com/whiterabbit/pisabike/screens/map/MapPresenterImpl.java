@@ -122,9 +122,7 @@ public class MapPresenterImpl implements MapPresenter {
 
     }
 
-    private long getNowSeconds() {
-        return System.currentTimeMillis() / 1000;
-    }
+
 
     private void askForUpdate() {
         mView.startUpdating();
@@ -136,14 +134,7 @@ public class MapPresenterImpl implements MapPresenter {
                                 e -> mView.stopUpdatingError(),
                                 () -> mView.stopUpdating());
         mSubscription.add(sub);
-        mView.stopUpdating();
-        mStorage.setLastUpdate(getNowSeconds());
-    }
 
-    private void askForUpdateIfNeeded() {
-        if (mStorage.getLastUpdate() + 60 < getNowSeconds()) {
-            askForUpdate();
-        }
     }
 
     private void onStationsChanged(List<Station> stations) {
@@ -186,7 +177,7 @@ public class MapPresenterImpl implements MapPresenter {
                 }
         );
 
-        askForUpdateIfNeeded();
+        askForUpdate();
     }
 
     @Override
