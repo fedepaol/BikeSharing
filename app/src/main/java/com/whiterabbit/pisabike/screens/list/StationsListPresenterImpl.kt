@@ -9,29 +9,34 @@ import rx.subscriptions.CompositeSubscription
 class StationsListPresenterImpl(val provider : BikesProvider,
                                 val schedulers : SchedulersProvider,
                                 val prefs : PrefsStorage) : StationsListPresenter {
-    val subscription : CompositeSubscription
-
-    init {
-        subscription = CompositeSubscription()
-    }
+    var subscription : CompositeSubscription? = null
+    var view : StationsListView? = null
 
     override fun attachToView(v: StationsListView) {
-        provider.stationsObservables.subscribeOn(schedulers.provideBackgroundScheduler())
+        view = v
+        subscription = CompositeSubscription()
+        val sub = provider.stationsObservables.subscribeOn(schedulers.provideBackgroundScheduler())
                                     .observeOn(schedulers.provideMainThreadScheduler())
                                     .subscribe { s -> onStationsUpdate(s) }
 
+        subscription?.add(sub)
     }
 
     override fun detachFromView() {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+        subscription?.unsubscribe()
     }
 
     fun onStationsUpdate(stations : List<Station>) {
 
     }
 
-    fun checkAndUpdate() {
-        if (prefs.)
+    override fun onUpdateRequested() {
+        val sub = provider.updateBikes().subscribeOn(schedulers.provideBackgroundScheduler())
+                              .observeOn(schedulers.provideMainThreadScheduler())
+                              .subscribe({ s -> {}},
+                                         { view?.displayUpdateError() },
+                                         { view?.stopUpdating() })
+        subscription?.add(sub)
     }
 }
 
