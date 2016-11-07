@@ -238,18 +238,11 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         markerToStationsMap.put(m.getId(), s.getName());
     }
 
-    private float getDistance(Station from, Location l) {
-        Location stationLocation = new Location("point A");
-        stationLocation.setLatitude(from.getLatitude());
-        stationLocation.setLongitude(from.getLongitude());
-        return l.distanceTo(stationLocation) / 1000;
-    }
-
     @Override
     public void displayStationDetail(Station detail, Location current) {
         mDetailName.setText(detail.getName());
         mAddress.setText(detail.getAddress());
-        mDistance.setText(String.format("%.1f km", getDistance(detail, current)));
+        mDistance.setText(String.format("%.1f km", detail.getDistanceFrom(current)));
         mBikes.setText(String.valueOf(detail.getAvailable()));
         mEmptyBikes.setText(String.valueOf(detail.getFree()));
         mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);

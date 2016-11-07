@@ -20,6 +20,7 @@ package com.whiterabbit.pisabike.model;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.location.Location;
 
 import com.whiterabbit.pisabike.storage.PisaBikeDbHelper;
 
@@ -160,5 +161,12 @@ public class Station {
         } else {
             return false;
         }
+    }
+
+    public float getDistanceFrom(Location l) {
+        Location stationLocation = new Location("point A");
+        stationLocation.setLatitude(latitude);
+        stationLocation.setLongitude(longitude);
+        return l.distanceTo(stationLocation) / 1000;
     }
 }

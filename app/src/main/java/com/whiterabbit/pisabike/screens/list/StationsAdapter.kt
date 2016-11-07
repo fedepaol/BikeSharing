@@ -1,19 +1,18 @@
 package com.whiterabbit.pisabike.screens.list
 
+import android.location.Location
 import android.support.v7.widget.RecyclerView
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import butterknife.Bind
 import butterknife.ButterKnife
-import com.google.android.gms.maps.model.LatLng
 import com.whiterabbit.pisabike.R
 import com.whiterabbit.pisabike.model.Station
 
 class StationsAdapter(stations : List<Station>,
-                      val myPos : LatLng) : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
+                      val myPos : Location) : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
     class ViewHolder(v : View) : RecyclerView.ViewHolder(v) {
         @Bind(R.id.main_detail_name)
         var name:TextView? = null
@@ -51,7 +50,7 @@ class StationsAdapter(stations : List<Station>,
         holder?.address?.setText(s.address)
         holder?.bikes?.setText(s.available.toString())
         holder?.bikesEmpty?.setText(s.free.toString())
-        // TODO holder?.distance?.setText(s.)
+        holder?.distance?.setText(s.getDistanceFrom(myPos).toString())
     }
 }
 
