@@ -26,6 +26,7 @@ import android.view.MenuItem;
 
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
+import com.whiterabbit.pisabike.screens.list.StationsListFragment;
 import com.whiterabbit.pisabike.screens.map.MapFragment;
 
 import javax.inject.Inject;
@@ -34,11 +35,17 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements MainView, BottomNavigationView.OnNavigationItemSelectedListener {
+    private static final String MAP_TAG = "map";
+    private static final String LIST_TAG = "list";
+
     @Inject
     MainPresenter mPresenter;
 
     @Bind(R.id.bottom_navigation)
     BottomNavigationView mBottomNavigation;
+
+    MapFragment mMapFragment;
+    StationsListFragment mStationsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +56,25 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
         DaggerMainComponent.builder()
                 .applicationComponent(app.getComponent())
-                .mainModule(new MainModule(this))
+                .mainModule(app.getMainModule(this))
                 .build().inject(this);
 
         ButterKnife.bind(this);
         mBottomNavigation.setOnNavigationItemSelectedListener(this);
 
+        mMapFragment = (MapFragment) getSupportFragmentManager().findFragmentByTag(MAP_TAG);
+        mStationsFragment = (StationsListFragment) getSupportFragmentManager().findFragmentByTag(LIST_TAG);
+
+        if (mMapFragment == null) {
+            mMapFragment = MapFragment.createInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.main_activity_frame, mMapFragment, MAP_TAG)
+                    .commit();
+        }
+
+        if (mStationsFragment == null) {
+            mStationsFragment = new StationsListFragment();
+        }
     }
 
     @Override
@@ -68,16 +88,25 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     @Override
     public void displayMap() {
-        if (getSupportFragmentManager().findFragmentById(R.id.main_activity_frame) == null) {
-            Fragment f = MapFragment.createInstance();
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_activity_frame, f)
-                    .commit();
+        if (getSupportFragmentManager().findFragmentByTag(MAP_TAG) != null) {
+            return;
         }
+
+        getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.main_activity_frame, mMapFragment, MAP_TAG)
+                                    .commit();
+
     }
 
     @Override
     public void displayList() {
+        if (getSupportFragmentManager().findFragmentByTag(LIST_TAG) != null) {
+            return;
+        }
 
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_activity_frame, mStationsFragment, LIST_TAG)
+                .commit();
     }
 
     @Override

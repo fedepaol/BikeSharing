@@ -7,6 +7,4 @@ interface StationsListView {
     fun displayStations(l : List<Station>)
     fun toggleLoading(loading : Boolean)
     fun displayUpdateError()
-    fun startUpdating()
-    fun stopUpdating()
 }

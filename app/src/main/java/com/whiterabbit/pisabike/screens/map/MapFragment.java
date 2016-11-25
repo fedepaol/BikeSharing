@@ -129,7 +129,7 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         PisaBikeApplication app = (PisaBikeApplication) getActivity().getApplication();
         DaggerMapComponent.builder()
                 .applicationComponent(app.getComponent())
-                .mapModule(app.getMainModule(this))
+                .mapModule(app.getMapModule(this))
                 .build().inject(this);
     }
 

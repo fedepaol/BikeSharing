@@ -49,7 +49,7 @@ public class BikesProvider {
     }
 
     public Observable<Void> updateBikes() {
-        if (mPrefsStorage.getLastUpdate() + 60 < getNowSeconds()) {
+        if (mPrefsStorage.getLastUpdate() + 60 > getNowSeconds()) {
             return Observable.just(null);
         }
 

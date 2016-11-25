@@ -1,23 +1,41 @@
 package com.whiterabbit.pisabike.screens.list
 
+import android.location.Location
 import com.whiterabbit.pisabike.model.Station
 import com.whiterabbit.pisabike.schedule.SchedulersProvider
 import com.whiterabbit.pisabike.storage.BikesProvider
-import com.whiterabbit.pisabike.storage.PrefsStorage
+import pl.charmas.android.reactivelocation.ReactiveLocationProvider
+import rx.Observable
 import rx.subscriptions.CompositeSubscription
+import kotlin.comparisons.compareBy
 
 class StationsListPresenterImpl(val provider : BikesProvider,
                                 val schedulers : SchedulersProvider,
-                                val prefs : PrefsStorage) : StationsListPresenter {
+                                val locationProvider : ReactiveLocationProvider) : StationsListPresenter {
+
+    var data : ListData? = null
+
+    data class ListData(var list : List<Station>,
+                   var location : Location)
+
     var subscription : CompositeSubscription? = null
     var view : StationsListView? = null
 
     override fun attachToView(v: StationsListView) {
         view = v
         subscription = CompositeSubscription()
-        val sub = provider.stationsObservables.subscribeOn(schedulers.provideBackgroundScheduler())
+        val sub =
+                Observable.zip(locationProvider.lastKnownLocation,
+                               provider.stationsObservables,
+                               {l : Location, stations : List<Station> ->
+                                                   ListData(stations, l)})
+
+                                    .subscribeOn(schedulers.provideBackgroundScheduler())
                                     .observeOn(schedulers.provideMainThreadScheduler())
-                                    .subscribe { s -> onStationsUpdate(s) }
+
+
+                                    .subscribe { d -> data = d
+                                                      onStationsUpdate(d.list) }
 
         subscription?.add(sub)
     }
@@ -27,7 +45,8 @@ class StationsListPresenterImpl(val provider : BikesProvider,
     }
 
     fun onStationsUpdate(stations : List<Station>) {
-
+        var toDisplay = stations.sortedWith(compareBy { it.getDistanceFrom(data?.location) })
+        view?.displayStations(toDisplay)
     }
 
     override fun onUpdateRequested() {
@@ -35,8 +54,12 @@ class StationsListPresenterImpl(val provider : BikesProvider,
                               .observeOn(schedulers.provideMainThreadScheduler())
                               .subscribe({ s -> {}},
                                          { view?.displayUpdateError() },
-                                         { view?.stopUpdating() })
+                                         { view?.toggleLoading(false) })
         subscription?.add(sub)
+    }
+
+    override fun onStationSelected(s: Station) {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
 

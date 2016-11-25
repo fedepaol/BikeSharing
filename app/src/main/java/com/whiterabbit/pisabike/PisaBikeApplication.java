@@ -18,11 +18,14 @@
 package com.whiterabbit.pisabike;
 
 import android.app.Application;
+import android.view.View;
 
 import com.crashlytics.android.Crashlytics;
 import com.whiterabbit.pisabike.inject.ApplicationComponent;
 import com.whiterabbit.pisabike.inject.ApplicationModule;
 import com.whiterabbit.pisabike.inject.DaggerApplicationComponent;
+import com.whiterabbit.pisabike.screens.main.MainModule;
+import com.whiterabbit.pisabike.screens.main.MainView;
 import com.whiterabbit.pisabike.screens.map.MapModule;
 import com.whiterabbit.pisabike.screens.map.MapView;
 
@@ -52,7 +55,11 @@ public class PisaBikeApplication extends Application {
         return mComponent;
     }
 
-    public MapModule getMainModule(MapView view) {
+    public MapModule getMapModule(MapView view) {
         return new MapModule(view);
+    }
+
+    public MainModule getMainModule(MainView view) {
+        return new MainModule(view);
     }
 }

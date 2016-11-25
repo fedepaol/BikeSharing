@@ -42,6 +42,7 @@ import rx.subscriptions.CompositeSubscription;
 
 public class MapPresenterImpl implements MapPresenter {
 
+    private final static String NEEDS_CENTER_NAME = "CenterMap";
     private MapView mView;
     private SchedulersProvider mSchedulersProvider;
     private ReactiveLocationProvider mLocationProvider;
@@ -54,6 +55,7 @@ public class MapPresenterImpl implements MapPresenter {
     private PrefsStorage mStorage;
     private boolean mMovingToMarker;
     private boolean mViewCentered;
+
 
     public MapPresenterImpl(SchedulersProvider schedulersProvider,
                             BikesProvider bikesProvider,
@@ -121,8 +123,6 @@ public class MapPresenterImpl implements MapPresenter {
                            e -> askToCenter(Constants.MY_LATITUDE, Constants.MY_LONGITUDE));
 
     }
-
-
 
     private void askForUpdate() {
         mView.startUpdating();
@@ -250,13 +250,13 @@ public class MapPresenterImpl implements MapPresenter {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putBoolean("MAP_CENTERED", mViewCentered);
+        outState.putBoolean(NEEDS_CENTER_NAME, mViewCentered);
     }
 
     @Override
     public void onStateRestored(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            mViewCentered = savedInstanceState.getBoolean("MAP_CENTERED", false);
+            mViewCentered = savedInstanceState.getBoolean(NEEDS_CENTER_NAME, false);
         }
     }
 }
