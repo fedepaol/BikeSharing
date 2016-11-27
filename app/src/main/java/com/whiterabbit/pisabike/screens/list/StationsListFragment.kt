@@ -23,7 +23,7 @@ class StationsListFragment : Fragment(), StationsListView {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val res = inflater?.inflate(R.layout.stations_list, container)
+        val res = inflater?.inflate(R.layout.stations_list, null)
         ButterKnife.bind(res)
         return res
     }

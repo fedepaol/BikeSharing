@@ -52,7 +52,7 @@ public class MainActivityTest {
     private MainPresenter mMockPresenter;
 
     @Rule
-    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class, false, false);
+    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class, true, false);
 
     @Before
     public void setUp() throws Exception {
@@ -62,6 +62,7 @@ public class MainActivityTest {
         mMockPresenter = mock(MainPresenter.class);
 
         when(m.provideMainView()).thenReturn(mock(MainView.class)); // this is needed to fool dagger
+        when(m.provideMainPresenter()).thenReturn(mMockPresenter); // this is needed to fool dagger
 
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
         TestApplication app
@@ -69,11 +70,11 @@ public class MainActivityTest {
 
         // forced to the application object
         app.setMainModule(m);
+        activityTestRule.launchActivity(new Intent());
     }
 
     @Test
-    public void testDisplayMap() {
-        activityTestRule.getActivity();
+    public void testClickDisplayMap() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.action_map), isDisplayed()));
         bottomNavigationItemView.perform(click());
@@ -82,7 +83,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void testDisplayList() {
+    public void testClickDisplayList() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.action_list), isDisplayed()));
         bottomNavigationItemView.perform(click());
@@ -91,15 +92,14 @@ public class MainActivityTest {
     }
 
     @Test
-    public void testChangeData() {
-//        activity.launchActivity(new Intent());
-//        InstrumentationRegistry.getInstrumentation().runOnMainSync(new Runnable() {
-//            @Override
-//            public void run() {
-//                activity.getActivity().showValue("23");
-//            }
-//        });
+    public void testDisplayMapThenList() {
+        InstrumentationRegistry.getInstrumentation().runOnMainSync( () ->
+                activityTestRule.getActivity().displayMap());
 
-//        onView(withId(R.id.main_text)).check(matches(withText("23")));
+        InstrumentationRegistry.getInstrumentation().runOnMainSync( () ->
+                activityTestRule.getActivity().displayList());
+
+        onView(withId(R.id.stations_list)).check(matches(isDisplayed()));
     }
+
 }
