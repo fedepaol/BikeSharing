@@ -14,18 +14,17 @@ class StationsListPresenterImpl(val provider : BikesProvider,
                                 val locationProvider : ReactiveLocationProvider) : StationsListPresenter {
 
     var data : ListData? = null
+    var subscription : CompositeSubscription = CompositeSubscription()
+    var view : StationsListView? = null
 
     data class ListData(var list : List<Station>,
                    var location : Location)
-
-    var subscription : CompositeSubscription? = null
-    var view : StationsListView? = null
 
     override fun attachToView(v: StationsListView) {
         view = v
         subscription = CompositeSubscription()
         val sub =
-                Observable.zip(locationProvider.lastKnownLocation,
+                Observable.zip(locationProvider.lastKnownLocation.take(1),
                                provider.stationsObservables,
                                {l : Location, stations : List<Station> ->
                                                    ListData(stations, l)})
@@ -37,29 +36,30 @@ class StationsListPresenterImpl(val provider : BikesProvider,
                                     .subscribe { d -> data = d
                                                       onStationsUpdate(d.list) }
 
-        subscription?.add(sub)
+        subscription.add(sub)
+
+        val sub1 = v.getStationSelectedObservable().subscribeOn(schedulers.provideMainThreadScheduler())
+                .observeOn(schedulers.provideMainThreadScheduler())
+                .subscribe { s ->  } // TODO
+        subscription.add(sub1)
     }
 
     override fun detachFromView() {
-        subscription?.unsubscribe()
+        subscription.unsubscribe()
     }
 
     fun onStationsUpdate(stations : List<Station>) {
-        var toDisplay = stations.sortedWith(compareBy { it.getDistanceFrom(data?.location) })
-        view?.displayStations(toDisplay)
+        val toDisplay = stations.sortedWith(compareBy { it.getDistanceFrom(data?.location) })
+        view?.displayStations(toDisplay, data?.location)
     }
 
     override fun onUpdateRequested() {
         val sub = provider.updateBikes().subscribeOn(schedulers.provideBackgroundScheduler())
                               .observeOn(schedulers.provideMainThreadScheduler())
-                              .subscribe({ s -> {}},
+                              .subscribe({ s -> },
                                          { view?.displayUpdateError() },
                                          { view?.toggleLoading(false) })
-        subscription?.add(sub)
-    }
-
-    override fun onStationSelected(s: Station) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+        subscription.add(sub)
     }
 }
 
