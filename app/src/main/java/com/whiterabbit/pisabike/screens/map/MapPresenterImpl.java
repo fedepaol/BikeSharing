@@ -120,7 +120,7 @@ public class MapPresenterImpl implements MapPresenter {
                 .first()
                 .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                 .subscribe(l -> askToCenter(l.getLatitude(), l.getLongitude()),
-                           e -> askToCenter(Constants.MY_LATITUDE, Constants.MY_LONGITUDE));
+                        e -> askToCenter(Constants.MY_LATITUDE, Constants.MY_LONGITUDE));
 
     }
 
@@ -159,7 +159,7 @@ public class MapPresenterImpl implements MapPresenter {
     public void onMapReady() {
         mSubscription = new CompositeSubscription();
         mPermissions.request(Manifest.permission.ACCESS_COARSE_LOCATION,
-                             Manifest.permission.ACCESS_FINE_LOCATION).subscribe(
+                Manifest.permission.ACCESS_FINE_LOCATION).subscribe(
                 granted -> {
                     if (granted) {
                         if (!mViewCentered) {
@@ -192,7 +192,7 @@ public class MapPresenterImpl implements MapPresenter {
         mSelectedStation = s;
         mMovingToMarker = true;
         mView.centerMapToLocation(new LatLng(mSelectedStation.getLatitude(),
-                         mSelectedStation.getLongitude()));
+                mSelectedStation.getLongitude()));
     }
 
     @Override
@@ -224,7 +224,7 @@ public class MapPresenterImpl implements MapPresenter {
     public void onCenterLocationClicked() {
         if (mMyLocation != null) {
             mView.centerMapToLocation(new LatLng(mMyLocation.getLatitude(),
-                                                 mMyLocation.getLongitude()));
+                    mMyLocation.getLongitude()));
         }
     }
 

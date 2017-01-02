@@ -15,7 +15,7 @@ import com.whiterabbit.pisabike.model.Station
 import rx.Observable
 
 
-class StationsAdapter() : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
+class StationsAdapter : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
 
     private val relay : BehaviorRelay<Station> = BehaviorRelay.create()
 
@@ -42,15 +42,15 @@ class StationsAdapter() : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
 
     inner class ViewHolder(v : View) : RecyclerView.ViewHolder(v) {
         @Bind(R.id.main_detail_name)
-        var name:TextView? = null
+        lateinit var name:TextView
         @Bind(R.id.main_detail_address)
-        var address:TextView? = null
+        lateinit var address:TextView
         @Bind(R.id.main_detail_bikes)
-        var bikes:TextView? = null
+        lateinit var bikes:TextView
         @Bind(R.id.main_detail_bikes_empty)
-        var bikesEmpty:TextView? = null
+        lateinit var bikesEmpty:TextView
         @Bind(R.id.main_detail_distance)
-        var distance:TextView? = null
+        lateinit var distance:TextView
 
         var id : Int = 0
 

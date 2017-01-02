@@ -54,6 +54,7 @@ class StationsListPresenterImpl(val provider : BikesProvider,
     }
 
     override fun onUpdateRequested() {
+        view?.toggleLoading(true)
         val sub = provider.updateBikes().subscribeOn(schedulers.provideBackgroundScheduler())
                               .observeOn(schedulers.provideMainThreadScheduler())
                               .subscribe({ s -> },
