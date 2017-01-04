@@ -22,21 +22,32 @@ class StationsAdapter : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
     val stationSelected : Observable<Station>
         get() = relay
 
-    private class StationsDiffCallback(var old : List<Station>?, val new : List<Station>) : DiffUtil.Callback() {
+    private class StationsDiffCallback(val old : List<Station>?, val new : List<Station>) : DiffUtil.Callback() {
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+            val oldStation = old?.get(oldItemPosition)
+            val newStation = new[newItemPosition]
+            return oldStation?.name.equals(newStation.name)
         }
 
         override fun getOldListSize(): Int {
-            throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return old?.size ?: 0
         }
 
         override fun getNewListSize(): Int {
-            throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return new.size
         }
 
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) : Boolean {
+            if (old?.get(oldItemPosition)?.free != new[newItemPosition].free) {
+                return false
+            }
+            if (old?.get(oldItemPosition)?.available != new[newItemPosition].available) {
+                return false
+            }
+            if (old?.get(oldItemPosition)?.broken != new[newItemPosition].broken) {
+                return false
+            }
+            return true
         }
     }
 
@@ -90,6 +101,7 @@ class StationsAdapter : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
             notifyDataSetChanged()
         } else {
             val diffResult = DiffUtil.calculateDiff(StationsDiffCallback(data, newList))
+            data = newList
             diffResult.dispatchUpdatesTo(this)
         }
     }

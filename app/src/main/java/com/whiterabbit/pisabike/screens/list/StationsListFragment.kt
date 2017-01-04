@@ -8,8 +8,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import butterknife.Bind
 import butterknife.ButterKnife
+import com.whiterabbit.pisabike.PisaBikeApplication
 import com.whiterabbit.pisabike.R
 import com.whiterabbit.pisabike.model.Station
 import rx.Observable
@@ -18,18 +20,18 @@ import javax.inject.Inject
 class StationsListFragment : Fragment(), StationsListView {
 
     @Bind(R.id.stations_list)
-    val stations : RecyclerView? = null
-
-    var adapter : StationsAdapter = StationsAdapter()
+    lateinit var stations : RecyclerView
 
     @Inject
-    val presenter : StationsListPresenter? = null
+    lateinit var presenter : StationsListPresenter
+
+    var adapter : StationsAdapter = StationsAdapter()
 
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val res = inflater?.inflate(R.layout.stations_list, null)
+        val res = inflater?.inflate(R.layout.stations_list, container, false)
         ButterKnife.bind(res)
 
         stations?.setHasFixedSize(true)
@@ -43,6 +45,12 @@ class StationsListFragment : Fragment(), StationsListView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val app : PisaBikeApplication = activity.application as PisaBikeApplication
+        DaggerStationsListComponent.builder()
+                .applicationComponent(app.component)
+                .stationsListModule(app.getListModule(this))
+                .build().inject(this)
     }
 
     override fun onResume() {
@@ -61,7 +69,7 @@ class StationsListFragment : Fragment(), StationsListView {
     }
 
     override fun displayUpdateError() {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(activity, getString(R.string.update_error), Toast.LENGTH_SHORT).show()
     }
 
     override fun getStationSelectedObservable(): Observable<Station> {

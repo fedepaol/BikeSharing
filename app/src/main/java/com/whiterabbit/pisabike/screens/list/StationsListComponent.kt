@@ -24,13 +24,10 @@ package com.whiterabbit.pisabike.screens.list
 
 import com.whiterabbit.pisabike.inject.ActivityScope
 import com.whiterabbit.pisabike.inject.ApplicationComponent
-import com.whiterabbit.pisabike.screens.map.MapFragment
-import com.whiterabbit.pisabike.screens.map.MapModule
-
 import dagger.Component
 
 @ActivityScope
-@Component(modules = arrayOf(MapModule::class), dependencies = arrayOf(ApplicationComponent::class))
+@Component(modules = arrayOf(StationsListModule::class), dependencies = arrayOf(ApplicationComponent::class))
 interface StationsListComponent {
     fun inject(f: StationsListFragment)
 }

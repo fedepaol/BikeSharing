@@ -24,5 +24,6 @@
     <string name="main_update_error">Error updating</string>
     <string name="map">Map</string>
     <string name="stations_list">Stations</string>
+    <string name="update_error">There was an error updating the bikes list</string>
 
 </resources>

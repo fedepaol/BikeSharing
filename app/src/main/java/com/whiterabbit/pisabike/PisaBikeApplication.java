@@ -24,6 +24,8 @@ import com.crashlytics.android.Crashlytics;
 import com.whiterabbit.pisabike.inject.ApplicationComponent;
 import com.whiterabbit.pisabike.inject.ApplicationModule;
 import com.whiterabbit.pisabike.inject.DaggerApplicationComponent;
+import com.whiterabbit.pisabike.screens.list.StationsListModule;
+import com.whiterabbit.pisabike.screens.list.StationsListView;
 import com.whiterabbit.pisabike.screens.main.MainModule;
 import com.whiterabbit.pisabike.screens.main.MainView;
 import com.whiterabbit.pisabike.screens.map.MapModule;
@@ -61,5 +63,9 @@ public class PisaBikeApplication extends Application {
 
     public MainModule getMainModule(MainView view) {
         return new MainModule(view);
+    }
+
+    public StationsListModule getListModule(StationsListView view) {
+        return new StationsListModule(view);
     }
 }

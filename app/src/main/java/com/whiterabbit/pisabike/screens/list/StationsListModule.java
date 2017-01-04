@@ -18,12 +18,7 @@
 package com.whiterabbit.pisabike.screens.list;
 
 
-import android.location.LocationProvider;
-
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
-import com.whiterabbit.pisabike.screens.main.MainPresenter;
-import com.whiterabbit.pisabike.screens.main.MainPresenterImpl;
-import com.whiterabbit.pisabike.screens.main.MainView;
 import com.whiterabbit.pisabike.storage.BikesProvider;
 
 import dagger.Module;
