@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 class StationsListFragment : Fragment(), StationsListView {
 
-    @Bind(R.id.stations_list)
+    @Bind(R.id.stations_list_view)
     lateinit var stations : RecyclerView
 
     @Inject
@@ -32,14 +32,14 @@ class StationsListFragment : Fragment(), StationsListView {
                               savedInstanceState: Bundle?): View? {
 
         val res = inflater?.inflate(R.layout.stations_list, container, false)
-        ButterKnife.bind(res)
+        ButterKnife.bind(this, res)
 
-        stations?.setHasFixedSize(true)
+        stations.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(activity.applicationContext)
-        stations?.layoutManager = layoutManager
+        stations.layoutManager = layoutManager
 
         adapter = StationsAdapter()
-        stations?.adapter = adapter
+        stations.adapter = adapter
         return res
     }
 
@@ -55,7 +55,7 @@ class StationsListFragment : Fragment(), StationsListView {
 
     override fun onResume() {
         super.onResume()
-        presenter?.attachToView(this)
+        presenter.attachToView(this)
     }
 
     override fun displayStations(l: List<Station>, location : Location?) {
