@@ -1,5 +1,6 @@
 package com.whiterabbit.pisabike.screens.list
 
+import android.content.Context
 import android.location.Location
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
@@ -15,7 +16,7 @@ import com.whiterabbit.pisabike.model.Station
 import rx.Observable
 
 
-class StationsAdapter : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
+class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
 
     private val relay : BehaviorRelay<Station> = BehaviorRelay.create()
 
@@ -86,11 +87,12 @@ class StationsAdapter : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val s = data?.get(position) ?: return
 
-        holder?.name?.text = s.city
+        holder?.name?.text = s.name
         holder?.address?.text= s.address
         holder?.bikes?.text = s.available.toString()
         holder?.bikesEmpty?.text = s.free.toString()
-        holder?.distance?.text = s.getDistanceFrom(myPosition).toString()
+        holder?.distance?.text = String.format(c.getString(R.string.distance),
+                                                s.getDistanceFrom(myPosition).toString())
         holder?.id = position
     }
 

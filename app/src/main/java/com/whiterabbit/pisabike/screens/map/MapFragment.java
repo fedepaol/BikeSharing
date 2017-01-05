@@ -242,7 +242,7 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     public void displayStationDetail(Station detail, Location current) {
         mDetailName.setText(detail.getName());
         mAddress.setText(detail.getAddress());
-        mDistance.setText(String.format("%.1f km", detail.getDistanceFrom(current)));
+        mDistance.setText(String.format(getString(R.string.distance), detail.getDistanceFrom(current)));
         mBikes.setText(String.valueOf(detail.getAvailable()));
         mEmptyBikes.setText(String.valueOf(detail.getFree()));
         mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);

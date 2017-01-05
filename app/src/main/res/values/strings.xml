@@ -25,5 +25,6 @@
     <string name="map">Map</string>
     <string name="stations_list">Stations</string>
     <string name="update_error">There was an error updating the bikes list</string>
+    <string name="distance">%.1f km</string>
 
 </resources>

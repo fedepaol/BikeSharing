@@ -25,7 +25,7 @@ class StationsListFragment : Fragment(), StationsListView {
     @Inject
     lateinit var presenter : StationsListPresenter
 
-    var adapter : StationsAdapter = StationsAdapter()
+    lateinit var adapter : StationsAdapter
 
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
@@ -38,7 +38,7 @@ class StationsListFragment : Fragment(), StationsListView {
         val layoutManager = LinearLayoutManager(activity.applicationContext)
         stations.layoutManager = layoutManager
 
-        adapter = StationsAdapter()
+        adapter = StationsAdapter(activity.applicationContext)
         stations.adapter = adapter
         return res
     }
