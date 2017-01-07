@@ -3,6 +3,7 @@ package com.whiterabbit.pisabike.screens.list
 import android.location.Location
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -22,6 +23,9 @@ class StationsListFragment : Fragment(), StationsListView {
     @Bind(R.id.stations_list_view)
     lateinit var stations : RecyclerView
 
+    @Bind(R.id.fragment_list_swipe)
+    lateinit var swipeLayout : SwipeRefreshLayout
+
     @Inject
     lateinit var presenter : StationsListPresenter
 
@@ -40,6 +44,9 @@ class StationsListFragment : Fragment(), StationsListView {
 
         adapter = StationsAdapter(activity.applicationContext)
         stations.adapter = adapter
+
+        swipeLayout.isEnabled = true
+        swipeLayout.setOnRefreshListener { presenter.onUpdateRequested() }
         return res
     }
 
@@ -65,7 +72,7 @@ class StationsListFragment : Fragment(), StationsListView {
     }
 
     override fun toggleLoading(loading: Boolean) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+        swipeLayout.post { swipeLayout.isRefreshing = loading }
     }
 
     override fun displayUpdateError() {
