@@ -18,12 +18,14 @@ package com.whiterabbit.pisabike;
 
 
 import com.whiterabbit.pisabike.inject.ApplicationModule;
+import com.whiterabbit.pisabike.screens.list.StationsListModule;
 import com.whiterabbit.pisabike.screens.main.MainModule;
 import com.whiterabbit.pisabike.screens.main.MainView;
 
 public class TestApplication extends PisaBikeApplication {
     private MainModule mMainModule;
     private ApplicationModule mApplicationModule;
+    private StationsListModule mStationListModule;
 
     // By usint this two method we can drive whatever module we want during the tests
     // (and with that, drive what classes inject)
@@ -41,11 +43,22 @@ public class TestApplication extends PisaBikeApplication {
         return mApplicationModule;
     }
 
+    @Override
+    public StationsListModule getListModule() {
+        if (mStationListModule == null)
+            return super.getListModule();
+        return mStationListModule;
+    }
+
     public void setApplicationModule(ApplicationModule m) {
         mApplicationModule = m;
     }
 
     public void setMainModule(MainModule m) {
         mMainModule = m;
+    }
+
+    public void setStationListModule(StationsListModule module) {
+        this.mStationListModule = module;
     }
 }

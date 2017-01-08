@@ -18,14 +18,15 @@
 package com.whiterabbit.pisabike;
 
 import android.app.Application;
-import android.view.View;
+import android.content.Context;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 
 import com.crashlytics.android.Crashlytics;
 import com.whiterabbit.pisabike.inject.ApplicationComponent;
 import com.whiterabbit.pisabike.inject.ApplicationModule;
 import com.whiterabbit.pisabike.inject.DaggerApplicationComponent;
 import com.whiterabbit.pisabike.screens.list.StationsListModule;
-import com.whiterabbit.pisabike.screens.list.StationsListView;
 import com.whiterabbit.pisabike.screens.main.MainModule;
 import com.whiterabbit.pisabike.screens.main.MainView;
 import com.whiterabbit.pisabike.screens.map.MapModule;
@@ -33,7 +34,7 @@ import com.whiterabbit.pisabike.screens.map.MapView;
 
 import io.fabric.sdk.android.Fabric;
 
-public class PisaBikeApplication extends Application {
+public class PisaBikeApplication extends MultiDexApplication {
     private ApplicationComponent mComponent;
 
     @Override
@@ -53,6 +54,12 @@ public class PisaBikeApplication extends Application {
                 .build();
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
     public ApplicationComponent getComponent() {
         return mComponent;
     }
@@ -65,7 +72,7 @@ public class PisaBikeApplication extends Application {
         return new MainModule(view);
     }
 
-    public StationsListModule getListModule(StationsListView view) {
-        return new StationsListModule(view);
+    public StationsListModule getListModule() {
+        return new StationsListModule();
     }
 }

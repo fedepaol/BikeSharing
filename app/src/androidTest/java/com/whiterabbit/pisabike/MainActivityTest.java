@@ -99,7 +99,7 @@ public class MainActivityTest {
         InstrumentationRegistry.getInstrumentation().runOnMainSync( () ->
                 activityTestRule.getActivity().displayList());
 
-        onView(withId(R.id.stations_list)).check(matches(isDisplayed()));
+        onView(withId(R.id.stations_list_view)).check(matches(isDisplayed()));
     }
 
 }

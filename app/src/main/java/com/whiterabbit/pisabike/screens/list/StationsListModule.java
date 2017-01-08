@@ -27,16 +27,6 @@ import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 
 @Module
 public class StationsListModule {
-    private StationsListView mView;
-    public StationsListModule(StationsListView view) {
-        mView = view;
-    }
-
-    @Provides
-    public StationsListView provideView() {
-        return mView;
-    }
-
     @Provides
     public StationsListPresenter providePresenter(BikesProvider bikesProvider,
                                                   SchedulersProvider schedulers,

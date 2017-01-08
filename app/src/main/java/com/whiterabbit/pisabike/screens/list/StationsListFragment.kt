@@ -56,7 +56,7 @@ class StationsListFragment : Fragment(), StationsListView {
         val app : PisaBikeApplication = activity.application as PisaBikeApplication
         DaggerStationsListComponent.builder()
                 .applicationComponent(app.component)
-                .stationsListModule(app.getListModule(this))
+                .stationsListModule(app.listModule)
                 .build().inject(this)
     }
 
