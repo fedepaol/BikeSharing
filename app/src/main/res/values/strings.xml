@@ -26,5 +26,7 @@
     <string name="stations_list">Stations</string>
     <string name="update_error">There was an error updating the bikes list</string>
     <string name="distance">%.1f km</string>
+    <string name="available_bikes">Available\nbikes</string>
+    <string name="free_parks">Free\nparks</string>
 
 </resources>

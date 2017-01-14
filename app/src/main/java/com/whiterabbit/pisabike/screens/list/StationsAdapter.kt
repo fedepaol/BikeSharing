@@ -53,15 +53,15 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
     }
 
     inner class ViewHolder(v : View) : RecyclerView.ViewHolder(v) {
-        @Bind(R.id.main_detail_name)
+        @Bind(R.id.station_detail_name)
         lateinit var name:TextView
-        @Bind(R.id.main_detail_address)
+        @Bind(R.id.station_detail_address)
         lateinit var address:TextView
-        @Bind(R.id.main_detail_bikes)
+        @Bind(R.id.station_detail_free_bikes)
         lateinit var bikes:TextView
-        @Bind(R.id.main_detail_bikes_empty)
+        @Bind(R.id.station_detail_parks)
         lateinit var bikesEmpty:TextView
-        @Bind(R.id.main_detail_distance)
+        @Bind(R.id.station_detail_distance)
         lateinit var distance:TextView
 
         var id : Int = 0
@@ -78,7 +78,7 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
     var myPosition : Location? = null
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent?.context).inflate(R.layout.main_bottom_sheet, parent, false)
+        val v = LayoutInflater.from(parent?.context).inflate(R.layout.station_list_elem, parent, false)
         return ViewHolder(v)
     }
 
