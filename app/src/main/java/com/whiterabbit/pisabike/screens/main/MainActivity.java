@@ -153,6 +153,6 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
                 mPresenter.onListSelectedFromMenu();
                 break;
         }
-        return false;
+        return true;
     }
 }
