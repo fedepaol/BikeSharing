@@ -21,7 +21,7 @@ import android.os.Bundle;
 
 public interface MapPresenter {
     void onViewDetached();
-    void onViewAttached(MapView view, boolean isNew);
+    void onViewAttached(MapView view, String stationToCenter);
     void onMapReady();
     void onStationClicked(String stationName);
 

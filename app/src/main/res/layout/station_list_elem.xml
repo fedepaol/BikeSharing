@@ -85,7 +85,9 @@
             android:text="@string/free_parks"
             />
     </LinearLayout>
-
-
-</android.support.percent.PercentRelativeLayout>
-    </android.support.v7.widget.CardView>
+    </android.support.percent.PercentRelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground"/>
+</android.support.v7.widget.CardView>

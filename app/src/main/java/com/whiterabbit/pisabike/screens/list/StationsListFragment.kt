@@ -15,6 +15,7 @@ import butterknife.ButterKnife
 import com.whiterabbit.pisabike.PisaBikeApplication
 import com.whiterabbit.pisabike.R
 import com.whiterabbit.pisabike.model.Station
+import com.whiterabbit.pisabike.screens.main.MainActivity
 import rx.Observable
 import javax.inject.Inject
 
@@ -82,6 +83,11 @@ class StationsListFragment : Fragment(), StationsListView {
     override fun getStationSelectedObservable(): Observable<Station> {
         return adapter.stationSelected
     }
+
+    override fun displayStationOnMap(s: Station) {
+        (activity as MainActivity).onDisplayStationRequested(s)
+    }
+
 }
 
 

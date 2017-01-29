@@ -1,6 +1,7 @@
 package com.whiterabbit.pisabike.screens.main
 
 import android.os.Bundle
+import com.whiterabbit.pisabike.model.Station
 
 class MainPresenterImpl() : MainPresenter {
     var STATE_KEY = "ContainerState"
@@ -53,6 +54,13 @@ class MainPresenterImpl() : MainPresenter {
     override fun onRestoreState(toRestore: Bundle?) {
         val pos = toRestore?.getInt(STATE_KEY, 0) ?: 0
         state = State.values()[pos]
+    }
+
+    override fun onDisplayStationRequested(s: Station?) {
+        if (state == State.MAP)
+            return
+        view?.displayStationOnMap(s)
+        state = State.MAP
     }
 }
 

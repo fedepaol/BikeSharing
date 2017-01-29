@@ -40,7 +40,7 @@ class StationsListPresenterImpl(val provider : BikesProvider,
 
         val sub1 = v.getStationSelectedObservable().subscribeOn(schedulers.provideMainThreadScheduler())
                 .observeOn(schedulers.provideMainThreadScheduler())
-                .subscribe { s ->  } // TODO
+                .subscribe { s ->  view?.displayStationOnMap(s)}
         subscription.add(sub1)
     }
 

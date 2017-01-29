@@ -55,6 +55,7 @@ public class MapPresenterImpl implements MapPresenter {
     private PrefsStorage mStorage;
     private boolean mMovingToMarker;
     private boolean mViewCentered;
+    private String mStationToCenter;
 
 
     public MapPresenterImpl(SchedulersProvider schedulersProvider,
@@ -77,12 +78,13 @@ public class MapPresenterImpl implements MapPresenter {
     }
 
     @Override
-    public void onViewAttached(MapView view, boolean isNew) {
+    public void onViewAttached(MapView view, String stationToCenter) {
         mView = view;
         mView.getMap();
+        mStationToCenter = stationToCenter;
     }
 
-    private Subscription subscribeStations(boolean hasLocation) {
+    private Subscription subscribeStations() {
 
         return mBikesProvider.getStationsObservables()
                 .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
@@ -151,6 +153,17 @@ public class MapPresenterImpl implements MapPresenter {
         mView.drawStationsOnMap(stations);
     }
 
+    private Subscription centerToStation(String stationName) {
+        return mBikesProvider.getStationsObservables()
+                .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
+                .observeOn(mSchedulersProvider.provideMainThreadScheduler())
+                .flatMap(Observable::from)
+                .filter(s -> s.getName().equals(stationName))
+                .first()
+                .subscribe(l -> askToCenter(l.getLatitude(), l.getLongitude()));
+
+    }
+
     private void onLocationChanged(Location l) {
         mMyLocation = l;
     }
@@ -163,17 +176,24 @@ public class MapPresenterImpl implements MapPresenter {
                 granted -> {
                     if (granted) {
                         if (!mViewCentered) {
-                            mSubscription.add(centerLocation());
+                            if (mStationToCenter.equals(""))
+                                mSubscription.add(centerLocation());
+                            else
+                                mSubscription.add(centerToStation(mStationToCenter));
+
                         }
                         mSubscription.add(checkLocation());
 
                         mView.enableMyLocation();
                     } else {
                         if (!mViewCentered) {
-                            askToCenter(Constants.MY_LATITUDE, Constants.MY_LONGITUDE);
+                            if (mStationToCenter.equals(""))
+                                askToCenter(Constants.MY_LATITUDE, Constants.MY_LONGITUDE);
+                            else
+                                mSubscription.add(centerToStation(mStationToCenter));
                         }
                     }
-                    mSubscription.add(subscribeStations(false));
+                    mSubscription.add(subscribeStations());
                 }
         );
 

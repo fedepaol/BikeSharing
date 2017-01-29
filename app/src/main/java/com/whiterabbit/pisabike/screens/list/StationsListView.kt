@@ -10,4 +10,5 @@ interface StationsListView {
     fun toggleLoading(loading : Boolean)
     fun displayUpdateError()
     fun getStationSelectedObservable() : Observable<Station>
+    fun displayStationOnMap(s : Station)
 }

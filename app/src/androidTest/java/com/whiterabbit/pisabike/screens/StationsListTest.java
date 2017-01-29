@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.TestApplication;
+import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.screens.list.StationsListModule;
 import com.whiterabbit.pisabike.screens.list.StationsListPresenter;
@@ -29,7 +30,11 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
 import com.whiterabbit.pisabike.FakeStationsProvider;
+
+import java.util.List;
+
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
+import rx.observers.TestSubscriber;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -38,9 +43,11 @@ import static android.support.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static junit.framework.Assert.assertEquals;
 import static org.hamcrest.Matchers.allOf;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
@@ -90,6 +97,29 @@ public class StationsListTest {
                 .check(matches(hasDescendant(withText("Duomo"))));
         onView(nthChildOf(withId(R.id.stations_list_view), 1))
                 .check(matches(hasDescendant(withText("Aereoporto"))));
+    }
+
+    @Test
+    public void testClickList() {
+        activityTestRule.launchActivity(new Intent());
+        ViewInteraction bottomNavigationItemView = onView(
+                allOf(withId(R.id.action_list), isDisplayed()));
+        bottomNavigationItemView.perform(click());
+
+        listView = (StationsListView) activityTestRule.getActivity().getSupportFragmentManager().findFragmentByTag("list");
+
+        InstrumentationRegistry.getInstrumentation().runOnMainSync(() ->
+                listView.displayStations(stationsProvider.getList1(), myLocation));
+
+        TestSubscriber<Station> stationSubcriber = new TestSubscriber<>();
+        listView.getStationSelectedObservable().subscribe(stationSubcriber);
+
+        onView(nthChildOf(withId(R.id.stations_list_view), 0))
+                .perform(click());
+
+        List<Station> stations = stationSubcriber.getOnNextEvents();
+        assertEquals(stations.size(), 1);
+        assertEquals(stations.get(0).getName(), "Duomo");
     }
 
     public static Matcher<View> nthChildOf(final Matcher<View> parentMatcher, final int childPosition) {

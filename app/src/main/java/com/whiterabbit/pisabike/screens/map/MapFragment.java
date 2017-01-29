@@ -115,10 +115,15 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     private GoogleMap mGoogleMap;
     private Map<String, String> markerToStationsMap = new HashMap<>();
     private HashMap<String, Marker> stationToMarkerMap = new HashMap<>();
-    private boolean isNew;
+    private String mStationToCenter;
 
-    public static MapFragment createInstance() {
+    private final static String STATION_NAME = "StationName";
+
+    public static MapFragment createInstance(String stationName) {
         MapFragment res = new MapFragment();
+        Bundle args = new Bundle();
+        args.putString(STATION_NAME, stationName);
+        res.setArguments(args);
         return res;
     }
 
@@ -144,10 +149,11 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        isNew = (savedInstanceState == null);
 
         final Bundle mapViewSavedInstanceState = savedInstanceState != null ?
                                                     savedInstanceState.getBundle("mapViewSaveState") : null;
+
+        mStationToCenter = getArguments().getString(STATION_NAME, "");
         mMapView.onCreate(mapViewSavedInstanceState);
 
         mBottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
@@ -184,7 +190,7 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     public void onResume() {
         super.onResume();
         mMapView.onResume();
-        mPresenter.onViewAttached(this, false);
+        mPresenter.onViewAttached(this, mStationToCenter);
     }
 
     @Override

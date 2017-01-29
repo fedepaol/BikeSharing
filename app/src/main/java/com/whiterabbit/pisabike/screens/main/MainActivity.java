@@ -26,6 +26,7 @@ import android.view.MenuItem;
 
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
+import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.screens.list.StationsListFragment;
 import com.whiterabbit.pisabike.screens.map.MapFragment;
 
@@ -61,20 +62,6 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
         ButterKnife.bind(this);
         mBottomNavigation.setOnNavigationItemSelectedListener(this);
-
-        mMapFragment = (MapFragment) getSupportFragmentManager().findFragmentByTag(MAP_TAG);
-        mStationsFragment = (StationsListFragment) getSupportFragmentManager().findFragmentByTag(LIST_TAG);
-
-        if (mMapFragment == null) {
-            mMapFragment = MapFragment.createInstance();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.main_activity_frame, mMapFragment, MAP_TAG)
-                    .commit();
-        }
-
-        if (mStationsFragment == null) {
-            mStationsFragment = new StationsListFragment();
-        }
     }
 
     @Override
@@ -92,8 +79,10 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
             return;
         }
 
+        MapFragment fragment = MapFragment.createInstance("");
+
         getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.main_activity_frame, mMapFragment, MAP_TAG)
+                                    .replace(R.id.main_activity_frame, fragment, MAP_TAG)
                                     .commit();
 
     }
@@ -104,8 +93,9 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
             return;
         }
 
+        StationsListFragment fragment = new StationsListFragment();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_activity_frame, mStationsFragment, LIST_TAG)
+                .replace(R.id.main_activity_frame, fragment, LIST_TAG)
                 .commit();
     }
 
@@ -154,5 +144,19 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void displayStationOnMap(Station s) {
+        MapFragment fragment = MapFragment.createInstance(s.getName());
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_activity_frame, fragment, MAP_TAG)
+                .commit();
+    }
+
+    @Override
+    public void onDisplayStationRequested(Station s) {
+        mPresenter.onDisplayStationRequested(s);
     }
 }
