@@ -17,11 +17,10 @@
 
 package com.whiterabbit.pisabike.screens.main;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.whiterabbit.pisabike.PisaBikeApplication;
@@ -44,9 +43,6 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     @Bind(R.id.bottom_navigation)
     BottomNavigationView mBottomNavigation;
-
-    MapFragment mMapFragment;
-    StationsListFragment mStationsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,16 +71,18 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     @Override
     public void displayMap() {
-        if (getSupportFragmentManager().findFragmentByTag(MAP_TAG) != null) {
+        // if there is already
+        if (getSupportFragmentManager().findFragmentByTag(MAP_TAG) != null &&
+            getSupportFragmentManager().getBackStackEntryCount() > 0) {
+
+            getSupportFragmentManager().popBackStack();
             return;
         }
 
-        MapFragment fragment = MapFragment.createInstance("");
-
+        MapFragment fragment = MapFragment.createInstance();
         getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.main_activity_frame, fragment, MAP_TAG)
+                                    .add(R.id.main_activity_frame, fragment, MAP_TAG)
                                     .commit();
-
     }
 
     @Override
@@ -95,18 +93,16 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
         StationsListFragment fragment = new StationsListFragment();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_activity_frame, fragment, LIST_TAG)
+                .add(R.id.main_activity_frame, fragment, LIST_TAG)
+                .addToBackStack(null)
                 .commit();
     }
 
     @Override
     public boolean sendBackPressedToMap() {
         MapFragment main = (MapFragment) (getSupportFragmentManager().findFragmentById(R.id.main_activity_frame));
-        if (main != null && main.onBackPressed()) {
-            return true;
-        }
+        return main != null && main.onBackPressed();
 
-        return false;
     }
 
     @Override
@@ -148,11 +144,10 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     @Override
     public void displayStationOnMap(Station s) {
-        MapFragment fragment = MapFragment.createInstance(s.getName());
+        displayMap();
+        MapFragment f = (MapFragment) getSupportFragmentManager().findFragmentByTag(MAP_TAG);
+        f.onStationCenterRequested(s);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_activity_frame, fragment, MAP_TAG)
-                .commit();
     }
 
     @Override

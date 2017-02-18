@@ -80,8 +80,8 @@ public class MapPresenterImpl implements MapPresenter {
     @Override
     public void onViewAttached(MapView view, String stationToCenter) {
         mView = view;
-        mView.getMap();
         mStationToCenter = stationToCenter;
+        mView.getMap();
     }
 
     private Subscription subscribeStations() {

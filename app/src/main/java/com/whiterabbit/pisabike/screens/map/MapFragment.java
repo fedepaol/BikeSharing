@@ -115,16 +115,12 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     private GoogleMap mGoogleMap;
     private Map<String, String> markerToStationsMap = new HashMap<>();
     private HashMap<String, Marker> stationToMarkerMap = new HashMap<>();
-    private String mStationToCenter;
+    private String mStationToCenter = "";
 
     private final static String STATION_NAME = "StationName";
 
-    public static MapFragment createInstance(String stationName) {
-        MapFragment res = new MapFragment();
-        Bundle args = new Bundle();
-        args.putString(STATION_NAME, stationName);
-        res.setArguments(args);
-        return res;
+    public static MapFragment createInstance() {
+        return new MapFragment();
     }
 
     @Override
@@ -153,7 +149,6 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         final Bundle mapViewSavedInstanceState = savedInstanceState != null ?
                                                     savedInstanceState.getBundle("mapViewSaveState") : null;
 
-        mStationToCenter = getArguments().getString(STATION_NAME, "");
         mMapView.onCreate(mapViewSavedInstanceState);
 
         mBottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
@@ -198,6 +193,7 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         super.onPause();
         mPresenter.onViewDetached();
         mMapView.onPause();
+
     }
 
     @Override
@@ -286,16 +282,17 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
 
     @Override
     public void getMap() {
-        if (mGoogleMap != null) {
+        /* if (mGoogleMap != null) {
             mPresenter.onMapReady();
-        } else {
+        } else { */
             mMapView.getMapAsync(this);
-        }
+        //}
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
+
         mPresenter.onMapReady(); // centering only if the view is recreated, otherwise leave where it was
         mGoogleMap.setOnMarkerClickListener(this);
         mGoogleMap.setOnCameraMoveStartedListener(this);
@@ -312,7 +309,6 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         mGoogleMap.moveCamera(center);
         mGoogleMap.animateCamera(zoom);
     }
-
 
     @Override
     public boolean onMarkerClick(Marker marker) {
@@ -397,4 +393,8 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         mPresenter.onCameraIdle();
     }
 
+    @Override
+    public void onStationCenterRequested(Station toCenter) {
+        mPresenter.onStationClicked(toCenter.getName());
+    }
 }

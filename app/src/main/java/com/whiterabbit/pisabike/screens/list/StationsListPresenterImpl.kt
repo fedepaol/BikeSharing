@@ -14,7 +14,7 @@ class StationsListPresenterImpl(val provider : BikesProvider,
                                 val locationProvider : ReactiveLocationProvider) : StationsListPresenter {
 
     var data : ListData? = null
-    var subscription : CompositeSubscription = CompositeSubscription()
+    lateinit var subscription : CompositeSubscription
     var view : StationsListView? = null
 
     data class ListData(var list : List<Station>,

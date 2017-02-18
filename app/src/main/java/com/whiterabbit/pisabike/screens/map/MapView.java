@@ -38,4 +38,5 @@ public interface MapView {
     void unHighLightStation(Station s);
     void stopUpdatingError();
     void navigateTo(Station s);
+    void onStationCenterRequested(Station toCenter);
 }
