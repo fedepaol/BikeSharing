@@ -86,19 +86,19 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     @Bind(R.id.main_detail_sheet)
     View mBottomSheet;
 
-    @Bind(R.id.main_detail_name)
+    @Bind(R.id.station_detail_name)
     TextView mDetailName;
 
-    @Bind(R.id.main_detail_address)
+    @Bind(R.id.station_detail_address)
     TextView mAddress;
 
-    @Bind(R.id.main_detail_distance)
+    @Bind(R.id.station_detail_distance)
     TextView mDistance;
 
-    @Bind(R.id.main_detail_bikes)
+    @Bind(R.id.station_detail_free_bikes)
     TextView mBikes;
 
-    @Bind(R.id.main_detail_bikes_empty)
+    @Bind(R.id.station_detail_parks)
     TextView mEmptyBikes;
 
     @Bind(R.id.fab)
