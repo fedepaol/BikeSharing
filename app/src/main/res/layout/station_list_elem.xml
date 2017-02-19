@@ -6,88 +6,9 @@
     android:layout_width="match_parent"
     android:layout_margin="@dimen/margin_xsmall"
     app:cardCornerRadius="4dp">
-    <android.support.percent.PercentRelativeLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/margin_medium">
-    <TextView
-        style="@style/ListElemName"
-        android:id="@+id/station_detail_name"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        tools:text="Pietrasantina"
-        />
-    <TextView
-        style="@style/ListElemAddress"
-        android:id="@+id/station_detail_address"
-        android:layout_alignLeft="@id/station_detail_name"
-        android:layout_below="@id/station_detail_name"
-        tools:text="via S. Jacopo"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:id="@+id/station_detail_distance"
-        android:drawableTop="@drawable/ic_directions_black_36px"
-        tools:text="1.5 Km"
-        />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        app:layout_widthPercent="50%"
-        android:id="@+id/first_linear"
-        android:layout_below="@id/station_detail_distance"
-        android:layout_marginTop="@dimen/margin_xsmall"
-        android:layout_alignParentLeft="true"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_bike"/>
-        <TextView
-            style="@style/ListElemNumber"
-            android:id="@+id/station_detail_free_bikes"
-            android:layout_marginLeft="@dimen/margin_xsmall"
-            android:layout_marginRight="@dimen/margin_xsmall"
-            tools:text="5" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:text="@string/available_bikes"
-             />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        app:layout_widthPercent="50%"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_xsmall"
-        android:layout_below="@id/station_detail_distance"
-        android:layout_toRightOf="@id/first_linear">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_bike_park"/>
-        <TextView
-            style="@style/ListElemNumber"
-            android:id="@+id/station_detail_parks"
-            android:layout_marginLeft="@dimen/margin_xsmall"
-            android:layout_marginRight="@dimen/margin_xsmall"
-            tools:text="7" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:text="@string/free_parks"
-            />
-    </LinearLayout>
-    </android.support.percent.PercentRelativeLayout>
+    <include layout="@layout/station_details"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?android:attr/selectableItemBackground"/>
+        android:background="?android:attr/selectableItemBackground" />
 </android.support.v7.widget.CardView>

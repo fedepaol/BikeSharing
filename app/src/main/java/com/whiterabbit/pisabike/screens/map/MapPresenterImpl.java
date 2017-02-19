@@ -114,12 +114,10 @@ public class MapPresenterImpl implements MapPresenter {
     private Subscription centerLocation() {
         LocationRequest request = LocationRequest.create() //standard GMS LocationRequest
                 .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
-                .setInterval(200)
+                .setInterval(2000)
                 .setNumUpdates(1);
 
-        return mLocationProvider.getUpdatedLocation(request)
-                .timeout(2, TimeUnit.SECONDS)
-                .first()
+        return mLocationProvider.getLastKnownLocation()
                 .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                 .subscribe(l -> askToCenter(l.getLatitude(), l.getLongitude()),
                         e -> askToCenter(Constants.MY_LATITUDE, Constants.MY_LONGITUDE));

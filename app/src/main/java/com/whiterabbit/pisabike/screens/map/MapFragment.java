@@ -302,12 +302,9 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     @Override
     public void centerCity(double lat, double lon) {
         CameraUpdate center =
-                CameraUpdateFactory.newLatLng(new LatLng(lat,
-                                                         lon));
-        CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
-
-        mGoogleMap.moveCamera(center);
-        mGoogleMap.animateCamera(zoom);
+                CameraUpdateFactory.newLatLngZoom(new LatLng(lat,
+                                                         lon), 15);
+        mGoogleMap.animateCamera(center);
     }
 
     @Override

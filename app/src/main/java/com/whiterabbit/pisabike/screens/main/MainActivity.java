@@ -22,6 +22,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
@@ -144,10 +145,12 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     @Override
     public void displayStationOnMap(Station s) {
-        displayMap();
+        // there seem no clean way to set the item selected programmatically. This is a bad
+        // hack to achieve that
+        View view = mBottomNavigation.findViewById(R.id.action_map);
+        view.performClick();
         MapFragment f = (MapFragment) getSupportFragmentManager().findFragmentByTag(MAP_TAG);
         f.onStationCenterRequested(s);
-
     }
 
     @Override
