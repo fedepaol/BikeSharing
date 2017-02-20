@@ -73,10 +73,10 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
     @Override
     public void displayMap() {
         // if there is already
-        if (getSupportFragmentManager().findFragmentByTag(MAP_TAG) != null &&
-            getSupportFragmentManager().getBackStackEntryCount() > 0) {
-
-            getSupportFragmentManager().popBackStack();
+        if (getSupportFragmentManager().findFragmentByTag(MAP_TAG) != null) {
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStack();
+            }
             return;
         }
 
