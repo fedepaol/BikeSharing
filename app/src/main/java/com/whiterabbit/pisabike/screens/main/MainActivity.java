@@ -17,13 +17,20 @@
 
 package com.whiterabbit.pisabike.screens.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.whiterabbit.androidutils.AskForRateDialog;
+import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.model.Station;
@@ -35,7 +42,9 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements MainView, BottomNavigationView.OnNavigationItemSelectedListener {
+import static android.view.View.GONE;
+
+public class MainActivity extends AppCompatActivity implements MainView, BottomNavigationView.OnNavigationItemSelectedListener, InAppPurchaseHelper.RemoveAdsListener {
     private static final String MAP_TAG = "map";
     private static final String LIST_TAG = "list";
 
@@ -44,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     @Bind(R.id.bottom_navigation)
     BottomNavigationView mBottomNavigation;
+
+    @Bind(R.id.adView)
+    AdView mAdView;
+
+    InAppPurchaseHelper mPurchaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +73,19 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
         ButterKnife.bind(this);
         mBottomNavigation.setOnNavigationItemSelectedListener(this);
+
+        mPurchaseHelper = new InAppPurchaseHelper(this, "remove_ads", this);
+        mPurchaseHelper.onCreate(6, 7);
+
+        if (InAppPurchaseHelper.isAdsUnlocked(this) == InAppPurchaseHelper.AdsUnlocked.UNLOCKED) {
+            mAdView.setVisibility(GONE);
+        }
+
+        AskForRateDialog.checkAndAskForRate(2, 3, 4, this);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mPurchaseHelper.
     }
 
     @Override
@@ -156,5 +183,39 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
     @Override
     public void onDisplayStationRequested(Station s) {
         mPresenter.onDisplayStationRequested(s);
+    }
+
+    @Override
+    public void removeAds() {
+        mAdView.setVisibility(GONE);
+        invalidateOptionsMenu();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (InAppPurchaseHelper.isAdsUnlocked(this) == InAppPurchaseHelper.AdsUnlocked.UNLOCKED) {
+            return super.onCreateOptionsMenu(menu);
+        }
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.global_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.main_action_remove_ads:
+                mPurchaseHelper.unlockAds();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mPurchaseHelper.onActivityResult(requestCode, resultCode, data);
     }
 }

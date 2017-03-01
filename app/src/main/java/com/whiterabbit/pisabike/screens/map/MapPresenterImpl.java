@@ -223,6 +223,7 @@ public class MapPresenterImpl implements MapPresenter {
             mView.hideStationDetail();
             mView.unHighLightStation(mSelectedStation);
             mSelectedStation = null;
+            mView.checkAndShowInterstitial();
         }
     }
 

@@ -26,6 +26,8 @@ import android.content.SharedPreferences;
 
 import com.squareup.sqlbrite.BriteDatabase;
 import com.tbruyelle.rxpermissions.RxPermissions;
+import com.whiterabbit.androidutils.InAppPurchaseHelper;
+import com.whiterabbit.helper.InterstitialHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
@@ -51,6 +53,7 @@ public interface ApplicationComponent {
     RxPermissions getPermissions();
     MapMarkerFactory getMarkerFactory();
     PrefsStorage getStorage();
+    InterstitialHelper getInterstitial();
 }
 
 

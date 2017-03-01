@@ -39,4 +39,5 @@ public interface MapView {
     void stopUpdatingError();
     void navigateTo(Station s);
     void onStationCenterRequested(Station toCenter);
+    void checkAndShowInterstitial();
 }

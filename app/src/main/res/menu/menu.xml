@@ -23,5 +23,4 @@
         android:icon="@drawable/ic_refresh_white_48px"
         android:title="@string/action_reload"
         app:showAsAction="ifRoom"/>
-
 </menu>

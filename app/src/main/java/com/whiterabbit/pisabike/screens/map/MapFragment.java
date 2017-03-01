@@ -47,6 +47,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.whiterabbit.helper.InterstitialHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.model.Station;
@@ -79,6 +80,8 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     Context mContext;
     @Inject
     MapMarkerFactory markerFactory;
+    @Inject
+    InterstitialHelper mInterstitialHelper;
 
     @Bind(R.id.main_map)
     com.google.android.gms.maps.MapView mMapView;
@@ -393,5 +396,10 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     @Override
     public void onStationCenterRequested(Station toCenter) {
         mPresenter.onStationClicked(toCenter.getName());
+    }
+
+    @Override
+    public void checkAndShowInterstitial() {
+        mInterstitialHelper.checkAndShowInterstitial();
     }
 }
