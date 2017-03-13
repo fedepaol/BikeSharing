@@ -1,0 +1,306 @@
+{
+  "network": {
+    "company": [
+      "Comunicare S.r.l."
+    ], 
+    "href": "/v2/networks/ciclopi", 
+    "id": "ciclopi", 
+    "location": {
+      "city": "Pisa", 
+      "country": "IT", 
+      "latitude": 43.7228386, 
+      "longitude": 10.4016888
+    }, 
+    "name": "Ciclopi", 
+    "stations": [
+      {
+        "empty_slots": 5, 
+        "extra": {
+          "description": "P.le C. D\u00e2\u0080\u0099Ascanio"
+        }, 
+        "free_bikes": 5, 
+        "id": "3fe81d364f8d8a0e103fd968a196185a", 
+        "latitude": 43.69889689157878, 
+        "longitude": 10.4007026553154, 
+        "name": "Aeroporto", 
+        "timestamp": "2017-03-04T10:00:02.671000Z"
+      }, 
+      {
+        "empty_slots": 23, 
+        "extra": {
+          "description": "P.zza Stazione"
+        }, 
+        "free_bikes": 4, 
+        "id": "bd6cedf55bee9270a680cdb9fdb78035", 
+        "latitude": 43.708474729164045, 
+        "longitude": 10.399020910263062, 
+        "name": "Stazione F.S.", 
+        "timestamp": "2017-03-04T10:00:02.674000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "description": "Via Toselli"
+        }, 
+        "free_bikes": 2, 
+        "id": "cf5245f3dc1ab559003ac1084cf15375", 
+        "latitude": 43.715540542144296, 
+        "longitude": 10.400466620922089, 
+        "name": "Comune Palazzo Blu", 
+        "timestamp": "2017-03-04T10:00:02.676000Z"
+      }, 
+      {
+        "empty_slots": 11, 
+        "extra": {
+          "description": "Via Palestro"
+        }, 
+        "free_bikes": 1, 
+        "id": "c577f171c6408ca0d5c21c19bad5290b", 
+        "latitude": 43.7163945097564, 
+        "longitude": 10.405159145593643, 
+        "name": "Teatro Tribunale", 
+        "timestamp": "2017-03-04T10:00:02.677000Z"
+      }, 
+      {
+        "empty_slots": 5, 
+        "extra": {
+          "description": "Via Oberdan"
+        }, 
+        "free_bikes": 4, 
+        "id": "46d40ab10240c8a90bf297bfcfdd61e0", 
+        "latitude": 43.71850756685601, 
+        "longitude": 10.402157753705978, 
+        "name": "Borgo Stretto", 
+        "timestamp": "2017-03-04T10:00:02.678000Z"
+      }, 
+      {
+        "empty_slots": 9, 
+        "extra": {
+          "description": "Largo Pontecorvo"
+        }, 
+        "free_bikes": 5, 
+        "id": "7468210d602810f587c66d98eea1c296", 
+        "latitude": 43.71978699640267, 
+        "longitude": 10.407198965549469, 
+        "name": "Polo Marzotto", 
+        "timestamp": "2017-03-04T10:00:02.679000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {
+          "description": "P.zza Manin"
+        }, 
+        "free_bikes": 6, 
+        "id": "4f986959f72c1860352e4c12ab1a6056", 
+        "latitude": 43.72288113973688, 
+        "longitude": 10.39179127129023, 
+        "name": "Duomo", 
+        "timestamp": "2017-03-04T10:00:02.680000Z"
+      }, 
+      {
+        "empty_slots": 0, 
+        "extra": {
+          "description": "Via S. Jacopo"
+        }, 
+        "free_bikes": 20, 
+        "id": "9a211de300a193ad297c8369ce622d04", 
+        "latitude": 43.729021341163644, 
+        "longitude": 10.392712354660034, 
+        "name": "Pietrasantina", 
+        "timestamp": "2017-03-04T10:00:02.681000Z"
+      }, 
+      {
+        "empty_slots": 7, 
+        "extra": {
+          "description": "Via Paparelli"
+        }, 
+        "free_bikes": 22, 
+        "id": "99d7c9c37b1b1c64ce2a1f327b651444", 
+        "latitude": 43.724455713221055, 
+        "longitude": 10.410447120666504, 
+        "name": "Paparelli", 
+        "timestamp": "2017-03-04T10:00:02.683000Z"
+      }, 
+      {
+        "empty_slots": 18, 
+        "extra": {
+          "description": "Via di Pratale"
+        }, 
+        "free_bikes": 12, 
+        "id": "45f0516668b0af4ebb337d8a728fc688", 
+        "latitude": 43.721251521991505, 
+        "longitude": 10.420242547988892, 
+        "name": "Pratale", 
+        "timestamp": "2017-03-04T10:00:02.684000Z"
+      }, 
+      {
+        "empty_slots": 10, 
+        "extra": {
+          "description": "Via Pietro Trivella"
+        }, 
+        "free_bikes": 4, 
+        "id": "508f081ae2608be96faa00227c884d4d", 
+        "latitude": 43.706835077467, 
+        "longitude": 10.440119425023681, 
+        "name": "Ospedale Cisanello", 
+        "timestamp": "2017-03-04T10:00:02.685000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "description": "L.go Tibet"
+        }, 
+        "free_bikes": 7, 
+        "id": "b384580d99bfca0a3e8540b4ff522a01", 
+        "latitude": 43.70658035883312, 
+        "longitude": 10.419128279762276, 
+        "name": "Sms Biblioteca", 
+        "timestamp": "2017-03-04T10:00:02.686000Z"
+      }, 
+      {
+        "empty_slots": 4, 
+        "extra": {
+          "description": "P.zza V. Emanuele II"
+        }, 
+        "free_bikes": 12, 
+        "id": "6d9f5f4a6d63c64f634973f62f977d18", 
+        "latitude": 43.71017025126551, 
+        "longitude": 10.398750007152557, 
+        "name": "Vittorio Emanuele", 
+        "timestamp": "2017-03-04T10:00:02.688000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {
+          "description": "Via Matteotti"
+        }, 
+        "free_bikes": 4, 
+        "id": "03a43d8cdee15344b4c4afb75d1061f7", 
+        "latitude": 43.71001320663703, 
+        "longitude": 10.410232543945312, 
+        "name": "Palacongressi", 
+        "timestamp": "2017-03-04T10:00:02.689000Z"
+      }, 
+      {
+        "empty_slots": 8, 
+        "extra": {
+          "description": "Via Bianchi"
+        }, 
+        "free_bikes": 2, 
+        "id": "95089a42e326a6446af178cd0a6a7fad", 
+        "latitude": 43.724249448743706, 
+        "longitude": 10.402196310659065, 
+        "name": "Porta a Lucca", 
+        "timestamp": "2017-03-04T10:00:02.691000Z"
+      }, 
+      {
+        "empty_slots": 1, 
+        "extra": {
+          "description": "P.zza Solferino"
+        }, 
+        "free_bikes": 8, 
+        "id": "965d921ed17bc95b0fb3cb6d140d0912", 
+        "latitude": 43.71569279104801, 
+        "longitude": 10.395006805557273, 
+        "name": "Solferino", 
+        "timestamp": "2017-03-04T10:00:02.692000Z"
+      }, 
+      {
+        "empty_slots": 10, 
+        "extra": {
+          "description": "Via Consoli del Mare"
+        }, 
+        "free_bikes": 2, 
+        "id": "efbee9980490c753f66cec3ff223848a", 
+        "latitude": 43.719862256627756, 
+        "longitude": 10.40019726309049, 
+        "name": "Cavalieri", 
+        "timestamp": "2017-03-04T10:00:02.698000Z"
+      }, 
+      {
+        "empty_slots": 11, 
+        "extra": {
+          "description": "Via Carlo Matteucci"
+        }, 
+        "free_bikes": 1, 
+        "id": "6aff30b7d48a9b3422c641976dee3562", 
+        "latitude": 43.71081663441501, 
+        "longitude": 10.420468790351833, 
+        "name": "Galleria Gerace", 
+        "timestamp": "2017-03-04T10:00:02.702000Z"
+      }, 
+      {
+        "empty_slots": 8, 
+        "extra": {
+          "description": "Via M. Valgimigli"
+        }, 
+        "free_bikes": 4, 
+        "id": "de4ce15157afa551ebe8f1543231bec2", 
+        "latitude": 43.7149988319841, 
+        "longitude": 10.419548502516136, 
+        "name": "C. Marchesi", 
+        "timestamp": "2017-03-04T10:00:02.704000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "description": "Via G. Moruzzi"
+        }, 
+        "free_bikes": 2, 
+        "id": "258304fd491f8abedb20bd246186a80b", 
+        "latitude": 43.71937664670127, 
+        "longitude": 10.423707704299204, 
+        "name": "CNR-Praticelli", 
+        "timestamp": "2017-03-04T10:00:02.706000Z"
+      }, 
+      {
+        "empty_slots": 4, 
+        "extra": {
+          "description": "Via A. Pisano"
+        }, 
+        "free_bikes": 11, 
+        "id": "c515ae6db84e102f8997aa4950f80b5a", 
+        "latitude": 43.722220128128825, 
+        "longitude": 10.388224964309757, 
+        "name": "San Rossore F.S.", 
+        "timestamp": "2017-03-04T10:00:02.694000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "description": "P.zza D. Guerrazzi"
+        }, 
+        "free_bikes": 7, 
+        "id": "d606bb7397ca32635fbf50743008439e", 
+        "latitude": 43.71035298602386, 
+        "longitude": 10.405330168647765, 
+        "name": "Guerrazzi", 
+        "timestamp": "2017-03-04T10:00:02.695000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "description": "Via Chiassatello"
+        }, 
+        "free_bikes": 7, 
+        "id": "4d0079101ac06247f6866d25727181db", 
+        "latitude": 43.708118345328074, 
+        "longitude": 10.384021881753597, 
+        "name": "Livornese", 
+        "timestamp": "2017-03-04T10:00:02.697000Z"
+      }, 
+      {
+        "empty_slots": 11, 
+        "extra": {
+          "description": "P.zza Martiri della Liberta`"
+        }, 
+        "free_bikes": 0, 
+        "id": "16d00d46ef262c5b2ac145b24c685cf9", 
+        "latitude": 43.719864417699746, 
+        "longitude": 10.403020969311456, 
+        "name": "M. Liberta`", 
+        "timestamp": "2017-03-04T10:00:02.701000Z"
+      }
+    ]
+  }
+}

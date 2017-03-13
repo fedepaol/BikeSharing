@@ -22,11 +22,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.google.gson.Gson;
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.helper.InterstitialHelper;
 import com.whiterabbit.pisabike.R;
+import com.whiterabbit.pisabike.apiclient.BikeRestClient;
+import com.whiterabbit.pisabike.apiclient.GsonProviderKt;
 import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
 import com.whiterabbit.pisabike.storage.PisaBikeDbHelper;
 import com.whiterabbit.pisabike.schedule.RealSchedulersProvider;
@@ -59,8 +62,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    HtmlBikeClient provideBikeClient() {
-        return new HtmlBikeClient();
+    BikeRestClient provideBikeClient(Gson gson) {
+        return new BikeRestClient(gson);
     }
 
     @Provides
@@ -112,5 +115,11 @@ public class ApplicationModule {
     @Singleton
     InterstitialHelper provideInterstitial() {
         return new InterstitialHelper(mApp.getApplicationContext(), 20, 6, mApp.getString(R.string.admob_interstitial), false);
+    }
+
+    @Provides
+    @Singleton
+    Gson provideGSon() {
+        return GsonProviderKt.getGson();
     }
 }

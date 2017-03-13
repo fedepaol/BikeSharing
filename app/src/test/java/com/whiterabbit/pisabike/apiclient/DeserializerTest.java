@@ -17,18 +17,33 @@
 
 package com.whiterabbit.pisabike.apiclient;
 
-
+import com.google.gson.Gson;
+import com.whiterabbit.pisabike.FileParsingKt;
 import com.whiterabbit.pisabike.model.Network;
 import com.whiterabbit.pisabike.model.Station;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 
-import retrofit2.http.GET;
+/**
+ * To work on unit tests, switch the Test Artifact in the Build Variants view.
+ */
+public class DeserializerTest {
+    Gson deserializer;
 
-import rx.Observable;
+    @Before
+    public void setup() {
+        deserializer = GsonProviderKt.getGson();
+    }
 
-public interface BikeService {
-    @GET("ciclopi")
-    Observable<Network> listStations();
+    @Test
+    public void deserializeWorks() throws Exception {
+        String json = FileParsingKt.getStringFromFile(this, "ciclopi.json");
+        Network res = deserializer.fromJson(json, Network.class);
+
+    }
 }

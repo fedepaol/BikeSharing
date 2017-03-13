@@ -11,4 +11,6 @@ interface StationsListView {
     fun displayUpdateError()
     fun getStationSelectedObservable() : Observable<Station>
     fun displayStationOnMap(s : Station)
+    fun displaySearchBar(visible : Boolean)
+    fun displaySearchFab(visible: Boolean)
 }

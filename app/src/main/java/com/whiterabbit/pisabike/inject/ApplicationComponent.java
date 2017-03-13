@@ -24,11 +24,13 @@ package com.whiterabbit.pisabike.inject;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
 import com.squareup.sqlbrite.BriteDatabase;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.helper.InterstitialHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
+import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.storage.PrefsStorage;
@@ -45,7 +47,7 @@ public interface ApplicationComponent {
     void inject(PisaBikeApplication app);
 
     SharedPreferences getSharedPrefs();
-    HtmlBikeClient getBikeClient();
+    BikeRestClient getBikeClient();
     ReactiveLocationProvider getReactiveLocationProvider();
     Context getContext();
     SchedulersProvider getSchedulers();
@@ -54,6 +56,7 @@ public interface ApplicationComponent {
     MapMarkerFactory getMarkerFactory();
     PrefsStorage getStorage();
     InterstitialHelper getInterstitial();
+    Gson getGSon();
 }
 
 

@@ -21,6 +21,7 @@ import android.database.Cursor;
 
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
+import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
 import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
@@ -36,7 +37,7 @@ import rx.subjects.BehaviorSubject;
 public class BikesProvider {
     @Inject BriteDatabase mBrite;
     @Inject SchedulersProvider mSchedulersProvider;
-    @Inject HtmlBikeClient mBikeClient;
+    @Inject BikeRestClient mBikeClient;
     @Inject PrefsStorage mPrefsStorage;
 
     @Inject
@@ -62,7 +63,7 @@ public class BikesProvider {
                         BriteDatabase.Transaction t = mBrite.newTransaction();
                     try {
                         mBrite.delete(PisaBikeDbHelper.STATION_TABLE, null);
-                        for (Station s : l) {
+                        for (Station s : l.getStations()) {
                             mBrite.insert(PisaBikeDbHelper.STATION_TABLE, s.getContentValues());
                         }
                         mPrefsStorage.setLastUpdate(getNowSeconds());

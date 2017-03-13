@@ -5,4 +5,6 @@ interface StationsListPresenter {
     fun attachToView(v : StationsListView)
     fun detachFromView()
     fun onUpdateRequested()
+    fun onSearchButtonPressed()
+    fun onSearchEnabled(enabled : Boolean)
 }

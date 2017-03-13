@@ -57,10 +57,22 @@ class StationsListPresenterImpl(val provider : BikesProvider,
         view?.toggleLoading(true)
         val sub = provider.updateBikes().subscribeOn(schedulers.provideBackgroundScheduler())
                               .observeOn(schedulers.provideMainThreadScheduler())
-                              .subscribe({ s -> },
+                              .subscribe({ },
                                          { view?.displayUpdateError() },
                                          { view?.toggleLoading(false) })
         subscription.add(sub)
+    }
+
+    override fun onSearchButtonPressed() {
+        view?.displaySearchBar(true)
+        view?.displaySearchFab(false)
+    }
+
+    override fun onSearchEnabled(enabled: Boolean) {
+        if (!enabled) {
+            view?.displaySearchBar(false)
+            view?.displaySearchFab(true)
+        }
     }
 }
 

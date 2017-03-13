@@ -31,6 +31,7 @@
         android:id="@+id/main_activity_frame"
         android:layout_weight="1"/>
 
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -40,7 +41,6 @@
         app:itemIconTint="@color/menu_selector"
         app:itemTextColor="@color/menu_selector"
         app:menu="@menu/menu_bottom" />
-
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="match_parent"
@@ -48,5 +48,7 @@
         app:adSize="BANNER"
         app:adUnitId="@string/admob_banner_key">
     </com.google.android.gms.ads.AdView>
+
+
 
 </LinearLayout>

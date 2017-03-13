@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.squareup.sqlbrite.BriteDatabase;
 import com.tbruyelle.rxpermissions.RxPermissions;
+import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.storage.PrefsStorage;
@@ -23,11 +24,6 @@ public class MockApplicationModule extends ApplicationModule {
     RxPermissions permissions;
     ReactiveLocationProvider locationProvider;
 
-
-    @Override
-    HtmlBikeClient provideBikeClient() {
-        return super.provideBikeClient();
-    }
 
     @Override
     ReactiveLocationProvider provideLocation() {

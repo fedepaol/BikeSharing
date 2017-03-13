@@ -47,6 +47,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.helper.InterstitialHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
@@ -400,6 +401,8 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
 
     @Override
     public void checkAndShowInterstitial() {
-        mInterstitialHelper.checkAndShowInterstitial();
+        if (InAppPurchaseHelper.isAdsUnlocked(getActivity()) == InAppPurchaseHelper.AdsUnlocked.LOCKED) {
+            mInterstitialHelper.checkAndShowInterstitial();
+        }
     }
 }

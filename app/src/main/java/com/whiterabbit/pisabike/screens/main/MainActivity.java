@@ -75,17 +75,16 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
         mBottomNavigation.setOnNavigationItemSelectedListener(this);
 
         mPurchaseHelper = new InAppPurchaseHelper(this, "remove_ads", this);
-        mPurchaseHelper.onCreate(6, 7);
+        mPurchaseHelper.onCreate(30, 50);
 
         if (InAppPurchaseHelper.isAdsUnlocked(this) == InAppPurchaseHelper.AdsUnlocked.UNLOCKED) {
             mAdView.setVisibility(GONE);
         }
 
-        AskForRateDialog.checkAndAskForRate(2, 3, 4, this);
+        AskForRateDialog.checkAndAskForRate(15, 60, 90, this);
 
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-        mPurchaseHelper.
     }
 
     @Override
