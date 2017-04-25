@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,7 @@ import android.widget.Toast
 import butterknife.Bind
 import butterknife.ButterKnife
 import butterknife.OnClick
+import com.jakewharton.rxrelay.PublishRelay
 import com.mancj.materialsearchbar.MaterialSearchBar
 import com.whiterabbit.pisabike.PisaBikeApplication
 import com.whiterabbit.pisabike.R
@@ -23,6 +26,8 @@ import rx.Observable
 import javax.inject.Inject
 
 class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnSearchActionListener {
+
+
     @Bind(R.id.stations_list_view)
     lateinit var stations : RecyclerView
 
@@ -39,6 +44,10 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
     lateinit var presenter : StationsListPresenter
 
     lateinit var adapter : StationsAdapter
+
+    val searchTextListener : TextListener = TextListener()
+
+     val subject : PublishRelay<String> = PublishRelay.create()
 
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
@@ -58,6 +67,7 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
         swipeLayout.setOnRefreshListener { presenter.onUpdateRequested() }
 
         searchBar.setOnSearchActionListener(this)
+        searchBar.addTextChangeListener(searchTextListener)
         return res
     }
 
@@ -121,7 +131,6 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
     }
 
     override fun onButtonClicked(buttonCode: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onSearchStateChanged(enabled: Boolean) {
@@ -129,7 +138,22 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
     }
 
     override fun onSearchConfirmed(text: CharSequence?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    inner class TextListener : TextWatcher {
+        override fun afterTextChanged(p0: Editable?) {
+        }
+
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        }
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            subject.call(p0.toString())
+        }
+    }
+
+    override fun searchStationObservable(): Observable<String> {
+        return subject
     }
 }
 

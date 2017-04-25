@@ -13,4 +13,5 @@ interface StationsListView {
     fun displayStationOnMap(s : Station)
     fun displaySearchBar(visible : Boolean)
     fun displaySearchFab(visible: Boolean)
+    fun searchStationObservable() : Observable<String>
 }

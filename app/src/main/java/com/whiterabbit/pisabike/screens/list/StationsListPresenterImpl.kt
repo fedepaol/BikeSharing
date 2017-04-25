@@ -7,6 +7,7 @@ import com.whiterabbit.pisabike.storage.BikesProvider
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider
 import rx.Observable
 import rx.subscriptions.CompositeSubscription
+import java.util.concurrent.TimeUnit
 import kotlin.comparisons.compareBy
 
 class StationsListPresenterImpl(val provider : BikesProvider,
@@ -23,17 +24,7 @@ class StationsListPresenterImpl(val provider : BikesProvider,
     override fun attachToView(v: StationsListView) {
         view = v
         subscription = CompositeSubscription()
-        val sub =
-                Observable.zip(locationProvider.lastKnownLocation.take(1),
-                               provider.stationsObservables,
-                               {l : Location, stations : List<Station> ->
-                                                   ListData(stations, l)})
-
-                                    .subscribeOn(schedulers.provideBackgroundScheduler())
-                                    .observeOn(schedulers.provideMainThreadScheduler())
-
-
-                                    .subscribe { d -> data = d
+        val sub = allStationsObservable().subscribe { d -> data = d
                                                       onStationsUpdate(d.list) }
 
         subscription.add(sub)
@@ -44,8 +35,41 @@ class StationsListPresenterImpl(val provider : BikesProvider,
         subscription.add(sub1)
     }
 
+    fun filterStation(s : Station, t : String) : Boolean {
+        if (t == "") {
+            return true
+        }
+
+        val lowerName = s.name.toLowerCase()
+        val lowerAddress = s.name.toLowerCase()
+        val lowerText = t.toLowerCase()
+        return lowerName.contains(lowerText) || lowerAddress.contains(lowerText)
+    }
+
+    private fun allStationsObservable() : Observable<ListData> {
+        val stationsObservable = provider.stationsObservables
+        val textObservable = view?.searchStationObservable()?.debounce(2, TimeUnit.SECONDS)
+        val filteredStations : Observable<List<Station>>
+
+        if (textObservable != null) {
+            filteredStations = Observable.zip(stationsObservable, textObservable,
+                    { s: List<Station>, t: String -> Pair(s, t) })
+                    .flatMap { p -> Observable.from(p.first).filter { s -> filterStation(s, p.second) } }
+                    .toList()
+        } else {
+            filteredStations = Observable.just(emptyList())
+        }
+
+        return Observable.zip(locationProvider.lastKnownLocation.take(1),
+                                  filteredStations,
+                                                    { l: Location, stations: List<Station> ->
+                                                        ListData(stations, l)
+                                                    })
+    }
+
     override fun detachFromView() {
         subscription.unsubscribe()
+        view = null
     }
 
     fun onStationsUpdate(stations : List<Station>) {

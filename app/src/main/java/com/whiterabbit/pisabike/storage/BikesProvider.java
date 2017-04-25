@@ -79,9 +79,25 @@ public class BikesProvider {
     }
 
     public Observable<List<Station>> getStationsObservables() {
-        Observable<SqlBrite.Query> users = mBrite.createQuery(PisaBikeDbHelper.STATION_TABLE, "SELECT * " +
+        Observable<SqlBrite.Query> stations = mBrite.createQuery(PisaBikeDbHelper.STATION_TABLE, "SELECT * " +
                 "FROM Station");
-        return users.map(q -> {
+        return stations.map(q -> {
+            Cursor cursor = q.run();
+            List<Station> s = new ArrayList<>(cursor.getCount());
+            int i = 0;
+            while (cursor.moveToNext()) {
+                s.add(new Station(cursor));
+            }
+            return s;
+        });
+    }
+
+    public Observable<List<Station>> searchStationsObservable(String searchParam) {
+        String likeArg = "%" + searchParam + "%";
+
+        Observable<SqlBrite.Query> filteredStations = mBrite.createQuery(PisaBikeDbHelper.STATION_TABLE, "SELECT * " +
+                "FROM Station where name like ? or address like ?", likeArg, likeArg);
+        return filteredStations.map(q -> {
             Cursor cursor = q.run();
             List<Station> s = new ArrayList<>(cursor.getCount());
             int i = 0;
