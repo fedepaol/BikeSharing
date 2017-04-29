@@ -65,6 +65,7 @@ public class StationPresenterTest {
 
         when(airportLocation.getLatitude()).thenReturn(43.700150);
         when(airportLocation.getLongitude()).thenReturn(10.402397);
+        when(view.searchStationObservable()).thenReturn(Observable.just(""));
     }
 
 

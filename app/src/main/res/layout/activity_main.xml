@@ -25,13 +25,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screens.main.MainActivity">
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:adSize="BANNER"
-        app:adUnitId="@string/admob_banner_key">
-    </com.google.android.gms.ads.AdView>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -45,12 +38,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
+        app:elevation="0dp"
         app:itemBackground="@color/colorPrimary"
         app:itemIconTint="@color/menu_selector"
         app:itemTextColor="@color/menu_selector"
+
         app:menu="@menu/menu_bottom" />
-
-
-
-
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:adSize="SMART_BANNER"
+        app:adUnitId="@string/admob_banner_key">
+    </com.google.android.gms.ads.AdView>
 </LinearLayout>

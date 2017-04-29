@@ -36,7 +36,7 @@ class StationsListPresenterImpl(val provider : BikesProvider,
     }
 
     fun filterStation(s : Station, t : String) : Boolean {
-        if (t == "") {
+        if (t.equals("")) {
             return true
         }
 
@@ -48,19 +48,21 @@ class StationsListPresenterImpl(val provider : BikesProvider,
 
     private fun allStationsObservable() : Observable<ListData> {
         val stationsObservable = provider.stationsObservables
-        val textObservable = view?.searchStationObservable()?.debounce(2, TimeUnit.SECONDS)
+        val textObservable = Observable.just("")
+                             .concatWith(view?.searchStationObservable()?.debounce(400, TimeUnit.MILLISECONDS))
         val filteredStations : Observable<List<Station>>
 
         if (textObservable != null) {
-            filteredStations = Observable.zip(stationsObservable, textObservable,
-                    { s: List<Station>, t: String -> Pair(s, t) })
-                    .flatMap { p -> Observable.from(p.first).filter { s -> filterStation(s, p.second) } }
-                    .toList()
+            filteredStations = Observable.combineLatest(stationsObservable,
+                                                        textObservable,
+                                                        { s: List<Station>, t: String -> Pair(s, t) })
+                                .map { p -> p.first.filter { s -> filterStation(s, p.second) } }
+
         } else {
             filteredStations = Observable.just(emptyList())
         }
 
-        return Observable.zip(locationProvider.lastKnownLocation.take(1),
+        return Observable.combineLatest(locationProvider.lastKnownLocation.take(1),
                                   filteredStations,
                                                     { l: Location, stations: List<Station> ->
                                                         ListData(stations, l)
