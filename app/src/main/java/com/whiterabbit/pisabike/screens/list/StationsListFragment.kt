@@ -120,6 +120,10 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
                     false -> View.GONE
                 }
         searchBar.performClick()
+        if (!visible) {
+            searchBar.text = ""
+            subject.call("")
+        }
     }
 
     override fun displaySearchFab(visible: Boolean) {

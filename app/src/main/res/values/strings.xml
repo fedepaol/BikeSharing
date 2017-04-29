@@ -29,5 +29,6 @@
     <string name="available_bikes">Available\nbikes</string>
     <string name="free_parks">Free\nparks</string>
     <string name="remove_ads">Remove Ads</string>
+    <string name="search_for_stations">Search</string>
 
 </resources>

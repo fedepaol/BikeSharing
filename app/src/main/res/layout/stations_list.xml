@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
     <com.mancj.materialsearchbar.MaterialSearchBar
-        app:hint="Custom hint"
+        app:hint="@string/search_for_stations"
         app:maxSuggestionsCount="10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
