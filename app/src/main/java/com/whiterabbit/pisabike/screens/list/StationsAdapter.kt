@@ -32,7 +32,7 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
             val oldStation = old?.get(oldItemPosition)
             val newStation = new[newItemPosition]
-            return oldStation?.name.equals(newStation.name)
+            return oldStation?.name == newStation.name
         }
 
         override fun getOldListSize(): Int {
@@ -80,14 +80,13 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
         init {
             ButterKnife.bind(this, v)
             v.setOnClickListener {
-                relay.call(data?.get(id))
+                relay.call(data?.get(adapterPosition))
             }
 
             preferredImage.setOnClickListener {
-                val station = data?.get(id)
+                val station = data?.get(adapterPosition)
                 if (station != null) {
                     preferredImage.togglePreferred(!station.isFavourite)
-                    station.isFavourite = !station.isFavourite
                     preferredRelay.call(station)
                 }
             }
@@ -120,12 +119,13 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
     fun updateList(newList: List<Station>, position: Location) {
         myPosition = position
         if (data == null) {
-            data = newList
+            data = newList.toList()
             notifyDataSetChanged()
         } else {
             val diffResult = DiffUtil.calculateDiff(StationsDiffCallback(data, newList))
-            data = newList
             diffResult.dispatchUpdatesTo(this)
+            data = newList.toList()
+
         }
     }
 }

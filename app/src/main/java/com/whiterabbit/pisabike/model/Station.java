@@ -86,6 +86,20 @@ public class Station {
         return contentValues;
     }
 
+    public ContentValues getUpdateValues() {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PisaBikeDbHelper.STATION_NAME_COLUMN, name);
+        contentValues.put(PisaBikeDbHelper.STATION_CITY_COLUMN, city);
+        contentValues.put(PisaBikeDbHelper.STATION_LATITUDE_COLUMN, latitude);
+        contentValues.put(PisaBikeDbHelper.STATION_LONGITUDE_COLUMN, longitude);
+        contentValues.put(PisaBikeDbHelper.STATION_ADDRESS_COLUMN, address);
+        contentValues.put(PisaBikeDbHelper.STATION_AVAILABLE_COLUMN, available);
+        contentValues.put(PisaBikeDbHelper.STATION_FREE_COLUMN, free);
+        contentValues.put(PisaBikeDbHelper.STATION_BROKEN_COLUMN, broken);
+        contentValues.put(PisaBikeDbHelper.STATION_LASTUPDATE_COLUMN, 0); // lastUpdate.getTime());
+        return contentValues;
+    }
+
     public String getName() {
         return name;
     }

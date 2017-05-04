@@ -45,7 +45,6 @@ public class PreferredImageView extends android.support.v7.widget.AppCompatImage
             @Override
             public void onAnimationEnd(Animator animator) {
                 setRotation(0);
-                setPreferred(preferred);
             }
 
             @Override

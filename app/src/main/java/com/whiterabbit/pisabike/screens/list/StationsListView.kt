@@ -15,4 +15,5 @@ interface StationsListView {
     fun displaySearchFab(visible: Boolean)
     fun searchStationObservable() : Observable<String>
     fun preferredToggledObservable() : Observable<Station>
+    fun scrollToTop()
 }

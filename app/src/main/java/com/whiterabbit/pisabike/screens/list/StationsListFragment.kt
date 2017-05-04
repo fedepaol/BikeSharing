@@ -161,6 +161,10 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
     override fun preferredToggledObservable(): Observable<Station> {
         return adapter.stationPreferred
     }
+
+    override fun scrollToTop() {
+        stations.smoothScrollToPosition(0)
+    }
 }
 
 

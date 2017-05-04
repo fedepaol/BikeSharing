@@ -185,12 +185,17 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     @Override
     public void displayStationOnMap(Station s) {
+        highLightMap();
+        MapFragment f = (MapFragment) getSupportFragmentManager().findFragmentByTag(MAP_TAG);
+        f.onStationCenterRequested(s);
+    }
+
+    @Override
+    public void highLightMap() {
         // there seem no clean way to set the item selected programmatically. This is a bad
         // hack to achieve that
         View view = mBottomNavigation.findViewById(R.id.action_map);
         view.performClick();
-        MapFragment f = (MapFragment) getSupportFragmentManager().findFragmentByTag(MAP_TAG);
-        f.onStationCenterRequested(s);
     }
 
     @Override
@@ -230,5 +235,10 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         mPurchaseHelper.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void exit() {
+        finish();
     }
 }

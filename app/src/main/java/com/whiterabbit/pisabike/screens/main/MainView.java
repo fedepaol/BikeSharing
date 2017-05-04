@@ -10,6 +10,11 @@ public interface MainView {
     void displayFavourites();
 
     boolean sendBackPressedToMap();
+
+    void highLightMap();
+
     void onDisplayStationRequested(Station s);
     void displayStationOnMap(Station s);
+
+    void exit();
 }

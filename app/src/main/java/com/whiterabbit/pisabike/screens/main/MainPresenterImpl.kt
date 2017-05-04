@@ -44,6 +44,9 @@ class MainPresenterImpl() : MainPresenter {
         if (state == State.MAP) {
             return view?.sendBackPressedToMap() ?: false
         }
+        if (state == State.LIST) {
+            view?.exit()
+        }
 
         return false
     }

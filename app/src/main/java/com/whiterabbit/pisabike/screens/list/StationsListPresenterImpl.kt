@@ -36,9 +36,9 @@ class StationsListPresenterImpl(val provider : BikesProvider,
 
         val sub2 = v.preferredToggledObservable()
                 .subscribeOn(schedulers.provideBackgroundScheduler())
-                .flatMap { station -> provider.changePreferredStatus(station.name, station.isFavourite) }
+                .flatMap { station -> provider.changePreferredStatus(station.name, !station.isFavourite) }
                 .observeOn(schedulers.provideBackgroundScheduler())
-                .subscribe({howMany : Int -> {}} ,
+                .subscribe({howMany : Int -> view?.scrollToTop()} ,
                         {error : Throwable -> run {} })
 
         subscription.add(sub2)

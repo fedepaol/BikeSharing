@@ -63,9 +63,13 @@ public class BikesProvider {
                 .subscribe(l -> {
                         BriteDatabase.Transaction t = mBrite.newTransaction();
                     try {
-                        mBrite.delete(PisaBikeDbHelper.STATION_TABLE, null);
+                        //mBrite.delete(PisaBikeDbHelper.STATION_TABLE, null);
                         for (Station s : l.getStations()) {
-                            mBrite.insert(PisaBikeDbHelper.STATION_TABLE, s.getContentValues());
+                            int updated = mBrite.update(PisaBikeDbHelper.STATION_TABLE, s.getUpdateValues(),
+                                    PisaBikeDbHelper.STATION_NAME_COLUMN + " = ?", s.getName());
+                            if (updated == 0) {
+                                mBrite.insert(PisaBikeDbHelper.STATION_TABLE, s.getContentValues());
+                            }
                         }
                         mPrefsStorage.setLastUpdate(getNowSeconds());
                         t.markSuccessful();
