@@ -13,15 +13,20 @@ import butterknife.ButterKnife
 import com.jakewharton.rxrelay.BehaviorRelay
 import com.whiterabbit.pisabike.R
 import com.whiterabbit.pisabike.model.Station
+import com.whiterabbit.pisabike.ui.PreferredImageView
 import rx.Observable
 
 
 class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
 
     private val relay : BehaviorRelay<Station> = BehaviorRelay.create()
+    private val preferredRelay : BehaviorRelay<Station> = BehaviorRelay.create()
 
     val stationSelected : Observable<Station>
         get() = relay
+
+    val stationPreferred : Observable<Station>
+        get() = preferredRelay
 
     private class StationsDiffCallback(val old : List<Station>?, val new : List<Station>) : DiffUtil.Callback() {
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
@@ -42,10 +47,13 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
             if (old?.get(oldItemPosition)?.free != new[newItemPosition].free) {
                 return false
             }
-            if (old?.get(oldItemPosition)?.available != new[newItemPosition].available) {
+            if (old[oldItemPosition].available != new[newItemPosition].available) {
                 return false
             }
-            if (old?.get(oldItemPosition)?.broken != new[newItemPosition].broken) {
+            if (old[oldItemPosition].broken != new[newItemPosition].broken) {
+                return false
+            }
+            if (old[oldItemPosition].isFavourite != new[newItemPosition].isFavourite) {
                 return false
             }
             return true
@@ -63,6 +71,9 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
         lateinit var bikesEmpty:TextView
         @Bind(R.id.station_detail_distance)
         lateinit var distance:TextView
+        @Bind(R.id.station_detail_star)
+        lateinit var preferredImage:PreferredImageView
+
 
         var id : Int = 0
 
@@ -70,6 +81,15 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
             ButterKnife.bind(this, v)
             v.setOnClickListener {
                 relay.call(data?.get(id))
+            }
+
+            preferredImage.setOnClickListener {
+                val station = data?.get(id)
+                if (station != null) {
+                    preferredImage.togglePreferred(!station.isFavourite)
+                    station.isFavourite = !station.isFavourite
+                    preferredRelay.call(station)
+                }
             }
         }
     }
@@ -94,6 +114,7 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
         holder?.distance?.text = String.format(c.getString(R.string.distance),
                                                 s.getDistanceFrom(myPosition))
         holder?.id = position
+        holder?.preferredImage?.preferred = s.isFavourite
     }
 
     fun updateList(newList: List<Station>, position: Location) {

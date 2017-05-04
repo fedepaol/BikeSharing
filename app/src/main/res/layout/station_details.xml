@@ -35,7 +35,7 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            app:layout_widthPercent="50%"
+            android:layout_width="wrap_content"
             android:id="@+id/first_linear"
             android:layout_below="@id/station_detail_distance"
             android:layout_marginTop="@dimen/margin_xsmall"
@@ -60,11 +60,13 @@
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
-            app:layout_widthPercent="50%"
             android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/margin_xsmall"
+            android:layout_marginLeft="@dimen/margin_large"
             android:layout_below="@id/station_detail_distance"
-            android:layout_toRightOf="@id/first_linear">
+            android:layout_toRightOf="@id/first_linear"
+            android:id="@+id/second_linear">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -82,4 +84,11 @@
                 android:text="@string/free_parks"
                 />
         </LinearLayout>
+        <com.whiterabbit.pisabike.ui.PreferredImageView
+            android:id="@+id/station_detail_star"
+            android:layout_below="@id/station_detail_distance"
+            android:layout_alignRight="@id/station_detail_distance"
+            android:src="@drawable/star_selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 </android.support.percent.PercentRelativeLayout>

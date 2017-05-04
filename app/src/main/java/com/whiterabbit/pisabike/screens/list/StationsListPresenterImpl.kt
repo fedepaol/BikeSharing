@@ -33,6 +33,15 @@ class StationsListPresenterImpl(val provider : BikesProvider,
                 .observeOn(schedulers.provideMainThreadScheduler())
                 .subscribe { s ->  view?.displayStationOnMap(s)}
         subscription.add(sub1)
+
+        val sub2 = v.preferredToggledObservable()
+                .subscribeOn(schedulers.provideBackgroundScheduler())
+                .flatMap { station -> provider.changePreferredStatus(station.name, station.isFavourite) }
+                .observeOn(schedulers.provideBackgroundScheduler())
+                .subscribe({howMany : Int -> {}} ,
+                        {error : Throwable -> run {} })
+
+        subscription.add(sub2)
     }
 
     fun filterStation(s : Station, t : String) : Boolean {
@@ -75,7 +84,9 @@ class StationsListPresenterImpl(val provider : BikesProvider,
     }
 
     fun onStationsUpdate(stations : List<Station>) {
-        val toDisplay = stations.sortedWith(compareBy { it.getDistanceFrom(data?.location) })
+        val toDisplay = stations.sortedWith(
+                        compareByDescending<Station> { it.isFavourite }
+                        .thenBy { it.getDistanceFrom(data?.location) })
         view?.displayStations(toDisplay, data?.location)
     }
 

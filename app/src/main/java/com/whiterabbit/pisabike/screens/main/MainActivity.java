@@ -47,6 +47,7 @@ import static android.view.View.GONE;
 public class MainActivity extends AppCompatActivity implements MainView, BottomNavigationView.OnNavigationItemSelectedListener, InAppPurchaseHelper.RemoveAdsListener {
     private static final String MAP_TAG = "map";
     private static final String LIST_TAG = "list";
+    private static final String FAVOURITES_TAG = "favourites";
 
     @Inject
     MainPresenter mPresenter;
@@ -121,6 +122,19 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
         StationsListFragment fragment = new StationsListFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.main_activity_frame, fragment, LIST_TAG)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void displayFavourites() {
+        if (getSupportFragmentManager().findFragmentByTag(FAVOURITES_TAG) != null) {
+            return;
+        }
+
+        StationsListFragment fragment = new StationsListFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.main_activity_frame, fragment, FAVOURITES_TAG)
                 .addToBackStack(null)
                 .commit();
     }

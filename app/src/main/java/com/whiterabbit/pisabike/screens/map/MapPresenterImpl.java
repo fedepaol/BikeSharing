@@ -38,6 +38,7 @@ import java.util.concurrent.TimeUnit;
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 import rx.Observable;
 import rx.Subscription;
+import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 public class MapPresenterImpl implements MapPresenter {
@@ -56,7 +57,6 @@ public class MapPresenterImpl implements MapPresenter {
     private boolean mMovingToMarker;
     private boolean mViewCentered;
     private String mStationToCenter;
-
 
     public MapPresenterImpl(SchedulersProvider schedulersProvider,
                             BikesProvider bikesProvider,
@@ -146,9 +146,13 @@ public class MapPresenterImpl implements MapPresenter {
                 s1.setAvailable(s.getAvailable());
                 s1.setBroken(s.getBroken());
                 s1.setFree(s.getFree());
+                s1.setFavourite(s.isFavourite());
             }
         }
         mView.drawStationsOnMap(stations);
+        if (mSelectedStation != null) {
+            mView.displayStationDetail(mStations.get(mSelectedStation.getName()), mMyLocation);
+        }
     }
 
     private Subscription centerToStation(String stationName) {
@@ -256,6 +260,17 @@ public class MapPresenterImpl implements MapPresenter {
     @Override
     public void onNavigateClicked() {
         mView.navigateTo(mSelectedStation);
+    }
+
+    @Override
+    public void onPreferredToggled(boolean isPreferred) {
+        if (mSelectedStation != null) {
+            Subscription s = mBikesProvider.changePreferredStatus(mSelectedStation.getName(), !isPreferred)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(mSchedulersProvider.provideMainThreadScheduler())
+                    .subscribe();
+            mSubscription.add(s);
+        }
     }
 
     @Override

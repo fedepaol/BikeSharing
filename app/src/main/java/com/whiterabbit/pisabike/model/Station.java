@@ -154,6 +154,14 @@ public class Station {
         return available + free;
     }
 
+    public boolean isFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        this.favourite = favourite;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (object instanceof Station && ((Station) object).getName().equals(getName())) {

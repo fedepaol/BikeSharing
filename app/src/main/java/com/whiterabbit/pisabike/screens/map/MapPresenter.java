@@ -41,4 +41,6 @@ public interface MapPresenter {
     void onSaveInstanceState(Bundle outState);
 
     void onStateRestored(Bundle savedInstanceState);
+
+    void onPreferredToggled(boolean isPreferred);
 }

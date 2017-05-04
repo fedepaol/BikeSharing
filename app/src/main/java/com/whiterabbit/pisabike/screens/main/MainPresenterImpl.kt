@@ -8,7 +8,7 @@ class MainPresenterImpl() : MainPresenter {
     var view : MainView? = null
 
     enum class State {
-        MAP, LIST
+        MAP, LIST, FAVS
     }
 
     var state = State.MAP
@@ -18,6 +18,7 @@ class MainPresenterImpl() : MainPresenter {
         when (state) {
             State.MAP -> view?.displayMap()
             State.LIST -> view?.displayList()
+            State.FAVS -> view?.displayFavourites()
         }
     }
 
@@ -30,6 +31,13 @@ class MainPresenterImpl() : MainPresenter {
             return
         view?.displayMap()
         state = State.MAP
+    }
+
+    override fun onFavouritesSelectedFromMenu() {
+        if (state == State.FAVS)
+            return
+        view?.displayFavourites()
+        state = State.FAVS
     }
 
     override fun onBackPressed() : Boolean {

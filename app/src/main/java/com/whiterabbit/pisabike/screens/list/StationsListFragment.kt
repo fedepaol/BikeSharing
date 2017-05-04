@@ -26,8 +26,6 @@ import rx.Observable
 import javax.inject.Inject
 
 class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnSearchActionListener {
-
-
     @Bind(R.id.stations_list_view)
     lateinit var stations : RecyclerView
 
@@ -47,7 +45,7 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
 
     val searchTextListener : TextListener = TextListener()
 
-     val subject : PublishRelay<String> = PublishRelay.create()
+    val subject : PublishRelay<String> = PublishRelay.create()
 
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
@@ -158,6 +156,10 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
 
     override fun searchStationObservable(): Observable<String> {
         return subject
+    }
+
+    override fun preferredToggledObservable(): Observable<Station> {
+        return adapter.stationPreferred
     }
 }
 

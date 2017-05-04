@@ -53,7 +53,7 @@ import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.ui.MapMarkerFactory;
-
+import com.whiterabbit.pisabike.ui.PreferredImageView;
 
 
 import java.util.HashMap;
@@ -66,6 +66,8 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Observable;
+import rx.subjects.BehaviorSubject;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
@@ -105,6 +107,9 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     @Bind(R.id.station_detail_parks)
     TextView mEmptyBikes;
 
+    @Bind(R.id.station_detail_star)
+    PreferredImageView mPreferredStar;
+
     @Bind(R.id.fab)
     FloatingActionButton mFab;
 
@@ -115,6 +120,7 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     ProgressView mProgress;
 
     BottomSheetBehavior mBottomSheetBehavior;
+
 
     private GoogleMap mGoogleMap;
     private Map<String, String> markerToStationsMap = new HashMap<>();
@@ -252,6 +258,7 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         mBikes.setText(String.valueOf(detail.getAvailable()));
         mEmptyBikes.setText(String.valueOf(detail.getFree()));
         mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        mPreferredStar.setPreferred(detail.isFavourite());
     }
 
     @Override
@@ -351,6 +358,12 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     @OnClick(R.id.main_directions_fab)
     public void onNavigateClicked() {
         mPresenter.onNavigateClicked();
+    }
+
+    @OnClick(R.id.station_detail_star)
+    public void onPreferredClicked() {
+        mPreferredStar.togglePreferred(!mPreferredStar.getPreferred());
+        mPresenter.onPreferredToggled(mPreferredStar.getPreferred());
     }
 
     public boolean onBackPressed() {

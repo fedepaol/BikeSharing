@@ -17,6 +17,7 @@
 
 package com.whiterabbit.pisabike.storage;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.squareup.sqlbrite.BriteDatabase;
@@ -90,6 +91,19 @@ public class BikesProvider {
             }
             return s;
         });
+    }
+
+    private int setStationPreferred(String stationName, boolean preferred) {
+        ContentValues cv = new ContentValues();
+        cv.put(PisaBikeDbHelper.STATION_FAVORITE_COLUMN, preferred);
+        return mBrite.update(PisaBikeDbHelper.STATION_TABLE,
+                cv,
+                PisaBikeDbHelper.STATION_NAME_COLUMN + " = ?",
+                stationName);
+    }
+
+    public Observable<Integer> changePreferredStatus(String stationName, boolean preferred) {
+        return Observable.fromCallable(() -> setStationPreferred(stationName, preferred));
     }
 
     public Observable<List<Station>> searchStationsObservable(String searchParam) {

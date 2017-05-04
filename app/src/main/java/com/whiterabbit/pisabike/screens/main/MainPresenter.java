@@ -21,4 +21,6 @@ public interface MainPresenter {
     void onViewDetached();
 
     void onDisplayStationRequested(Station s);
+
+    void onFavouritesSelectedFromMenu();
 }
