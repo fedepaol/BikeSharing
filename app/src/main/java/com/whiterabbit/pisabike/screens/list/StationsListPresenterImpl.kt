@@ -38,8 +38,8 @@ class StationsListPresenterImpl(val provider : BikesProvider,
                 .subscribeOn(schedulers.provideBackgroundScheduler())
                 .flatMap { station -> provider.changePreferredStatus(station.name, !station.isFavourite) }
                 .observeOn(schedulers.provideBackgroundScheduler())
-                .subscribe({howMany : Int -> view?.scrollToTop()} ,
-                        {error : Throwable -> run {} })
+                .subscribe({} ,
+                           {_ : Throwable -> run {} })
 
         subscription.add(sub2)
     }
@@ -84,9 +84,7 @@ class StationsListPresenterImpl(val provider : BikesProvider,
     }
 
     fun onStationsUpdate(stations : List<Station>) {
-        val toDisplay = stations.sortedWith(
-                        compareByDescending<Station> { it.isFavourite }
-                        .thenBy { it.getDistanceFrom(data?.location) })
+        val toDisplay = stations.sortedBy { it.getDistanceFrom(data?.location) }
         view?.displayStations(toDisplay, data?.location)
     }
 

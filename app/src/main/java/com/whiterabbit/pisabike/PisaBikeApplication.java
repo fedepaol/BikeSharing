@@ -25,6 +25,7 @@ import com.crashlytics.android.Crashlytics;
 import com.whiterabbit.pisabike.inject.ApplicationComponent;
 import com.whiterabbit.pisabike.inject.ApplicationModule;
 import com.whiterabbit.pisabike.inject.DaggerApplicationComponent;
+import com.whiterabbit.pisabike.screens.favs.StationsFavsModule;
 import com.whiterabbit.pisabike.screens.list.StationsListModule;
 import com.whiterabbit.pisabike.screens.main.MainModule;
 import com.whiterabbit.pisabike.screens.main.MainView;
@@ -73,5 +74,9 @@ public class PisaBikeApplication extends MultiDexApplication {
 
     public StationsListModule getListModule() {
         return new StationsListModule();
+    }
+
+    public StationsFavsModule getFavsModule() {
+        return new StationsFavsModule();
     }
 }

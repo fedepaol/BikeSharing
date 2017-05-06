@@ -34,6 +34,7 @@ import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.model.Station;
+import com.whiterabbit.pisabike.screens.list.StationsFavsFragment;
 import com.whiterabbit.pisabike.screens.list.StationsListFragment;
 import com.whiterabbit.pisabike.screens.map.MapFragment;
 
@@ -60,6 +61,10 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     InAppPurchaseHelper mPurchaseHelper;
 
+    MapFragment mapFragment;
+    StationsListFragment listFragment;
+    StationsFavsFragment favsFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
         ButterKnife.bind(this);
         mBottomNavigation.setOnNavigationItemSelectedListener(this);
+        createFragments();
 
         mPurchaseHelper = new InAppPurchaseHelper(this, "remove_ads", this);
         mPurchaseHelper.onCreate(30, 50);
@@ -88,6 +94,25 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
         mAdView.loadAd(adRequest);
     }
 
+    private void createFragments() {
+        mapFragment = MapFragment.createInstance();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.main_activity_frame, mapFragment, MAP_TAG)
+                .commit();
+
+        favsFragment = new StationsFavsFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.main_activity_frame, favsFragment, FAVOURITES_TAG)
+                .addToBackStack(null)
+                .commit();
+
+        listFragment = new StationsListFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.main_activity_frame, listFragment, LIST_TAG)
+                .addToBackStack(null)
+                .commit();
+    }
+
     @Override
     public void onBackPressed() {
         if (mPresenter.onBackPressed()) {
@@ -99,45 +124,24 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     @Override
     public void displayMap() {
-        // if there is already
-        if (getSupportFragmentManager().findFragmentByTag(MAP_TAG) != null) {
-            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-                getSupportFragmentManager().popBackStack();
-            }
-            return;
-        }
+        getSupportFragmentManager().beginTransaction().show(mapFragment)
+                .hide(listFragment)
+                .hide(favsFragment).commit();
 
-        MapFragment fragment = MapFragment.createInstance();
-        getSupportFragmentManager().beginTransaction()
-                                    .add(R.id.main_activity_frame, fragment, MAP_TAG)
-                                    .commit();
     }
 
     @Override
     public void displayList() {
-        if (getSupportFragmentManager().findFragmentByTag(LIST_TAG) != null) {
-            return;
-        }
-
-        StationsListFragment fragment = new StationsListFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_activity_frame, fragment, LIST_TAG)
-                .addToBackStack(null)
-                .commit();
+        getSupportFragmentManager().beginTransaction().hide(mapFragment)
+                .show(listFragment)
+                .hide(favsFragment).commit();
     }
 
     @Override
     public void displayFavourites() {
-        if (getSupportFragmentManager().findFragmentByTag(FAVOURITES_TAG) != null) {
-            return;
-        }
-
-        StationsListFragment fragment = new StationsListFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_activity_frame, fragment, FAVOURITES_TAG)
-                .addToBackStack(null)
-                .commit();
-    }
+        getSupportFragmentManager().beginTransaction().hide(mapFragment)
+                .hide(listFragment)
+                .show(favsFragment).commit();    }
 
     @Override
     public boolean sendBackPressedToMap() {
@@ -178,6 +182,9 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
                 break;
             case R.id.action_list:
                 mPresenter.onListSelectedFromMenu();
+                break;
+            case R.id.action_favorites:
+                mPresenter.onFavouritesSelectedFromMenu();
                 break;
         }
         return true;

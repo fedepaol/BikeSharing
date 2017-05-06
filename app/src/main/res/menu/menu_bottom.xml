@@ -13,4 +13,10 @@
         android:icon="@drawable/ic_list_white_24px"
         android:title="@string/stations_list"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_favorites"
+        android:enabled="true"
+        android:icon="@drawable/ic_star_white_24dp"
+        android:title="@string/favourites"
+        app:showAsAction="ifRoom" />
 </menu>
