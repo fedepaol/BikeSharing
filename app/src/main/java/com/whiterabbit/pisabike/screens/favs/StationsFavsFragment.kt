@@ -37,8 +37,6 @@ class StationsFavsFragment : Fragment(), StationsFavsView {
 
     lateinit var adapter : StationsAdapter
 
-    val subject : PublishRelay<String> = PublishRelay.create()
-
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -89,6 +87,10 @@ class StationsFavsFragment : Fragment(), StationsFavsView {
 
     override fun preferredToggledObservable(): Observable<Station> {
         return adapter.stationPreferred
+    }
+
+    override fun toggleLoading(loading: Boolean) {
+        swipeLayout.post { swipeLayout.isRefreshing = loading }
     }
 }
 

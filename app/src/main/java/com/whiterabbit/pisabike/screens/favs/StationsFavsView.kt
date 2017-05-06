@@ -10,4 +10,5 @@ interface StationsFavsView {
     fun getStationSelectedObservable() : Observable<Station>
     fun displayStationOnMap(s : Station)
     fun preferredToggledObservable() : Observable<Station>
+    fun toggleLoading(loading : Boolean)
 }
