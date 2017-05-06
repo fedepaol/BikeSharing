@@ -11,4 +11,6 @@ interface StationsFavsView {
     fun displayStationOnMap(s : Station)
     fun preferredToggledObservable() : Observable<Station>
     fun toggleLoading(loading : Boolean)
+    fun toggleListVisibility(visible : Boolean)
+    fun toggleEmptyListVisibility(visible: Boolean)
 }

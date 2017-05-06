@@ -12,6 +12,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import butterknife.Bind
 import butterknife.ButterKnife
@@ -32,6 +33,12 @@ class StationsFavsFragment : Fragment(), StationsFavsView {
     @Bind(R.id.fragment_list_swipe)
     lateinit var swipeLayout : SwipeRefreshLayout
 
+    @Bind(R.id.stations_list_empty_message)
+    lateinit var emptyMessage : TextView
+
+    @Bind(R.id.list_search_fab)
+    lateinit var fab : FloatingActionButton
+
     @Inject
     lateinit var presenter : StationsFavsPresenter
 
@@ -44,6 +51,7 @@ class StationsFavsFragment : Fragment(), StationsFavsView {
         val res = inflater?.inflate(R.layout.stations_list, container, false)
         ButterKnife.bind(this, res)
 
+        fab.visibility = View.GONE
         stations.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(activity.applicationContext)
         stations.layoutManager = layoutManager
@@ -71,6 +79,11 @@ class StationsFavsFragment : Fragment(), StationsFavsView {
         presenter.attachToView(this)
     }
 
+    override fun onPause() {
+        super.onPause()
+        presenter.detachFromView()
+    }
+
     override fun displayStations(l: List<Station>, location : Location?) {
         if (location != null) {
             adapter.updateList(l, location)
@@ -91,6 +104,22 @@ class StationsFavsFragment : Fragment(), StationsFavsView {
 
     override fun toggleLoading(loading: Boolean) {
         swipeLayout.post { swipeLayout.isRefreshing = loading }
+    }
+
+    override fun toggleListVisibility(visible: Boolean) {
+        stations.visibility =
+                when (visible) {
+                    true -> View.VISIBLE
+                    false -> View.GONE
+                }
+    }
+
+    override fun toggleEmptyListVisibility(visible: Boolean) {
+        emptyMessage.visibility =
+                when (visible) {
+                    true -> View.VISIBLE
+                    false -> View.GONE
+                }
     }
 }
 

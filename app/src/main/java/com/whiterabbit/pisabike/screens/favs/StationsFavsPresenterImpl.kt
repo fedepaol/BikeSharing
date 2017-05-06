@@ -32,10 +32,18 @@ class StationsFavsPresenterImpl(val provider : BikesProvider,
                                             favsStations,
                                             { l: Location, stations: List<Station> ->
                                                 ListData(stations, l)
-                                            }).subscribe { d -> data = d
-                                                          view?.displayStations(d.list, d.location) }
+                                            }).subscribeOn(schedulers.provideBackgroundScheduler())
+                                              .observeOn(schedulers.provideMainThreadScheduler())
+                                              .subscribe { d -> data = d
+                                                           updateStations(d.list, d.location)
+                                                         }
 
         subscription.add(sub)
+
+        val sub1 = v.getStationSelectedObservable().subscribeOn(schedulers.provideMainThreadScheduler())
+                .observeOn(schedulers.provideMainThreadScheduler())
+                .subscribe { s ->  view?.displayStationOnMap(s)}
+        subscription.add(sub1)
 
         val sub2 = v.preferredToggledObservable()
                 .subscribeOn(schedulers.provideBackgroundScheduler())
@@ -45,6 +53,17 @@ class StationsFavsPresenterImpl(val provider : BikesProvider,
                         {_ : Throwable -> run {} })
 
         subscription.add(sub2)
+    }
+
+    fun updateStations(stations : List<Station>, location : Location) {
+        view?.displayStations(stations, location)
+        if (stations.isNotEmpty()) {
+            view?.toggleListVisibility(true)
+            view?.toggleEmptyListVisibility(false)
+        } else {
+            view?.toggleListVisibility(false)
+            view?.toggleEmptyListVisibility(true)
+        }
     }
 
     override fun detachFromView() {

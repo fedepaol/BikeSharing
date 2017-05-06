@@ -84,6 +84,11 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
         presenter.attachToView(this)
     }
 
+    override fun onPause() {
+        super.onPause()
+        presenter.detachFromView()
+    }
+
     override fun displayStations(l: List<Station>, location : Location?) {
         if (location != null) {
             adapter.updateList(l, location)

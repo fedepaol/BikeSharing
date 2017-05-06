@@ -108,8 +108,8 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
 
         holder?.name?.text = s.name
         holder?.address?.text= s.address
-        holder?.bikes?.text = s.available.toString()
-        holder?.bikesEmpty?.text = s.free.toString()
+        holder?.bikes?.text = String.format("%2d", s.available)
+        holder?.bikesEmpty?.text = String.format("%2d", s.free)
         holder?.distance?.text = String.format(c.getString(R.string.distance),
                                                 s.getDistanceFrom(myPosition))
         holder?.id = position

@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
         createFragments();
 
         mPurchaseHelper = new InAppPurchaseHelper(this, "remove_ads", this);
+        mPurchaseHelper.setIsTest(true);
         mPurchaseHelper.onCreate(30, 50);
 
         if (InAppPurchaseHelper.isAdsUnlocked(this) == InAppPurchaseHelper.AdsUnlocked.UNLOCKED) {
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
             return;
         }
 
-        super.onBackPressed();
+        finish();
     }
 
     @Override
@@ -145,9 +146,7 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
     @Override
     public boolean sendBackPressedToMap() {
-        MapFragment main = (MapFragment) (getSupportFragmentManager().findFragmentById(R.id.main_activity_frame));
-        return main != null && main.onBackPressed();
-
+        return mapFragment.onBackPressed();
     }
 
     @Override
