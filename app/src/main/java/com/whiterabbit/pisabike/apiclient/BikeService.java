@@ -18,6 +18,7 @@
 package com.whiterabbit.pisabike.apiclient;
 
 
+import com.whiterabbit.pisabike.Constants;
 import com.whiterabbit.pisabike.model.Network;
 import com.whiterabbit.pisabike.model.Station;
 
@@ -29,6 +30,6 @@ import retrofit2.http.GET;
 import rx.Observable;
 
 public interface BikeService {
-    @GET("ciclopi")
+    @GET(Constants.SERVICE_ENDPOINT)
     Observable<Network> listStations();
 }

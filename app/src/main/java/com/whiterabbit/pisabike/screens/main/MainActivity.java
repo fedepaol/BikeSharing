@@ -82,14 +82,13 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
         createFragments();
 
         mPurchaseHelper = new InAppPurchaseHelper(this, "remove_ads", this);
-        mPurchaseHelper.setIsTest(true);
         mPurchaseHelper.onCreate(30, 50);
 
         if (InAppPurchaseHelper.isAdsUnlocked(this) == InAppPurchaseHelper.AdsUnlocked.UNLOCKED) {
             mAdView.setVisibility(GONE);
         }
 
-        AskForRateDialog.checkAndAskForRate(15, 60, 90, this);
+        AskForRateDialog.checkAndAskForRate(40, 70, 120, this);
 
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

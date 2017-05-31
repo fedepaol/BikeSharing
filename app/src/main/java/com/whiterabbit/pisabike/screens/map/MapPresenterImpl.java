@@ -33,7 +33,6 @@ import com.whiterabbit.pisabike.storage.PrefsStorage;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 import rx.Observable;
@@ -138,18 +137,28 @@ public class MapPresenterImpl implements MapPresenter {
     }
 
     private void onStationsChanged(List<Station> stations) {
+        boolean changed = false;
         for (Station s : stations) {
             Station s1 = mStations.get(s.getName());
             if (s1 == null) {
                 mStations.put(s.getName(), s);
+                changed = true;
             } else {
+                if (    !changed && (
+                        s1.getAvailable() != s.getAvailable() ||
+                        s1.getBroken() != s.getBroken() ||
+                        s1.getFree() != s.getFree())) {
+                    changed = true;
+                }
                 s1.setAvailable(s.getAvailable());
                 s1.setBroken(s.getBroken());
                 s1.setFree(s.getFree());
                 s1.setFavourite(s.isFavourite());
             }
         }
-        mView.drawStationsOnMap(stations);
+        if (changed) {
+            mView.drawStationsOnMap(stations);
+        }
         if (mSelectedStation != null) {
             mView.displayStationDetail(mStations.get(mSelectedStation.getName()), mMyLocation);
         }

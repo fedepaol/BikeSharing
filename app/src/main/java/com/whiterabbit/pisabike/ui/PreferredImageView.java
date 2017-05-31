@@ -23,7 +23,11 @@ public class PreferredImageView extends android.support.v7.widget.AppCompatImage
 
     public void setPreferred(boolean preferred) {
         mPreferred = preferred;
-        if(preferred){
+        setPreferredIcon();
+    }
+
+    private void setPreferredIcon() {
+        if (mPreferred) {
             setImageResource(R.drawable.star_selected);
         } else {
             setImageResource(R.drawable.star_not_selected);
@@ -35,6 +39,8 @@ public class PreferredImageView extends android.support.v7.widget.AppCompatImage
     }
 
     public void togglePreferred(boolean preferred) {
+        /*
+        mPreferred = preferred;
         int animationTime = getResources().getInteger( android.R.integer.config_shortAnimTime);
         animate().setDuration(animationTime).rotation(360).setListener(new Animator.AnimatorListener() {
             @Override
@@ -45,6 +51,7 @@ public class PreferredImageView extends android.support.v7.widget.AppCompatImage
             @Override
             public void onAnimationEnd(Animator animator) {
                 setRotation(0);
+                setPreferredIcon();
             }
 
             @Override
@@ -56,6 +63,6 @@ public class PreferredImageView extends android.support.v7.widget.AppCompatImage
             public void onAnimationRepeat(Animator animator) {
                 //To change body of implemented methods use File | Settings | File Templates.
             }
-        });
+        });*/
     }
 }

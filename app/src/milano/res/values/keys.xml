@@ -17,11 +17,11 @@
   -->
 
 <resources>
-    <string name="maps_api_key">AIzaSyAb1Nb5ALTW2D81D8lp8t40yDsuJGTpWkE</string>
-    <string name="maps_api_key_dbg">AIzaSyBXm0Au0LyXDuI1IciKmQmz1l6MaIsR7fM</string>
-    <string name="fabric_key">49c23db69768dd1702543178c848c9fc5b351fe6</string>
-    <string name="admob_banner_key">ca-app-pub-2889246087193519/1379835108</string>
-    <string name="admob_interstitial">ca-app-pub-2889246087193519/2856568308</string>
-    <string name="admob_app_id">ca-app-pub-2889246087193519</string>
+    <string name="maps_api_key" translatable="false">AIzaSyAb1Nb5ALTW2D81D8lp8t40yDsuJGTpWkE</string>
+    <string name="maps_api_key_dbg" translatable="false">AIzaSyBXm0Au0LyXDuI1IciKmQmz1l6MaIsR7fM</string>
+    <string name="fabric_key" translatable="false">49c23db69768dd1702543178c848c9fc5b351fe6</string>
+    <string name="admob_banner_key" translatable="false">ca-app-pub-2889246087193519/1379835108</string>
+    <string name="admob_interstitial" translatable="false">ca-app-pub-2889246087193519/2856568308</string>
+    <string name="admob_app_id" translatable="false">ca-app-pub-2889246087193519</string>
 </resources>
 

@@ -21,15 +21,18 @@ class BikeDeserializer : JsonDeserializer<Network> {
         val city = location.get("city").asString
         val array = network.getAsJsonArray("stations")
 
-        var stations = mutableListOf<Station>()
+        val stations = mutableListOf<Station>()
         for (obj1 in array) {
             with (obj1.asJsonObject) {
-                val name = obj1.asJsonObject.get("name").asString
+                val name = get("name").asString
                 val latitude = get("latitude").asDouble
                 val longitue = get("longitude").asDouble
                 val freeBikes = get("free_bikes").asLong
                 val emptySlots = get("empty_slots").asLong
-                val address = getAsJsonObject("extra").get("description").asString
+                var address = ""
+                if (has("extra") && getAsJsonObject("extra").has("description")) {
+                    address = getAsJsonObject("extra").get("description").asString
+                }
                 stations.add(Station(name, city, latitude, longitue, address, freeBikes, emptySlots, 0, false))
             }
         }

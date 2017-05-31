@@ -203,7 +203,6 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         super.onPause();
         mPresenter.onViewDetached();
         mMapView.onPause();
-
     }
 
     @Override

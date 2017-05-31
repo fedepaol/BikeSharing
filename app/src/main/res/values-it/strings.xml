@@ -1,0 +1,35 @@
+<!--
+  ~ Copyright (c) 2016 Federico Paolinelli.
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="main_popup_bikes_message" formatted="false">%d / %d bici disponibili</string>
+    <string name="main_updating">Aggiornando..</string>
+    <string name="main_done">Fatto!</string>
+    <string name="action_reload">Ricarica</string>
+    <string name="main_update_error">Errore nell\'aggiornamento</string>
+    <string name="map">Mappa</string>
+    <string name="stations_list">Stazioni</string>
+    <string name="update_error">C\`e` stato un errore nell\`aggiornamento</string>
+    <string name="distance">%.1f km</string>
+    <string name="available_bikes">Bici\nlibere</string>
+    <string name="free_parks">Stalli\nliberi</string>
+    <string name="remove_ads">Rimuovi la pubblicita`</string>
+    <string name="search_for_stations">Cerca la stazione</string>
+    <string name="favourites">Preferiti</string>
+    <string name="no_favourites_yet">Nessuna stazione segnata come preferita, clicca sulla stella per mettere una stazione tra i preferiti</string>
+
+</resources>
