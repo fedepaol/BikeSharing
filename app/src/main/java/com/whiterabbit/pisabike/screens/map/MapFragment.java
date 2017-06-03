@@ -30,6 +30,7 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -47,6 +48,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.clustering.ClusterManager;
 import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.helper.InterstitialHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
@@ -73,9 +75,9 @@ import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class MapFragment extends Fragment implements MapView, OnMapReadyCallback,
-                                                      GoogleMap.OnMarkerClickListener,
                                                       GoogleMap.OnCameraMoveStartedListener,
-                                                      GoogleMap.OnCameraIdleListener {
+                                                      GoogleMap.OnCameraIdleListener,
+                                                      ClusterManager.OnClusterItemClickListener<MapItem> {
 
     @Inject
     MapPresenter mPresenter;
@@ -126,6 +128,8 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     private Map<String, String> markerToStationsMap = new HashMap<>();
     private HashMap<String, Marker> stationToMarkerMap = new HashMap<>();
     private String mStationToCenter = "";
+
+    private ClusterManager<MapItem> mClusterManager;
 
     private final static String STATION_NAME = "StationName";
 
@@ -231,22 +235,14 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         for (Station s : stations) {
             addMarker(mGoogleMap, s.getLatitude(), s.getLongitude(), s);
         }
+        mClusterManager.cluster();
     }
 
     private void addMarker(GoogleMap map, double lat, double lon,
                            Station s) {
-        Bitmap b = markerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
+        //Bitmap b = markerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
 
-        Marker m = stationToMarkerMap.get(s.getName());
-        LatLng pos = new LatLng(lat, lon);
-        BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(b);
-        if (m == null) {
-            m = map.addMarker(new MarkerOptions().position(pos).icon(icon));
-            stationToMarkerMap.put(s.getName(), m);
-        } else {
-            m.setIcon(icon);
-        }
-        markerToStationsMap.put(m.getId(), s.getName());
+        mClusterManager.addItem(new MapItem(s));
     }
 
     @Override
@@ -262,16 +258,22 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
 
     @Override
     public void highLightStation(Station s) {
+        /*
         Marker m = stationToMarkerMap.get(s.getName());
         Bitmap b = markerFactory.getSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
-        m.setIcon(BitmapDescriptorFactory.fromBitmap(b));
+        m.setIcon(BitmapDescriptorFactory.fromBitmap(b));*/
+        MapItem m = new MapItem(s);
+        m.setSelected(true);
+        mClusterManager.addItem(m);
+        mClusterManager.cluster();
     }
 
     @Override
     public void unHighLightStation(Station s) {
-        Marker m = stationToMarkerMap.get(s.getName());
-        Bitmap b = markerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
-        m.setIcon(BitmapDescriptorFactory.fromBitmap(b));
+        MapItem m = new MapItem(s);
+        m.setSelected(false);
+        mClusterManager.addItem(m);
+        mClusterManager.cluster();
     }
 
     @Override
@@ -292,21 +294,22 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
 
     @Override
     public void getMap() {
-        /* if (mGoogleMap != null) {
-            mPresenter.onMapReady();
-        } else { */
-            mMapView.getMapAsync(this);
-        //}
+        mMapView.getMapAsync(this);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-
         mPresenter.onMapReady(); // centering only if the view is recreated, otherwise leave where it was
-        mGoogleMap.setOnMarkerClickListener(this);
         mGoogleMap.setOnCameraMoveStartedListener(this);
-        mGoogleMap.setOnCameraIdleListener(this);
+        if (mClusterManager == null) {
+            mClusterManager = new ClusterManager<>(getActivity(), mGoogleMap);
+            CameraIdleRenderer renderer = new CameraIdleRenderer(getActivity(), mGoogleMap, mClusterManager, this);
+            mClusterManager.setRenderer(renderer);
+            mGoogleMap.setOnCameraIdleListener(mClusterManager);
+            mGoogleMap.setOnMarkerClickListener(mClusterManager);
+            mClusterManager.setOnClusterItemClickListener(this);
+        }
     }
 
     @Override
@@ -315,13 +318,6 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
                 CameraUpdateFactory.newLatLngZoom(new LatLng(lat,
                                                          lon), 15);
         mGoogleMap.animateCamera(center);
-    }
-
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        String stationName = markerToStationsMap.get(marker.getId());
-        mPresenter.onStationClicked(stationName);
-        return true;
     }
 
     @Override
@@ -416,5 +412,12 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         if (InAppPurchaseHelper.isAdsUnlocked(getActivity()) == InAppPurchaseHelper.AdsUnlocked.LOCKED) {
             mInterstitialHelper.checkAndShowInterstitial();
         }
+    }
+
+    @Override
+    public boolean onClusterItemClick(MapItem mapItem) {
+        Log.d("MAP", mapItem.getTitle() + "cliccked");
+        mPresenter.onStationClicked(mapItem.getStation().getName());
+        return true;
     }
 }
