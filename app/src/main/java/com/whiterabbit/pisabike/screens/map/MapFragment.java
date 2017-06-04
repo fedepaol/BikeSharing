@@ -20,7 +20,6 @@ package com.whiterabbit.pisabike.screens.map;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -30,7 +29,6 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -43,11 +41,7 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.clustering.ClusterManager;
 import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.helper.InterstitialHelper;
@@ -57,19 +51,14 @@ import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.ui.MapMarkerFactory;
 import com.whiterabbit.pisabike.ui.PreferredImageView;
 
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Observable;
-import rx.subjects.BehaviorSubject;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
@@ -125,13 +114,9 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
 
 
     private GoogleMap mGoogleMap;
-    private Map<String, String> markerToStationsMap = new HashMap<>();
-    private HashMap<String, Marker> stationToMarkerMap = new HashMap<>();
     private String mStationToCenter = "";
 
     private ClusterManager<MapItem> mClusterManager;
-
-    private final static String STATION_NAME = "StationName";
 
     public static MapFragment createInstance() {
         return new MapFragment();
@@ -232,16 +217,11 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
 
     @Override
     public void drawStationsOnMap(List<Station> stations) {
-        for (Station s : stations) {
-            addMarker(mGoogleMap, s.getLatitude(), s.getLongitude(), s);
-        }
+        stations.forEach(this::addMarker);
         mClusterManager.cluster();
     }
 
-    private void addMarker(GoogleMap map, double lat, double lon,
-                           Station s) {
-        //Bitmap b = markerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
-
+    private void addMarker(Station s) {
         mClusterManager.addItem(new MapItem(s));
     }
 
@@ -258,10 +238,6 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
 
     @Override
     public void highLightStation(Station s) {
-        /*
-        Marker m = stationToMarkerMap.get(s.getName());
-        Bitmap b = markerFactory.getSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
-        m.setIcon(BitmapDescriptorFactory.fromBitmap(b));*/
         MapItem m = new MapItem(s);
         m.setSelected(true);
         mClusterManager.addItem(m);
@@ -416,7 +392,6 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
 
     @Override
     public boolean onClusterItemClick(MapItem mapItem) {
-        Log.d("MAP", mapItem.getTitle() + "cliccked");
         mPresenter.onStationClicked(mapItem.getStation().getName());
         return true;
     }

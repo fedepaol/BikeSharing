@@ -38,6 +38,8 @@ import com.whiterabbit.pisabike.screens.list.StationsFavsFragment;
 import com.whiterabbit.pisabike.screens.list.StationsListFragment;
 import com.whiterabbit.pisabike.screens.map.MapFragment;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import butterknife.Bind;
@@ -95,22 +97,33 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
     }
 
     private void createFragments() {
-        mapFragment = MapFragment.createInstance();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_activity_frame, mapFragment, MAP_TAG)
-                .commit();
+        mapFragment = (MapFragment) getSupportFragmentManager().findFragmentByTag(MAP_TAG);
+        if (mapFragment == null) {
+            mapFragment = MapFragment.createInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.main_activity_frame, mapFragment, MAP_TAG)
+                    .commit();
+        }
 
-        favsFragment = new StationsFavsFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_activity_frame, favsFragment, FAVOURITES_TAG)
-                .addToBackStack(null)
-                .commit();
+        favsFragment = (StationsFavsFragment) getSupportFragmentManager().findFragmentByTag(FAVOURITES_TAG);
 
-        listFragment = new StationsListFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_activity_frame, listFragment, LIST_TAG)
-                .addToBackStack(null)
-                .commit();
+        if (favsFragment == null) {
+            favsFragment = new StationsFavsFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.main_activity_frame, favsFragment, FAVOURITES_TAG)
+                    .addToBackStack(null)
+                    .commit();
+        }
+
+        listFragment = (StationsListFragment) getSupportFragmentManager().findFragmentByTag(LIST_TAG);
+
+        if (listFragment == null) {
+            listFragment = new StationsListFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.main_activity_frame, listFragment, LIST_TAG)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
     @Override
