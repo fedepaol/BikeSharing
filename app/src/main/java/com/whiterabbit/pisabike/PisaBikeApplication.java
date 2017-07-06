@@ -22,6 +22,8 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.crashlytics.android.Crashlytics;
+import com.evernote.android.job.JobManager;
+import com.facebook.stetho.Stetho;
 import com.whiterabbit.pisabike.inject.ApplicationComponent;
 import com.whiterabbit.pisabike.inject.ApplicationModule;
 import com.whiterabbit.pisabike.inject.DaggerApplicationComponent;
@@ -31,17 +33,24 @@ import com.whiterabbit.pisabike.screens.main.MainModule;
 import com.whiterabbit.pisabike.screens.main.MainView;
 import com.whiterabbit.pisabike.screens.map.MapModule;
 import com.whiterabbit.pisabike.screens.map.MapView;
+import com.whiterabbit.pisabike.storage.AddressJobCreator;
+
+import javax.inject.Inject;
 
 import io.fabric.sdk.android.Fabric;
 
 public class PisaBikeApplication extends MultiDexApplication {
     private ApplicationComponent mComponent;
+    @Inject AddressJobCreator mJobCreator;
 
     @Override
     public void onCreate() {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
         initComponent();
+        mComponent.inject(this);
+        JobManager.create(this).addJobCreator(mJobCreator);
+        Stetho.initializeWithDefaults(this);
     }
 
     ApplicationModule getApplicationModule() {

@@ -23,5 +23,5 @@
         android:orientation="vertical"
         android:paddingTop="@dimen/margin_med_large"
         >
-        <include layout="@layout/station_details"/>
+        <include layout="@layout/station_details_new"/>
 </LinearLayout>

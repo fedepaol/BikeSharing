@@ -32,7 +32,7 @@ class MapItem(val station : Station) : ClusterItem {
     override fun equals(other: Any?): Boolean {
         if (other != null) {
             val otherItem = other as MapItem
-            return otherItem.station.equals(station)
+            return otherItem.station == station
         }
         return false
     }

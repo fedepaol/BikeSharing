@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SimpleItemAnimator
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -60,6 +61,9 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
 
         adapter = StationsAdapter(activity.applicationContext)
         stations.adapter = adapter
+        (stations.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
+        stations.itemAnimator.changeDuration = 0
+
 
         swipeLayout.isEnabled = true
         swipeLayout.setOnRefreshListener { presenter.onUpdateRequested() }

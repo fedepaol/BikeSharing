@@ -55,7 +55,7 @@ public class PrefsStorage {
     }
 
     public String getAddressForLocation(double lat, double lon) {
-        return mPreferences.getString(getLatLonKey(lat, lon), "");
+        return mPreferences.getString(getLatLonKey(lat, lon), "Loading address..");
     }
 
 }

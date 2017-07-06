@@ -15,35 +15,39 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.apiclient;
+package com.whiterabbit.pisabike.apiclient
 
-import com.google.gson.Gson;
-import com.whiterabbit.pisabike.FileParsingKt;
-import com.whiterabbit.pisabike.model.Network;
-import com.whiterabbit.pisabike.model.Station;
+import com.google.gson.Gson
+import com.whiterabbit.pisabike.*
+import com.whiterabbit.pisabike.model.Network
+import org.junit.Before
+import org.junit.Test
 
-import org.junit.Before;
-import org.junit.Test;
-
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
-public class DeserializerTest {
-    Gson deserializer;
+class DeserializerTest {
+    lateinit var deserializer: Gson
 
     @Before
-    public void setup() {
-        deserializer = GsonProviderKt.getGson();
+    fun setup() {
+        deserializer = getGson()
     }
 
     @Test
-    public void deserializeWorks() throws Exception {
-        String json = FileParsingKt.getStringFromFile(this, "ciclopi.json");
-        Network res = deserializer.fromJson(json, Network.class);
+    @Throws(Exception::class)
+    fun deserializeWorks() {
+        val json = getStringFromFile(this, "ciclopi.json")
+        val res = deserializer.fromJson(json, Network::class.java)
 
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun deserializeWorksBikeMi() {
+        val json = getStringFromFile(this, "bikemi.json")
+        val stations = deserializer.fromJson(json, Network::class.java)
+        val stations1 = stations.stations.filter { it.name.contains("Medaglie") }
     }
 }

@@ -55,8 +55,6 @@ public class CameraIdleRenderer extends DefaultClusterRenderer<MapItem> implemen
             bitmap = mMarkerFactory.getSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
         }
 
-        //Marker m = stationToMarkerMap.get(s.getName());
-        //LatLng pos = new LatLng(lat, lon);
         BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(bitmap);
         marker.setIcon(icon);
     }

@@ -23,13 +23,13 @@
             tools:text="via S. Jacopo"
             />
 
-        <TextView
+        <com.whiterabbit.pisabike.ui.VectorTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:id="@+id/station_detail_distance"
-            android:drawableTop="@drawable/ic_directions_black_36px"
+            app:drawableTopCompat="@drawable/ic_directions_black_36px"
             tools:text="1.5 Km"
             />
 
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/margin_xsmall"
-            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginLeft="@dimen/margin_med_large"
             android:layout_below="@id/station_detail_distance"
             android:layout_toRightOf="@id/first_linear"
             android:id="@+id/second_linear">
@@ -84,11 +84,12 @@
                 android:text="@string/free_parks"
                 />
         </LinearLayout>
-        <com.whiterabbit.pisabike.ui.PreferredImageView
+        <com.like.LikeButton
+            app:icon_type="star"
+            app:icon_size="22dp"
             android:id="@+id/station_detail_star"
             android:layout_below="@id/station_detail_distance"
             android:layout_alignRight="@id/station_detail_distance"
-            android:src="@drawable/star_selected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 </android.support.percent.PercentRelativeLayout>

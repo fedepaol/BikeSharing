@@ -37,6 +37,23 @@ public class Station {
     long broken;
     boolean favourite;
     Date lastUpdate;
+    boolean addressLoaded;
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public boolean isAddressLoaded() {
+        return addressLoaded;
+    }
+
+    public void setAddressLoaded(boolean addressLoaded) {
+        this.addressLoaded = addressLoaded;
+    }
 
     public Station(String name,
                    String city,
@@ -46,7 +63,8 @@ public class Station {
                    long available,
                    long free,
                    long broken,
-                   boolean favourite) {
+                   boolean favourite,
+                   boolean addressLoaded) {
         this.name = name;
         this.city = city;
         this.latitude = latitude;
@@ -56,6 +74,7 @@ public class Station {
         this.free = free;
         this.broken = broken;
         this.favourite = favourite;
+        this.addressLoaded = addressLoaded;
     }
 
     public Station(Cursor c) {
@@ -69,6 +88,7 @@ public class Station {
         this.broken = c.getLong(PisaBikeDbHelper.STATION_BROKEN_COLUMN_POSITION);
         this.favourite = c.getInt(PisaBikeDbHelper.STATION_FAVORITE_COLUMN_POSITION) != 0;
         this.lastUpdate = new Date(c.getLong(PisaBikeDbHelper.STATION_LASTUPDATE_COLUMN_POSITION));
+        this.addressLoaded = c.getInt(PisaBikeDbHelper.STATION_ADDRESS_LOADED_COLUMN_POSITION) != 0;
     }
 
     public ContentValues getContentValues() {
@@ -83,6 +103,15 @@ public class Station {
         contentValues.put(PisaBikeDbHelper.STATION_BROKEN_COLUMN, broken);
         contentValues.put(PisaBikeDbHelper.STATION_LASTUPDATE_COLUMN, 0); // lastUpdate.getTime());
         contentValues.put(PisaBikeDbHelper.STATION_FAVORITE_COLUMN, favourite);
+        contentValues.put(PisaBikeDbHelper.STATION_ADDRESS_LOADED_COLUMN, addressLoaded);
+        return contentValues;
+    }
+
+
+    public ContentValues getUpdateValuesWithAddr() {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PisaBikeDbHelper.STATION_ADDRESS_COLUMN, address);
+        contentValues.put(PisaBikeDbHelper.STATION_ADDRESS_LOADED_COLUMN, addressLoaded);
         return contentValues;
     }
 
@@ -92,7 +121,7 @@ public class Station {
         contentValues.put(PisaBikeDbHelper.STATION_CITY_COLUMN, city);
         contentValues.put(PisaBikeDbHelper.STATION_LATITUDE_COLUMN, latitude);
         contentValues.put(PisaBikeDbHelper.STATION_LONGITUDE_COLUMN, longitude);
-        contentValues.put(PisaBikeDbHelper.STATION_ADDRESS_COLUMN, address);
+        // contentValues.put(PisaBikeDbHelper.STATION_ADDRESS_COLUMN, address); address does not need to get updated since it's filled in background
         contentValues.put(PisaBikeDbHelper.STATION_AVAILABLE_COLUMN, available);
         contentValues.put(PisaBikeDbHelper.STATION_FREE_COLUMN, free);
         contentValues.put(PisaBikeDbHelper.STATION_BROKEN_COLUMN, broken);

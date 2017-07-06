@@ -29,13 +29,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
+import com.whiterabbit.pisabike.R;
+
 import java.util.Date;
 
 public class PisaBikeDbHelper {
     private static final String TAG = "PisaBike";
 
     private static final String DATABASE_NAME = "PisaBike.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 4;
 
 
     // Variable to hold the database instance
@@ -98,8 +100,9 @@ public class PisaBikeDbHelper {
     
     public static final String STATION_FAVORITE_COLUMN = "favorite";
     public static final int STATION_FAVORITE_COLUMN_POSITION = 10;
-    
-    
+
+    public static final String STATION_ADDRESS_LOADED_COLUMN = "loaded";
+    public static final int STATION_ADDRESS_LOADED_COLUMN_POSITION = 11;
 
 
     // -------- TABLES CREATION ----------
@@ -117,8 +120,16 @@ public class PisaBikeDbHelper {
                                 STATION_FREE_COLUMN + " integer, " +
                                 STATION_BROKEN_COLUMN + " integer, " +
                                 STATION_LASTUPDATE_COLUMN + " integer, " +
-                                STATION_FAVORITE_COLUMN + " integer" +
+                                STATION_FAVORITE_COLUMN + " integer," +
+                                STATION_ADDRESS_LOADED_COLUMN + " integer" +
                                 ")";
+
+    private static final String DATABASE_CREATE_INDEX = "CREATE UNIQUE INDEX name_idx ON " +
+                                                        STATION_TABLE+"(" + STATION_NAME_COLUMN +")";
+
+
+    private static final String DATABASE_LOADED_INDEX = "CREATE  INDEX loaded_idx ON " +
+            STATION_TABLE+"(" + STATION_ADDRESS_LOADED_COLUMN +")";
     
 
     
@@ -178,6 +189,24 @@ public class PisaBikeDbHelper {
                          }, null, null, null, null, null);
     }
 
+    public Cursor getNoAddressStations() {
+        return mDb.query(STATION_TABLE, new String[] {
+                ROW_ID,
+                STATION_NAME_COLUMN,
+                STATION_CITY_COLUMN,
+                STATION_LATITUDE_COLUMN,
+                STATION_LONGITUDE_COLUMN,
+                STATION_ADDRESS_COLUMN,
+                STATION_AVAILABLE_COLUMN,
+                STATION_FREE_COLUMN,
+                STATION_BROKEN_COLUMN,
+                STATION_LASTUPDATE_COLUMN,
+                STATION_FAVORITE_COLUMN
+        }, STATION_ADDRESS_COLUMN + " = " + mContext.getString(R.string.loading_address),
+                null, null, null, null);
+
+    }
+
     public Cursor getStation(long rowIndex) {
         Cursor res = mDb.query(STATION_TABLE, new String[] {
                                 ROW_ID,
@@ -210,7 +239,9 @@ public class PisaBikeDbHelper {
         @Override
         public void onCreate(SQLiteDatabase db) {      
             db.execSQL(DATABASE_STATION_CREATE);
-            
+            db.execSQL(DATABASE_CREATE_INDEX);
+            db.execSQL(DATABASE_LOADED_INDEX);
+
         }
 
         // Called when there is a database version mismatch meaning that the version

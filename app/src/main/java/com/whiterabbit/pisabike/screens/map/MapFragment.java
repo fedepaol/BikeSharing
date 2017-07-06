@@ -29,6 +29,7 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -43,13 +44,15 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.clustering.ClusterManager;
+import com.like.LikeButton;
+import com.like.OnLikeListener;
 import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.helper.InterstitialHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.model.Station;
+import com.whiterabbit.pisabike.storage.AddressJobKt;
 import com.whiterabbit.pisabike.ui.MapMarkerFactory;
-import com.whiterabbit.pisabike.ui.PreferredImageView;
 
 import java.util.List;
 import java.util.Locale;
@@ -66,7 +69,7 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 public class MapFragment extends Fragment implements MapView, OnMapReadyCallback,
                                                       GoogleMap.OnCameraMoveStartedListener,
                                                       GoogleMap.OnCameraIdleListener,
-                                                      ClusterManager.OnClusterItemClickListener<MapItem> {
+                                                      ClusterManager.OnClusterItemClickListener<MapItem>, OnLikeListener {
 
     @Inject
     MapPresenter mPresenter;
@@ -99,7 +102,7 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     TextView mEmptyBikes;
 
     @Bind(R.id.station_detail_star)
-    PreferredImageView mPreferredStar;
+    LikeButton mPreferredStar;
 
     @Bind(R.id.fab)
     FloatingActionButton mFab;
@@ -178,6 +181,8 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
 
             }
         });
+
+        mPreferredStar.setOnLikeListener(this);
     }
 
     @Override
@@ -217,7 +222,9 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
 
     @Override
     public void drawStationsOnMap(List<Station> stations) {
-        stations.forEach(this::addMarker);
+        for (Station s : stations) {
+            addMarker(s);
+        }
         mClusterManager.cluster();
     }
 
@@ -233,7 +240,7 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         mBikes.setText(String.valueOf(detail.getAvailable()));
         mEmptyBikes.setText(String.valueOf(detail.getFree()));
         mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        mPreferredStar.setPreferred(detail.isFavourite());
+        mPreferredStar.setLiked(detail.isFavourite());
     }
 
     @Override
@@ -324,17 +331,12 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     @OnClick(R.id.fab)
     public void onCenterLocationClicked() {
         mPresenter.onCenterLocationClicked();
+        AddressJobKt.scheduleAddressJob(); // REMOVE ME
     }
 
     @OnClick(R.id.main_directions_fab)
     public void onNavigateClicked() {
         mPresenter.onNavigateClicked();
-    }
-
-    @OnClick(R.id.station_detail_star)
-    public void onPreferredClicked() {
-        mPreferredStar.togglePreferred(!mPreferredStar.getPreferred());
-        mPresenter.onPreferredToggled(mPreferredStar.getPreferred());
     }
 
     public boolean onBackPressed() {
@@ -394,5 +396,15 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     public boolean onClusterItemClick(MapItem mapItem) {
         mPresenter.onStationClicked(mapItem.getStation().getName());
         return true;
+    }
+
+    @Override
+    public void liked(LikeButton likeButton) {
+        mPresenter.onPreferredToggled(true);
+    }
+
+    @Override
+    public void unLiked(LikeButton likeButton) {
+        mPresenter.onPreferredToggled(false);
     }
 }

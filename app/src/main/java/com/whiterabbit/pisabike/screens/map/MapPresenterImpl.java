@@ -147,13 +147,15 @@ public class MapPresenterImpl implements MapPresenter {
                 if (    !changed && (
                         s1.getAvailable() != s.getAvailable() ||
                         s1.getBroken() != s.getBroken() ||
-                        s1.getFree() != s.getFree())) {
+                        s1.getFree() != s.getFree() ||
+                        !s1.getAddress().equals(s.getAddress()))) {
                     changed = true;
                 }
                 s1.setAvailable(s.getAvailable());
                 s1.setBroken(s.getBroken());
                 s1.setFree(s.getFree());
                 s1.setFavourite(s.isFavourite());
+                s1.setAddress(s.getAddress());
             }
         }
         if (changed) {
@@ -274,7 +276,7 @@ public class MapPresenterImpl implements MapPresenter {
     @Override
     public void onPreferredToggled(boolean isPreferred) {
         if (mSelectedStation != null) {
-            Subscription s = mBikesProvider.changePreferredStatus(mSelectedStation.getName(), !isPreferred)
+            Subscription s = mBikesProvider.changePreferredStatus(mSelectedStation.getName(), isPreferred)
                     .subscribeOn(Schedulers.io())
                     .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                     .subscribe();

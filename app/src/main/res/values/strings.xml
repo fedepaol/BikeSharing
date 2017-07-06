@@ -31,5 +31,6 @@
     <string name="search_for_stations">Search</string>
     <string name="favourites">Favourites</string>
     <string name="no_favourites_yet">No favourite stations selected yet, click on the star to bookmark a station</string>
+    <string name="loading_address">Loading address..</string>
 
 </resources>

@@ -24,7 +24,7 @@ class BikeDeserializer : JsonDeserializer<Network> {
         val stations = mutableListOf<Station>()
         for (obj1 in array) {
             with (obj1.asJsonObject) {
-                val name = get("name").asString
+                val name = get("name").asString.replace("\\u0027", "'")
                 val latitude = get("latitude").asDouble
                 val longitue = get("longitude").asDouble
                 val freeBikes = get("free_bikes").asLong
@@ -33,7 +33,7 @@ class BikeDeserializer : JsonDeserializer<Network> {
                 if (has("extra") && getAsJsonObject("extra").has("description")) {
                     address = getAsJsonObject("extra").get("description").asString
                 }
-                stations.add(Station(name, city, latitude, longitue, address, freeBikes, emptySlots, 0, false))
+                stations.add(Station(name, city, latitude, longitue, address, freeBikes, emptySlots, 0, false, false))
             }
         }
         return Network(stations)

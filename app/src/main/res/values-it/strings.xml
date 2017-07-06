@@ -31,5 +31,6 @@
     <string name="search_for_stations">Cerca la stazione</string>
     <string name="favourites">Preferiti</string>
     <string name="no_favourites_yet">Nessuna stazione segnata come preferita, clicca sulla stella per mettere una stazione tra i preferiti</string>
+    <string name="loading_address">Sto caricando l\'indirizzo..</string>
 
 </resources>

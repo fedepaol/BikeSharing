@@ -91,6 +91,7 @@ public class HtmlBikeClient {
                     available,
                     free,
                     broken,
+                    false,
                     false);
             res.add(station);
         }

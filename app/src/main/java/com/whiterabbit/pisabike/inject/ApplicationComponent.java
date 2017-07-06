@@ -33,6 +33,8 @@ import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
+import com.whiterabbit.pisabike.storage.AddressJob;
+import com.whiterabbit.pisabike.storage.AddressJobCreator;
 import com.whiterabbit.pisabike.storage.PrefsStorage;
 import com.whiterabbit.pisabike.ui.MapMarkerFactory;
 

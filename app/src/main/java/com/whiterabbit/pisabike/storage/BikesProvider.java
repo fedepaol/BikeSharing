@@ -18,11 +18,14 @@
 package com.whiterabbit.pisabike.storage;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.location.Address;
+import android.util.Log;
 
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
+import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
 import com.whiterabbit.pisabike.model.Station;
@@ -30,6 +33,7 @@ import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -43,6 +47,8 @@ public class BikesProvider {
     @Inject BikeRestClient mBikeClient;
     @Inject PrefsStorage mPrefsStorage;
     @Inject ReactiveLocationProvider mProvider;
+    @Inject Context mContext;
+
 
     @Inject
     public BikesProvider() {
@@ -57,58 +63,39 @@ public class BikesProvider {
         mPrefsStorage.setAddressForLocation(lat, lon, address);
     }
 
-    private Observable<String> addressObservable(double lat, double lon) {
-        return
-            Observable.fromCallable(() -> mPrefsStorage.getAddressForLocation(lat, lon))
-                .concatWith(
-            mProvider
-                .getReverseGeocodeObservable(lat, lon, 1)
-                .map(l -> l.get(0).getAddressLine(0))
-                .doOnNext(address -> storeAddress(lat, lon, address)))
-            .filter(a -> !a.equals(""));
-    }
-
     public Observable<Void> updateBikes() {
         if (mPrefsStorage.getLastUpdate() + 60 > getNowSeconds()) {
             return Observable.just(null);
         }
 
+        mPrefsStorage.setLastUpdate(getNowSeconds());
+
         BehaviorSubject<Void> requestSubject = BehaviorSubject.create();
 
         mBikeClient.getStations()
-                .flatMap(stations -> Observable.from(stations.getStations()))
-                .flatMap(station -> {
-                    if (station.getAddress().equals("")) {
-                        return addressObservable(station.getLatitude(), station.getLongitude())
-                                .flatMap(address -> Observable.just(new Station(station.getName(),
-                                                                                station.getCity(),
-                                                                                station.getLatitude(),
-                                                                                station.getLongitude(),
-                                                                                address,
-                                                                                station.getAvailable(),
-                                                                                station.getFree(),
-                                                                                station.getBroken(),
-                                                                                station.isFavourite())));
-                    } else {
-
-                        return Observable.just(station);
-                    }
-                })
                 .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .observeOn(mSchedulersProvider.provideBackgroundScheduler())
-                .subscribe(s -> {
-                        BriteDatabase.Transaction t = mBrite.newTransaction();
+                .subscribe(stations -> {
+                    BriteDatabase.Transaction t = mBrite.newTransaction();
+                    boolean needsAddress = false;
                     try {
-                        int updated = mBrite.update(PisaBikeDbHelper.STATION_TABLE, s.getUpdateValues(),
-                                PisaBikeDbHelper.STATION_NAME_COLUMN + " = ?", s.getName());
-                        if (updated == 0) {
-                            mBrite.insert(PisaBikeDbHelper.STATION_TABLE, s.getContentValues());
+                        for (Station s : stations.getStations()) {
+                            int updated = mBrite.update(PisaBikeDbHelper.STATION_TABLE, s.getUpdateValues(),
+                                    PisaBikeDbHelper.STATION_NAME_COLUMN + " = ?", s.getName());
+                            if (updated == 0) {
+                                needsAddress = true;
+                                s.setAddress(mContext.getString(R.string.loading_address));
+                                mBrite.insert(PisaBikeDbHelper.STATION_TABLE, s.getContentValues());
+                            }
                         }
 
-                        mPrefsStorage.setLastUpdate(getNowSeconds());
                         t.markSuccessful();
                     } finally {
                         t.end();
+                    }
+
+                    if (needsAddress) {
+                        AddressJobKt.scheduleAddressJob();
                     }
 
                     requestSubject.onCompleted();
@@ -123,10 +110,10 @@ public class BikesProvider {
         return stations.map(q -> {
             Cursor cursor = q.run();
             List<Station> s = new ArrayList<>(cursor.getCount());
-            int i = 0;
             while (cursor.moveToNext()) {
                 s.add(new Station(cursor));
             }
+            cursor.close();
             return s;
         });
     }

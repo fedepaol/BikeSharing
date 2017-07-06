@@ -65,7 +65,7 @@ class StationsListPresenterImpl(val provider : BikesProvider,
             filteredStations = Observable.combineLatest(stationsObservable,
                                                         textObservable,
                                                         { s: List<Station>, t: String -> Pair(s, t) })
-                                .map { p -> p.first.filter { s -> filterStation(s, p.second) } }
+                                .map { (first, second) -> first.filter { s -> filterStation(s, second) } }
 
         } else {
             filteredStations = Observable.just(emptyList())
@@ -89,13 +89,13 @@ class StationsListPresenterImpl(val provider : BikesProvider,
     }
 
     override fun onUpdateRequested() {
-        view?.toggleLoading(true)
-        val sub = provider.updateBikes().subscribeOn(schedulers.provideBackgroundScheduler())
+        view?.toggleLoading(true);
+        /*val sub = provider.updateBikes().subscribeOn(schedulers.provideBackgroundScheduler())
                               .observeOn(schedulers.provideMainThreadScheduler())
                               .subscribe({ },
                                          { view?.displayUpdateError() },
                                          { view?.toggleLoading(false) })
-        subscription.add(sub)
+        subscription.add(sub)*/
     }
 
     override fun onSearchButtonPressed() {

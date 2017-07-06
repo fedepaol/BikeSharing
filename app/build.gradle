@@ -124,7 +124,10 @@ dependencies {
     compile 'com.whiterabbit:androidutils:1.0.0@aar'
     compile 'com.github.mancj:MaterialSearchBar:0.6'
     compile 'com.google.maps.android:android-maps-utils:0.5'
-
+    compile 'com.github.jd-alexander:LikeButton:0.2.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.evernote:android-job:1.1.11'
+    compile 'com.facebook.stetho:stetho:1.5.0'
 
 
     kapt 'com.google.dagger:dagger-compiler:2.4'
@@ -144,7 +147,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:2.2.28'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
         transitive = true;
     }
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"

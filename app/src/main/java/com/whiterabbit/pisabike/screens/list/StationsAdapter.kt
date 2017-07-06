@@ -11,6 +11,8 @@ import android.widget.TextView
 import butterknife.Bind
 import butterknife.ButterKnife
 import com.jakewharton.rxrelay.BehaviorRelay
+import com.like.LikeButton
+import com.like.OnLikeListener
 import com.whiterabbit.pisabike.R
 import com.whiterabbit.pisabike.model.Station
 import com.whiterabbit.pisabike.ui.PreferredImageView
@@ -72,7 +74,7 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
         @Bind(R.id.station_detail_distance)
         lateinit var distance:TextView
         @Bind(R.id.station_detail_star)
-        lateinit var preferredImage:PreferredImageView
+        lateinit var preferredImage:LikeButton
 
 
         var id : Int = 0
@@ -83,13 +85,21 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
                 relay.call(data?.get(adapterPosition))
             }
 
-            preferredImage.setOnClickListener {
-                val station = data?.get(adapterPosition)
-                if (station != null) {
-                    preferredImage.togglePreferred(!station.isFavourite)
-                    preferredRelay.call(station)
+            preferredImage.setOnLikeListener(object : OnLikeListener {
+                override fun liked(p0: LikeButton?) {
+                    val station = data?.get(adapterPosition)
+                    if (station != null) {
+                        preferredRelay.call(station)
+                    }
                 }
-            }
+
+                override fun unLiked(p0: LikeButton?) {
+                    val station = data?.get(adapterPosition)
+                    if (station != null) {
+                        preferredRelay.call(station)
+                    }
+                }
+            })
         }
     }
 
@@ -113,7 +123,9 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
         holder?.distance?.text = String.format(c.getString(R.string.distance),
                                                 s.getDistanceFrom(myPosition))
         holder?.id = position
-        holder?.preferredImage?.preferred = s.isFavourite
+        if (holder?.preferredImage?.isLiked != s.isFavourite) {
+            holder?.preferredImage?.isLiked = s.isFavourite
+        }
     }
 
     fun updateList(newList: List<Station>, position: Location) {

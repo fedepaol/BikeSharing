@@ -1,0 +1,3177 @@
+{
+  "network": {
+    "company": [
+      "ClearChannel"
+    ], 
+    "href": "/v2/networks/bikemi", 
+    "id": "bikemi", 
+    "location": {
+      "city": "Milano", 
+      "country": "IT", 
+      "latitude": 45.4654542, 
+      "longitude": 9.186516
+    }, 
+    "name": "BikeMi", 
+    "stations": [
+      {
+        "empty_slots": 0, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 25, 
+        "id": "b5262607c8a44db673b2f9acd3ddeede", 
+        "latitude": 45.464683238626, 
+        "longitude": 9.18879747390747, 
+        "name": "Duomo", 
+        "timestamp": "2017-06-17T13:31:42.142000Z"
+      }, 
+      {
+        "empty_slots": 4, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 17, 
+        "id": "1bfa5d79ba86b5a8f830b39a72667f07", 
+        "latitude": 45.4663612119451, 
+        "longitude": 9.19765949249268, 
+        "name": "San Babila", 
+        "timestamp": "2017-06-17T13:31:42.144000Z"
+      }, 
+      {
+        "empty_slots": 13, 
+        "extra": {}, 
+        "free_bikes": 8, 
+        "id": "6fc30313a606317ef0a8848675b83bfd", 
+        "latitude": 45.4679573094956, 
+        "longitude": 9.17564660310745, 
+        "name": "Cadorna 1", 
+        "timestamp": "2017-06-17T13:31:42.145000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {}, 
+        "free_bikes": 3, 
+        "id": "745e5748d0f64537a1941ce08aeba85e", 
+        "latitude": 45.4722976762067, 
+        "longitude": 9.18194442987442, 
+        "name": "Lanza", 
+        "timestamp": "2017-06-17T13:31:42.146000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 3, 
+        "id": "b4646b00e9cb8535aa4a423f3a040300", 
+        "latitude": 45.4630672955861, 
+        "longitude": 9.17644590139389, 
+        "name": "Universit\u00e0 Cattolica", 
+        "timestamp": "2017-06-17T13:31:42.146000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {}, 
+        "free_bikes": 0, 
+        "id": "89a5c8f4e4308a6f0ce6641bce44f766", 
+        "latitude": 45.4608746934565, 
+        "longitude": 9.18361410498619, 
+        "name": "San Giorgio", 
+        "timestamp": "2017-06-17T13:31:42.147000Z"
+      }, 
+      {
+        "empty_slots": 6, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 15, 
+        "id": "14efa2234d1493b97599a0ddeaaa0291", 
+        "latitude": 45.4627662999143, 
+        "longitude": 9.18682873249054, 
+        "name": "Santa Maria Beltrade", 
+        "timestamp": "2017-06-17T13:31:42.148000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {}, 
+        "free_bikes": 3, 
+        "id": "2a55b02c303d4e4ab723cf7aedca0a49", 
+        "latitude": 45.460017758853, 
+        "longitude": 9.19022440910339, 
+        "name": "Velasca", 
+        "timestamp": "2017-06-17T13:31:42.149000Z"
+      }, 
+      {
+        "empty_slots": 11, 
+        "extra": {}, 
+        "free_bikes": 7, 
+        "id": "e9fec641e7f018f612571ebdedbd4b56", 
+        "latitude": 45.4623797062408, 
+        "longitude": 9.19532999396324, 
+        "name": "S. Stefano", 
+        "timestamp": "2017-06-17T13:31:42.150000Z"
+      }, 
+      {
+        "empty_slots": 11, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 8, 
+        "id": "95cc33345ef4faf7344dca004feaca3f", 
+        "latitude": 45.4613233795961, 
+        "longitude": 9.18834686279297, 
+        "name": "Missori", 
+        "timestamp": "2017-06-17T13:31:42.151000Z"
+      }, 
+      {
+        "empty_slots": 13, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "7dae125471ffb30a2fb8733f3622a365", 
+        "latitude": 45.4725337299046, 
+        "longitude": 9.17932391166687, 
+        "name": "Castello Acquario civico", 
+        "timestamp": "2017-06-17T13:31:42.152000Z"
+      }, 
+      {
+        "empty_slots": 22, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 5, 
+        "id": "7570b222947247432cec31004a843c39", 
+        "latitude": 45.4585992259681, 
+        "longitude": 9.18145626783371, 
+        "name": "San Lorenzo - \\\"Colonne\\\"", 
+        "timestamp": "2017-06-17T13:31:42.152000Z"
+      }, 
+      {
+        "empty_slots": 10, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 6, 
+        "id": "e2ab159dfc078069a3ce7f15110c32d4", 
+        "latitude": 45.4704317827007, 
+        "longitude": 9.19757097959518, 
+        "name": "Senato", 
+        "timestamp": "2017-06-17T13:31:42.153000Z"
+      }, 
+      {
+        "empty_slots": 14, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 6, 
+        "id": "9e8b1deebd0ed7cb9a1c9772e3bf194b", 
+        "latitude": 45.4595060375771, 
+        "longitude": 9.19839441776276, 
+        "name": "San Barnaba H Mangiagalli", 
+        "timestamp": "2017-06-17T13:31:42.154000Z"
+      }, 
+      {
+        "empty_slots": 6, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 18, 
+        "id": "e9baa6e6f20810324a64bd1ce3b5b4b7", 
+        "latitude": 45.4557921565137, 
+        "longitude": 9.17277932167053, 
+        "name": "Cantore", 
+        "timestamp": "2017-06-17T13:31:42.155000Z"
+      }, 
+      {
+        "empty_slots": 4, 
+        "extra": {}, 
+        "free_bikes": 8, 
+        "id": "03f63abd5b085802c6088b521878692e", 
+        "latitude": 45.4775338860989, 
+        "longitude": 9.18455958366394, 
+        "name": "Moscova", 
+        "timestamp": "2017-06-17T13:31:42.156000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 10, 
+        "id": "e7b582c406595ebe294653ac85208299", 
+        "latitude": 45.4771276458445, 
+        "longitude": 9.1809868812561, 
+        "name": "Legnano Arena civica", 
+        "timestamp": "2017-06-17T13:31:42.157000Z"
+      }, 
+      {
+        "empty_slots": 23, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 1, 
+        "id": "d36e252d729ab42eb85d69841bbcf538", 
+        "latitude": 45.4694010005261, 
+        "longitude": 9.16655659675598, 
+        "name": "Tommaseo", 
+        "timestamp": "2017-06-17T13:31:42.157000Z"
+      }, 
+      {
+        "empty_slots": 18, 
+        "extra": {}, 
+        "free_bikes": 2, 
+        "id": "224c886ddb7ac457c6f94308248ebecc", 
+        "latitude": 45.4590902606207, 
+        "longitude": 9.18971747159958, 
+        "name": "Erculea", 
+        "timestamp": "2017-06-17T13:31:42.159000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 3, 
+        "id": "f9c10afbe91f92aa191b280e48aaf1de", 
+        "latitude": 45.4487211840428, 
+        "longitude": 9.19041484594345, 
+        "name": "Universit\u00e0 Bocconi", 
+        "timestamp": "2017-06-17T13:31:42.160000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {}, 
+        "free_bikes": 16, 
+        "id": "d67aee2c9a01e4a6a0016dacb238f8a2", 
+        "latitude": 45.4515963431301, 
+        "longitude": 9.20349597930908, 
+        "name": "Medaglie D\\u0027Oro 1", 
+        "timestamp": "2017-06-17T13:31:42.161000Z"
+      }, 
+      {
+        "empty_slots": 9, 
+        "extra": {}, 
+        "free_bikes": 10, 
+        "id": "139e86f91c99517865698fd3b41fdc33", 
+        "latitude": 45.4582342395861, 
+        "longitude": 9.20530915260315, 
+        "name": "Regina Margherita", 
+        "timestamp": "2017-06-17T13:31:42.162000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "024840e7637ee07c1359c5411d646605", 
+        "latitude": 45.4854559259142, 
+        "longitude": 9.20257195830345, 
+        "name": "Centrale 1", 
+        "timestamp": "2017-06-17T13:31:42.163000Z"
+      }, 
+      {
+        "empty_slots": 13, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 8, 
+        "id": "ecc90197d783e5944e9ee3a07906ff89", 
+        "latitude": 45.4845899624971, 
+        "longitude": 9.20430332422256, 
+        "name": "Centrale 2", 
+        "timestamp": "2017-06-17T13:31:42.164000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "af4fbe79f9119f6024f21bde602cccdd", 
+        "latitude": 45.4746619303572, 
+        "longitude": 9.20460104942322, 
+        "name": "Porta Venezia", 
+        "timestamp": "2017-06-17T13:31:42.165000Z"
+      }, 
+      {
+        "empty_slots": 11, 
+        "extra": {}, 
+        "free_bikes": 10, 
+        "id": "b650066c5ef9f5fc4f500fa01eaca0a5", 
+        "latitude": 45.4675086761528, 
+        "longitude": 9.18142944574356, 
+        "name": "San Giovanni sul Muro", 
+        "timestamp": "2017-06-17T13:31:42.165000Z"
+      }, 
+      {
+        "empty_slots": 18, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 9, 
+        "id": "6b96bd27c10fc1a52b4c9fcf3684f949", 
+        "latitude": 45.4623862905834, 
+        "longitude": 9.2012831568718, 
+        "name": "San Pietro in Gessate", 
+        "timestamp": "2017-06-17T13:31:42.166000Z"
+      }, 
+      {
+        "empty_slots": 2, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 12, 
+        "id": "5ab6394a418f4181a0904736570176e0", 
+        "latitude": 45.4561458700108, 
+        "longitude": 9.19573903083801, 
+        "name": "Crocetta", 
+        "timestamp": "2017-06-17T13:31:42.167000Z"
+      }, 
+      {
+        "empty_slots": 13, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 21, 
+        "id": "bc93d1e29287a3dfae387305ab9d2fcd", 
+        "latitude": 45.4426254033088, 
+        "longitude": 9.21919226646423, 
+        "name": "Brenta MM", 
+        "timestamp": "2017-06-17T13:31:42.168000Z"
+      }, 
+      {
+        "empty_slots": 24, 
+        "extra": {}, 
+        "free_bikes": 4, 
+        "id": "d6161b26f66afad36f3ba3d5d7229962", 
+        "latitude": 45.4768511751077, 
+        "longitude": 9.19828310608864, 
+        "name": "Manin - Bastioni", 
+        "timestamp": "2017-06-17T13:31:42.169000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 13, 
+        "id": "447973111c2a6055dc091da04b5e269c", 
+        "latitude": 45.4718189826045, 
+        "longitude": 9.17345657944679, 
+        "name": "Triennale", 
+        "timestamp": "2017-06-17T13:31:42.169000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 2, 
+        "id": "23960945469550e960a71f9358c3de99", 
+        "latitude": 45.4604655111597, 
+        "longitude": 9.18189615011215, 
+        "name": "Torino - Carrobbio", 
+        "timestamp": "2017-06-17T13:31:42.171000Z"
+      }, 
+      {
+        "empty_slots": 18, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 2, 
+        "id": "87dcca52f7f59e660cb35b0b7648307a", 
+        "latitude": 45.4592313617415, 
+        "longitude": 9.18376430869102, 
+        "name": "San Vito", 
+        "timestamp": "2017-06-17T13:31:42.172000Z"
+      }, 
+      {
+        "empty_slots": 10, 
+        "extra": {}, 
+        "free_bikes": 12, 
+        "id": "34d37f767d5d02b554082acae19f52bb", 
+        "latitude": 45.4530263415011, 
+        "longitude": 9.18699234724045, 
+        "name": "Italia - San Martino", 
+        "timestamp": "2017-06-17T13:31:42.173000Z"
+      }, 
+      {
+        "empty_slots": 13, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 10, 
+        "id": "fb43af886011606871a8205b47f4dd34", 
+        "latitude": 45.4801818989517, 
+        "longitude": 9.18667852878571, 
+        "name": "XXV Aprile", 
+        "timestamp": "2017-06-17T13:31:42.174000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 4, 
+        "id": "d0c3532233202ee0fcb4a4817625f632", 
+        "latitude": 45.4638780946823, 
+        "longitude": 9.16886329650879, 
+        "name": "Morozzo della Rocca", 
+        "timestamp": "2017-06-17T13:31:42.175000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "dbc3a2394d4814aca5b08bd4d6c2236c", 
+        "latitude": 45.4676911396203, 
+        "longitude": 9.16696697473526, 
+        "name": "Conciliazione", 
+        "timestamp": "2017-06-17T13:31:42.176000Z"
+      }, 
+      {
+        "empty_slots": 8, 
+        "extra": {
+          "ebikes": 4, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 15, 
+        "id": "2cf9b82913a91849c64918d57cf570de", 
+        "latitude": 45.4661448841087, 
+        "longitude": 9.1956639289856, 
+        "name": "San Pietro all\\u0027Orto", 
+        "timestamp": "2017-06-17T13:31:42.177000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 8, 
+        "id": "f3c8ddfc3d967ffe3ba35c611902e71c", 
+        "latitude": 45.4614343747778, 
+        "longitude": 9.19485121965408, 
+        "name": "Festa del Perdono", 
+        "timestamp": "2017-06-17T13:31:42.178000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 1, 
+        "id": "7e490b07e70160712dccbaabef33d024", 
+        "latitude": 45.4593686998265, 
+        "longitude": 9.19293344020844, 
+        "name": "Richini", 
+        "timestamp": "2017-06-17T13:31:42.179000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 7, 
+        "id": "f3e69115be76e2424a6794331367317b", 
+        "latitude": 45.4642129456631, 
+        "longitude": 9.18670803308487, 
+        "name": "Cant\u00f9", 
+        "timestamp": "2017-06-17T13:31:42.179000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 2, 
+        "id": "b6f469ec0cc70b70abb8ea8654b8ba94", 
+        "latitude": 45.4799430563077, 
+        "longitude": 9.19285297393799, 
+        "name": "Porta Nuova", 
+        "timestamp": "2017-06-17T13:31:42.180000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "7997440d5605084a31a31cbbf393207f", 
+        "latitude": 45.4664684349997, 
+        "longitude": 9.19299513101578, 
+        "name": "Meda", 
+        "timestamp": "2017-06-17T13:31:42.183000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {}, 
+        "free_bikes": 0, 
+        "id": "69593020359e15cab68c7fa6d6f7f474", 
+        "latitude": 45.4666057554561, 
+        "longitude": 9.16981279850006, 
+        "name": "Santa Maria delle Grazie", 
+        "timestamp": "2017-06-17T13:31:42.184000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {}, 
+        "free_bikes": 4, 
+        "id": "6c552ca8b4aa5bb8a38e592b28c02490", 
+        "latitude": 45.4805956397186, 
+        "longitude": 9.1993573307991, 
+        "name": "Vittor Pisani", 
+        "timestamp": "2017-06-17T13:31:42.185000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {}, 
+        "free_bikes": 4, 
+        "id": "eaa7ebac3681a5470e18b1f363a5d129", 
+        "latitude": 45.4724142924997, 
+        "longitude": 9.20156747102737, 
+        "name": "Palestro 1", 
+        "timestamp": "2017-06-17T13:31:42.186000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 9, 
+        "id": "411b2750c98345fb1cc0cc26c8168f97", 
+        "latitude": 45.4552013747679, 
+        "longitude": 9.18075352907181, 
+        "name": "Sant\\u0027Eustorgio- P.ta Ticinese", 
+        "timestamp": "2017-06-17T13:31:42.187000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {}, 
+        "free_bikes": 7, 
+        "id": "a08375e71bcef046b875756e5a9d198b", 
+        "latitude": 45.4626515448913, 
+        "longitude": 9.20689970254898, 
+        "name": "Cinque Giornate", 
+        "timestamp": "2017-06-17T13:31:42.188000Z"
+      }, 
+      {
+        "empty_slots": 21, 
+        "extra": {}, 
+        "free_bikes": 2, 
+        "id": "4172967a03b0598c72f5e189bf26f02e", 
+        "latitude": 45.4759427617077, 
+        "longitude": 9.20055091381073, 
+        "name": "Bastioni di Porta Venezia", 
+        "timestamp": "2017-06-17T13:31:42.188000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 4, 
+        "id": "8d3ec755e4ff0d1f07ff95f6cdb3480b", 
+        "latitude": 45.4721302749771, 
+        "longitude": 9.18752610683441, 
+        "name": "Brera", 
+        "timestamp": "2017-06-17T13:31:42.189000Z"
+      }, 
+      {
+        "empty_slots": 4, 
+        "extra": {}, 
+        "free_bikes": 19, 
+        "id": "5bcde4fc9270ca519c4a785b1457fabf", 
+        "latitude": 45.4588927184585, 
+        "longitude": 9.16955530643463, 
+        "name": "Sant\\u0027Agostino", 
+        "timestamp": "2017-06-17T13:31:42.190000Z"
+      }, 
+      {
+        "empty_slots": 21, 
+        "extra": {}, 
+        "free_bikes": 0, 
+        "id": "80dde190805693dc1dea835a12c96fbc", 
+        "latitude": 45.4722468916165, 
+        "longitude": 9.20190274715424, 
+        "name": "Palestro 2", 
+        "timestamp": "2017-06-17T13:31:42.191000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {}, 
+        "free_bikes": 7, 
+        "id": "bb047bf6f0c449fea4c91eff67c997a8", 
+        "latitude": 45.4643333410352, 
+        "longitude": 9.18364226818085, 
+        "name": "Edison", 
+        "timestamp": "2017-06-17T13:31:42.192000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {}, 
+        "free_bikes": 2, 
+        "id": "158186a5229fecb7b4e9c0fbf44c730d", 
+        "latitude": 45.4750719500221, 
+        "longitude": 9.18679118156433, 
+        "name": "Treves", 
+        "timestamp": "2017-06-17T13:31:42.194000Z"
+      }, 
+      {
+        "empty_slots": 21, 
+        "extra": {}, 
+        "free_bikes": 15, 
+        "id": "682876dceb017e39160470c571766d05", 
+        "latitude": 45.4631519503293, 
+        "longitude": 9.18992400169373, 
+        "name": "Diaz", 
+        "timestamp": "2017-06-17T13:31:42.195000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 5, 
+        "id": "07c23bdde633162101cf1cdc962cf971", 
+        "latitude": 45.4585296153456, 
+        "longitude": 9.18753415346146, 
+        "name": "Bertarelli", 
+        "timestamp": "2017-06-17T13:31:42.196000Z"
+      }, 
+      {
+        "empty_slots": 24, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 3, 
+        "id": "54ce8a82caab6fb3f380ea73fcbe8017", 
+        "latitude": 45.4729917276857, 
+        "longitude": 9.19638276100159, 
+        "name": "Cavour", 
+        "timestamp": "2017-06-17T13:31:42.197000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {}, 
+        "free_bikes": 0, 
+        "id": "2fe31fd96098bfb395ba47d8592bb1fc", 
+        "latitude": 45.4793882604319, 
+        "longitude": 9.19747173786163, 
+        "name": "Repubblica", 
+        "timestamp": "2017-06-17T13:31:42.198000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {}, 
+        "free_bikes": 6, 
+        "id": "432b453498e0b46b0c7efd138fd4995d", 
+        "latitude": 45.4606423535282, 
+        "longitude": 9.20560151338577, 
+        "name": "Rotonda della Besana", 
+        "timestamp": "2017-06-17T13:31:42.199000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 5, 
+        "id": "1ed2efa003698f4ada72271a0e34c76a", 
+        "latitude": 45.4583264270911, 
+        "longitude": 9.19257804751396, 
+        "name": "S. Nazaro in Brolo", 
+        "timestamp": "2017-06-17T13:31:42.199000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {}, 
+        "free_bikes": 9, 
+        "id": "8591f0350cbacaa493d549b7bcb2e326", 
+        "latitude": 45.4731290322501, 
+        "longitude": 9.18999642133713, 
+        "name": "Fatebenefratelli", 
+        "timestamp": "2017-06-17T13:31:42.200000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {}, 
+        "free_bikes": 9, 
+        "id": "0edebdb4ad63dcbe4d3bd67950ce86bd", 
+        "latitude": 45.4518635297906, 
+        "longitude": 9.20296758413315, 
+        "name": "Medaglie D\\u0027Oro 2", 
+        "timestamp": "2017-06-17T13:31:42.201000Z"
+      }, 
+      {
+        "empty_slots": 22, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 1, 
+        "id": "3e800549b943350fea0e136f8cb833b6", 
+        "latitude": 45.4714719507122, 
+        "longitude": 9.20500606298447, 
+        "name": "Majno - Baretti", 
+        "timestamp": "2017-06-17T13:31:42.203000Z"
+      }, 
+      {
+        "empty_slots": 2, 
+        "extra": {}, 
+        "free_bikes": 13, 
+        "id": "1e1e3c739bffb9b47cb5db4e28cbc2bd", 
+        "latitude": 45.4670590986971, 
+        "longitude": 9.18405264616013, 
+        "name": "Dante - San Tomaso", 
+        "timestamp": "2017-06-17T13:31:42.204000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {}, 
+        "free_bikes": 7, 
+        "id": "5e626db2e10456816e152be285608193", 
+        "latitude": 45.468812242395, 
+        "longitude": 9.18505981564522, 
+        "name": "Cusani", 
+        "timestamp": "2017-06-17T13:31:42.204000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {}, 
+        "free_bikes": 0, 
+        "id": "d1519899ef97faa5ea55f6bcbb8c0b68", 
+        "latitude": 45.4617570120737, 
+        "longitude": 9.18192163109779, 
+        "name": "Mentana", 
+        "timestamp": "2017-06-17T13:31:42.205000Z"
+      }, 
+      {
+        "empty_slots": 10, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 11, 
+        "id": "7eeb9767a3f5133e8de59bb996627d65", 
+        "latitude": 45.4765747030145, 
+        "longitude": 9.19176936149597, 
+        "name": "Sant\\u0027Angelo - P.ta Nuova", 
+        "timestamp": "2017-06-17T13:31:42.206000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {}, 
+        "free_bikes": 6, 
+        "id": "4674ddbbb1d9776142398fc4990fe591", 
+        "latitude": 45.4608605837716, 
+        "longitude": 9.16335940361023, 
+        "name": "Aquileia", 
+        "timestamp": "2017-06-17T13:31:42.207000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {}, 
+        "free_bikes": 8, 
+        "id": "e27cf7b6e7bf2e2059311ecd3cd24743", 
+        "latitude": 45.4711935712812, 
+        "longitude": 9.19247344136238, 
+        "name": "Manzoni", 
+        "timestamp": "2017-06-17T13:31:42.208000Z"
+      }, 
+      {
+        "empty_slots": 13, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 16, 
+        "id": "62cb22f19d4dc4a6d5bbbc47dc53f178", 
+        "latitude": 45.448344843472, 
+        "longitude": 9.19077694416046, 
+        "name": "Bocconi 2 - Bach", 
+        "timestamp": "2017-06-17T13:31:42.209000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "124d28774fd44be23c48dcbfcee3a4e2", 
+        "latitude": 45.4580743221279, 
+        "longitude": 9.20061126351357, 
+        "name": "Dell\\u0027Umanitaria", 
+        "timestamp": "2017-06-17T13:31:42.222000Z"
+      }, 
+      {
+        "empty_slots": 22, 
+        "extra": {}, 
+        "free_bikes": 8, 
+        "id": "210b291bca6a9464bc925fce6509e399", 
+        "latitude": 45.4690323220327, 
+        "longitude": 9.17622596025467, 
+        "name": "Cadorna 2", 
+        "timestamp": "2017-06-17T13:31:42.223000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {}, 
+        "free_bikes": 3, 
+        "id": "caa49b030889ba2b25baa75b2aeafd85", 
+        "latitude": 45.4657385617546, 
+        "longitude": 9.17576059699059, 
+        "name": "D\\u0027Ancona", 
+        "timestamp": "2017-06-17T13:31:42.224000Z"
+      }, 
+      {
+        "empty_slots": 18, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 5, 
+        "id": "a044db45de674045cefac2f03d55e3ba", 
+        "latitude": 45.4653961952754, 
+        "longitude": 9.20306548476219, 
+        "name": "Mascagni", 
+        "timestamp": "2017-06-17T13:31:42.225000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 11, 
+        "id": "89dec3e927dce3e83a13af4196e030fb", 
+        "latitude": 45.4529755395486, 
+        "longitude": 9.16965320706367, 
+        "name": "Porta Genova", 
+        "timestamp": "2017-06-17T13:31:42.226000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 5, 
+        "id": "bf222fafc5fb6128271d3477b2ab6ba1", 
+        "latitude": 45.4522285574077, 
+        "longitude": 9.19747710227966, 
+        "name": "Beatrice d\\u0027Este - Cassolo", 
+        "timestamp": "2017-06-17T13:31:42.227000Z"
+      }, 
+      {
+        "empty_slots": 21, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 3, 
+        "id": "c211cef6b1eca5bc801659d019f71d07", 
+        "latitude": 45.4840521370399, 
+        "longitude": 9.1958624124527, 
+        "name": "Gioia - Pirelli", 
+        "timestamp": "2017-06-17T13:31:42.229000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {
+          "ebikes": 4, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 8, 
+        "id": "b284fc95bf312a1461971694788703d1", 
+        "latitude": 45.4655053013022, 
+        "longitude": 9.18545544147491, 
+        "name": "Cordusio", 
+        "timestamp": "2017-06-17T13:31:42.229000Z"
+      }, 
+      {
+        "empty_slots": 26, 
+        "extra": {}, 
+        "free_bikes": 3, 
+        "id": "52e156535f565b7251d838c426b2889a", 
+        "latitude": 45.4658420237431, 
+        "longitude": 9.2000225186348, 
+        "name": "Borgogna", 
+        "timestamp": "2017-06-17T13:31:42.232000Z"
+      }, 
+      {
+        "empty_slots": 21, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 8, 
+        "id": "a9015a012eaea6d7f08cce81f06f34e4", 
+        "latitude": 45.4680673510909, 
+        "longitude": 9.17618304491043, 
+        "name": "Cadorna 3", 
+        "timestamp": "2017-06-17T13:31:42.233000Z"
+      }, 
+      {
+        "empty_slots": 18, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 3, 
+        "id": "ffae03ec709206aa7c247a76e2372196", 
+        "latitude": 45.4786933473828, 
+        "longitude": 9.18917968869209, 
+        "name": "San Marco", 
+        "timestamp": "2017-06-17T13:31:42.239000Z"
+      }, 
+      {
+        "empty_slots": 23, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 3, 
+        "id": "b0564f1dff46860950b3e189f48c6e80", 
+        "latitude": 45.4761599923312, 
+        "longitude": 9.17337074875832, 
+        "name": "Arco della Pace 1 - Bertani", 
+        "timestamp": "2017-06-17T13:31:42.240000Z"
+      }, 
+      {
+        "empty_slots": 22, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 13, 
+        "id": "a94f416f16d3e02b3aa35e608ab3e5e9", 
+        "latitude": 45.4669311847908, 
+        "longitude": 9.1915225982666, 
+        "name": "Palazzo Marino", 
+        "timestamp": "2017-06-17T13:31:42.241000Z"
+      }, 
+      {
+        "empty_slots": 29, 
+        "extra": {}, 
+        "free_bikes": 7, 
+        "id": "6b00f4c1bc3cd2592495db3f498b9623", 
+        "latitude": 45.4699634186844, 
+        "longitude": 9.17543739080429, 
+        "name": "Gadio - Paleocapa", 
+        "timestamp": "2017-06-17T13:31:42.243000Z"
+      }, 
+      {
+        "empty_slots": 21, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "e33655378c6788477c7e612300557f04", 
+        "latitude": 45.463789678642, 
+        "longitude": 9.1929629445076, 
+        "name": "Arcivescovado", 
+        "timestamp": "2017-06-17T13:31:42.244000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 2, 
+        "id": "36409d92b47730ee0adb4151554efddb", 
+        "latitude": 45.4750794732908, 
+        "longitude": 9.17171984910965, 
+        "name": "Arco della Pace 2 - Pagano", 
+        "timestamp": "2017-06-17T13:31:42.245000Z"
+      }, 
+      {
+        "empty_slots": 23, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 12, 
+        "id": "9bea8d42c6d77b6b2070e23249228717", 
+        "latitude": 45.4863293977864, 
+        "longitude": 9.19692724943161, 
+        "name": "M. Gioia - \\\"Regione\\\"", 
+        "timestamp": "2017-06-17T13:31:42.246000Z"
+      }, 
+      {
+        "empty_slots": 14, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 16, 
+        "id": "47829af7cddc2682e221b4206eeda5ac", 
+        "latitude": 45.4477417524713, 
+        "longitude": 9.2098568379879, 
+        "name": "Piazzale Lodi", 
+        "timestamp": "2017-06-17T13:31:42.247000Z"
+      }, 
+      {
+        "empty_slots": 29, 
+        "extra": {}, 
+        "free_bikes": 3, 
+        "id": "faa9d86716f52c85b61682dc1ceb6be1", 
+        "latitude": 45.4872733715353, 
+        "longitude": 9.19470772147178, 
+        "name": "Restelli - Galvani RL 1", 
+        "timestamp": "2017-06-17T13:31:42.248000Z"
+      }, 
+      {
+        "empty_slots": 28, 
+        "extra": {
+          "ebikes": 4, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 8, 
+        "id": "1b8c08b110edb6b1afb0b235c492cb4a", 
+        "latitude": 45.4808626889639, 
+        "longitude": 9.1970694065094, 
+        "name": "S.Gioachimo", 
+        "timestamp": "2017-06-17T13:31:42.249000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {}, 
+        "free_bikes": 3, 
+        "id": "65d7e440b9c1a73ce1166fd3eba9d85c", 
+        "latitude": 45.4790017807546, 
+        "longitude": 9.20148298144341, 
+        "name": "Tunisia - Cozzi", 
+        "timestamp": "2017-06-17T13:31:42.250000Z"
+      }, 
+      {
+        "empty_slots": 32, 
+        "extra": {}, 
+        "free_bikes": 1, 
+        "id": "e54b11fa0fc53ed6dfdc9b9b3a3a36d4", 
+        "latitude": 45.4774342070483, 
+        "longitude": 9.20493096113204, 
+        "name": "Tunisia Lecco Bellintani", 
+        "timestamp": "2017-06-17T13:31:42.251000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {}, 
+        "free_bikes": 15, 
+        "id": "21a1c0a38525bd11b64b36976146cf4a", 
+        "latitude": 45.4764120164209, 
+        "longitude": 9.20857340097427, 
+        "name": "S. F. Romana", 
+        "timestamp": "2017-06-17T13:31:42.252000Z"
+      }, 
+      {
+        "empty_slots": 27, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 1, 
+        "id": "7b6a159334494da2d494d21c402299ec", 
+        "latitude": 45.480199765093, 
+        "longitude": 9.20751929283142, 
+        "name": "B.Marcello - Boscovich", 
+        "timestamp": "2017-06-17T13:31:42.253000Z"
+      }, 
+      {
+        "empty_slots": 24, 
+        "extra": {}, 
+        "free_bikes": 0, 
+        "id": "3d51dc4de7ea018b9bd00567426312b3", 
+        "latitude": 45.4822054385213, 
+        "longitude": 9.20330286026001, 
+        "name": "Napo Torriani De Lellis", 
+        "timestamp": "2017-06-17T13:31:42.253000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "bc00abc844d5d1d652aaf42dbc08f795", 
+        "latitude": 45.4801969441237, 
+        "longitude": 9.21108528971672, 
+        "name": "Buenos Aires - Lima", 
+        "timestamp": "2017-06-17T13:31:42.256000Z"
+      }, 
+      {
+        "empty_slots": 23, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 9, 
+        "id": "ee12d8c3f8c186518a5b0718d1647716", 
+        "latitude": 45.4837785210692, 
+        "longitude": 9.21469420194625, 
+        "name": "Buenos Aires - Argentina", 
+        "timestamp": "2017-06-17T13:31:42.256000Z"
+      }, 
+      {
+        "empty_slots": 8, 
+        "extra": {
+          "ebikes": 5, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 27, 
+        "id": "e624682c9924e0351b619fbf7b705da3", 
+        "latitude": 45.485198300838, 
+        "longitude": 9.2091641575098, 
+        "name": "Caiazzo", 
+        "timestamp": "2017-06-17T13:31:42.257000Z"
+      }, 
+      {
+        "empty_slots": 10, 
+        "extra": {}, 
+        "free_bikes": 13, 
+        "id": "de3f1cab4f3dde2558e03dbb1b2fe02a", 
+        "latitude": 45.4779250776498, 
+        "longitude": 9.21183228492736, 
+        "name": "Morgagni Redi", 
+        "timestamp": "2017-06-17T13:31:42.258000Z"
+      }, 
+      {
+        "empty_slots": 22, 
+        "extra": {}, 
+        "free_bikes": 14, 
+        "id": "b8c44a3ace401c0a3302cee60fea22f9", 
+        "latitude": 45.4813309624015, 
+        "longitude": 9.21491682529449, 
+        "name": "Bacone - Monteverdi", 
+        "timestamp": "2017-06-17T13:31:42.259000Z"
+      }, 
+      {
+        "empty_slots": 21, 
+        "extra": {}, 
+        "free_bikes": 14, 
+        "id": "15bfe9f9ab310ef3a5cc3760afe1886d", 
+        "latitude": 45.4748688213867, 
+        "longitude": 9.2111000418663, 
+        "name": "VIII novembre", 
+        "timestamp": "2017-06-17T13:31:42.260000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 18, 
+        "id": "914632105bc415fabc9057edf04e163e", 
+        "latitude": 45.4824649578546, 
+        "longitude": 9.20681655406951, 
+        "name": "Settembrini - Vitruvio", 
+        "timestamp": "2017-06-17T13:31:42.261000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 9, 
+        "id": "4cb5a7b6d07cb6d5db734b82bf3ce5d5", 
+        "latitude": 45.4843389152391, 
+        "longitude": 9.20033901929855, 
+        "name": "F.Filzi", 
+        "timestamp": "2017-06-17T13:31:42.261000Z"
+      }, 
+      {
+        "empty_slots": 21, 
+        "extra": {}, 
+        "free_bikes": 3, 
+        "id": "33ada9196fb253e1899e01c914cb305b", 
+        "latitude": 45.486803267064, 
+        "longitude": 9.19807523488998, 
+        "name": "Melchiorre Gioia - Galvani", 
+        "timestamp": "2017-06-17T13:31:42.262000Z"
+      }, 
+      {
+        "empty_slots": 4, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 28, 
+        "id": "2feaf9d3d25205ff8baf465dab4fe4b8", 
+        "latitude": 45.48096424257, 
+        "longitude": 9.2351245880127, 
+        "name": "Bassini - Grossich", 
+        "timestamp": "2017-06-17T13:31:42.263000Z"
+      }, 
+      {
+        "empty_slots": 23, 
+        "extra": {}, 
+        "free_bikes": 6, 
+        "id": "ad74e7e86d283eb89482bf91e85de911", 
+        "latitude": 45.4726230726798, 
+        "longitude": 9.21461910009384, 
+        "name": "Castel Morrone - M. A. Di Savoia", 
+        "timestamp": "2017-06-17T13:31:42.264000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 13, 
+        "id": "5977b5bb97ccf31ffffaf7023de8b62f", 
+        "latitude": 45.4751895009813, 
+        "longitude": 9.20468017458916, 
+        "name": "Porta Venezia 2", 
+        "timestamp": "2017-06-17T13:31:42.265000Z"
+      }, 
+      {
+        "empty_slots": 1, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 35, 
+        "id": "0d654a7f66501a7a3bee5284cacbecda", 
+        "latitude": 45.4708606427238, 
+        "longitude": 9.21578049659729, 
+        "name": "Modena - Castel Morrone", 
+        "timestamp": "2017-06-17T13:31:42.267000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {}, 
+        "free_bikes": 20, 
+        "id": "f268ab2f992a2dcdd5b6856a9a1179c2", 
+        "latitude": 45.468234764388, 
+        "longitude": 9.21058237552643, 
+        "name": "Risorgimento", 
+        "timestamp": "2017-06-17T13:31:42.267000Z"
+      }, 
+      {
+        "empty_slots": 0, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 34, 
+        "id": "10e44c078d75c98d608567c40bdff7d3", 
+        "latitude": 45.4682780284177, 
+        "longitude": 9.21466737985611, 
+        "name": "Indipendenza-Castel Morrone", 
+        "timestamp": "2017-06-17T13:31:42.268000Z"
+      }, 
+      {
+        "empty_slots": 34, 
+        "extra": {}, 
+        "free_bikes": 0, 
+        "id": "4d0d6cce99da00f32784f90a324a7d3b", 
+        "latitude": 45.4644123503584, 
+        "longitude": 9.21136021614075, 
+        "name": "Fiamma", 
+        "timestamp": "2017-06-17T13:31:42.269000Z"
+      }, 
+      {
+        "empty_slots": 6, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 26, 
+        "id": "0912f6d76376f0ebbe80edb06986c98d", 
+        "latitude": 45.462188759969, 
+        "longitude": 9.21248942613602, 
+        "name": "XXII Marzo", 
+        "timestamp": "2017-06-17T13:31:42.270000Z"
+      }, 
+      {
+        "empty_slots": 11, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 22, 
+        "id": "9193ea19d3e433db69da0a63be4c5f5d", 
+        "latitude": 45.4622809410085, 
+        "longitude": 9.21611443161964, 
+        "name": "Emilia - Piceno", 
+        "timestamp": "2017-06-17T13:31:42.271000Z"
+      }, 
+      {
+        "empty_slots": 8, 
+        "extra": {
+          "ebikes": 6, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 27, 
+        "id": "6cb9972e723c643d826986bba5e5e6ea", 
+        "latitude": 45.4654733219714, 
+        "longitude": 9.21461775898933, 
+        "name": "Bronzetti - Archimede", 
+        "timestamp": "2017-06-17T13:31:42.271000Z"
+      }, 
+      {
+        "empty_slots": 1, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 33, 
+        "id": "1256a2cac8ca2d1f1097684d6d781d15", 
+        "latitude": 45.4684529652424, 
+        "longitude": 9.21672195196151, 
+        "name": "Dateo", 
+        "timestamp": "2017-06-17T13:31:42.272000Z"
+      }, 
+      {
+        "empty_slots": 13, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 14, 
+        "id": "78132caac2ad2857dbaf68c365fa5f64", 
+        "latitude": 45.4508098285709, 
+        "longitude": 9.21250283718109, 
+        "name": "Muratori - Umbria", 
+        "timestamp": "2017-06-17T13:31:42.274000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {}, 
+        "free_bikes": 6, 
+        "id": "112d61694c09cc5c0bc980ad234bc6d5", 
+        "latitude": 45.4601362818685, 
+        "longitude": 9.20764803886414, 
+        "name": "Montenero - Spartaco", 
+        "timestamp": "2017-06-17T13:31:42.275000Z"
+      }, 
+      {
+        "empty_slots": 27, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "efc4634f12daa752e5f4570cc703c3e2", 
+        "latitude": 45.4793619310003, 
+        "longitude": 9.16678726673126, 
+        "name": "Sempione - RAI", 
+        "timestamp": "2017-06-17T13:31:42.276000Z"
+      }, 
+      {
+        "empty_slots": 29, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 5, 
+        "id": "d8dc0a1d779931ba4218cbe7b285229e", 
+        "latitude": 45.4583170202097, 
+        "longitude": 9.21314120292664, 
+        "name": "Cadore - Pinaroli", 
+        "timestamp": "2017-06-17T13:31:42.276000Z"
+      }, 
+      {
+        "empty_slots": 1, 
+        "extra": {}, 
+        "free_bikes": 28, 
+        "id": "0a6536775160e100f74f031a25e546b8", 
+        "latitude": 45.4553321375029, 
+        "longitude": 9.20820727944374, 
+        "name": "Lazio - Vasari - Morosini", 
+        "timestamp": "2017-06-17T13:31:42.277000Z"
+      }, 
+      {
+        "empty_slots": 14, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 10, 
+        "id": "c3e635679d2e77e6747df85fadac4e0a", 
+        "latitude": 45.4534854385523, 
+        "longitude": 9.21251624822617, 
+        "name": "Cirene - Friuli", 
+        "timestamp": "2017-06-17T13:31:42.278000Z"
+      }, 
+      {
+        "empty_slots": 5, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 16, 
+        "id": "27e2d8085b7ee4827e97f66780a6c268", 
+        "latitude": 45.4551073006702, 
+        "longitude": 9.20295417308807, 
+        "name": "Caldara / Curtatone", 
+        "timestamp": "2017-06-17T13:31:42.279000Z"
+      }, 
+      {
+        "empty_slots": 2, 
+        "extra": {}, 
+        "free_bikes": 21, 
+        "id": "4a575ef6b42bf39a8529bc52175db9a1", 
+        "latitude": 45.4521975113363, 
+        "longitude": 9.20867666602135, 
+        "name": "Tiraboschi - Muratori", 
+        "timestamp": "2017-06-17T13:31:42.279000Z"
+      }, 
+      {
+        "empty_slots": 9, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 9, 
+        "id": "be13fdd2d10650a4cd00e5d687a25226", 
+        "latitude": 45.4501155039721, 
+        "longitude": 9.20677229762077, 
+        "name": "Lodi - Papi", 
+        "timestamp": "2017-06-17T13:31:42.280000Z"
+      }, 
+      {
+        "empty_slots": 0, 
+        "extra": {
+          "ebikes": 4, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 34, 
+        "id": "e3c0803b8b846c32191a02d9c9566d5b", 
+        "latitude": 45.4715575333015, 
+        "longitude": 9.14538994431496, 
+        "name": "Brescia", 
+        "timestamp": "2017-06-17T13:31:42.281000Z"
+      }, 
+      {
+        "empty_slots": 11, 
+        "extra": {}, 
+        "free_bikes": 18, 
+        "id": "77387a23fa430b7ac7a6720cc487d1ae", 
+        "latitude": 45.4840577785923, 
+        "longitude": 9.22368496656418, 
+        "name": "Lombardia - Vallazze", 
+        "timestamp": "2017-06-17T13:31:42.282000Z"
+      }, 
+      {
+        "empty_slots": 4, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 23, 
+        "id": "d1518e9bc3c9976daf61e015c35d9905", 
+        "latitude": 45.4480098982521, 
+        "longitude": 9.2027395963669, 
+        "name": "Crema - Giulio Romano", 
+        "timestamp": "2017-06-17T13:31:42.283000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 15, 
+        "id": "da79aba97cddd179d475d5878f75329c", 
+        "latitude": 45.4487691672851, 
+        "longitude": 9.1972330212593, 
+        "name": "Ripamonti Bellezza", 
+        "timestamp": "2017-06-17T13:31:42.284000Z"
+      }, 
+      {
+        "empty_slots": 25, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "6b35a96976502f49de704df622511a25", 
+        "latitude": 45.4510506762996, 
+        "longitude": 9.19054090976715, 
+        "name": "Bocconi 3 - I. Aragona", 
+        "timestamp": "2017-06-17T13:31:42.285000Z"
+      }, 
+      {
+        "empty_slots": 7, 
+        "extra": {}, 
+        "free_bikes": 29, 
+        "id": "36af1137c160a6e1127f7158e95b0b7e", 
+        "latitude": 45.4406659126486, 
+        "longitude": 9.21324049835675, 
+        "name": "Bonomelli", 
+        "timestamp": "2017-06-17T13:31:42.285000Z"
+      }, 
+      {
+        "empty_slots": 10, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 21, 
+        "id": "a4fdfb61867810b6f12ece8ae0941cdb", 
+        "latitude": 45.4444796804971, 
+        "longitude": 9.18266862630844, 
+        "name": "Balilla - Tibaldi", 
+        "timestamp": "2017-06-17T13:31:42.287000Z"
+      }, 
+      {
+        "empty_slots": 4, 
+        "extra": {
+          "ebikes": 4, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 31, 
+        "id": "240145cb36dfa1750e5b52e3804c32e0", 
+        "latitude": 45.4488980632437, 
+        "longitude": 9.17986571788788, 
+        "name": "San Gottardo - Gentilino", 
+        "timestamp": "2017-06-17T13:31:42.288000Z"
+      }, 
+      {
+        "empty_slots": 5, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 27, 
+        "id": "a05b398c93e1faf3f3d8e85827b33a40", 
+        "latitude": 45.4455297363669, 
+        "longitude": 9.1727471351624, 
+        "name": "Segantini - Darwin", 
+        "timestamp": "2017-06-17T13:31:42.288000Z"
+      }, 
+      {
+        "empty_slots": 13, 
+        "extra": {}, 
+        "free_bikes": 22, 
+        "id": "63d3af3471dc149b3d774c98a08eb6f3", 
+        "latitude": 45.4473691688493, 
+        "longitude": 9.17755164206028, 
+        "name": "Ascanio Sforza - Pavia", 
+        "timestamp": "2017-06-17T13:31:42.289000Z"
+      }, 
+      {
+        "empty_slots": 6, 
+        "extra": {
+          "ebikes": 7, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 26, 
+        "id": "29e51caf6929257d2245959ca75ef812", 
+        "latitude": 45.4442500957855, 
+        "longitude": 9.17638421058655, 
+        "name": "Naviglio Pavese - Torricelli", 
+        "timestamp": "2017-06-17T13:31:42.290000Z"
+      }, 
+      {
+        "empty_slots": 2, 
+        "extra": {}, 
+        "free_bikes": 31, 
+        "id": "92b75636cd32a16d1df60c21303246a6", 
+        "latitude": 45.4496507344921, 
+        "longitude": 9.17280614376068, 
+        "name": "Arcole - Argelati", 
+        "timestamp": "2017-06-17T13:31:42.291000Z"
+      }, 
+      {
+        "empty_slots": 2, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 29, 
+        "id": "7ad0afabdffe267e727b1c03d4345b93", 
+        "latitude": 45.4587835996341, 
+        "longitude": 9.15437400341034, 
+        "name": "Roncaglia - Washington", 
+        "timestamp": "2017-06-17T13:31:42.292000Z"
+      }, 
+      {
+        "empty_slots": 2, 
+        "extra": {}, 
+        "free_bikes": 27, 
+        "id": "14115570217de71deac1966da1e1babf", 
+        "latitude": 45.4498182024788, 
+        "longitude": 9.16759729385375, 
+        "name": "Naviglio G.Valenza", 
+        "timestamp": "2017-06-17T13:31:42.292000Z"
+      }, 
+      {
+        "empty_slots": 18, 
+        "extra": {}, 
+        "free_bikes": 12, 
+        "id": "5925562cd3d0a29ec3c885192581ffd6", 
+        "latitude": 45.4734835774208, 
+        "longitude": 9.23058360815048, 
+        "name": "Gorini - Strambio", 
+        "timestamp": "2017-06-17T13:31:42.293000Z"
+      }, 
+      {
+        "empty_slots": 31, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 3, 
+        "id": "b6deba2fb8e527910b944b905ed40cba", 
+        "latitude": 45.4916658381144, 
+        "longitude": 9.19200539588928, 
+        "name": "Zara M3", 
+        "timestamp": "2017-06-17T13:31:42.294000Z"
+      }, 
+      {
+        "empty_slots": 5, 
+        "extra": {
+          "ebikes": 5, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 25, 
+        "id": "0362ab13bb70f49ed16e658b7312333c", 
+        "latitude": 45.4570790609292, 
+        "longitude": 9.16801035404205, 
+        "name": "Coni Zugna Solari", 
+        "timestamp": "2017-06-17T13:31:42.295000Z"
+      }, 
+      {
+        "empty_slots": 1, 
+        "extra": {}, 
+        "free_bikes": 22, 
+        "id": "b096099c1069cf9e55cd53863930d84e", 
+        "latitude": 45.4806257298377, 
+        "longitude": 9.22463178634644, 
+        "name": "Piola", 
+        "timestamp": "2017-06-17T13:31:42.296000Z"
+      }, 
+      {
+        "empty_slots": 2, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 33, 
+        "id": "14a663026e8e71c254aeab3f05ea3c72", 
+        "latitude": 45.4549332631759, 
+        "longitude": 9.16284441947937, 
+        "name": "Rosario", 
+        "timestamp": "2017-06-17T13:31:42.297000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 30, 
+        "id": "62ce51f0c9221cfc25c68960093db0ab", 
+        "latitude": 45.4501070365462, 
+        "longitude": 9.15148928761482, 
+        "name": "Savona - Tolstoj", 
+        "timestamp": "2017-06-17T13:31:42.299000Z"
+      }, 
+      {
+        "empty_slots": 27, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 2, 
+        "id": "583d65de7b1e7cfe25eb43c602e06c5c", 
+        "latitude": 45.492624764286, 
+        "longitude": 9.19902205467224, 
+        "name": "Piazza Carbonari", 
+        "timestamp": "2017-06-17T13:31:42.300000Z"
+      }, 
+      {
+        "empty_slots": 14, 
+        "extra": {}, 
+        "free_bikes": 18, 
+        "id": "d6da25ed2492a9e53aee49513f0318f8", 
+        "latitude": 45.4593385983571, 
+        "longitude": 9.15958218276501, 
+        "name": "Vesuvio - Lipari", 
+        "timestamp": "2017-06-17T13:31:42.301000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {}, 
+        "free_bikes": 16, 
+        "id": "d6e07ebf5e47a6be5d189b6b80feaf97", 
+        "latitude": 45.4634830432151, 
+        "longitude": 9.16358470916748, 
+        "name": "S.M. del Carso", 
+        "timestamp": "2017-06-17T13:31:42.302000Z"
+      }, 
+      {
+        "empty_slots": 7, 
+        "extra": {
+          "ebikes": 8, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 26, 
+        "id": "bb2d74c1abb43fbee893c5ab8380cd51", 
+        "latitude": 45.4633776956896, 
+        "longitude": 9.15732443332672, 
+        "name": "Elba - Cimarosa", 
+        "timestamp": "2017-06-17T13:31:42.303000Z"
+      }, 
+      {
+        "empty_slots": 7, 
+        "extra": {
+          "ebikes": 7, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 27, 
+        "id": "5a26362f42a2bbadd8ee337a5cdaeffb", 
+        "latitude": 45.4545179837016, 
+        "longitude": 9.15470793843269, 
+        "name": "Napoli - Washington", 
+        "timestamp": "2017-06-17T13:31:42.303000Z"
+      }, 
+      {
+        "empty_slots": 23, 
+        "extra": {}, 
+        "free_bikes": 8, 
+        "id": "fdcff292ea4c425938ecf70b9309c740", 
+        "latitude": 45.4668465357227, 
+        "longitude": 9.15931463241577, 
+        "name": "Vercelli - Cherubini", 
+        "timestamp": "2017-06-17T13:31:42.304000Z"
+      }, 
+      {
+        "empty_slots": 8, 
+        "extra": {}, 
+        "free_bikes": 27, 
+        "id": "c72be2df2d7e3014f2c5f07d781902bf", 
+        "latitude": 45.4670873149608, 
+        "longitude": 9.15532350540161, 
+        "name": "Vercelli - Piemonte", 
+        "timestamp": "2017-06-17T13:31:42.305000Z"
+      }, 
+      {
+        "empty_slots": 27, 
+        "extra": {}, 
+        "free_bikes": 2, 
+        "id": "16acc8d37aae47452ef92f93518bf012", 
+        "latitude": 45.4682554558846, 
+        "longitude": 9.16047066450119, 
+        "name": "Pagano - Guido D\\u0027Arezzo", 
+        "timestamp": "2017-06-17T13:31:42.306000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 22, 
+        "id": "c7f04adf47830672ead621f2d82e711f", 
+        "latitude": 45.4707553089853, 
+        "longitude": 9.15540397167205, 
+        "name": "Buonarroti", 
+        "timestamp": "2017-06-17T13:31:42.307000Z"
+      }, 
+      {
+        "empty_slots": 22, 
+        "extra": {}, 
+        "free_bikes": 11, 
+        "id": "c67ddad2edce1cce45b344c2d12d617e", 
+        "latitude": 45.4749496967644, 
+        "longitude": 9.16419088840484, 
+        "name": "Giovanni XXIII", 
+        "timestamp": "2017-06-17T13:31:42.308000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {}, 
+        "free_bikes": 8, 
+        "id": "41ae1dd6611541deb974eff3044922f7", 
+        "latitude": 45.47545281424, 
+        "longitude": 9.1683255136013, 
+        "name": "Canova - Sangiorgio", 
+        "timestamp": "2017-06-17T13:31:42.309000Z"
+      }, 
+      {
+        "empty_slots": 13, 
+        "extra": {}, 
+        "free_bikes": 2, 
+        "id": "bd672a7545801269f9c6def4b2ff224c", 
+        "latitude": 45.4778620734248, 
+        "longitude": 9.1697658598423, 
+        "name": "Sempione - Melzi d Eril", 
+        "timestamp": "2017-06-17T13:31:42.310000Z"
+      }, 
+      {
+        "empty_slots": 24, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 10, 
+        "id": "e966b71a0ed7af923b6d8def2bff9143", 
+        "latitude": 45.4783708070203, 
+        "longitude": 9.17290806770325, 
+        "name": "Melzi d Eril - Cagnola", 
+        "timestamp": "2017-06-17T13:31:42.311000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {}, 
+        "free_bikes": 15, 
+        "id": "ca4e2f46c591b45846d444e53061b5f7", 
+        "latitude": 45.4803766866256, 
+        "longitude": 9.16303088670247, 
+        "name": "Domodossola FNM - Filelfo", 
+        "timestamp": "2017-06-17T13:31:42.312000Z"
+      }, 
+      {
+        "empty_slots": 28, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 4, 
+        "id": "fbc7ef4f9c9df81d279986784b24ffb1", 
+        "latitude": 45.4780219347538, 
+        "longitude": 9.17644456028938, 
+        "name": "Santissima Trinit\u00e0", 
+        "timestamp": "2017-06-17T13:31:42.312000Z"
+      }, 
+      {
+        "empty_slots": 25, 
+        "extra": {}, 
+        "free_bikes": 9, 
+        "id": "8dc90dd22c5d2720b69bfa43818a4e02", 
+        "latitude": 45.4819891714969, 
+        "longitude": 9.16837781667709, 
+        "name": "Procaccini - Gramsci", 
+        "timestamp": "2017-06-17T13:31:42.313000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 8, 
+        "id": "9bce0af16e9369c3aaf7f4aacf9244c6", 
+        "latitude": 45.4810168999234, 
+        "longitude": 9.17225629091263, 
+        "name": "Sarpi Albertini", 
+        "timestamp": "2017-06-17T13:31:42.314000Z"
+      }, 
+      {
+        "empty_slots": 13, 
+        "extra": {}, 
+        "free_bikes": 7, 
+        "id": "df93ad48e0b9f0381c86ad079545d9cb", 
+        "latitude": 45.4816074111582, 
+        "longitude": 9.17810618877411, 
+        "name": "Sarpi Niccolini", 
+        "timestamp": "2017-06-17T13:31:42.315000Z"
+      }, 
+      {
+        "empty_slots": 8, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 21, 
+        "id": "2a5091c4e517423bcdedbaaeec473358", 
+        "latitude": 45.450379781127, 
+        "longitude": 9.15591364508145, 
+        "name": "Milizie - Tortona", 
+        "timestamp": "2017-06-17T13:31:42.316000Z"
+      }, 
+      {
+        "empty_slots": 14, 
+        "extra": {}, 
+        "free_bikes": 20, 
+        "id": "5ddbfeba4fb4e0bdc06ce7b66bd89b83", 
+        "latitude": 45.4839460287448, 
+        "longitude": 9.18220331674092, 
+        "name": "Farini - Quadrio", 
+        "timestamp": "2017-06-17T13:31:42.317000Z"
+      }, 
+      {
+        "empty_slots": 9, 
+        "extra": {}, 
+        "free_bikes": 24, 
+        "id": "51bff6311f2f1471744547292095cc41", 
+        "latitude": 45.4519218591045, 
+        "longitude": 9.18448984622955, 
+        "name": "Col di Lana - Col Moschin", 
+        "timestamp": "2017-06-17T13:31:42.317000Z"
+      }, 
+      {
+        "empty_slots": 9, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 18, 
+        "id": "7d007a1b736344138026e832eb1c2e18", 
+        "latitude": 45.4867487346913, 
+        "longitude": 9.18500751256942, 
+        "name": "Garibaldi Pepe", 
+        "timestamp": "2017-06-17T13:31:42.318000Z"
+      }, 
+      {
+        "empty_slots": 28, 
+        "extra": {}, 
+        "free_bikes": 7, 
+        "id": "f129c6b892597e85a3ec88848e8e15ef", 
+        "latitude": 45.4855433677342, 
+        "longitude": 9.18838441371917, 
+        "name": "Borsieri - Confalonieri", 
+        "timestamp": "2017-06-17T13:31:42.319000Z"
+      }, 
+      {
+        "empty_slots": 14, 
+        "extra": {}, 
+        "free_bikes": 10, 
+        "id": "a23b0bf7fedf5d5cdb062c103874c706", 
+        "latitude": 45.4890804165967, 
+        "longitude": 9.19331431388854, 
+        "name": "Pola RL", 
+        "timestamp": "2017-06-17T13:31:42.320000Z"
+      }, 
+      {
+        "empty_slots": 31, 
+        "extra": {}, 
+        "free_bikes": 2, 
+        "id": "66631980fdda90bbd009a71b934eabd6", 
+        "latitude": 45.489129305668, 
+        "longitude": 9.19098615646362, 
+        "name": "Lagosta", 
+        "timestamp": "2017-06-17T13:31:42.320000Z"
+      }, 
+      {
+        "empty_slots": 26, 
+        "extra": {}, 
+        "free_bikes": 0, 
+        "id": "7de6b6f382aa7fd993d500870da97584", 
+        "latitude": 45.4878694583636, 
+        "longitude": 9.19621109962463, 
+        "name": "Galvani - Restelli - RL", 
+        "timestamp": "2017-06-17T13:31:42.322000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 21, 
+        "id": "5d6a74aec4f98bad6612cd72245335f2", 
+        "latitude": 45.4849359733637, 
+        "longitude": 9.20624256134033, 
+        "name": "P.zza Luigi di Savoia", 
+        "timestamp": "2017-06-17T13:31:42.323000Z"
+      }, 
+      {
+        "empty_slots": 24, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 6, 
+        "id": "5c07ee83aba95692ec801747bcab17a2", 
+        "latitude": 45.4870984931302, 
+        "longitude": 9.20348793268204, 
+        "name": "IV Novembre", 
+        "timestamp": "2017-06-17T13:31:42.324000Z"
+      }, 
+      {
+        "empty_slots": 30, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 3, 
+        "id": "0e4de861aa3064167a016be965b71264", 
+        "latitude": 45.4907689453302, 
+        "longitude": 9.19381186366081, 
+        "name": "Taramelli RL", 
+        "timestamp": "2017-06-17T13:31:42.324000Z"
+      }, 
+      {
+        "empty_slots": 25, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 8, 
+        "id": "f0526b2f4d831577040d295ec90439a0", 
+        "latitude": 45.488990300766, 
+        "longitude": 9.18225696092122, 
+        "name": "Valtellina - Farini", 
+        "timestamp": "2017-06-17T13:31:42.325000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "ebikes": 4, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 22, 
+        "id": "500cec2f9cf4acf95573c4caa8616f64", 
+        "latitude": 45.4828352409673, 
+        "longitude": 9.23010896454798, 
+        "name": "Teodosio - Pacini", 
+        "timestamp": "2017-06-17T13:31:42.326000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 20, 
+        "id": "6540a297324a77f849f5a6086b7bbed9", 
+        "latitude": 45.4547799215871, 
+        "longitude": 9.21359449625015, 
+        "name": "Friuli", 
+        "timestamp": "2017-06-17T13:31:42.327000Z"
+      }, 
+      {
+        "empty_slots": 29, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 6, 
+        "id": "eacee80ec63612091c94d99905c76d05", 
+        "latitude": 45.4858300443208, 
+        "longitude": 9.21754544382566, 
+        "name": "Loreto 1", 
+        "timestamp": "2017-06-17T13:31:42.328000Z"
+      }, 
+      {
+        "empty_slots": 29, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 5, 
+        "id": "850a948d4fbbad843fed0c23e5b49e10", 
+        "latitude": 45.4878756166295, 
+        "longitude": 9.2124841153327, 
+        "name": "Brianza - Venini", 
+        "timestamp": "2017-06-17T13:31:42.328000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 13, 
+        "id": "e91080dbe709c8526dee3b368344b704", 
+        "latitude": 45.4841865938856, 
+        "longitude": 9.21932771801949, 
+        "name": "Aspromonte - Pecchio", 
+        "timestamp": "2017-06-17T13:31:42.329000Z"
+      }, 
+      {
+        "empty_slots": 6, 
+        "extra": {
+          "ebikes": 4, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 18, 
+        "id": "fafb6cfbedbe9a470e6dc8ffcd5627ec", 
+        "latitude": 45.4788240556337, 
+        "longitude": 9.22167062759399, 
+        "name": "Bernini", 
+        "timestamp": "2017-06-17T13:31:42.330000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 25, 
+        "id": "4d7829e64a77f7471ce68b3e7c4f03b2", 
+        "latitude": 45.4733133583997, 
+        "longitude": 9.21965897083282, 
+        "name": "Verrocchio - Juvara", 
+        "timestamp": "2017-06-17T13:31:42.331000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 17, 
+        "id": "dff2285a87304e6eaf6d4cc370ed97e7", 
+        "latitude": 45.4707966901203, 
+        "longitude": 9.22038316726684, 
+        "name": "Novelli - Carnaghi", 
+        "timestamp": "2017-06-17T13:31:42.332000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 12, 
+        "id": "4de9206b192c13060857145bc41d7ddf", 
+        "latitude": 45.4688508, 
+        "longitude": 9.2240632, 
+        "name": "Susa - Sidoli", 
+        "timestamp": "2017-06-17T13:31:42.332000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {}, 
+        "free_bikes": 17, 
+        "id": "0e88d775b022559f57f6ad922679a8cc", 
+        "latitude": 45.4764271, 
+        "longitude": 9.2242174, 
+        "name": "Romagna - Pascoli", 
+        "timestamp": "2017-06-17T13:31:42.334000Z"
+      }, 
+      {
+        "empty_slots": 0, 
+        "extra": {
+          "ebikes": 4, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 35, 
+        "id": "4a903a30ec023da367cfae95616f5dbb", 
+        "latitude": 45.4909258555569, 
+        "longitude": 9.14540072684758, 
+        "name": "Accursio - Portello", 
+        "timestamp": "2017-06-17T13:31:42.336000Z"
+      }, 
+      {
+        "empty_slots": 4, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 23, 
+        "id": "b235138c35911272375c655180e12ec6", 
+        "latitude": 45.4768369753779, 
+        "longitude": 9.16056593661779, 
+        "name": "VI Febbraio", 
+        "timestamp": "2017-06-17T13:31:42.337000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 24, 
+        "id": "aec3ab021ca748488e33fd64f13caf4f", 
+        "latitude": 45.4847643315369, 
+        "longitude": 9.15658282935681, 
+        "name": "Chiesa - E. Filiberto", 
+        "timestamp": "2017-06-17T13:31:42.338000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {}, 
+        "free_bikes": 3, 
+        "id": "a769f2ed6d8cdfec1467dbd4505a3e8c", 
+        "latitude": 45.4799184197211, 
+        "longitude": 9.14338241826044, 
+        "name": "Lotto", 
+        "timestamp": "2017-06-17T13:31:42.339000Z"
+      }, 
+      {
+        "empty_slots": 9, 
+        "extra": {
+          "ebikes": 5, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 15, 
+        "id": "55ce72107ef90a8baa9a6937d5b85f75", 
+        "latitude": 45.4760557498563, 
+        "longitude": 9.14373373394483, 
+        "name": "Zavattari - Tempesta", 
+        "timestamp": "2017-06-17T13:31:42.340000Z"
+      }, 
+      {
+        "empty_slots": 8, 
+        "extra": {
+          "ebikes": 5, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 21, 
+        "id": "f707886fc51c31193a7091557fff15e8", 
+        "latitude": 45.4867364178838, 
+        "longitude": 9.13705235128873, 
+        "name": "QT8 - Isernia", 
+        "timestamp": "2017-06-17T13:31:42.341000Z"
+      }, 
+      {
+        "empty_slots": 5, 
+        "extra": {}, 
+        "free_bikes": 29, 
+        "id": "7333191de4e86e6fe49988aabcd837c7", 
+        "latitude": 45.4669156187816, 
+        "longitude": 9.15028366146998, 
+        "name": "De Angeli - R. Sanzio", 
+        "timestamp": "2017-06-17T13:31:42.342000Z"
+      }, 
+      {
+        "empty_slots": 2, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 21, 
+        "id": "c74ff6cf190b8c71069e813be6708b99", 
+        "latitude": 45.4958153324679, 
+        "longitude": 9.15507947799597, 
+        "name": "Mac Mahon - Artieri", 
+        "timestamp": "2017-06-17T13:31:42.343000Z"
+      }, 
+      {
+        "empty_slots": 10, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 19, 
+        "id": "3bf21eff7dba0d80d6fc67eb3ebe9b34", 
+        "latitude": 45.4911667668979, 
+        "longitude": 9.16105141644948, 
+        "name": "Mac Mahon - Caracciolo", 
+        "timestamp": "2017-06-17T13:31:42.343000Z"
+      }, 
+      {
+        "empty_slots": 7, 
+        "extra": {}, 
+        "free_bikes": 17, 
+        "id": "f4129549d78b4ca7743ab546e6862e37", 
+        "latitude": 45.4881915682506, 
+        "longitude": 9.16082214127528, 
+        "name": "Caneva - Tolentino", 
+        "timestamp": "2017-06-17T13:31:42.344000Z"
+      }, 
+      {
+        "empty_slots": 10, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 15, 
+        "id": "f2ae0ede68d38a21552b88daf720694b", 
+        "latitude": 45.4882827664623, 
+        "longitude": 9.16893861298377, 
+        "name": "Govone - Borgese", 
+        "timestamp": "2017-06-17T13:31:42.345000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 25, 
+        "id": "1cd0075f8e2bbf679a45f8020d3c3bc0", 
+        "latitude": 45.4864153338653, 
+        "longitude": 9.16599880467402, 
+        "name": "Marussig - Castelvetro", 
+        "timestamp": "2017-06-17T13:31:42.346000Z"
+      }, 
+      {
+        "empty_slots": 22, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 2, 
+        "id": "e2ed7aa3f3509d189cc5ef9b64a06cbe", 
+        "latitude": 45.4828054810458, 
+        "longitude": 9.14399793153279, 
+        "name": "Stuparich - Albani", 
+        "timestamp": "2017-06-17T13:31:42.347000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 10, 
+        "id": "241e8855c29d047766a147dc4a4c6887", 
+        "latitude": 45.4844913771267, 
+        "longitude": 9.15147190695279, 
+        "name": "Teodorico - Gattamelata", 
+        "timestamp": "2017-06-17T13:31:42.348000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {}, 
+        "free_bikes": 13, 
+        "id": "359043db2fe8fa1d500aecc132138c90", 
+        "latitude": 45.4825899686547, 
+        "longitude": 9.14843293724971, 
+        "name": "Vigliani - Scarampo", 
+        "timestamp": "2017-06-17T13:31:42.349000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "ebikes": 5, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 13, 
+        "id": "b7044b931faa00e0ebbdf4271a520a98", 
+        "latitude": 45.4992908710408, 
+        "longitude": 9.15188225808379, 
+        "name": "Castelli - Ailanti", 
+        "timestamp": "2017-06-17T13:31:42.349000Z"
+      }, 
+      {
+        "empty_slots": 26, 
+        "extra": {}, 
+        "free_bikes": 3, 
+        "id": "67cdf83d839839fbec8f095029445c4c", 
+        "latitude": 45.5023768209563, 
+        "longitude": 9.15268426542752, 
+        "name": "Villapizzone FFSS - Lambruschini", 
+        "timestamp": "2017-06-17T13:31:42.350000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 13, 
+        "id": "6297e54a1cdaae88ea9ccf01d2a4a999", 
+        "latitude": 45.502754680751, 
+        "longitude": 9.16057398324483, 
+        "name": "Bovisa Passante 1 - Alfieri", 
+        "timestamp": "2017-06-17T13:31:42.352000Z"
+      }, 
+      {
+        "empty_slots": 11, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 14, 
+        "id": "4a49fb52c34ce85419b60912cefc35e7", 
+        "latitude": 45.5025055943553, 
+        "longitude": 9.16500096922391, 
+        "name": "Bausan - Brofferio", 
+        "timestamp": "2017-06-17T13:31:42.353000Z"
+      }, 
+      {
+        "empty_slots": 25, 
+        "extra": {}, 
+        "free_bikes": 1, 
+        "id": "e2b88e929ceed5a8dcf3d91eafe30b24", 
+        "latitude": 45.4962470544856, 
+        "longitude": 9.17045121794217, 
+        "name": "Nigra - Castellini", 
+        "timestamp": "2017-06-17T13:31:42.353000Z"
+      }, 
+      {
+        "empty_slots": 24, 
+        "extra": {}, 
+        "free_bikes": 4, 
+        "id": "b213b4eb7286bc6b19ad37b6e61e7208", 
+        "latitude": 45.4948893634155, 
+        "longitude": 9.17637085317665, 
+        "name": "Lancetti Passante - Maloja", 
+        "timestamp": "2017-06-17T13:31:42.354000Z"
+      }, 
+      {
+        "empty_slots": 22, 
+        "extra": {}, 
+        "free_bikes": 0, 
+        "id": "c0806bcff9ebec9cbded0ac65b637f9e", 
+        "latitude": 45.493106947527, 
+        "longitude": 9.18238973018561, 
+        "name": "Valtellina - Aprica", 
+        "timestamp": "2017-06-17T13:31:42.355000Z"
+      }, 
+      {
+        "empty_slots": 24, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 5, 
+        "id": "3eff36f0caec5562c8d2fd28577d2ac0", 
+        "latitude": 45.4979833097212, 
+        "longitude": 9.18686097269529, 
+        "name": "Maciachini - Marche", 
+        "timestamp": "2017-06-17T13:31:42.356000Z"
+      }, 
+      {
+        "empty_slots": 24, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 12, 
+        "id": "21907c8d77dd3168b967eef6fd050ed1", 
+        "latitude": 45.4738943579902, 
+        "longitude": 9.15108035796948, 
+        "name": "Amendola M1", 
+        "timestamp": "2017-06-17T13:31:42.357000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 7, 
+        "id": "d33630fc4231000a59b16fc248388008", 
+        "latitude": 45.5034828997716, 
+        "longitude": 9.16896661517058, 
+        "name": "Baldinucci - Maffucci", 
+        "timestamp": "2017-06-17T13:31:42.358000Z"
+      }, 
+      {
+        "empty_slots": 25, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 9, 
+        "id": "4a35a7eb9e33e4ba07a6cd13fccfd2d8", 
+        "latitude": 45.505363677025, 
+        "longitude": 9.17983358491256, 
+        "name": "Imbonati - Dergano M3", 
+        "timestamp": "2017-06-17T13:31:42.358000Z"
+      }, 
+      {
+        "empty_slots": 29, 
+        "extra": {}, 
+        "free_bikes": 1, 
+        "id": "9fbc2930db0d3e8ae431de44d92deea1", 
+        "latitude": 45.5001103140391, 
+        "longitude": 9.17841469634368, 
+        "name": "Livigno - Monte San Genesio", 
+        "timestamp": "2017-06-17T13:31:42.359000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {}, 
+        "free_bikes": 8, 
+        "id": "e38acebac9573766e0673ab29d3689b6", 
+        "latitude": 45.494728609924, 
+        "longitude": 9.18501963620656, 
+        "name": "Stelvio - Farini", 
+        "timestamp": "2017-06-17T13:31:42.362000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 12, 
+        "id": "e0e8b811f29e21b29e170d6743ce17f2", 
+        "latitude": 45.5030129304825, 
+        "longitude": 9.17688851949606, 
+        "name": "Dergano", 
+        "timestamp": "2017-06-17T13:31:42.365000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {}, 
+        "free_bikes": 10, 
+        "id": "7f67d7a30be3e5f6cd1afe76b24d2737", 
+        "latitude": 45.4461668642279, 
+        "longitude": 9.19403051739209, 
+        "name": "Toscana- Leoni", 
+        "timestamp": "2017-06-17T13:31:42.367000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {}, 
+        "free_bikes": 27, 
+        "id": "26a997baf61ad318a459dde6b1e696c4", 
+        "latitude": 45.443269551542, 
+        "longitude": 9.19843738680356, 
+        "name": "De Angeli - Ripamonti", 
+        "timestamp": "2017-06-17T13:31:42.368000Z"
+      }, 
+      {
+        "empty_slots": 21, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 6, 
+        "id": "74aea46c74591d0e499edf6851691845", 
+        "latitude": 45.4431008879351, 
+        "longitude": 9.18945064549916, 
+        "name": "Spadolini - Centro Leoni", 
+        "timestamp": "2017-06-17T13:31:42.370000Z"
+      }, 
+      {
+        "empty_slots": 29, 
+        "extra": {}, 
+        "free_bikes": 0, 
+        "id": "f1cd04d54641f8a218d674be0d7b5bcd", 
+        "latitude": 45.49452578706, 
+        "longitude": 9.18092390304082, 
+        "name": "Piazzi - Bernina", 
+        "timestamp": "2017-06-17T13:31:42.371000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 24, 
+        "id": "632a5d8c2e53aa5f66c8d355b6f1d835", 
+        "latitude": 45.4814835733829, 
+        "longitude": 9.1558734656428, 
+        "name": "Carlo Magno - Alcuino", 
+        "timestamp": "2017-06-17T13:31:42.372000Z"
+      }, 
+      {
+        "empty_slots": 26, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "ed13c1dd3dad7eb1f3bbca3450089415", 
+        "latitude": 45.4907867140992, 
+        "longitude": 9.20232927208417, 
+        "name": "Gioia - Carissimi", 
+        "timestamp": "2017-06-17T13:31:42.377000Z"
+      }, 
+      {
+        "empty_slots": 14, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 18, 
+        "id": "a301ef39370b309661fed00775ac6589", 
+        "latitude": 45.443538894779, 
+        "longitude": 9.16759064202779, 
+        "name": "Romolo M2", 
+        "timestamp": "2017-06-17T13:31:42.382000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {}, 
+        "free_bikes": 8, 
+        "id": "686aa0d2c9137bf47c87a7b013b5150f", 
+        "latitude": 45.443514101109, 
+        "longitude": 9.20308570872294, 
+        "name": "Adamello - Lorenzini", 
+        "timestamp": "2017-06-17T13:31:42.370000Z"
+      }, 
+      {
+        "empty_slots": 24, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 5, 
+        "id": "c0f582e77bc3dfbc530509d9b88f20d7", 
+        "latitude": 45.5050826454054, 
+        "longitude": 9.09434621935361, 
+        "name": "Molino Dorino M1", 
+        "timestamp": "2017-06-17T13:31:42.386000Z"
+      }, 
+      {
+        "empty_slots": 28, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 1, 
+        "id": "411a326cc8d1e19e243c125ea4acd6a9", 
+        "latitude": 45.5021806055055, 
+        "longitude": 9.15854762794879, 
+        "name": "Bovisa - Lambruschini", 
+        "timestamp": "2017-06-17T13:31:42.351000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 25, 
+        "id": "db70fd034a3d807bedee455fbbdd2ac6", 
+        "latitude": 45.4704885220331, 
+        "longitude": 9.22590594302164, 
+        "name": "Reni - Guardi", 
+        "timestamp": "2017-06-17T13:31:42.366000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {}, 
+        "free_bikes": 26, 
+        "id": "a464598c0b79ed1114eece939a0c8574", 
+        "latitude": 45.4937124676405, 
+        "longitude": 9.20608632266521, 
+        "name": "Gioia - Cagliero", 
+        "timestamp": "2017-06-17T13:31:42.378000Z"
+      }, 
+      {
+        "empty_slots": 27, 
+        "extra": {}, 
+        "free_bikes": 1, 
+        "id": "446b1518b15dad2f8b880ad62666f4d6", 
+        "latitude": 45.488803064331, 
+        "longitude": 9.22205485403538, 
+        "name": "Durante - D\\u0027aviano", 
+        "timestamp": "2017-06-17T13:31:42.336000Z"
+      }, 
+      {
+        "empty_slots": 10, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 14, 
+        "id": "7603823c3eaa8d6d08dd1ecbe7a041f0", 
+        "latitude": 45.4838678460168, 
+        "longitude": 9.1885869204998, 
+        "name": "Garibaldi - Sturzo", 
+        "timestamp": "2017-06-17T13:31:42.321000Z"
+      }, 
+      {
+        "empty_slots": 8, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 26, 
+        "id": "3bf53aed19a82a60e5f77ba299300a9f", 
+        "latitude": 45.4581288822529, 
+        "longitude": 9.16211351752281, 
+        "name": "Foppa - Caravaggio", 
+        "timestamp": "2017-06-17T13:31:42.299000Z"
+      }, 
+      {
+        "empty_slots": 5, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 20, 
+        "id": "6207387c2e7dd20da6bef8ff9e7583a2", 
+        "latitude": 45.4862193918482, 
+        "longitude": 9.23004247248173, 
+        "name": "Teodosio - Porpora", 
+        "timestamp": "2017-06-17T13:31:42.273000Z"
+      }, 
+      {
+        "empty_slots": 21, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 14, 
+        "id": "7ee0b00ac95e291c4fa3a4aef1897ee8", 
+        "latitude": 45.4686960889064, 
+        "longitude": 9.17937118555619, 
+        "name": "Castello", 
+        "timestamp": "2017-06-17T13:31:42.360000Z"
+      }, 
+      {
+        "empty_slots": 11, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 7, 
+        "id": "3587ec83b2ecac3c240d38f4656c4477", 
+        "latitude": 45.4566068231002, 
+        "longitude": 9.19266790151596, 
+        "name": "Cardinal Ferrari", 
+        "timestamp": "2017-06-17T13:31:42.202000Z"
+      }, 
+      {
+        "empty_slots": 15, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 5, 
+        "id": "fb9b23df9a66db2553f1f7e4a4cdb694", 
+        "latitude": 45.458282214735, 
+        "longitude": 9.17866341769695, 
+        "name": "De Amicis - Conca Del Naviglio", 
+        "timestamp": "2017-06-17T13:31:42.235000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {}, 
+        "free_bikes": 10, 
+        "id": "e6c9d20d2dfedd74cef5b9d9eee97859", 
+        "latitude": 45.4558749407225, 
+        "longitude": 9.18748252093792, 
+        "name": "Italia - Santa Sofia", 
+        "timestamp": "2017-06-17T13:31:42.158000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 11, 
+        "id": "592cad74010f7e7fd2aef809b67a32c5", 
+        "latitude": 45.4632173225162, 
+        "longitude": 9.19865475967526, 
+        "name": "Augusto", 
+        "timestamp": "2017-06-17T13:31:42.192000Z"
+      }, 
+      {
+        "empty_slots": 14, 
+        "extra": {}, 
+        "free_bikes": 12, 
+        "id": "7f8d588ba2474e5f8139e493ad124e48", 
+        "latitude": 45.4677475715009, 
+        "longitude": 9.18223008513451, 
+        "name": "Cairoli", 
+        "timestamp": "2017-06-17T13:31:42.170000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 4, 
+        "id": "acf7b54f24921214a8cd444bc5b5078b", 
+        "latitude": 45.4522247942485, 
+        "longitude": 9.17957872152328, 
+        "name": "XXIV Maggio", 
+        "timestamp": "2017-06-17T13:31:42.174000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {}, 
+        "free_bikes": 1, 
+        "id": "71fc7ae708697d85da5d960f67976887", 
+        "latitude": 45.4523433336445, 
+        "longitude": 9.1777803003788, 
+        "name": "Gorizia 1", 
+        "timestamp": "2017-06-17T13:31:42.181000Z"
+      }, 
+      {
+        "empty_slots": 22, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 1, 
+        "id": "8a3a897c2acc4f75a4e2e5ba0f58795f", 
+        "latitude": 45.4643634398381, 
+        "longitude": 9.19486463069916, 
+        "name": "Beccaria", 
+        "timestamp": "2017-06-17T13:31:42.183000Z"
+      }, 
+      {
+        "empty_slots": 27, 
+        "extra": {}, 
+        "free_bikes": 2, 
+        "id": "fb8bd481ceaf5fd2b2496e823ade5e04", 
+        "latitude": 45.4994949620154, 
+        "longitude": 9.1906763613224, 
+        "name": "Murat - Villani - Milano Sport", 
+        "timestamp": "2017-06-17T13:31:42.363000Z"
+      }, 
+      {
+        "empty_slots": 16, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 10, 
+        "id": "e414e3cb2cf0740ea0d92641657626b0", 
+        "latitude": 45.5034294174545, 
+        "longitude": 9.18871834874153, 
+        "name": "Piazza Nizza", 
+        "timestamp": "2017-06-17T13:31:42.379000Z"
+      }, 
+      {
+        "empty_slots": 10, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 18, 
+        "id": "0906ee8ee93ce2ac8af8239242b58359", 
+        "latitude": 45.5066260467137, 
+        "longitude": 9.2002897337079, 
+        "name": "Ca\\u0027 Granda - F. Testi", 
+        "timestamp": "2017-06-17T13:31:42.375000Z"
+      }, 
+      {
+        "empty_slots": 9, 
+        "extra": {}, 
+        "free_bikes": 16, 
+        "id": "15a88e4745cb9a3161f50dfd9c78790c", 
+        "latitude": 45.5017751069887, 
+        "longitude": 9.19842794537544, 
+        "name": "Istria M5 - F. Testi", 
+        "timestamp": "2017-06-17T13:31:42.373000Z"
+      }, 
+      {
+        "empty_slots": 27, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 2, 
+        "id": "4d61b031fbcf5d73bcaa1499e8dcd98f", 
+        "latitude": 45.5186768627278, 
+        "longitude": 9.2071196436882, 
+        "name": "Bussero - F. Testi", 
+        "timestamp": "2017-06-17T13:31:42.384000Z"
+      }, 
+      {
+        "empty_slots": 23, 
+        "extra": {
+          "ebikes": 4, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 7, 
+        "id": "31b18afd6820ac0b75591954ad6d2ab8", 
+        "latitude": 45.5268120301985, 
+        "longitude": 9.20934990048409, 
+        "name": "Suzzani - Arezzo", 
+        "timestamp": "2017-06-17T13:31:42.386000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 10, 
+        "id": "53c49bb5df403f6658ee0b7296204bb0", 
+        "latitude": 45.5141709132862, 
+        "longitude": 9.20579295605421, 
+        "name": "Bicocca M5 - Pulci", 
+        "timestamp": "2017-06-17T13:31:42.380000Z"
+      }, 
+      {
+        "empty_slots": 28, 
+        "extra": {}, 
+        "free_bikes": 1, 
+        "id": "39fe4a17f2e9b390212083a33f48ce76", 
+        "latitude": 45.5113308991058, 
+        "longitude": 9.21090222895145, 
+        "name": "Temolo - Innovazione", 
+        "timestamp": "2017-06-17T13:31:42.381000Z"
+      }, 
+      {
+        "empty_slots": 19, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 10, 
+        "id": "c3fcc708904f6fcb4d1eb90372b9f35c", 
+        "latitude": 45.5085913055572, 
+        "longitude": 9.18954983353615, 
+        "name": "Ospedale Maggiore", 
+        "timestamp": "2017-06-17T13:31:42.376000Z"
+      }, 
+      {
+        "empty_slots": 7, 
+        "extra": {
+          "ebikes": 4, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 22, 
+        "id": "4df983841a84831a1027be93ed1c5a60", 
+        "latitude": 45.4969106226505, 
+        "longitude": 9.20821599662304, 
+        "name": "Gioia - Cassina De\\u0027 Pomm", 
+        "timestamp": "2017-06-17T13:31:42.367000Z"
+      }, 
+      {
+        "empty_slots": 23, 
+        "extra": {}, 
+        "free_bikes": 5, 
+        "id": "67f94c60b0e5376b439b566020ab99b1", 
+        "latitude": 45.4909917596509, 
+        "longitude": 9.18587990105152, 
+        "name": "Alserio - Cola Montano", 
+        "timestamp": "2017-06-17T13:31:42.377000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 15, 
+        "id": "76851109b31c4c01e8d566826d623a47", 
+        "latitude": 45.5003830046672, 
+        "longitude": 9.20899383723736, 
+        "name": "De Marchi - Lucini", 
+        "timestamp": "2017-06-17T13:31:42.374000Z"
+      }, 
+      {
+        "empty_slots": 26, 
+        "extra": {}, 
+        "free_bikes": 2, 
+        "id": "3e8acce61bb3e9c4608093e5d7a38355", 
+        "latitude": 45.5032480096457, 
+        "longitude": 9.21128310263157, 
+        "name": "De Marchi - Bottelli", 
+        "timestamp": "2017-06-17T13:31:42.374000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 7, 
+        "id": "bb26fa61cd6c86c4b58af669144534f5", 
+        "latitude": 45.4518769831585, 
+        "longitude": 9.19416462780191, 
+        "name": "Patellani", 
+        "timestamp": "2017-06-17T13:31:42.228000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 10, 
+        "id": "d6fbbf630d4c1de0f78cbfbf2a829eb1", 
+        "latitude": 45.4445041443867, 
+        "longitude": 9.21203747391701, 
+        "name": "Benaco - Brembo", 
+        "timestamp": "2017-06-17T13:31:42.369000Z"
+      }, 
+      {
+        "empty_slots": 26, 
+        "extra": {}, 
+        "free_bikes": 4, 
+        "id": "115167846963f19eeb3071078bc8c4d7", 
+        "latitude": 45.5128561793357, 
+        "longitude": 9.21359315514565, 
+        "name": "Staz. Greco - Pirelli - Cozzi", 
+        "timestamp": "2017-06-17T13:31:42.382000Z"
+      }, 
+      {
+        "empty_slots": 18, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 8, 
+        "id": "105644b6bc039edbd7a294df73e54623", 
+        "latitude": 45.4968635864226, 
+        "longitude": 9.20285291969776, 
+        "name": "Stefini - Ressi", 
+        "timestamp": "2017-06-17T13:31:42.364000Z"
+      }, 
+      {
+        "empty_slots": 7, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 21, 
+        "id": "21dd80d4e459ecf9cb94320da627525c", 
+        "latitude": 45.4880583432379, 
+        "longitude": 9.15599679349953, 
+        "name": "Firenze", 
+        "timestamp": "2017-06-17T13:31:42.335000Z"
+      }, 
+      {
+        "empty_slots": 20, 
+        "extra": {}, 
+        "free_bikes": 1, 
+        "id": "9f4ebf0e313a7c3f2f3dcae0de8bd553", 
+        "latitude": 45.5185490660052, 
+        "longitude": 9.21284884214401, 
+        "name": "Pirelli - UNI Bicocca", 
+        "timestamp": "2017-06-17T13:31:42.383000Z"
+      }, 
+      {
+        "empty_slots": 28, 
+        "extra": {}, 
+        "free_bikes": 1, 
+        "id": "8cbb7efb9980b6c3d55987a9baea27af", 
+        "latitude": 45.5223790829468, 
+        "longitude": 9.21023234724998, 
+        "name": "Chiese - F. Testi", 
+        "timestamp": "2017-06-17T13:31:42.385000Z"
+      }, 
+      {
+        "empty_slots": 0, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 34, 
+        "id": "bf662c47b5572a989250a535409bfd77", 
+        "latitude": 45.4786717193695, 
+        "longitude": 9.22636985778808, 
+        "name": "Politecnico", 
+        "timestamp": "2017-06-17T13:31:42.333000Z"
+      }, 
+      {
+        "empty_slots": 11, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 10, 
+        "id": "b2f1eaf44b6bc938bd7a1e3686507567", 
+        "latitude": 45.4674334333138, 
+        "longitude": 9.20444548130035, 
+        "name": "Donizetti \\\"Provincia\\\"", 
+        "timestamp": "2017-06-17T13:31:42.237000Z"
+      }, 
+      {
+        "empty_slots": 24, 
+        "extra": {
+          "ebikes": 6, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 12, 
+        "id": "2a26fbeb77ca8190584aa6efcf3ecf50", 
+        "latitude": 45.4705427599494, 
+        "longitude": 9.21027392148971, 
+        "name": "Fratelli Bandiera", 
+        "timestamp": "2017-06-17T13:31:42.266000Z"
+      }, 
+      {
+        "empty_slots": 12, 
+        "extra": {}, 
+        "free_bikes": 9, 
+        "id": "3e59df1914a89f2f9437219c30d8fbeb", 
+        "latitude": 45.472641881667, 
+        "longitude": 9.22365143895149, 
+        "name": "Rio De Janeiro - Sarto", 
+        "timestamp": "2017-06-17T13:31:42.361000Z"
+      }, 
+      {
+        "empty_slots": 24, 
+        "extra": {}, 
+        "free_bikes": 1, 
+        "id": "e7082bbc61ae53458904e910ca5b211b", 
+        "latitude": 45.4622188599169, 
+        "longitude": 9.17462199926376, 
+        "name": "Sant\\u0027Ambrogio", 
+        "timestamp": "2017-06-17T13:31:42.195000Z"
+      }, 
+      {
+        "empty_slots": 2, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 27, 
+        "id": "ba4e2d4c0e054caa448771f0ee0ebb8c", 
+        "latitude": 45.4524016624621, 
+        "longitude": 9.16502773761749, 
+        "name": "Bergognone - Tortona", 
+        "timestamp": "2017-06-17T13:31:42.297000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {
+          "ebikes": 3, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 15, 
+        "id": "cc48e8fc70b3760a249c334e7b71573e", 
+        "latitude": 45.4569577093547, 
+        "longitude": 9.18243460357189, 
+        "name": "Molino delle Armi", 
+        "timestamp": "2017-06-17T13:31:42.238000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {}, 
+        "free_bikes": 1, 
+        "id": "5391f35df80b4b71c79b386c26c81c9e", 
+        "latitude": 45.4662351775674, 
+        "longitude": 9.19723100960255, 
+        "name": "San Babila Bis", 
+        "timestamp": "2017-06-17T13:31:42.387000Z"
+      }, 
+      {
+        "empty_slots": 22, 
+        "extra": {
+          "ebikes": 2, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 10, 
+        "id": "1efdfbdffb9f696cdc1c8c1434dec1b5", 
+        "latitude": 45.4482488762247, 
+        "longitude": 9.1861105710268, 
+        "name": "Sraffa", 
+        "timestamp": "2017-06-17T13:31:42.286000Z"
+      }, 
+      {
+        "empty_slots": 17, 
+        "extra": {
+          "ebikes": 1, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 6, 
+        "id": "3f7fb9dd92d1fe91118c3c075c9c78aa", 
+        "latitude": 45.4722431297932, 
+        "longitude": 9.16770592331886, 
+        "name": "V Alpini", 
+        "timestamp": "2017-06-17T13:31:42.307000Z"
+      }, 
+      {
+        "empty_slots": 3, 
+        "extra": {
+          "ebikes": 4, 
+          "has_ebikes": true
+        }, 
+        "free_bikes": 8, 
+        "id": "90d2531f5f6ef94ea11260ca96ea9a8e", 
+        "latitude": 45.4522492547792, 
+        "longitude": 9.17787149548531, 
+        "name": "Gorizia 2", 
+        "timestamp": "2017-06-17T13:31:42.182000Z"
+      }, 
+      {
+        "empty_slots": 34, 
+        "extra": {}, 
+        "free_bikes": 0, 
+        "id": "7af52736c445b0c4394ae06cc7897520", 
+        "latitude": 45.4771033100193, 
+        "longitude": 9.15124856018826, 
+        "name": "Arduino", 
+        "timestamp": "2017-06-17T13:31:42.362000Z"
+      }
+    ]
+  }
+}

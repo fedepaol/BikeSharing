@@ -20,15 +20,8 @@ package com.whiterabbit.pisabike.apiclient;
 
 import com.google.gson.Gson;
 import com.whiterabbit.pisabike.model.Network;
-import com.whiterabbit.pisabike.model.Station;
-
-
-import java.util.List;
-
-import javax.inject.Inject;
 
 import okhttp3.OkHttpClient;
-
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -43,7 +36,6 @@ public class BikeRestClient {
     public BikeRestClient(Gson gson) {
         mGson = gson;
         OkHttpClient okClient = new OkHttpClient.Builder().build();
-
 
         mClient = new Retrofit.Builder()
                               .baseUrl("https://api.citybik.es/v2/networks/")

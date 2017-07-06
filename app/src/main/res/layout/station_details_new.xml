@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="@dimen/margin_medium"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ListElemName"
+        tools:text="Pietrasantina"
+        android:id="@+id/station_detail_name"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/station_detail_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ListElemAddress"
+        tools:text="via S. Jacopo"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/station_detail_name"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <com.whiterabbit.pisabike.ui.VectorTextView
+        android:id="@+id/station_detail_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:drawableTopCompat="@drawable/ic_directions_black_36px"
+        tools:text="1.5 km"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_bike"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/station_detail_address"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/station_detail_free_bikes"
+        style="@style/ListElemNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="5"
+        app:layout_constraintLeft_toRightOf="@+id/imageView2"
+        android:layout_marginLeft="9dp"
+        android:layout_marginStart="9dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/station_detail_parks"
+        style="@style/ListElemNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="3"
+        app:layout_constraintLeft_toRightOf="@+id/imageView3"
+        android:layout_marginLeft="9dp"
+        android:layout_marginStart="9dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/free_parks"
+        app:layout_constraintLeft_toRightOf="@+id/station_detail_parks"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
+        app:layout_constraintBottom_toBottomOf="@+id/station_detail_parks"
+        app:layout_constraintTop_toTopOf="@+id/station_detail_parks" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/available_bikes"
+        app:layout_constraintLeft_toRightOf="@+id/station_detail_free_bikes"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
+        app:layout_constraintBottom_toBottomOf="@+id/station_detail_free_bikes"
+        app:layout_constraintTop_toTopOf="@+id/station_detail_free_bikes" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_bike_park"
+        app:layout_constraintLeft_toRightOf="@+id/textView3"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+    <view
+        class="com.like.LikeButton"
+        id="@+id/view"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
+        app:icon_type="star"
+        app:icon_size="22dp"
+        android:id="@+id/station_detail_star"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="7dp"
+        app:layout_constraintRight_toRightOf="parent" />
+</android.support.constraint.ConstraintLayout>
