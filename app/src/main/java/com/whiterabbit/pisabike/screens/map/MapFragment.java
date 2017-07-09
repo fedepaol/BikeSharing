@@ -331,7 +331,6 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     @OnClick(R.id.fab)
     public void onCenterLocationClicked() {
         mPresenter.onCenterLocationClicked();
-        AddressJobKt.scheduleAddressJob(); // REMOVE ME
     }
 
     @OnClick(R.id.main_directions_fab)

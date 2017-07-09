@@ -147,8 +147,7 @@ public class MapPresenterImpl implements MapPresenter {
                 if (    !changed && (
                         s1.getAvailable() != s.getAvailable() ||
                         s1.getBroken() != s.getBroken() ||
-                        s1.getFree() != s.getFree() ||
-                        !s1.getAddress().equals(s.getAddress()))) {
+                        s1.getFree() != s.getFree())) {
                     changed = true;
                 }
                 s1.setAvailable(s.getAvailable());

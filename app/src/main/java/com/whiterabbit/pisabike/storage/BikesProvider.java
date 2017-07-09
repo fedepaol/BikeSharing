@@ -108,12 +108,20 @@ public class BikesProvider {
         Observable<SqlBrite.Query> stations = mBrite.createQuery(PisaBikeDbHelper.STATION_TABLE, "SELECT * " +
                 "FROM Station");
         return stations.map(q -> {
+            boolean needsToLoadAddresses = false;
             Cursor cursor = q.run();
             List<Station> s = new ArrayList<>(cursor.getCount());
             while (cursor.moveToNext()) {
-                s.add(new Station(cursor));
+                Station station = new Station(cursor);
+                s.add(station);
+                if (!station.isAddressLoaded()) {
+                    needsToLoadAddresses = true;
+                }
             }
             cursor.close();
+            if (needsToLoadAddresses) {
+                AddressJobKt.scheduleAddressJob();
+            }
             return s;
         });
     }
