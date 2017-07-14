@@ -26,6 +26,7 @@ import android.preference.PreferenceManager;
 public class PrefsStorage {
     private static final String LAST_UPDATE_ID = "com.whiterabbit.lastupdate";
     private static final String ADDRESS_ID = "com.whiterabbit.address";
+    private static final String LOADED_ID = "com.whiterabbit.loaded";
 
 
     private SharedPreferences mPreferences;
@@ -54,8 +55,12 @@ public class PrefsStorage {
         editor.apply();
     }
 
-    public String getAddressForLocation(double lat, double lon) {
-        return mPreferences.getString(getLatLonKey(lat, lon), "Loading address..");
+    public boolean wasWarningShown() {
+        boolean res = mPreferences.getBoolean(LOADED_ID, false);
+        SharedPreferences.Editor editor = mPreferences.edit();
+        editor.putBoolean(LOADED_ID, true);
+        editor.apply();
+        return res;
     }
 
 }

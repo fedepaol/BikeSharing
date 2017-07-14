@@ -30,9 +30,6 @@ class StationsFavsFragment : Fragment(), StationsFavsView {
     @Bind(R.id.stations_list_view)
     lateinit var stations : RecyclerView
 
-    @Bind(R.id.fragment_list_swipe)
-    lateinit var swipeLayout : SwipeRefreshLayout
-
     @Bind(R.id.stations_list_empty_message)
     lateinit var emptyMessage : TextView
 
@@ -58,9 +55,6 @@ class StationsFavsFragment : Fragment(), StationsFavsView {
 
         adapter = StationsAdapter(activity.applicationContext)
         stations.adapter = adapter
-
-        swipeLayout.isEnabled = true
-        swipeLayout.setOnRefreshListener { presenter.onUpdateRequested() }
         return res
     }
 
@@ -100,10 +94,6 @@ class StationsFavsFragment : Fragment(), StationsFavsView {
 
     override fun preferredToggledObservable(): Observable<Station> {
         return adapter.stationPreferred
-    }
-
-    override fun toggleLoading(loading: Boolean) {
-        swipeLayout.post { swipeLayout.isRefreshing = loading }
     }
 
     override fun toggleListVisibility(visible: Boolean) {

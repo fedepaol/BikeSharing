@@ -102,9 +102,6 @@ public class StationPresenterTest {
         when(view.getStationSelectedObservable()).thenReturn(Observable.never());
 
         mPresenter.attachToView(view);
-        mPresenter.onUpdateRequested();
-        verify(view).toggleLoading(true);
-        verify(view).toggleLoading(false);
     }
 
     @Test

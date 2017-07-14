@@ -32,5 +32,7 @@
     <string name="favourites">Preferiti</string>
     <string name="no_favourites_yet">Nessuna stazione segnata come preferita, clicca sulla stella per mettere una stazione tra i preferiti</string>
     <string name="loading_address">Sto caricando l\'indirizzo..</string>
+    <string name="loading_address_message">La prima volta che l\'app viene lanciata sara` necessario caricare gli indirizzi delle stazioni..</string>
+
 
 </resources>

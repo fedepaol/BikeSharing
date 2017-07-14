@@ -30,9 +30,6 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
     @Bind(R.id.stations_list_view)
     lateinit var stations : RecyclerView
 
-    @Bind(R.id.fragment_list_swipe)
-    lateinit var swipeLayout : SwipeRefreshLayout
-
     @Bind(R.id.stations_list_search)
     lateinit var searchBar : MaterialSearchBar
 
@@ -64,10 +61,6 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
         (stations.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         stations.itemAnimator.changeDuration = 0
 
-
-        swipeLayout.isEnabled = true
-        swipeLayout.setOnRefreshListener { presenter.onUpdateRequested() }
-
         searchBar.setOnSearchActionListener(this)
         searchBar.addTextChangeListener(searchTextListener)
         return res
@@ -97,10 +90,6 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
         if (location != null) {
             adapter.updateList(l, location)
         }
-    }
-
-    override fun toggleLoading(loading: Boolean) {
-        swipeLayout.post { swipeLayout.isRefreshing = loading }
     }
 
     override fun displayUpdateError() {

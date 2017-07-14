@@ -8,27 +8,36 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/ListElemName"
-        tools:text="Pietrasantina"
         android:id="@+id/station_detail_name"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
+        style="@style/ListElemName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        tools:text="Pietrasantina aaaaa asdasdasdasdas"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="16dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/station_detail_distance"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
         android:id="@+id/station_detail_address"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         style="@style/ListElemAddress"
         tools:text="via S. Jacopo"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:layout_marginTop="6dp"
         app:layout_constraintTop_toBottomOf="@+id/station_detail_name"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/station_detail_distance"
+        android:layout_marginRight="8dp" />
 
     <com.whiterabbit.pisabike.ui.VectorTextView
         android:id="@+id/station_detail_distance"

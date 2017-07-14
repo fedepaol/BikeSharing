@@ -40,4 +40,5 @@ public interface MapView {
     void navigateTo(Station s);
     void onStationCenterRequested(Station toCenter);
     void checkAndShowInterstitial();
+    void displayLoadingWarning();
 }

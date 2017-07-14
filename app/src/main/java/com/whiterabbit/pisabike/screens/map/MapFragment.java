@@ -26,7 +26,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -112,6 +114,9 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
 
     @Bind(R.id.main_progress)
     ProgressView mProgress;
+
+    @Bind(R.id.map_coordinator)
+    CoordinatorLayout mMapCoordinator;
 
     BottomSheetBehavior mBottomSheetBehavior;
 
@@ -293,6 +298,11 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
             mGoogleMap.setOnMarkerClickListener(mClusterManager);
             mClusterManager.setOnClusterItemClickListener(this);
         }
+    }
+
+    public void displayLoadingWarning() {
+        Snackbar mySnackbar = Snackbar.make(mMapCoordinator, R.string.loading_address_message, Snackbar.LENGTH_LONG);
+        mySnackbar.show();
     }
 
     @Override

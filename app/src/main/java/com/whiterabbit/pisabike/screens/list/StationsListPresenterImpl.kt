@@ -88,16 +88,6 @@ class StationsListPresenterImpl(val provider : BikesProvider,
         view?.displayStations(toDisplay, data?.location)
     }
 
-    override fun onUpdateRequested() {
-        view?.toggleLoading(true);
-        /*val sub = provider.updateBikes().subscribeOn(schedulers.provideBackgroundScheduler())
-                              .observeOn(schedulers.provideMainThreadScheduler())
-                              .subscribe({ },
-                                         { view?.displayUpdateError() },
-                                         { view?.toggleLoading(false) })
-        subscription.add(sub)*/
-    }
-
     override fun onSearchButtonPressed() {
         view?.displaySearchBar(true)
         view?.displaySearchFab(false)

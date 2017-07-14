@@ -70,15 +70,6 @@ class StationsFavsPresenterImpl(val provider : BikesProvider,
         subscription.unsubscribe()
         view = null
     }
-
-    override fun onUpdateRequested() {
-        val sub = provider.updateBikes().subscribeOn(schedulers.provideBackgroundScheduler())
-                              .observeOn(schedulers.provideMainThreadScheduler())
-                              .subscribe({ },
-                                      { view?.toggleLoading(false) },
-                                      { view?.toggleLoading(false) })
-        subscription.add(sub)
-    }
 }
 
 

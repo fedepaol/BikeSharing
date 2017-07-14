@@ -111,11 +111,6 @@ public class MapPresenterImpl implements MapPresenter {
     }
 
     private Subscription centerLocation() {
-        LocationRequest request = LocationRequest.create() //standard GMS LocationRequest
-                .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
-                .setInterval(2000)
-                .setNumUpdates(1);
-
         return mLocationProvider.getLastKnownLocation()
                 .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                 .subscribe(l -> askToCenter(l.getLatitude(), l.getLongitude()),
@@ -182,6 +177,10 @@ public class MapPresenterImpl implements MapPresenter {
 
     @Override
     public void onMapReady() {
+        if (!mStorage.wasWarningShown()) {
+            mView.displayLoadingWarning();
+        }
+
         mSubscription = new CompositeSubscription();
         mPermissions.request(Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION).subscribe(

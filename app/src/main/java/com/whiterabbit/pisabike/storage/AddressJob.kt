@@ -56,19 +56,20 @@ class AddressJob(val locationProvider: ReactiveLocationProvider,
                         {e -> error = true})
 
 
-        val res = when {
+        return when {
                         !error -> Result.SUCCESS
                         else -> Result.RESCHEDULE
                         }
-        return res
     }
 }
 
 fun scheduleAddressJob() {
-    if (JobManager.instance().allJobRequests.isEmpty())
+    if (JobManager.instance().allJobRequests.isEmpty()) {
         JobRequest.Builder(AddressJobCreator.JOB_TAG)
                 .setExecutionWindow(500L, 40_000L)
                 .setPersisted(true)
+                .setUpdateCurrent(true)
                 .build()
                 .schedule()
+    }
 }

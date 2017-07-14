@@ -21,11 +21,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -37,6 +39,8 @@ import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.screens.list.StationsFavsFragment;
 import com.whiterabbit.pisabike.screens.list.StationsListFragment;
 import com.whiterabbit.pisabike.screens.map.MapFragment;
+import com.whiterabbit.pisabike.storage.AddressJobKt;
+import com.whiterabbit.pisabike.storage.PrefsStorage;
 
 import java.util.Map;
 
@@ -55,11 +59,17 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
     @Inject
     MainPresenter mPresenter;
 
+    @Inject
+    PrefsStorage mStorage;
+
     @Bind(R.id.bottom_navigation)
     BottomNavigationView mBottomNavigation;
 
     @Bind(R.id.adView)
     AdView mAdView;
+
+    @Bind(R.id.main_activity_frame)
+    FrameLayout mMainLayout;
 
     InAppPurchaseHelper mPurchaseHelper;
 
@@ -94,6 +104,10 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
 
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        if (savedInstanceState == null) {
+            AddressJobKt.scheduleAddressJob();
+        }
     }
 
     private void createFragments() {

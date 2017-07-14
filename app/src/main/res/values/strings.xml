@@ -32,5 +32,6 @@
     <string name="favourites">Favourites</string>
     <string name="no_favourites_yet">No favourite stations selected yet, click on the star to bookmark a station</string>
     <string name="loading_address">Loading address..</string>
+    <string name="loading_address_message">The first time you run the app it may take some time to load the addresses of the stations</string>
 
 </resources>
