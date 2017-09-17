@@ -28,17 +28,16 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "com.whiterabbit.pisabike"
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 6
         versionName "1.4"
         vectorDrawables.useSupportLibrary = true
@@ -103,8 +102,8 @@ task createTestResources << {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    apt 'com.google.dagger:dagger-compiler:2.4'
+    compile 'com.android.support:support-compat:26.1.0'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.4'
     compile 'com.google.dagger:dagger:2.4'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
@@ -120,10 +119,10 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
-    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:design:26.1.0'
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:cardview-v7:25.3.1'
-    compile 'com.android.support:percent:25.3.1'
+    compile 'com.android.support:cardview-v7:26.1.0'
+    compile 'com.android.support:percent:26.1.0'
     compile 'com.google.firebase:firebase-ads:11.0.2'
     compile 'com.whiterabbit:androidutils:1.0.0@aar'
     compile 'com.github.mancj:MaterialSearchBar:0.6'
@@ -133,6 +132,9 @@ dependencies {
     compile 'com.evernote:android-job:1.1.11'
     compile 'com.facebook.stetho:stetho:1.5.0'
 
+    compile "android.arch.persistence.room:runtime:1.0.0-alpha9-1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha9-1"
+    compile "android.arch.persistence.room:rxjava2:1.0.0-alpha9-1"
 
     kapt 'com.google.dagger:dagger-compiler:2.4'
     provided 'javax.annotation:jsr250-api:1.0'
@@ -146,7 +148,7 @@ dependencies {
     androidTestCompile 'com.android.support.test:rules:0.5'
     androidTestCompile 'com.google.dexmaker:dexmaker:1.2'
     androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
-    androidTestCompile 'com.android.support:support-annotations:25.3.1'
+    androidTestCompile 'com.android.support:support-annotations:26.1.0'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:2.2.28'
