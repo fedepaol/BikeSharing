@@ -19,7 +19,6 @@ package com.whiterabbit.pisabike;
 
 
 import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
-import com.whiterabbit.pisabike.model.Station;
 
 import org.junit.Before;
 import org.junit.Test;

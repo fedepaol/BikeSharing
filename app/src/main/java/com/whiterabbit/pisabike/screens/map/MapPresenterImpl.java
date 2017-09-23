@@ -26,7 +26,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.Constants;
 import com.whiterabbit.pisabike.storage.BikesProvider;
-import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.storage.PrefsStorage;
 

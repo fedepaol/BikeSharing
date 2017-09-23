@@ -20,9 +20,6 @@ package com.whiterabbit.pisabike.apiclient;
 
 import com.whiterabbit.pisabike.Constants;
 import com.whiterabbit.pisabike.model.Network;
-import com.whiterabbit.pisabike.model.Station;
-
-import java.util.List;
 
 
 import retrofit2.http.GET;

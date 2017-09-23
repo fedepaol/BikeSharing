@@ -4,7 +4,6 @@ import android.location.Location
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
-import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SimpleItemAnimator
@@ -21,7 +20,6 @@ import com.jakewharton.rxrelay.PublishRelay
 import com.mancj.materialsearchbar.MaterialSearchBar
 import com.whiterabbit.pisabike.PisaBikeApplication
 import com.whiterabbit.pisabike.R
-import com.whiterabbit.pisabike.model.Station
 import com.whiterabbit.pisabike.screens.main.MainActivity
 import rx.Observable
 import javax.inject.Inject

@@ -31,7 +31,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -52,8 +51,6 @@ import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.helper.InterstitialHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
-import com.whiterabbit.pisabike.model.Station;
-import com.whiterabbit.pisabike.storage.AddressJobKt;
 import com.whiterabbit.pisabike.ui.MapMarkerFactory;
 
 import java.util.List;

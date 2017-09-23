@@ -18,6 +18,7 @@
 package com.whiterabbit.pisabike.inject;
 
 import android.app.Application;
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -31,6 +32,7 @@ import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.apiclient.GsonProviderKt;
 import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
+import com.whiterabbit.pisabike.storage.BikesDatabasee;
 import com.whiterabbit.pisabike.storage.PisaBikeDbHelper;
 import com.whiterabbit.pisabike.schedule.RealSchedulersProvider;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
@@ -121,5 +123,11 @@ public class ApplicationModule {
     @Singleton
     Gson provideGSon() {
         return GsonProviderKt.getGson();
+    }
+
+    @Provides
+    @Singleton
+    BikesDatabasee provideDatabase() {
+        return Room.databaseBuilder(mApp.getApplicationContext(), BikesDatabasee.class, "bikesdb").build();
     }
 }

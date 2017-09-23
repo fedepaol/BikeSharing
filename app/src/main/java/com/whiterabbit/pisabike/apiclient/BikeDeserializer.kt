@@ -6,8 +6,6 @@ import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import com.google.gson.JsonParseException
 import com.whiterabbit.pisabike.model.Network
-import com.whiterabbit.pisabike.model.RestData
-import com.whiterabbit.pisabike.model.Station
 import java.lang.reflect.Type
 
 class BikeDeserializer : JsonDeserializer<Network> {

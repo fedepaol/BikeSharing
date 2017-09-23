@@ -3,8 +3,6 @@ package com.whiterabbit.pisabike.screens.main;
 
 import android.os.Bundle;
 
-import com.whiterabbit.pisabike.model.Station;
-
 public interface MainPresenter {
     void onMapSelectedFromMenu();
 

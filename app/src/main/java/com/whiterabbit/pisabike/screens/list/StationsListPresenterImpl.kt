@@ -1,14 +1,12 @@
 package com.whiterabbit.pisabike.screens.list
 
 import android.location.Location
-import com.whiterabbit.pisabike.model.Station
 import com.whiterabbit.pisabike.schedule.SchedulersProvider
 import com.whiterabbit.pisabike.storage.BikesProvider
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider
 import rx.Observable
 import rx.subscriptions.CompositeSubscription
 import java.util.concurrent.TimeUnit
-import kotlin.comparisons.compareBy
 
 class StationsListPresenterImpl(val provider : BikesProvider,
                                 val schedulers : SchedulersProvider,

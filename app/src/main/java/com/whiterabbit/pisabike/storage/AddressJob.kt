@@ -1,6 +1,5 @@
 package com.whiterabbit.pisabike.storage
 
-import android.util.Log
 import com.evernote.android.job.Job
 import com.evernote.android.job.JobCreator
 import com.evernote.android.job.JobManager
@@ -9,7 +8,6 @@ import com.squareup.sqlbrite.BriteDatabase
 import com.whiterabbit.pisabike.model.Station
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider
 import rx.Observable
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class AddressJobCreator @Inject constructor() : JobCreator {

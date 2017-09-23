@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.TestApplication;
-import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.screens.list.StationsListModule;
 import com.whiterabbit.pisabike.screens.list.StationsListPresenter;
@@ -27,7 +26,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 
 import com.whiterabbit.pisabike.FakeStationsProvider;
 

@@ -14,8 +14,6 @@ import com.jakewharton.rxrelay.BehaviorRelay
 import com.like.LikeButton
 import com.like.OnLikeListener
 import com.whiterabbit.pisabike.R
-import com.whiterabbit.pisabike.model.Station
-import com.whiterabbit.pisabike.ui.PreferredImageView
 import rx.Observable
 
 

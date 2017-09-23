@@ -5,7 +5,6 @@ import android.location.Location;
 
 import com.whiterabbit.pisabike.DataUtil;
 import com.whiterabbit.pisabike.FakeSchedulersProvider;
-import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.storage.BikesProvider;
 
@@ -18,7 +17,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;

@@ -17,18 +17,14 @@
 
 package com.whiterabbit.pisabike.storage;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 
 import com.squareup.sqlbrite.BriteDatabase;
-import com.squareup.sqlbrite.SqlBrite;
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
 import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -44,6 +40,7 @@ public class BikesProvider {
     @Inject PrefsStorage mPrefsStorage;
     @Inject ReactiveLocationProvider mProvider;
     @Inject Context mContext;
+    @Inject BikesDatabasee mBikesDatabase;
 
 
     @Inject
@@ -60,31 +57,23 @@ public class BikesProvider {
             return Observable.just(null);
         }
 
-
         BehaviorSubject<Void> requestSubject = BehaviorSubject.create();
 
         mBikeClient.getStations()
                 .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .observeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .subscribe(stations -> {
-                    BriteDatabase.Transaction t = mBrite.newTransaction();
                     boolean needsAddress = false;
-                    try {
-                        for (Station s : stations.getStations()) {
-                            int updated = mBrite.update(PisaBikeDbHelper.STATION_TABLE, s.getUpdateValues(),
-                                    PisaBikeDbHelper.STATION_NAME_COLUMN + " = ?", s.getName());
-
-                            if (updated == 0) {
-                                needsAddress = true;
-                                s.setAddress(mContext.getString(R.string.loading_address));
-                                mBrite.insert(PisaBikeDbHelper.STATION_TABLE, s.getContentValues());
-                            }
+                    for (Station s : stations.getStations()) {
+                        if (mBikesDatabase.bikesDao().getStation("fava", "rava") != null) {
+                            mBikesDatabase.bikesDao().updateStation(s);
+                        } else {
+                            s.setAddress(mContext.getString(R.string.loading_address));
+                            mBikesDatabase.bikesDao().insertStation(s);
+                            needsAddress = true;
                         }
-
-                        t.markSuccessful();
-                    } finally {
-                        t.end();
                     }
+
                     if (needsAddress) {
                         AddressJobKt.scheduleAddressJob();
                     }
@@ -97,30 +86,15 @@ public class BikesProvider {
     }
 
     public Observable<List<Station>> getStationsObservables() {
-        Observable<SqlBrite.Query> stations = mBrite.createQuery(PisaBikeDbHelper.STATION_TABLE, "SELECT * " +
-                "FROM Station");
-        return stations.map(q -> {
-            Cursor cursor = q.run();
-            List<Station> s = new ArrayList<>(cursor.getCount());
-            while (cursor.moveToNext()) {
-                Station station = new Station(cursor);
-                s.add(station);
-            }
-            cursor.close();
-            return s;
-        });
+        return mBikesDatabase.bikesDao().loadAllStations();
     }
 
-    private int setStationPreferred(String stationName, boolean preferred) {
-        ContentValues cv = new ContentValues();
-        cv.put(PisaBikeDbHelper.STATION_FAVORITE_COLUMN, preferred);
-        return mBrite.update(PisaBikeDbHelper.STATION_TABLE,
-                cv,
-                PisaBikeDbHelper.STATION_NAME_COLUMN + " = ?",
-                stationName);
+    private int setStationPreferred(String stationName, String stationCity, boolean preferred) {
+        mBikesDatabase.bikesDao().setStationPreferred(stationName, stationCity, preferred);
+        return 0; // Completable?
     }
 
-    public Observable<Integer> changePreferredStatus(String stationName, boolean preferred) {
-        return Observable.fromCallable(() -> setStationPreferred(stationName, preferred));
+    public Observable<Integer> changePreferredStatus(String stationName, String stationCity, boolean preferred) {
+        return Observable.fromCallable(() -> setStationPreferred(stationName, stationCity, preferred));
     }
 }

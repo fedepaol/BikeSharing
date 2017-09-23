@@ -18,8 +18,6 @@
 package com.whiterabbit.pisabike.apiclient;
 
 
-import com.whiterabbit.pisabike.model.Station;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

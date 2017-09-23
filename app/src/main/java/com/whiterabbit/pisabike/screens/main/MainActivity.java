@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,14 +34,11 @@ import com.whiterabbit.androidutils.AskForRateDialog;
 import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
-import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.screens.list.StationsFavsFragment;
 import com.whiterabbit.pisabike.screens.list.StationsListFragment;
 import com.whiterabbit.pisabike.screens.map.MapFragment;
 import com.whiterabbit.pisabike.storage.AddressJobKt;
 import com.whiterabbit.pisabike.storage.PrefsStorage;
-
-import java.util.Map;
 
 import javax.inject.Inject;
 
