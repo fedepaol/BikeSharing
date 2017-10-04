@@ -2,6 +2,7 @@ package com.whiterabbit.pisabike;
 
 
 import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
+import com.whiterabbit.pisabike.model.Station;
 
 import java.io.BufferedReader;
 import java.io.File;

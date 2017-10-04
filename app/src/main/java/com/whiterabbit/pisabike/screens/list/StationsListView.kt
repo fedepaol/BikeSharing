@@ -1,6 +1,7 @@
 package com.whiterabbit.pisabike.screens.list
 
 import android.location.Location
+import com.whiterabbit.pisabike.model.Station
 import rx.Observable
 
 

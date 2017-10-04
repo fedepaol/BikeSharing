@@ -34,6 +34,7 @@ import com.whiterabbit.androidutils.AskForRateDialog;
 import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
+import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.screens.list.StationsFavsFragment;
 import com.whiterabbit.pisabike.screens.list.StationsListFragment;
 import com.whiterabbit.pisabike.screens.map.MapFragment;
@@ -42,7 +43,7 @@ import com.whiterabbit.pisabike.storage.PrefsStorage;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.view.View.GONE;
@@ -58,13 +59,13 @@ public class MainActivity extends AppCompatActivity implements MainView, BottomN
     @Inject
     PrefsStorage mStorage;
 
-    @Bind(R.id.bottom_navigation)
+    @BindView(R.id.bottom_navigation)
     BottomNavigationView mBottomNavigation;
 
-    @Bind(R.id.adView)
+    @BindView(R.id.adView)
     AdView mAdView;
 
-    @Bind(R.id.main_activity_frame)
+    @BindView(R.id.main_activity_frame)
     FrameLayout mMainLayout;
 
     InAppPurchaseHelper mPurchaseHelper;

@@ -27,14 +27,11 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.squareup.sqlbrite.BriteDatabase;
 import com.tbruyelle.rxpermissions.RxPermissions;
-import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.helper.InterstitialHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
-import com.whiterabbit.pisabike.apiclient.HtmlBikeClient;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
-import com.whiterabbit.pisabike.storage.AddressJob;
-import com.whiterabbit.pisabike.storage.AddressJobCreator;
+import com.whiterabbit.pisabike.storage.BikesDatabasee;
 import com.whiterabbit.pisabike.storage.PrefsStorage;
 import com.whiterabbit.pisabike.ui.MapMarkerFactory;
 
@@ -59,6 +56,7 @@ public interface ApplicationComponent {
     PrefsStorage getStorage();
     InterstitialHelper getInterstitial();
     Gson getGSon();
+    BikesDatabasee getDatabase();
 }
 
 

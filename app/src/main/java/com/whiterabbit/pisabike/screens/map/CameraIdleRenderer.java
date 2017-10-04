@@ -10,6 +10,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.view.DefaultClusterRenderer;
+import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.ui.MapMarkerFactory;
 
 /**
@@ -47,9 +48,9 @@ public class CameraIdleRenderer extends DefaultClusterRenderer<MapItem> implemen
         Station s = clusterItem.getStation();
         Bitmap bitmap;
         if (!clusterItem.isSelected()) {
-            bitmap = mMarkerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
+            bitmap = mMarkerFactory.getNotSelectedMapMarker(s.getAvailable(), s.getFree(), mContext);
         } else {
-            bitmap = mMarkerFactory.getSelectedMapMarker(s.getAvailable(), s.getSpaces(), mContext);
+            bitmap = mMarkerFactory.getSelectedMapMarker(s.getAvailable(), s.getFree(), mContext);
         }
 
         BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(bitmap);

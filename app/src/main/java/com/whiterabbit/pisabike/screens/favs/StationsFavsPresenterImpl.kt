@@ -1,6 +1,7 @@
 package com.whiterabbit.pisabike.screens.list
 
 import android.location.Location
+import com.whiterabbit.pisabike.model.Station
 import com.whiterabbit.pisabike.schedule.SchedulersProvider
 import com.whiterabbit.pisabike.storage.BikesProvider
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider
@@ -23,7 +24,7 @@ class StationsFavsPresenterImpl(val provider : BikesProvider,
         subscription = CompositeSubscription()
 
         val favsStations = provider.stationsObservables.map({stations ->
-            stations.filter { s -> s.isFavourite }})
+            stations.filter { s -> s.favourite }})
 
         val sub = Observable.combineLatest(locationProvider.lastKnownLocation.take(1),
                                             favsStations,
@@ -44,7 +45,7 @@ class StationsFavsPresenterImpl(val provider : BikesProvider,
 
         val sub2 = v.preferredToggledObservable()
                 .subscribeOn(schedulers.provideBackgroundScheduler())
-                .flatMap { station -> provider.changePreferredStatus(station.name, !station.isFavourite) }
+                .flatMap { station -> provider.changePreferredStatus(station.name, "TODOCITY", !station.favourite) }
                 .observeOn(schedulers.provideBackgroundScheduler())
                 .subscribe({} ,
                         {_ : Throwable -> run {} })

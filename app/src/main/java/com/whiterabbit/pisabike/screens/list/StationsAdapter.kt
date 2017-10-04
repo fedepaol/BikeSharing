@@ -8,12 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import butterknife.Bind
+import butterknife.BindView
 import butterknife.ButterKnife
 import com.jakewharton.rxrelay.BehaviorRelay
 import com.like.LikeButton
 import com.like.OnLikeListener
 import com.whiterabbit.pisabike.R
+import com.whiterabbit.pisabike.model.Station
 import rx.Observable
 
 
@@ -53,7 +54,7 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
             if (old[oldItemPosition].broken != new[newItemPosition].broken) {
                 return false
             }
-            if (old[oldItemPosition].isFavourite != new[newItemPosition].isFavourite) {
+            if (old[oldItemPosition].favourite != new[newItemPosition].favourite) {
                 return false
             }
             return true
@@ -61,17 +62,17 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
     }
 
     inner class ViewHolder(v : View) : RecyclerView.ViewHolder(v) {
-        @Bind(R.id.station_detail_name)
+        @BindView(R.id.station_detail_name)
         lateinit var name:TextView
-        @Bind(R.id.station_detail_address)
+        @BindView(R.id.station_detail_address)
         lateinit var address:TextView
-        @Bind(R.id.station_detail_free_bikes)
+        @BindView(R.id.station_detail_free_bikes)
         lateinit var bikes:TextView
-        @Bind(R.id.station_detail_parks)
+        @BindView(R.id.station_detail_parks)
         lateinit var bikesEmpty:TextView
-        @Bind(R.id.station_detail_distance)
+        @BindView(R.id.station_detail_distance)
         lateinit var distance:TextView
-        @Bind(R.id.station_detail_star)
+        @BindView(R.id.station_detail_star)
         lateinit var preferredImage:LikeButton
 
 
@@ -121,8 +122,8 @@ class StationsAdapter(val c : Context) : RecyclerView.Adapter<StationsAdapter.Vi
         holder?.distance?.text = String.format(c.getString(R.string.distance),
                                                 s.getDistanceFrom(myPosition))
         holder?.id = position
-        if (holder?.preferredImage?.isLiked != s.isFavourite) {
-            holder?.preferredImage?.isLiked = s.isFavourite
+        if (holder?.preferredImage?.isLiked != s.favourite) {
+            holder?.preferredImage?.isLiked = s.favourite
         }
     }
 

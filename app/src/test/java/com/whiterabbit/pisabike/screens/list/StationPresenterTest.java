@@ -5,6 +5,7 @@ import android.location.Location;
 
 import com.whiterabbit.pisabike.DataUtil;
 import com.whiterabbit.pisabike.FakeSchedulersProvider;
+import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.storage.BikesProvider;
 
@@ -107,7 +108,7 @@ public class StationPresenterTest {
         List<Station> stations = dataUtil.getTestStations();
         List<Station> stations1 = new ArrayList<>(stations);
 
-        stations1.get(0).setName("Duomo 1");
+        // stations1.get(0).set("Duomo 1");
 
         List<List<Station>> results = new ArrayList<>(2);
         results.add(stations);

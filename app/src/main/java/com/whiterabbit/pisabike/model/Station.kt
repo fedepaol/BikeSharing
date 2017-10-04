@@ -19,8 +19,9 @@ class Station (
     var lastUpdate: Date,
     var addressLoaded: Boolean) {
 
-    fun getDistanceFrom(l: Location): Double {
-        return distance(latitude, longitude, l.latitude, l.longitude)
+    fun getDistanceFrom(l: Location?): Double {
+        l?.let {return distance(latitude, longitude, l.latitude, l.longitude) }
+        return 0.0;
     }
 
 }

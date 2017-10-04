@@ -18,6 +18,8 @@
 package com.whiterabbit.pisabike.apiclient;
 
 
+import com.whiterabbit.pisabike.model.Station;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +85,7 @@ public class HtmlBikeClient {
 
             addresses[i] = getCleanAddress(addresses[i]);
 
-            Station station = new Station(names[i], "PISA", Double.valueOf(latitudes[i]),
+            /*Station station = new Station(names[i], "PISA", Double.valueOf(latitudes[i]),
                     Double.valueOf(longitudes[i]),
                     addresses[i],
                     available,
@@ -91,7 +93,7 @@ public class HtmlBikeClient {
                     broken,
                     false,
                     false);
-            res.add(station);
+            res.add(station);*/
         }
         return res;
     }

@@ -29,25 +29,25 @@ import android.widget.TextView;
 
 import com.whiterabbit.pisabike.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class ProgressView extends LinearLayout {
     private boolean mIsProgress;
-    @Bind(R.id.update_view_background)
+    @BindView(R.id.update_view_background)
     ImageView mBackground;
 
-    @Bind(R.id.update_view_icon)
+    @BindView(R.id.update_view_icon)
     ImageView mIcon;
 
-    @Bind(R.id.update_view_icon_done)
+    @BindView(R.id.update_view_icon_done)
     ImageView mIconDone;
 
-    @Bind(R.id.update_view_message)
+    @BindView(R.id.update_view_message)
     TextView mMessage;
 
-    @Bind(R.id.update_view_icon_error)
+    @BindView(R.id.update_view_icon_error)
     ImageView mIconError;
 
     private final Handler mHandler;

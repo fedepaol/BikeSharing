@@ -2,6 +2,7 @@ package com.whiterabbit.pisabike.screens.map
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.clustering.ClusterItem
+import com.whiterabbit.pisabike.model.Station
 
 /**
  * Created by fedepaol on 03/06/17.

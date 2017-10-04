@@ -51,6 +51,7 @@ import com.whiterabbit.androidutils.InAppPurchaseHelper;
 import com.whiterabbit.helper.InterstitialHelper;
 import com.whiterabbit.pisabike.PisaBikeApplication;
 import com.whiterabbit.pisabike.R;
+import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.ui.MapMarkerFactory;
 
 import java.util.List;
@@ -58,7 +59,7 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -79,40 +80,40 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
     @Inject
     InterstitialHelper mInterstitialHelper;
 
-    @Bind(R.id.main_map)
+    @BindView(R.id.main_map)
     com.google.android.gms.maps.MapView mMapView;
 
-    @Bind(R.id.main_detail_sheet)
+    @BindView(R.id.main_detail_sheet)
     View mBottomSheet;
 
-    @Bind(R.id.station_detail_name)
+    @BindView(R.id.station_detail_name)
     TextView mDetailName;
 
-    @Bind(R.id.station_detail_address)
+    @BindView(R.id.station_detail_address)
     TextView mAddress;
 
-    @Bind(R.id.station_detail_distance)
+    @BindView(R.id.station_detail_distance)
     TextView mDistance;
 
-    @Bind(R.id.station_detail_free_bikes)
+    @BindView(R.id.station_detail_free_bikes)
     TextView mBikes;
 
-    @Bind(R.id.station_detail_parks)
+    @BindView(R.id.station_detail_parks)
     TextView mEmptyBikes;
 
-    @Bind(R.id.station_detail_star)
+    @BindView(R.id.station_detail_star)
     LikeButton mPreferredStar;
 
-    @Bind(R.id.fab)
+    @BindView(R.id.fab)
     FloatingActionButton mFab;
 
-    @Bind(R.id.main_directions_fab)
+    @BindView(R.id.main_directions_fab)
     FloatingActionButton mDirectionsFab;
 
-    @Bind(R.id.main_progress)
+    @BindView(R.id.main_progress)
     ProgressView mProgress;
 
-    @Bind(R.id.map_coordinator)
+    @BindView(R.id.map_coordinator)
     CoordinatorLayout mMapCoordinator;
 
     BottomSheetBehavior mBottomSheetBehavior;
@@ -242,7 +243,7 @@ public class MapFragment extends Fragment implements MapView, OnMapReadyCallback
         mBikes.setText(String.valueOf(detail.getAvailable()));
         mEmptyBikes.setText(String.valueOf(detail.getFree()));
         mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        mPreferredStar.setLiked(detail.isFavourite());
+        mPreferredStar.setLiked(detail.getFavourite());
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.TestApplication;
+import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.screens.list.StationsListModule;
 import com.whiterabbit.pisabike.screens.list.StationsListPresenter;

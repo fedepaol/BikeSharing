@@ -1,6 +1,7 @@
 package com.whiterabbit.pisabike.screens.list
 
 import android.location.Location
+import com.whiterabbit.pisabike.model.Station
 import com.whiterabbit.pisabike.schedule.SchedulersProvider
 import com.whiterabbit.pisabike.storage.BikesProvider
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider
@@ -17,7 +18,7 @@ class StationsListPresenterImpl(val provider : BikesProvider,
     var view : StationsListView? = null
 
     data class ListData(var list : List<Station>,
-                   var location : Location)
+                        var location : Location)
 
     override fun attachToView(v: StationsListView) {
         view = v
@@ -34,7 +35,7 @@ class StationsListPresenterImpl(val provider : BikesProvider,
 
         val sub2 = v.preferredToggledObservable()
                 .subscribeOn(schedulers.provideBackgroundScheduler())
-                .flatMap { station -> provider.changePreferredStatus(station.name, !station.isFavourite) }
+                .flatMap { station -> provider.changePreferredStatus(station.name, "TODOCITY", !station.favourite) }
                 .observeOn(schedulers.provideBackgroundScheduler())
                 .subscribe({} ,
                            {_ : Throwable -> run {} })

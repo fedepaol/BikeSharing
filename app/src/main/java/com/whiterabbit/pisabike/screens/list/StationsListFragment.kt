@@ -13,25 +13,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import butterknife.Bind
+import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.jakewharton.rxrelay.PublishRelay
 import com.mancj.materialsearchbar.MaterialSearchBar
 import com.whiterabbit.pisabike.PisaBikeApplication
 import com.whiterabbit.pisabike.R
+import com.whiterabbit.pisabike.model.Station
 import com.whiterabbit.pisabike.screens.main.MainActivity
 import rx.Observable
 import javax.inject.Inject
 
 class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnSearchActionListener {
-    @Bind(R.id.stations_list_view)
+    @BindView(R.id.stations_list_view)
     lateinit var stations : RecyclerView
 
-    @Bind(R.id.stations_list_search)
+    @BindView(R.id.stations_list_search)
     lateinit var searchBar : MaterialSearchBar
 
-    @Bind(R.id.list_search_fab)
+    @BindView(R.id.list_search_fab)
     lateinit var searchFab : FloatingActionButton
 
     @Inject
@@ -48,7 +49,7 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
                               savedInstanceState: Bundle?): View? {
 
         val res = inflater?.inflate(R.layout.stations_list, container, false)
-        ButterKnife.bind(this, res)
+        res?.let {ButterKnife.bind(this, res) }
 
         stations.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(activity.applicationContext)

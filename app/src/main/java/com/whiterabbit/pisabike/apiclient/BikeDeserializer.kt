@@ -6,7 +6,9 @@ import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import com.google.gson.JsonParseException
 import com.whiterabbit.pisabike.model.Network
+import com.whiterabbit.pisabike.model.Station
 import java.lang.reflect.Type
+import java.util.*
 
 class BikeDeserializer : JsonDeserializer<Network> {
 
@@ -31,7 +33,7 @@ class BikeDeserializer : JsonDeserializer<Network> {
                 if (has("extra") && getAsJsonObject("extra").has("description")) {
                     address = getAsJsonObject("extra").get("description").asString
                 }
-                stations.add(Station(name, city, latitude, longitue, address, freeBikes, emptySlots, 0, false, false))
+                stations.add(Station(name, city, latitude, longitue, address, freeBikes, emptySlots, 0, false, Date(0), false))
             }
         }
         return Network(stations)

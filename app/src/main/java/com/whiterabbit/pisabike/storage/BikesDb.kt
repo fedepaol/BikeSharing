@@ -2,6 +2,7 @@ package com.whiterabbit.pisabike.storage
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
+import android.arch.persistence.room.TypeConverters
 import com.whiterabbit.pisabike.model.Station
 
 /**
@@ -9,6 +10,7 @@ import com.whiterabbit.pisabike.model.Station
  */
 
 @Database(entities = arrayOf(Station::class), version = 1)
+@TypeConverters(DateConverter::class)
 abstract class BikesDatabasee: RoomDatabase() {
     abstract fun bikesDao(): BikesDao
 }

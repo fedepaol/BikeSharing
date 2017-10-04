@@ -20,6 +20,7 @@ package com.whiterabbit.pisabike.screens.map;
 import android.location.Location;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.whiterabbit.pisabike.model.Station;
 
 import java.util.List;
 

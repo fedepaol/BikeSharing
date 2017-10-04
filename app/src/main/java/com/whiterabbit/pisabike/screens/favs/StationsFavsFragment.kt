@@ -10,22 +10,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import butterknife.Bind
+import butterknife.BindView
 import butterknife.ButterKnife
 import com.whiterabbit.pisabike.PisaBikeApplication
 import com.whiterabbit.pisabike.R
+import com.whiterabbit.pisabike.model.Station
 import com.whiterabbit.pisabike.screens.main.MainActivity
 import rx.Observable
 import javax.inject.Inject
 
 class StationsFavsFragment : Fragment(), StationsFavsView {
-    @Bind(R.id.stations_list_view)
+    @BindView(R.id.stations_list_view)
     lateinit var stations : RecyclerView
 
-    @Bind(R.id.stations_list_empty_message)
+    @BindView(R.id.stations_list_empty_message)
     lateinit var emptyMessage : TextView
 
-    @Bind(R.id.list_search_fab)
+    @BindView(R.id.list_search_fab)
     lateinit var fab : FloatingActionButton
 
     @Inject
@@ -38,7 +39,7 @@ class StationsFavsFragment : Fragment(), StationsFavsView {
                               savedInstanceState: Bundle?): View? {
 
         val res = inflater?.inflate(R.layout.stations_list, container, false)
-        ButterKnife.bind(this, res)
+        res?.let { ButterKnife.bind(this, res) }
 
         fab.visibility = View.GONE
         stations.setHasFixedSize(true)

@@ -29,6 +29,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import hu.akarnokd.rxjava.interop.RxJavaInterop;
+import io.reactivex.Flowable;
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 import rx.Observable;
 import rx.subjects.BehaviorSubject;
@@ -86,7 +88,7 @@ public class BikesProvider {
     }
 
     public Observable<List<Station>> getStationsObservables() {
-        return mBikesDatabase.bikesDao().loadAllStations();
+        return RxJavaInterop.toV1Observable(mBikesDatabase.bikesDao().loadAllStations());
     }
 
     private int setStationPreferred(String stationName, String stationCity, boolean preferred) {

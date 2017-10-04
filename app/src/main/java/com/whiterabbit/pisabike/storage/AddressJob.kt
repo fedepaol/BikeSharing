@@ -32,7 +32,7 @@ class AddressJob(val locationProvider: ReactiveLocationProvider,
                  val sqlBrite : BriteDatabase) : Job() {
     override fun onRunJob(params: Params?): Result {
 
-        val filteredStations = sqlBrite.createQuery(PisaBikeDbHelper.STATION_TABLE,
+        /*val filteredStations = sqlBrite.createQuery(PisaBikeDbHelper.STATION_TABLE,
                 "SELECT * FROM station where loaded = 0")
         var error = false
 
@@ -57,7 +57,8 @@ class AddressJob(val locationProvider: ReactiveLocationProvider,
         return when {
                         !error -> Result.SUCCESS
                         else -> Result.RESCHEDULE
-                        }
+                        }*/
+        return Result.SUCCESS;
     }
 }
 

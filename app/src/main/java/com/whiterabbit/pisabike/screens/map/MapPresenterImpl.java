@@ -25,6 +25,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.model.LatLng;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.Constants;
+import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.storage.BikesProvider;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.storage.PrefsStorage;
@@ -147,7 +148,7 @@ public class MapPresenterImpl implements MapPresenter {
                 s1.setAvailable(s.getAvailable());
                 s1.setBroken(s.getBroken());
                 s1.setFree(s.getFree());
-                s1.setFavourite(s.isFavourite());
+                s1.setFavourite(s.getFavourite());
                 s1.setAddress(s.getAddress());
             }
         }
@@ -273,7 +274,7 @@ public class MapPresenterImpl implements MapPresenter {
     @Override
     public void onPreferredToggled(boolean isPreferred) {
         if (mSelectedStation != null) {
-            Subscription s = mBikesProvider.changePreferredStatus(mSelectedStation.getName(), isPreferred)
+            Subscription s = mBikesProvider.changePreferredStatus(mSelectedStation.getName(), "TODOCITY", isPreferred)
                     .subscribeOn(Schedulers.io())
                     .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                     .subscribe();

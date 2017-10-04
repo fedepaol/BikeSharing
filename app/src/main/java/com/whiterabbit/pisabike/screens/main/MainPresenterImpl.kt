@@ -1,6 +1,7 @@
 package com.whiterabbit.pisabike.screens.main
 
 import android.os.Bundle
+import com.whiterabbit.pisabike.model.Station
 
 class MainPresenterImpl() : MainPresenter {
     var STATE_KEY = "ContainerState"
