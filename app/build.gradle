@@ -112,6 +112,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:support-compat:26.1.0'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.4'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.google.dagger:dagger:2.4'
     compile 'com.jakewharton:butterknife:8.7.0'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
@@ -145,6 +146,7 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha9-1"
     compile "android.arch.persistence.room:rxjava2:1.0.0-alpha9-1"
     kapt "android.arch.persistence.room:compiler:1.0.0-alpha9-1"
+    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
 
     kapt 'com.google.dagger:dagger-compiler:2.4'
     provided 'javax.annotation:jsr250-api:1.0'

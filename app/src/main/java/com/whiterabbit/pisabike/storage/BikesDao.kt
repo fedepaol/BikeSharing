@@ -16,13 +16,16 @@ interface BikesDao {
     @Update
     fun updateStation(station: Station)
 
-    @Query("update station set favourite = :preferred where name = :name and city = :city")
-    fun setStationPreferred(name: String, city: String, preferred: Boolean)
+    @Query("update station set favourite = :preferred where name = :name and network = :network")
+    fun setStationPreferred(name: String, network: String, preferred: Boolean)
 
-    @Query("SELECT * FROM station")
-    fun loadAllStations(): Flowable<List<Station>>
+    @Query("SELECT * FROM station where network = :network")
+    fun loadAllStations(network: String): Flowable<List<Station>>
 
-    @Query("SELECT * from station where name = :name and city = :city")
-    fun getStation(name: String, city : String) : Station?
+    @Query("SELECT * from station where name = :name and network = :network")
+    fun getStation(name: String, network : String) : Station?
+
+    @Query("Select * from station where addressLoaded = 0 and network = :network")
+    fun getNonLoadedAddress(network: String) : List<Station>
 
 }

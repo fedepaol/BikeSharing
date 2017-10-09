@@ -3,13 +3,13 @@ package com.whiterabbit.pisabike.screens.list
 import android.location.Location
 import com.whiterabbit.pisabike.model.Station
 import com.whiterabbit.pisabike.schedule.SchedulersProvider
-import com.whiterabbit.pisabike.storage.BikesProvider
+import com.whiterabbit.pisabike.storage.BikesRepository
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider
 import rx.Observable
 import rx.subscriptions.CompositeSubscription
 import java.util.concurrent.TimeUnit
 
-class StationsListPresenterImpl(val provider : BikesProvider,
+class StationsListPresenterImpl(val repository: BikesRepository,
                                 val schedulers : SchedulersProvider,
                                 val locationProvider : ReactiveLocationProvider) : StationsListPresenter {
 
@@ -35,7 +35,7 @@ class StationsListPresenterImpl(val provider : BikesProvider,
 
         val sub2 = v.preferredToggledObservable()
                 .subscribeOn(schedulers.provideBackgroundScheduler())
-                .flatMap { station -> provider.changePreferredStatus(station.name, "TODOCITY", !station.favourite) }
+                .flatMap { station -> repository.changePreferredStatus(station.name, "TODOCITY", !station.favourite) }
                 .observeOn(schedulers.provideBackgroundScheduler())
                 .subscribe({} ,
                            {_ : Throwable -> run {} })
@@ -55,7 +55,7 @@ class StationsListPresenterImpl(val provider : BikesProvider,
     }
 
     private fun allStationsObservable() : Observable<ListData> {
-        val stationsObservable = provider.stationsObservables
+        val stationsObservable = repository.stationsObservables
         val textObservable = Observable.just("")
                              .concatWith(view?.searchStationObservable()?.debounce(400, TimeUnit.MILLISECONDS))
         val filteredStations : Observable<List<Station>>

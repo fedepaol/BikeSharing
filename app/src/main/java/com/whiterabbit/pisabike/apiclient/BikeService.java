@@ -24,9 +24,10 @@ import com.whiterabbit.pisabike.model.Network;
 
 import retrofit2.http.GET;
 
+import retrofit2.http.Path;
 import rx.Observable;
 
 public interface BikeService {
-    @GET(Constants.SERVICE_ENDPOINT)
-    Observable<Network> listStations();
+    @GET("{service}")
+    Observable<Network> listStations(@Path("service") String service);
 }

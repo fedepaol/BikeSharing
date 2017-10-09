@@ -27,6 +27,7 @@ import com.facebook.stetho.Stetho;
 import com.whiterabbit.pisabike.inject.ApplicationComponent;
 import com.whiterabbit.pisabike.inject.ApplicationModule;
 import com.whiterabbit.pisabike.inject.DaggerApplicationComponent;
+import com.whiterabbit.pisabike.model.BikesNetwork;
 import com.whiterabbit.pisabike.screens.favs.StationsFavsModule;
 import com.whiterabbit.pisabike.screens.list.StationsListModule;
 import com.whiterabbit.pisabike.screens.main.MainModule;
@@ -34,6 +35,7 @@ import com.whiterabbit.pisabike.screens.main.MainView;
 import com.whiterabbit.pisabike.screens.map.MapModule;
 import com.whiterabbit.pisabike.screens.map.MapView;
 import com.whiterabbit.pisabike.storage.AddressJobCreator;
+import com.whiterabbit.pisabike.storage.PrefsStorage;
 
 import javax.inject.Inject;
 
@@ -42,6 +44,7 @@ import io.fabric.sdk.android.Fabric;
 public class PisaBikeApplication extends MultiDexApplication {
     private ApplicationComponent mComponent;
     @Inject AddressJobCreator mJobCreator;
+    @Inject PrefsStorage mStorage;
 
     @Override
     public void onCreate() {
@@ -50,7 +53,7 @@ public class PisaBikeApplication extends MultiDexApplication {
         initComponent();
         mComponent.inject(this);
         JobManager.create(this).addJobCreator(mJobCreator);
-        Stetho.initializeWithDefaults(this);
+        mStorage.setCurrentNetwork(new BikesNetwork("Pisa", "ciclopi"));
     }
 
     ApplicationModule getApplicationModule() {

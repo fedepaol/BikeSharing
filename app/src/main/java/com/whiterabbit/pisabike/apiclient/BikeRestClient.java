@@ -20,6 +20,9 @@ package com.whiterabbit.pisabike.apiclient;
 
 import com.google.gson.Gson;
 import com.whiterabbit.pisabike.model.Network;
+import com.whiterabbit.pisabike.model.Station;
+
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -38,16 +41,29 @@ public class BikeRestClient {
         OkHttpClient okClient = new OkHttpClient.Builder().build();
 
         mClient = new Retrofit.Builder()
-                              .baseUrl("https://api.citybik.es/v2/networks/")
-                              .client(okClient)
-                              .addConverterFactory(GsonConverterFactory.create(mGson))
-                              .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                              .build()
-                              .create(BikeService.class);
+                .baseUrl("https://api.citybik.es/v2/networks/")
+                .client(okClient)
+                .addConverterFactory(GsonConverterFactory.create(mGson))
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build()
+                .create(BikeService.class);
     }
 
-    public Observable<Network> getStations() {
-        return mClient.listStations();
+    public Observable<List<Station>> getStations(String network) {
+        return mClient.listStations(network)
+                .flatMap(network1 -> Observable.from(network1.getStations()))
+                        .map(station -> station.copy(station.getName(),
+                                                    network,
+                                                    station.getLatitude(),
+                                                    station.getLongitude(),
+                                                    station.getAddress(),
+                                                    station.getAvailable(),
+                                                    station.getFree(),
+                                                    station.getBroken(),
+                                                    station.getFavourite(),
+                                                    station.getLastUpdate(),
+                                                    station.getAddressLoaded()))
+                        .toList();
     }
 
 }

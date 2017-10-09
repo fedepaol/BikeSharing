@@ -7,7 +7,7 @@ import com.whiterabbit.pisabike.DataUtil;
 import com.whiterabbit.pisabike.FakeSchedulersProvider;
 import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
-import com.whiterabbit.pisabike.storage.BikesProvider;
+import com.whiterabbit.pisabike.storage.BikesRepository;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +35,7 @@ public class StationPresenterTest {
     @Mock
     ReactiveLocationProvider locationProvider;
     @Mock
-    BikesProvider bikesProvider;
+    BikesRepository bikesRepository;
     @Mock
     StationsListView view;
 
@@ -57,7 +57,7 @@ public class StationPresenterTest {
     @Before
     public void init() {
         mSchedulers = new FakeSchedulersProvider();
-        mPresenter = new StationsListPresenterImpl(bikesProvider, mSchedulers, locationProvider);
+        mPresenter = new StationsListPresenterImpl(bikesRepository, mSchedulers, locationProvider);
 
         when(duomoLocation.getLatitude()).thenReturn(43.722812);
         when(duomoLocation.getLongitude()).thenReturn(10.395035);
@@ -70,7 +70,7 @@ public class StationPresenterTest {
 
     @Test
     public void testSimpleAttach() {
-        when(bikesProvider.getStationsObservables()).thenReturn(Observable.just(dataUtil.getTestStations()));
+        when(bikesRepository.getStationsObservables()).thenReturn(Observable.just(dataUtil.getTestStations()));
 
         when(locationProvider.getLastKnownLocation()).thenReturn(Observable.just(duomoLocation))
                                                      .thenReturn(Observable.just(airportLocation));
@@ -84,18 +84,18 @@ public class StationPresenterTest {
         verify(view, times(2)).displayStations(stationsCaptor.capture(), locationCaptor.capture());
 
         List<Station> stations = stationsCaptor.getAllValues().get(0);
-        assertEquals(stations.get(0).getCity(), "PISA");
+        assertEquals(stations.get(0).getNetwork(), "PISA");
         assertEquals(stations.get(0).getName(), "Duomo");
 
         stations = stationsCaptor.getAllValues().get(1);
-        assertEquals(stations.get(0).getCity(), "PISA");
+        assertEquals(stations.get(0).getNetwork(), "PISA");
         assertEquals(stations.get(0).getName(), "Aeroporto");
     }
 
     @Test
     public void testUpdate() {
-        when(bikesProvider.getStationsObservables()).thenReturn(Observable.just(dataUtil.getTestStations()));
-        when(bikesProvider.updateBikes()).thenReturn(Observable.just(null));
+        when(bikesRepository.getStationsObservables()).thenReturn(Observable.just(dataUtil.getTestStations()));
+        when(bikesRepository.updateBikes("ciclopi")).thenReturn(Observable.just(null));
         when(locationProvider.getLastKnownLocation()).thenReturn(Observable.just(duomoLocation));
 
         when(view.getStationSelectedObservable()).thenReturn(Observable.never());
@@ -114,7 +114,7 @@ public class StationPresenterTest {
         results.add(stations);
         results.add(stations1);
 
-        when(bikesProvider.getStationsObservables()).thenReturn(Observable.from(results));
+        when(bikesRepository.getStationsObservables()).thenReturn(Observable.from(results));
 
         when(locationProvider.getLastKnownLocation()).thenReturn(Observable.just(duomoLocation))
                 .thenReturn(Observable.just(airportLocation));
@@ -126,11 +126,11 @@ public class StationPresenterTest {
         verify(view, times(2)).displayStations(stationsCaptor.capture(), locationCaptor.capture());
 
         List<Station> result = stationsCaptor.getAllValues().get(0);
-        assertEquals(stations.get(0).getCity(), "PISA");
+        assertEquals(stations.get(0).getNetwork(), "PISA");
         assertEquals(stations.get(0).getName(), "Duomo");
 
         stations = stationsCaptor.getAllValues().get(1);
-        assertEquals(stations.get(0).getCity(), "PISA");
+        assertEquals(stations.get(0).getNetwork(), "PISA");
         assertEquals(stations.get(0).getName(), "Duomo1");
     }
 

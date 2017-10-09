@@ -30,12 +30,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import hu.akarnokd.rxjava.interop.RxJavaInterop;
-import io.reactivex.Flowable;
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 import rx.Observable;
 import rx.subjects.BehaviorSubject;
 
-public class BikesProvider {
+public class BikesRepository {
     @Inject BriteDatabase mBrite;
     @Inject SchedulersProvider mSchedulersProvider;
     @Inject BikeRestClient mBikeClient;
@@ -46,7 +45,7 @@ public class BikesProvider {
 
 
     @Inject
-    public BikesProvider() {
+    public BikesRepository() {
 
     }
 
@@ -54,20 +53,20 @@ public class BikesProvider {
         return System.currentTimeMillis() / 1000;
     }
 
-    public Observable<Void> updateBikes() {
+    public Observable<Void> updateBikes(String network) {
         if (mPrefsStorage.getLastUpdate() + 60 > getNowSeconds()) {
             return Observable.just(null);
         }
 
         BehaviorSubject<Void> requestSubject = BehaviorSubject.create();
 
-        mBikeClient.getStations()
+        mBikeClient.getStations(network)
                 .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .observeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .subscribe(stations -> {
                     boolean needsAddress = false;
-                    for (Station s : stations.getStations()) {
-                        if (mBikesDatabase.bikesDao().getStation("fava", "rava") != null) {
+                    for (Station s : stations) {
+                        if (mBikesDatabase.bikesDao().getStation(s.getName(), s.getNetwork()) != null) {
                             mBikesDatabase.bikesDao().updateStation(s);
                         } else {
                             s.setAddress(mContext.getString(R.string.loading_address));
@@ -88,7 +87,7 @@ public class BikesProvider {
     }
 
     public Observable<List<Station>> getStationsObservables() {
-        return RxJavaInterop.toV1Observable(mBikesDatabase.bikesDao().loadAllStations());
+        return RxJavaInterop.toV1Observable(mBikesDatabase.bikesDao().loadAllStations(mPrefsStorage.getCurrentNetwork().getNetwork()));
     }
 
     private int setStationPreferred(String stationName, String stationCity, boolean preferred) {

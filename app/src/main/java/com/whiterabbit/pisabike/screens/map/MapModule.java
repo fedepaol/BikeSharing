@@ -19,7 +19,7 @@ package com.whiterabbit.pisabike.screens.map;
 
 
 import com.tbruyelle.rxpermissions.RxPermissions;
-import com.whiterabbit.pisabike.storage.BikesProvider;
+import com.whiterabbit.pisabike.storage.BikesRepository;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.storage.PrefsStorage;
 
@@ -41,11 +41,11 @@ public class MapModule {
 
     @Provides
     public MapPresenter provideMainPresenter(SchedulersProvider schedulersProvider,
-                                             BikesProvider bikesProvider,
+                                             BikesRepository bikesRepository,
                                              ReactiveLocationProvider locationProvider,
                                              RxPermissions permissions,
                                              PrefsStorage storage){
-        return new MapPresenterImpl(schedulersProvider, bikesProvider,
+        return new MapPresenterImpl(schedulersProvider, bikesRepository,
                                      locationProvider, permissions, storage);
     }
 }

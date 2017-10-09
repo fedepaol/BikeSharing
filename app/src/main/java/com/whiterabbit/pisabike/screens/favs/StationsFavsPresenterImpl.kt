@@ -3,14 +3,16 @@ package com.whiterabbit.pisabike.screens.list
 import android.location.Location
 import com.whiterabbit.pisabike.model.Station
 import com.whiterabbit.pisabike.schedule.SchedulersProvider
-import com.whiterabbit.pisabike.storage.BikesProvider
+import com.whiterabbit.pisabike.storage.BikesRepository
+import com.whiterabbit.pisabike.storage.PrefsStorage
 import pl.charmas.android.reactivelocation.ReactiveLocationProvider
 import rx.Observable
 import rx.subscriptions.CompositeSubscription
 
-class StationsFavsPresenterImpl(val provider : BikesProvider,
+class StationsFavsPresenterImpl(val repository: BikesRepository,
                                 val schedulers : SchedulersProvider,
-                                val locationProvider : ReactiveLocationProvider) : StationsFavsPresenter {
+                                val locationProvider : ReactiveLocationProvider,
+                                val storage: PrefsStorage) : StationsFavsPresenter {
 
     var data : ListData? = null
     lateinit var subscription : CompositeSubscription
@@ -23,7 +25,7 @@ class StationsFavsPresenterImpl(val provider : BikesProvider,
         view = v
         subscription = CompositeSubscription()
 
-        val favsStations = provider.stationsObservables.map({stations ->
+        val favsStations = repository.stationsObservables.map({ stations ->
             stations.filter { s -> s.favourite }})
 
         val sub = Observable.combineLatest(locationProvider.lastKnownLocation.take(1),
@@ -45,7 +47,9 @@ class StationsFavsPresenterImpl(val provider : BikesProvider,
 
         val sub2 = v.preferredToggledObservable()
                 .subscribeOn(schedulers.provideBackgroundScheduler())
-                .flatMap { station -> provider.changePreferredStatus(station.name, "TODOCITY", !station.favourite) }
+                .flatMap { station -> repository.changePreferredStatus(station.name,
+                                                                       storage.currentNetwork.network,
+                                                                       !station.favourite) }
                 .observeOn(schedulers.provideBackgroundScheduler())
                 .subscribe({} ,
                         {_ : Throwable -> run {} })

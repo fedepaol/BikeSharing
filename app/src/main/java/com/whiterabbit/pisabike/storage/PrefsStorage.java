@@ -22,11 +22,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.whiterabbit.pisabike.model.BikesNetwork;
+
 
 public class PrefsStorage {
     private static final String LAST_UPDATE_ID = "com.whiterabbit.lastupdate";
     private static final String ADDRESS_ID = "com.whiterabbit.address";
     private static final String LOADED_ID = "com.whiterabbit.loaded";
+    private static final String CITY_ID = "com.whiterabbit.city";
+    private static final String NETWORK_ID = "com.whiterabbit.network";
 
 
     private SharedPreferences mPreferences;
@@ -62,6 +66,21 @@ public class PrefsStorage {
         editor.apply();
         return res;
     }
+
+    public void setCurrentNetwork(BikesNetwork network) {
+        SharedPreferences.Editor editor = mPreferences.edit();
+        editor.putString(CITY_ID, network.getCity());
+        editor.putString(NETWORK_ID, network.getNetwork());
+        editor.apply();
+    }
+
+    public BikesNetwork getCurrentNetwork() {
+        String city = mPreferences.getString(CITY_ID, "Pisa");
+        String network = mPreferences.getString(NETWORK_ID, "");
+        return new BikesNetwork(city, network);
+    }
+
+
 
 }
 

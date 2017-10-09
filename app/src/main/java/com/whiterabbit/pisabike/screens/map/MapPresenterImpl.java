@@ -26,7 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.whiterabbit.pisabike.Constants;
 import com.whiterabbit.pisabike.model.Station;
-import com.whiterabbit.pisabike.storage.BikesProvider;
+import com.whiterabbit.pisabike.storage.BikesRepository;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.storage.PrefsStorage;
 
@@ -50,7 +50,7 @@ public class MapPresenterImpl implements MapPresenter {
     private CompositeSubscription mSubscription;
     private Location mMyLocation;
     private RxPermissions mPermissions;
-    private BikesProvider mBikesProvider;
+    private BikesRepository mBikesRepository;
     private Station mSelectedStation;
     private PrefsStorage mStorage;
     private boolean mMovingToMarker;
@@ -58,13 +58,13 @@ public class MapPresenterImpl implements MapPresenter {
     private String mStationToCenter;
 
     public MapPresenterImpl(SchedulersProvider schedulersProvider,
-                            BikesProvider bikesProvider,
+                            BikesRepository bikesRepository,
                             ReactiveLocationProvider locationProvider,
                             RxPermissions permissions,
                             PrefsStorage storage) {
         mSchedulersProvider = schedulersProvider;
         mLocationProvider = locationProvider;
-        mBikesProvider = bikesProvider;
+        mBikesRepository = bikesRepository;
         mPermissions = permissions;
         mStations = new HashMap<>();
         mStorage = storage;
@@ -85,7 +85,7 @@ public class MapPresenterImpl implements MapPresenter {
 
     private Subscription subscribeStations() {
 
-        return mBikesProvider.getStationsObservables()
+        return mBikesRepository.getStationsObservables()
                 .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                 .subscribe(this::onStationsChanged);
@@ -120,8 +120,9 @@ public class MapPresenterImpl implements MapPresenter {
 
     private void askForUpdate() {
         mView.startUpdating();
+        String network = mStorage.getCurrentNetwork().getNetwork();
         final Subscription sub =
-                mBikesProvider.updateBikes().subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
+                mBikesRepository.updateBikes(network).subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
                         .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                         .subscribe(s -> {
                                 },
@@ -161,7 +162,7 @@ public class MapPresenterImpl implements MapPresenter {
     }
 
     private Subscription centerToStation(String stationName) {
-        return mBikesProvider.getStationsObservables()
+        return mBikesRepository.getStationsObservables()
                 .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
                 .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                 .flatMap(Observable::from)
@@ -274,7 +275,7 @@ public class MapPresenterImpl implements MapPresenter {
     @Override
     public void onPreferredToggled(boolean isPreferred) {
         if (mSelectedStation != null) {
-            Subscription s = mBikesProvider.changePreferredStatus(mSelectedStation.getName(), "TODOCITY", isPreferred)
+            Subscription s = mBikesRepository.changePreferredStatus(mSelectedStation.getName(), mStorage.getCurrentNetwork().getNetwork(), isPreferred)
                     .subscribeOn(Schedulers.io())
                     .observeOn(mSchedulersProvider.provideMainThreadScheduler())
                     .subscribe();

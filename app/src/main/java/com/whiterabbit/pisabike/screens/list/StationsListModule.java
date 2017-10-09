@@ -19,7 +19,7 @@ package com.whiterabbit.pisabike.screens.list;
 
 
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
-import com.whiterabbit.pisabike.storage.BikesProvider;
+import com.whiterabbit.pisabike.storage.BikesRepository;
 
 import dagger.Module;
 import dagger.Provides;
@@ -28,9 +28,9 @@ import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 @Module
 public class StationsListModule {
     @Provides
-    public StationsListPresenter providePresenter(BikesProvider bikesProvider,
+    public StationsListPresenter providePresenter(BikesRepository bikesRepository,
                                                   SchedulersProvider schedulers,
                                                   ReactiveLocationProvider location){
-        return new StationsListPresenterImpl(bikesProvider, schedulers, location);
+        return new StationsListPresenterImpl(bikesRepository, schedulers, location);
     }
 }

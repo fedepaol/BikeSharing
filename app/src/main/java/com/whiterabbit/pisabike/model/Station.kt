@@ -5,10 +5,10 @@ import android.location.Location
 import java.util.*
 
 
-@Entity(primaryKeys = arrayOf("name", "city"))
-class Station (
+@Entity(primaryKeys = arrayOf("name", "network"))
+data class Station (
     val name : String,
-    val city: String,
+    val network: String,
     var latitude: Double,
     var longitude: Double,
     var address: String,
@@ -23,7 +23,6 @@ class Station (
         l?.let {return distance(latitude, longitude, l.latitude, l.longitude) }
         return 0.0;
     }
-
 }
 
 fun distance(latitude1: Double, longitude1: Double,

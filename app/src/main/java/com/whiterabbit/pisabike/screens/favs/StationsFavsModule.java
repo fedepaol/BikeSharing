@@ -21,9 +21,8 @@ package com.whiterabbit.pisabike.screens.favs;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 import com.whiterabbit.pisabike.screens.list.StationsFavsPresenter;
 import com.whiterabbit.pisabike.screens.list.StationsFavsPresenterImpl;
-import com.whiterabbit.pisabike.screens.list.StationsListPresenter;
-import com.whiterabbit.pisabike.screens.list.StationsListPresenterImpl;
-import com.whiterabbit.pisabike.storage.BikesProvider;
+import com.whiterabbit.pisabike.storage.BikesRepository;
+import com.whiterabbit.pisabike.storage.PrefsStorage;
 
 import dagger.Module;
 import dagger.Provides;
@@ -32,9 +31,10 @@ import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 @Module
 public class StationsFavsModule {
     @Provides
-    public StationsFavsPresenter providePresenter(BikesProvider bikesProvider,
+    public StationsFavsPresenter providePresenter(BikesRepository bikesRepository,
                                                   SchedulersProvider schedulers,
-                                                  ReactiveLocationProvider location){
-        return new StationsFavsPresenterImpl(bikesProvider, schedulers, location);
+                                                  ReactiveLocationProvider location,
+                                                  PrefsStorage storage){
+        return new StationsFavsPresenterImpl(bikesRepository, schedulers, location, storage);
     }
 }

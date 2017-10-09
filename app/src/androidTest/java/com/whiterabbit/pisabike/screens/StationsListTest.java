@@ -18,7 +18,7 @@ import com.whiterabbit.pisabike.screens.list.StationsListModule;
 import com.whiterabbit.pisabike.screens.list.StationsListPresenter;
 import com.whiterabbit.pisabike.screens.list.StationsListView;
 import com.whiterabbit.pisabike.screens.main.MainActivity;
-import com.whiterabbit.pisabike.storage.BikesProvider;
+import com.whiterabbit.pisabike.storage.BikesRepository;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -68,7 +68,7 @@ public class StationsListTest {
         StationsListModule m = mock(StationsListModule.class);
         myLocation = mock(Location.class);
         mockPresenter = mock(StationsListPresenter.class);
-        when(m.providePresenter(any(BikesProvider.class),
+        when(m.providePresenter(any(BikesRepository.class),
                                 any(SchedulersProvider.class),
                                 any(ReactiveLocationProvider.class))).thenReturn(mockPresenter);
 
