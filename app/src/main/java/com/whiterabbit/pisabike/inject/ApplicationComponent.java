@@ -50,7 +50,6 @@ public interface ApplicationComponent {
     ReactiveLocationProvider getReactiveLocationProvider();
     Context getContext();
     SchedulersProvider getSchedulers();
-    BriteDatabase getBriteDatabase();
     RxPermissions getPermissions();
     MapMarkerFactory getMarkerFactory();
     PrefsStorage getStorage();

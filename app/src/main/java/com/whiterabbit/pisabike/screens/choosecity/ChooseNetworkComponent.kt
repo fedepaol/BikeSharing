@@ -15,25 +15,23 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.whiterabbit.pisabike.apiclient;
+package com.whiterabbit.pisabike.screens.list
+
+/**
+ * Created by fedepaol on 28/06/15.
+ */
 
 
-import com.whiterabbit.pisabike.Constants;
-import com.whiterabbit.pisabike.model.BikesNetwork;
-import com.whiterabbit.pisabike.model.Network;
+import com.whiterabbit.pisabike.inject.ActivityScope
+import com.whiterabbit.pisabike.inject.ApplicationComponent
+import com.whiterabbit.pisabike.screens.choosecity.ChooseNetworkActivity
+import com.whiterabbit.pisabike.screens.choosecity.ChooseNetworkModule
+import com.whiterabbit.pisabike.screens.favs.StationsFavsModule
+import dagger.Component
 
-
-import java.util.List;
-
-import retrofit2.http.GET;
-
-import retrofit2.http.Path;
-import rx.Observable;
-
-public interface BikeService {
-    @GET("networks/{service}")
-    Observable<Network> listStations(@Path("service") String service);
-
-    @GET("networks")
-    Observable<List<BikesNetwork>> listNetworks();
+@ActivityScope
+@Component(modules = arrayOf(ChooseNetworkModule::class), dependencies = arrayOf(ApplicationComponent::class))
+interface ChooseNetworkComponent {
+    fun inject(f: ChooseNetworkActivity)
 }
+

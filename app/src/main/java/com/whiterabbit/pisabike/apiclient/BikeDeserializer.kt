@@ -5,8 +5,7 @@ import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import com.google.gson.JsonParseException
-import com.whiterabbit.pisabike.model.Network
-import com.whiterabbit.pisabike.model.Station
+import com.whiterabbit.pisabike.model.*
 import java.lang.reflect.Type
 import java.util.*
 
@@ -38,4 +37,24 @@ class BikeDeserializer : JsonDeserializer<Network> {
         }
         return Network(stations)
     }
+}
+
+class NetworkListDeserializer: JsonDeserializer<Networks> {
+    @Throws(JsonParseException::class)
+    override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Networks {
+        val networks = json.asJsonObject.getAsJsonArray("networks")
+        val res = mutableListOf<BikesNetwork>()
+        for (network_obj in networks) {
+            with (network_obj.asJsonObject) {
+                val id = get("id").asString
+                val locationObj = getAsJsonObject("location")
+                val city = locationObj.get("city").asString
+                val latitude = locationObj.get("latitude").asDouble
+                val longitue = locationObj.get("longitude").asDouble
+                res.add(BikesNetwork(city, id, Coordinates(latitude, longitue)))
+            }
+        }
+        return Networks(res.toTypedArray())
+    }
+
 }

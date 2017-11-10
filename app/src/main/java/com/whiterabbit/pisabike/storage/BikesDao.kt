@@ -1,6 +1,8 @@
 package com.whiterabbit.pisabike.storage
 
 import android.arch.persistence.room.*
+import com.whiterabbit.pisabike.model.BikesNetwork
+import com.whiterabbit.pisabike.model.Network
 import com.whiterabbit.pisabike.model.Station
 import io.reactivex.Flowable
 
@@ -27,5 +29,15 @@ interface BikesDao {
 
     @Query("Select * from station where addressLoaded = 0 and network = :network")
     fun getNonLoadedAddress(network: String) : List<Station>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAllNetworks(network: List<BikesNetwork>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertNetwork(network: BikesNetwork)
+
+    @Query("SELECT * FROM network")
+    fun loadAllNetworks() : Flowable<List<BikesNetwork>>
+
 
 }

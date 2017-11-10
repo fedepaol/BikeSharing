@@ -28,6 +28,7 @@ import com.whiterabbit.pisabike.inject.ApplicationComponent;
 import com.whiterabbit.pisabike.inject.ApplicationModule;
 import com.whiterabbit.pisabike.inject.DaggerApplicationComponent;
 import com.whiterabbit.pisabike.model.BikesNetwork;
+import com.whiterabbit.pisabike.model.Coordinates;
 import com.whiterabbit.pisabike.screens.favs.StationsFavsModule;
 import com.whiterabbit.pisabike.screens.list.StationsListModule;
 import com.whiterabbit.pisabike.screens.main.MainModule;
@@ -53,7 +54,7 @@ public class PisaBikeApplication extends MultiDexApplication {
         initComponent();
         mComponent.inject(this);
         JobManager.create(this).addJobCreator(mJobCreator);
-        mStorage.setCurrentNetwork(new BikesNetwork("Pisa", "ciclopi"));
+        mStorage.setCurrentNetwork(new BikesNetwork("Pisa", "ciclopi", new Coordinates(0, 0)));
     }
 
     ApplicationModule getApplicationModule() {

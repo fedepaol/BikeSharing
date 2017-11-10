@@ -19,9 +19,9 @@ package com.whiterabbit.pisabike.storage;
 
 import android.content.Context;
 
-import com.squareup.sqlbrite.BriteDatabase;
 import com.whiterabbit.pisabike.R;
 import com.whiterabbit.pisabike.apiclient.BikeRestClient;
+import com.whiterabbit.pisabike.model.BikesNetwork;
 import com.whiterabbit.pisabike.model.Station;
 import com.whiterabbit.pisabike.schedule.SchedulersProvider;
 
@@ -35,7 +35,6 @@ import rx.Observable;
 import rx.subjects.BehaviorSubject;
 
 public class BikesRepository {
-    @Inject BriteDatabase mBrite;
     @Inject SchedulersProvider mSchedulersProvider;
     @Inject BikeRestClient mBikeClient;
     @Inject PrefsStorage mPrefsStorage;
@@ -86,6 +85,24 @@ public class BikesRepository {
         return requestSubject;
     }
 
+    public Observable<Void> updateNetworks() {
+        if (mPrefsStorage.getLastNetworkUpdate() + 60 > getNowSeconds()) {
+            return Observable.just(null);
+        }
+        BehaviorSubject<Void> requestSubject = BehaviorSubject.create();
+        mBikeClient.getNetworks()
+                .subscribeOn(mSchedulersProvider.provideBackgroundScheduler())
+                .observeOn(mSchedulersProvider.provideBackgroundScheduler())
+                .subscribe(networks -> mBikesDatabase.bikesDao().insertAllNetworks(networks),
+                           requestSubject::onError,
+                        () -> {
+                            mPrefsStorage.setLastNetworkUpdate(getNowSeconds());
+                            requestSubject.onCompleted();
+                        });
+
+        return requestSubject;
+    }
+
     public Observable<List<Station>> getStationsObservables() {
         return RxJavaInterop.toV1Observable(mBikesDatabase.bikesDao().loadAllStations(mPrefsStorage.getCurrentNetwork().getNetwork()));
     }
@@ -97,5 +114,9 @@ public class BikesRepository {
 
     public Observable<Integer> changePreferredStatus(String stationName, String stationCity, boolean preferred) {
         return Observable.fromCallable(() -> setStationPreferred(stationName, stationCity, preferred));
+    }
+
+    public Observable<List<BikesNetwork>> getNetworksObservable() {
+        return RxJavaInterop.toV1Observable(mBikesDatabase.bikesDao().loadAllNetworks());
     }
 }

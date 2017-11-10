@@ -87,16 +87,6 @@ public class ApplicationModule {
     }
 
     @Provides
-    @Singleton
-    BriteDatabase provideBrite(Context c, SchedulersProvider schedulers) {
-        SqlBrite sqlBrite = SqlBrite.create();
-        PisaBikeDbHelper helper = new PisaBikeDbHelper(c);
-        return sqlBrite.wrapDatabaseHelper(helper.getDbHelper(),
-                                            schedulers.provideBackgroundScheduler());
-    }
-
-    @Provides
-    @Singleton
     RxPermissions provideRxPermissions(Context c) {
         return RxPermissions.getInstance(c);
     }

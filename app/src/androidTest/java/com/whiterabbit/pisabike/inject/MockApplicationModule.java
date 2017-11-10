@@ -36,11 +36,6 @@ public class MockApplicationModule extends ApplicationModule {
     }
 
     @Override
-    BriteDatabase provideBrite(Context c, SchedulersProvider schedulers) {
-        return super.provideBrite(c, schedulers);
-    }
-
-    @Override
     RxPermissions provideRxPermissions(Context c) {
         return permissions;
     }

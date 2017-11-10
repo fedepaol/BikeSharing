@@ -23,6 +23,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.whiterabbit.pisabike.model.BikesNetwork;
+import com.whiterabbit.pisabike.model.Coordinates;
 
 
 public class PrefsStorage {
@@ -31,6 +32,8 @@ public class PrefsStorage {
     private static final String LOADED_ID = "com.whiterabbit.loaded";
     private static final String CITY_ID = "com.whiterabbit.city";
     private static final String NETWORK_ID = "com.whiterabbit.network";
+    private static final String LATITUDE_ID = "com.whiterabbit.lat";
+    private static final String LONGITUDE_ID = "com.whiterabbit.lon";
 
 
     private SharedPreferences mPreferences;
@@ -39,14 +42,31 @@ public class PrefsStorage {
         mPreferences = PreferenceManager.getDefaultSharedPreferences(c);
     }
 
-    public void setLastUpdate(long lastUpdate) {
+    private void setLastUpdate(long lastUpdate, boolean isNetwork) {
         SharedPreferences.Editor editor = mPreferences.edit();
-        editor.putLong(LAST_UPDATE_ID, lastUpdate);
+        editor.putLong(LAST_UPDATE_ID + isNetwork, lastUpdate);
         editor.apply();
     }
 
+    private long getLastUpdate(boolean isNetwork) {
+        return mPreferences.getLong(LAST_UPDATE_ID + isNetwork, 0);
+    }
+
+    public void setLastUpdate(long lastUpdate) {
+        setLastUpdate(lastUpdate, false);
+    }
+
     public long getLastUpdate() {
-        return mPreferences.getLong(LAST_UPDATE_ID, 0);
+        return getLastUpdate(false);
+    }
+
+
+    public void setLastNetworkUpdate(long lastUpdate) {
+        setLastUpdate(lastUpdate, true);
+    }
+
+    public long getLastNetworkUpdate() {
+        return getLastUpdate(true);
     }
 
     private String getLatLonKey(double lat, double lon) {
@@ -71,13 +91,17 @@ public class PrefsStorage {
         SharedPreferences.Editor editor = mPreferences.edit();
         editor.putString(CITY_ID, network.getCity());
         editor.putString(NETWORK_ID, network.getNetwork());
+        editor.putFloat(LATITUDE_ID, (float) network.getCoordinates().getLatitude());
+        editor.putFloat(LATITUDE_ID, (float) network.getCoordinates().getLatitude());
         editor.apply();
     }
 
     public BikesNetwork getCurrentNetwork() {
         String city = mPreferences.getString(CITY_ID, "Pisa");
         String network = mPreferences.getString(NETWORK_ID, "");
-        return new BikesNetwork(city, network);
+        float latitude = mPreferences.getFloat(LATITUDE_ID, 0);
+        float longitude = mPreferences.getFloat(LONGITUDE_ID, 0);
+        return new BikesNetwork(city, network, new Coordinates(latitude, longitude));
     }
 
 
