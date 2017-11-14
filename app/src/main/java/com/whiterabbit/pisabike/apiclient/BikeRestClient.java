@@ -41,7 +41,7 @@ public class BikeRestClient {
         OkHttpClient okClient = new OkHttpClient.Builder().build();
 
         mClient = new Retrofit.Builder()
-                .baseUrl("https://api.citybik.es/v2")
+                .baseUrl("https://api.citybik.es/v2/")
                 .client(okClient)
                 .addConverterFactory(GsonConverterFactory.create(mGson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())

@@ -1,5 +1,6 @@
 package com.whiterabbit.pisabike.screens.choosecity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -14,8 +15,8 @@ import com.whiterabbit.pisabike.model.Coordinates
 import com.whiterabbit.pisabike.screens.list.DaggerChooseNetworkComponent
 import javax.inject.Inject
 import com.google.maps.android.clustering.ClusterManager
-import com.whiterabbit.pisabike.screens.map.CameraIdleRenderer
-import com.whiterabbit.pisabike.screens.map.MapItem
+import com.whiterabbit.pisabike.screens.main.MainActivity
+import org.jetbrains.anko.startActivity
 
 
 /**
@@ -61,7 +62,7 @@ class ChooseNetworkActivity : AppCompatActivity(), ChooseContract.View, OnMapRea
     }
 
     override fun startApplication(network: BikesNetwork) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        startActivity<MainActivity>()
     }
 
     override fun displayNetworks(networks: List<BikesNetwork>) {
@@ -94,8 +95,9 @@ class ChooseNetworkActivity : AppCompatActivity(), ChooseContract.View, OnMapRea
         }
     }
 
-    override fun onClusterItemClick(p0: NetworksMapItem?): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onClusterItemClick(mapItem: NetworksMapItem): Boolean {
+        presenter.onNetworkChoosen(mapItem.network)
+        return true
     }
 
     override fun onCameraIdle() {

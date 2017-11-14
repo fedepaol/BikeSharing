@@ -34,27 +34,27 @@ class StationsFavsFragment : Fragment(), StationsFavsView {
 
     lateinit var adapter : StationsAdapter
 
-    override fun onCreateView(inflater: LayoutInflater?,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        val res = inflater?.inflate(R.layout.stations_list, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val res = inflater.inflate(R.layout.stations_list, container, false)
         res?.let { ButterKnife.bind(this, res) }
 
         fab.visibility = View.GONE
         stations.setHasFixedSize(true)
-        val layoutManager = LinearLayoutManager(activity.applicationContext)
+        val layoutManager = LinearLayoutManager(activity?.applicationContext)
         stations.layoutManager = layoutManager
 
-        adapter = StationsAdapter(activity.applicationContext)
-        stations.adapter = adapter
+        activity?.let {
+            adapter = StationsAdapter(it.applicationContext)
+            stations.adapter = adapter
+        }
+
         return res
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val app : PisaBikeApplication = activity.application as PisaBikeApplication
+        val app : PisaBikeApplication = activity?.application as PisaBikeApplication
         DaggerStationsFavsComponent.builder()
                 .applicationComponent(app.component)
                 .stationsFavsModule(app.favsModule)

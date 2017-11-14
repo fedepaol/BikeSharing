@@ -31,13 +31,13 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'me.tatarka.retrolambda'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.whiterabbit.pisabike"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 6
         versionName "1.4"
         vectorDrawables.useSupportLibrary = true
@@ -110,7 +110,7 @@ task createTestResources << {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:support-compat:26.1.0'
+    compile 'com.android.support:support-compat:27.0.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.4'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.google.dagger:dagger:2.4'
@@ -120,32 +120,33 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
     compile 'pl.charmas.android:android-reactive-location:0.9@aar'
-    compile 'com.google.android.gms:play-services-location:11.0.2'
-    compile 'com.google.android.gms:play-services-places:11.0.2'
-    compile 'com.google.android.gms:play-services-maps:11.0.2'
+    compile 'com.google.android.gms:play-services-location:11.6.0'
+    compile 'com.google.android.gms:play-services-places:11.6.0'
+    compile 'com.google.android.gms:play-services-maps:11.6.0'
     compile 'com.jakewharton.rxrelay:rxrelay:1.2.0'
     compile 'com.squareup.sqlbrite:sqlbrite:0.7.0'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.8'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
     compile "com.github.akarnokd:rxjava2-interop:0.10.6"
-    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:design:27.0.1'
     compile 'com.android.support:multidex:1.0.2'
-    compile 'com.android.support:cardview-v7:26.1.0'
-    compile 'com.android.support:percent:26.1.0'
-    compile 'com.google.firebase:firebase-ads:11.0.4'
+    compile 'com.android.support:cardview-v7:27.0.1'
+    compile 'com.android.support:percent:27.0.1'
+    compile 'com.google.firebase:firebase-ads:11.6.0'
     compile 'com.whiterabbit:androidutils:1.0.0@aar'
     compile 'com.github.mancj:MaterialSearchBar:0.6'
     compile 'com.google.maps.android:android-maps-utils:0.5'
     compile 'com.github.jd-alexander:LikeButton:0.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.evernote:android-job:1.1.11'
+    compile 'com.evernote:android-job:1.2.0'
     compile 'com.facebook.stetho:stetho:1.5.0'
+    compile "org.jetbrains.anko:anko-commons:$anko_version"
 
-    compile "android.arch.persistence.room:runtime:1.0.0-alpha9-1"
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha9-1"
-    compile "android.arch.persistence.room:rxjava2:1.0.0-alpha9-1"
-    kapt "android.arch.persistence.room:compiler:1.0.0-alpha9-1"
+    compile "android.arch.persistence.room:runtime:1.0.0"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    compile "android.arch.persistence.room:rxjava2:1.0.0"
+    kapt "android.arch.persistence.room:compiler:1.0.0"
     kapt 'com.jakewharton:butterknife-compiler:8.8.1'
 
     kapt 'com.google.dagger:dagger-compiler:2.4'

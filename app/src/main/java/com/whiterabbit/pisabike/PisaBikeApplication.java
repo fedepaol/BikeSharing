@@ -54,7 +54,6 @@ public class PisaBikeApplication extends MultiDexApplication {
         initComponent();
         mComponent.inject(this);
         JobManager.create(this).addJobCreator(mJobCreator);
-        mStorage.setCurrentNetwork(new BikesNetwork("Pisa", "ciclopi", new Coordinates(0, 0)));
     }
 
     ApplicationModule getApplicationModule() {

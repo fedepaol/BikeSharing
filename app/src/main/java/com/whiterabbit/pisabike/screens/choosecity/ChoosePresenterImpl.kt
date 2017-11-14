@@ -2,6 +2,7 @@ package com.whiterabbit.pisabike.screens.choosecity
 
 import android.Manifest
 import com.tbruyelle.rxpermissions.RxPermissions
+import com.whiterabbit.pisabike.model.BikesNetwork
 import com.whiterabbit.pisabike.model.Coordinates
 import com.whiterabbit.pisabike.storage.BikesRepository
 import com.whiterabbit.pisabike.storage.PrefsStorage
@@ -65,9 +66,8 @@ class ChoosePresenterImpl(val prefsStorage: PrefsStorage,
                 .subscribe()
     }
 
-    override fun onCityChoosen(city: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onNetworkChoosen(network: BikesNetwork) {
+        prefsStorage.currentNetwork = network
+        view?.startApplication(network)
     }
-
-
 }

@@ -44,19 +44,21 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
 
     val subject : PublishRelay<String> = PublishRelay.create()
 
-    override fun onCreateView(inflater: LayoutInflater?,
+    override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val res = inflater?.inflate(R.layout.stations_list, container, false)
+        val res = inflater.inflate(R.layout.stations_list, container, false)
         res?.let {ButterKnife.bind(this, res) }
 
         stations.setHasFixedSize(true)
-        val layoutManager = LinearLayoutManager(activity.applicationContext)
+        val layoutManager = LinearLayoutManager(activity?.applicationContext)
         stations.layoutManager = layoutManager
 
-        adapter = StationsAdapter(activity.applicationContext)
-        stations.adapter = adapter
+        activity?.let {
+            adapter = StationsAdapter(it.applicationContext)
+            stations.adapter = adapter
+        }
         (stations.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         stations.itemAnimator.changeDuration = 0
 
@@ -68,7 +70,7 @@ class StationsListFragment : Fragment(), StationsListView, MaterialSearchBar.OnS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val app : PisaBikeApplication = activity.application as PisaBikeApplication
+        val app : PisaBikeApplication = activity?.application as PisaBikeApplication
         DaggerStationsListComponent.builder()
                 .applicationComponent(app.component)
                 .stationsListModule(app.listModule)

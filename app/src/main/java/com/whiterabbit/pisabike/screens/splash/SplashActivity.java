@@ -22,15 +22,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.whiterabbit.pisabike.screens.choosecity.ChooseNetworkActivity;
 import com.whiterabbit.pisabike.screens.main.MainActivity;
+import com.whiterabbit.pisabike.storage.PrefsStorage;
 
 public class SplashActivity extends AppCompatActivity {
+    PrefsStorage mStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mStorage = new PrefsStorage(this);
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = null;
+        if (mStorage.getCurrentNetwork() != null) {
+            intent = new Intent(this, MainActivity.class);
+        } else {
+            intent = new Intent(this, ChooseNetworkActivity.class);
+        }
         startActivity(intent);
         finish();
     }

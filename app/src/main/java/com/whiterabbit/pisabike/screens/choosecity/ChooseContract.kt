@@ -18,7 +18,7 @@ interface ChooseContract {
     }
 
     interface Presenter {
-        fun onCityChoosen(city : String)
+        fun onNetworkChoosen(network: BikesNetwork)
         fun onViewAttached(view: View)
         fun onViewDetached()
     }

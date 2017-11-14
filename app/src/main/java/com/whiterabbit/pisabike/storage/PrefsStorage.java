@@ -97,10 +97,13 @@ public class PrefsStorage {
     }
 
     public BikesNetwork getCurrentNetwork() {
-        String city = mPreferences.getString(CITY_ID, "Pisa");
+        String city = mPreferences.getString(CITY_ID, "*");
         String network = mPreferences.getString(NETWORK_ID, "");
         float latitude = mPreferences.getFloat(LATITUDE_ID, 0);
         float longitude = mPreferences.getFloat(LONGITUDE_ID, 0);
+
+        if (city.equals("*")) return null;
+
         return new BikesNetwork(city, network, new Coordinates(latitude, longitude));
     }
 
